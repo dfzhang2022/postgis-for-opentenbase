@@ -4786,10 +4786,10 @@ Datum GetNodeByPoint(PG_FUNCTION_ARGS)
   }
 
   tol = PG_GETARG_FLOAT8(2);
-  if ( tol < 0 )
+  if ( tol < 0 && tol != -1 )
   {
     PG_FREE_IF_COPY(geom, 1);
-    lwpgerror("Tolerance must be >=0");
+    lwpgerror("Tolerance must be -1 or >=0 ");
     PG_RETURN_NULL();
   }
 
@@ -4856,10 +4856,10 @@ Datum GetEdgeByPoint(PG_FUNCTION_ARGS)
   }
 
   tol = PG_GETARG_FLOAT8(2);
-  if ( tol < 0 )
+  if ( tol < 0 && tol != -1 )
   {
     PG_FREE_IF_COPY(geom, 1);
-    lwpgerror("Tolerance must be >=0");
+    lwpgerror("Tolerance must be -1 or >=0 ");
     PG_RETURN_NULL();
   }
 
@@ -4928,10 +4928,10 @@ Datum GetFaceByPoint(PG_FUNCTION_ARGS)
   }
 
   tol = PG_GETARG_FLOAT8(2);
-  if ( tol < 0 )
+  if ( tol < 0 && tol != -1 )
   {
     PG_FREE_IF_COPY(geom, 1);
-    lwpgerror("Tolerance must be >=0");
+    lwpgerror("Tolerance must be -1 or >=0 ");
     PG_RETURN_NULL();
   }
 
@@ -5009,10 +5009,10 @@ Datum TopoGeo_AddPoint(PG_FUNCTION_ARGS)
   }
 
   tol = PG_GETARG_FLOAT8(2);
-  if ( tol < 0 )
+  if ( tol < 0 && tol != -1 )
   {
     PG_FREE_IF_COPY(geom, 1);
-    lwpgerror("Tolerance must be >=0");
+    lwpgerror("Tolerance must be -1 or >=0 ");
     PG_RETURN_NULL();
   }
 
@@ -5107,10 +5107,10 @@ Datum TopoGeo_AddLinestring(PG_FUNCTION_ARGS)
     }
 
     tol = PG_GETARG_FLOAT8(2);
-    if ( tol < 0 )
+    if ( tol < 0 && tol != -1 )
     {
       PG_FREE_IF_COPY(geom, 1);
-      lwpgerror("Tolerance must be >=0");
+      lwpgerror("Tolerance must be -1 or >=0 ");
       PG_RETURN_NULL();
     }
 
@@ -5312,10 +5312,10 @@ Datum TopoGeo_AddPolygon(PG_FUNCTION_ARGS)
     }
 
     tol = PG_GETARG_FLOAT8(2);
-    if ( tol < 0 )
+    if ( tol < 0 && tol != -1 )
     {
       PG_FREE_IF_COPY(geom, 1);
-      lwpgerror("Tolerance must be >=0");
+      lwpgerror("Tolerance must be -1 or >=0 ");
       PG_RETURN_NULL();
     }
 
