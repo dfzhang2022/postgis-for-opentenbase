@@ -1168,7 +1168,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 		GEOSSTRtree *tree = NULL;
 		GEOSGeometry **envelopes = NULL;
 		start = getPoint2d_cp(l1, 0);
-		for (t=1; t<l1->npoints; t++) /*for each segment in L1 */
+		for (t=1; t<l1->npoints; t++, start = end) /*for each segment in L1 */
 		{
 			end = getPoint2d_cp(l1, t);
 			LW_ON_INTERRUPT(return LW_FALSE);
@@ -1185,32 +1185,31 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				} else if ( t == 3 ) {
 					lwnotice("Querying tree for the second time");
 				}
+				//else lwnotice("Querying tree for the %d time", t);
 				GEOSGeometry *query = make_geos_segment(start->x, start->y, end->x, end->y);
 				const GEOSGeometry *found = GEOSSTRtree_nearest(tree, query);
+				if ( ! found ) {
+					lwerror("No nearest node found in strtree: %s",  lwgeom_geos_errmsg);
+					return LW_FALSE;
+				}
 				if ( t == 2 ) {
 					lwnotice("Tree first query completed");
 				} else if ( t == 3 ) {
 					lwnotice("Tree second query completed");
 				}
+				//else lwnotice("Done querying tree for the %d time", t);
 				dl->twisted=twist;
-#if 0
-				GEOSCoordSequence *cp = GEOSNearestPoints(query, found);
-				GEOSCoordSeq_getX( cp, (swapped)%2, &(dl->p1.x) );
-				GEOSCoordSeq_getY( cp, (swapped)%2, &(dl->p1.y) );
-				GEOSCoordSeq_getX( cp, (swapped+1)%2, &(dl->p2.x) );
-				GEOSCoordSeq_getY( cp, (swapped+1)%2, &(dl->p2.y) );
-				lw_dist2d_pt_pt( &dl->p1, &dl->p2, dl );
-#else
 				const GEOSCoordSequence *cp = GEOSGeom_getCoordSeq(found);
 				POINT2D s2, e2;
+				GEOSCoordSeq_getX( cp, 0, &(s2.x) );
+				GEOSCoordSeq_getY( cp, 0, &(s2.y) );
+				GEOSCoordSeq_getX( cp, 1, &(e2.x) );
+				GEOSCoordSeq_getY( cp, 1, &(e2.y) );
 				if ( swapped ) {
-					GEOSCoordSeq_getX( cp, (swapped)%2, &(s2.x) );
-					GEOSCoordSeq_getY( cp, (swapped)%2, &(s2.y) );
-					GEOSCoordSeq_getX( cp, (swapped+1)%2, &(e2.x) );
-					GEOSCoordSeq_getY( cp, (swapped+1)%2, &(e2.y) );
+					lw_dist2d_seg_seg(&s2, &e2, start, end, dl);
+				} else {
+					lw_dist2d_seg_seg(start, end, &s2, &e2, dl);
 				}
-				lw_dist2d_seg_seg(start, end, start2, end2, dl);
-#endif
 				if (dl->distance<=dl->tolerance && dl->mode == DIST_MIN)
 				{
 					/* TODO: release the tree and the envelopes */
@@ -1220,28 +1219,43 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				continue;
 			}
 			start2 = getPoint2d_cp(l2, 0);
-			for (u=1; u<l2->npoints; u++) /*for each segment in L2 */
+			for (u=1; u<l2->npoints; u++, start2=end2) /*for each segment in L2 */
 			{
 				end2 = getPoint2d_cp(l2, u);
 				if ( t == 1 && tree )
 				{
-					envelopes[u-1] = make_geos_segment(start2->x, start2->y, end2->x, end2->y);
-					GEOSSTRtree_insert(tree, envelopes[u-1], envelopes[u-1]);
+					if ( start2->x == end2->x && start2->y == end2->y )
+					{
+						lwnotice("Skipping zero-length segment from STRtree");
+						envelopes[u-1] = NULL;
+					}
+					else
+					{
+						envelopes[u-1] = make_geos_segment(start2->x, start2->y, end2->x, end2->y);
+						if ( ! envelopes[u-1] )
+						{
+							lwerror("make_geos_segment returned NULL");
+							return LW_FALSE;
+						}
+						GEOSSTRtree_insert(tree, envelopes[u-1], envelopes[u-1]);
+					}
 				}
 				dl->twisted=twist;
-				lw_dist2d_seg_seg(start, end, start2, end2, dl);
+				if ( swapped ) {
+					lw_dist2d_seg_seg(start2, end2, start, end, dl);
+				} else {
+					lw_dist2d_seg_seg(start, end, start2, end2, dl);
+				}
 				LWDEBUGF(4, "mindist_ptarray_ptarray; seg %i * seg %i, dist = %g\n",t,u,dl->distance);
 				LWDEBUGF(3, " seg%d-seg%d dist: %f, mindist: %f",
-				         t, u, dl->distance, dl->tolerance);
+								 t, u, dl->distance, dl->tolerance);
 				if (dl->distance<=dl->tolerance && dl->mode == DIST_MIN)
 				{
 					/* TODO: release the tree and the envelopes */
 					/*just a check if  the answer is already given*/
 					return LW_TRUE;
 				}
-				start2 = end2;
 			}
-			start = end;
 		}
 		/* TODO: release the tree and the envelopes */
 	}
