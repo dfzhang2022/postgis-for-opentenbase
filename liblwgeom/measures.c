@@ -1156,11 +1156,10 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 	else /* dl->mode == DIST_MIN */
 	{
 		POINTARRAY *lt;
-		int swapped = 0;
 		if ( l1->npoints > l2->npoints )
 		{
 			/* Swap geometries to build tree on the bigger one */
-			swapped = 1; /* TODO: twist = !twist ? */
+			twist = !twist;
 			lt = l2; l2 = l1; l1 = lt;
 		}
 		initGEOS(lwnotice, lwgeom_geos_error);
@@ -1205,11 +1204,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				GEOSCoordSeq_getY( cp, 0, &(s2.y) );
 				GEOSCoordSeq_getX( cp, 1, &(e2.x) );
 				GEOSCoordSeq_getY( cp, 1, &(e2.y) );
-				if ( swapped ) {
-					lw_dist2d_seg_seg(&s2, &e2, start, end, dl);
-				} else {
-					lw_dist2d_seg_seg(start, end, &s2, &e2, dl);
-				}
+				lw_dist2d_seg_seg(start, end, &s2, &e2, dl);
 				if (dl->distance<=dl->tolerance)
 				{
 					/* TODO: release the tree and the envelopes */
@@ -1241,11 +1236,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 					}
 				}
 				dl->twisted=twist;
-				if ( swapped ) {
-					lw_dist2d_seg_seg(start2, end2, start, end, dl);
-				} else {
-					lw_dist2d_seg_seg(start, end, start2, end2, dl);
-				}
+				lw_dist2d_seg_seg(start, end, start2, end2, dl);
 				LWDEBUGF(4, "mindist_ptarray_ptarray; seg %i * seg %i, dist = %g\n",t,u,dl->distance);
 				LWDEBUGF(3, " seg%d-seg%d dist: %f, mindist: %f",
 								 t, u, dl->distance, dl->tolerance);
