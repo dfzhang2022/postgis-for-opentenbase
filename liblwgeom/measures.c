@@ -1153,7 +1153,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 			}
 		}
 	}
-	else
+	else /* dl->mode == DIST_MIN */
 	{
 		POINTARRAY *lt;
 		int swapped = 0;
@@ -1164,7 +1164,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 			lt = l2; l2 = l1; l1 = lt;
 		}
 		initGEOS(lwnotice, lwgeom_geos_error);
-		static const int TREE_CAPACITY = 10;
+		static const int TREE_CAPACITY = 2;
 		GEOSSTRtree *tree = NULL;
 		GEOSGeometry **envelopes = NULL;
 		start = getPoint2d_cp(l1, 0);
@@ -1210,7 +1210,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				} else {
 					lw_dist2d_seg_seg(start, end, &s2, &e2, dl);
 				}
-				if (dl->distance<=dl->tolerance && dl->mode == DIST_MIN)
+				if (dl->distance<=dl->tolerance)
 				{
 					/* TODO: release the tree and the envelopes */
 					/*just a check if  the answer is already given*/
@@ -1249,7 +1249,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				LWDEBUGF(4, "mindist_ptarray_ptarray; seg %i * seg %i, dist = %g\n",t,u,dl->distance);
 				LWDEBUGF(3, " seg%d-seg%d dist: %f, mindist: %f",
 								 t, u, dl->distance, dl->tolerance);
-				if (dl->distance<=dl->tolerance && dl->mode == DIST_MIN)
+				if (dl->distance<=dl->tolerance)
 				{
 					/* TODO: release the tree and the envelopes */
 					/*just a check if  the answer is already given*/
