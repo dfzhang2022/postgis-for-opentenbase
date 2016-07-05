@@ -1192,13 +1192,25 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				} else if ( t == 3 ) {
 					lwnotice("Tree second query completed");
 				}
+				dl->twisted=twist;
+#if 0
 				GEOSCoordSequence *cp = GEOSNearestPoints(query, found);
 				GEOSCoordSeq_getX( cp, (swapped)%2, &(dl->p1.x) );
 				GEOSCoordSeq_getY( cp, (swapped)%2, &(dl->p1.y) );
 				GEOSCoordSeq_getX( cp, (swapped+1)%2, &(dl->p2.x) );
 				GEOSCoordSeq_getY( cp, (swapped+1)%2, &(dl->p2.y) );
-				dl->twisted=twist;
 				lw_dist2d_pt_pt( &dl->p1, &dl->p2, dl );
+#else
+				const GEOSCoordSequence *cp = GEOSGeom_getCoordSeq(found);
+				POINT2D s2, e2;
+				if ( swapped ) {
+					GEOSCoordSeq_getX( cp, (swapped)%2, &(s2.x) );
+					GEOSCoordSeq_getY( cp, (swapped)%2, &(s2.y) );
+					GEOSCoordSeq_getX( cp, (swapped+1)%2, &(e2.x) );
+					GEOSCoordSeq_getY( cp, (swapped+1)%2, &(e2.y) );
+				}
+				lw_dist2d_seg_seg(start, end, start2, end2, dl);
+#endif
 				if (dl->distance<=dl->tolerance && dl->mode == DIST_MIN)
 				{
 					/* TODO: release the tree and the envelopes */
