@@ -1174,18 +1174,18 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 			LW_ON_INTERRUPT(return LW_FALSE);
 			if ( t == 1 ) /* TODO: only construct a tree if l2->npoints > threshold */
 			{
-				lwnotice("Creating tree with %d segments", l2->npoints-1);
+				LWDEBUGF(1, "Creating tree with %d segments", l2->npoints-1);
 				tree = GEOSSTRtree_create(TREE_CAPACITY);
 				envelopes = lwalloc(sizeof(GEOSGeometry *)*l2->npoints-1);
 			}
 			else if ( tree )
 			{
 				if ( t == 2 ) {
-					lwnotice("Querying tree for the first time (building?)");
+					LWDEBUG(1, "Querying tree for the first time (building?)");
 				} else if ( t == 3 ) {
-					lwnotice("Querying tree for the second time");
+					LWDEBUG(1, "Querying tree for the second time");
 				}
-				//else lwnotice("Querying tree for the %d time", t);
+				else LWDEBUGF(5, "Querying tree for the %d time", t);
 				GEOSGeometry *query = make_geos_segment(start->x, start->y, end->x, end->y);
 				const GEOSGeometry *found = GEOSSTRtree_nearest(tree, query);
 				if ( ! found ) {
@@ -1193,11 +1193,11 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 					return LW_FALSE;
 				}
 				if ( t == 2 ) {
-					lwnotice("Tree first query completed");
+					LWDEBUG(1, "Tree first query completed");
 				} else if ( t == 3 ) {
-					lwnotice("Tree second query completed");
+					LWDEBUG(1, "Tree second query completed");
 				}
-				//else lwnotice("Done querying tree for the %d time", t);
+				else LWDEBUGF(5, "Done querying tree for the %d time", t);
 				dl->twisted=twist;
 				const GEOSCoordSequence *cp = GEOSGeom_getCoordSeq(found);
 				POINT2D s2, e2;
@@ -1226,7 +1226,7 @@ lw_dist2d_ptarray_ptarray(POINTARRAY *l1, POINTARRAY *l2,DISTPTS *dl)
 				{
 					if ( start2->x == end2->x && start2->y == end2->y )
 					{
-						lwnotice("Skipping zero-length segment from STRtree");
+						LWDEBUG(1, "Skipping zero-length segment from STRtree");
 						envelopes[u-1] = NULL;
 					}
 					else
