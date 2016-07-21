@@ -50,6 +50,9 @@ ifeq (@HAVE_BRIN@,yes)
 BRIN_OBJ= brin_2d.o brin_nd.o brin_common.o
 endif
 
+ifeq (@HAVE_PROTOBUF@,yes)
+PROTOBUF_OBJ=geobuf.pb-c.o
+endif
 
 # SQL preprocessor
 SQLPP = @SQLPP@
@@ -77,6 +80,9 @@ PG_OBJS= \
 	lwgeom_in_geohash.o \
 	lwgeom_in_geojson.o \
 	lwgeom_in_encoded_polyline.o \
+	$(PROTOBUF_OBJ) \
+	geobuf.o \
+	lwgeom_out_geobuf.o \
 	lwgeom_triggers.o \
 	lwgeom_dump.o \
 	lwgeom_dumppoints.o \
@@ -126,7 +132,9 @@ EXTRA_CLEAN=$(SQL_OBJS) \
 	postgis_upgrade.sql.in \
 	postgis_upgrade.sql \
 	sfcgal_upgrade.sql.in \
-	sfcgal_upgrade.sql 
+	sfcgal_upgrade.sql \
+	geobuf.pb-c.c \
+	geobuf.pb-c.h
 
 # PGXS information
 PG_CONFIG = @PG_CONFIG@
@@ -169,6 +177,18 @@ $(PG_OBJS): ../liblwgeom/.libs/liblwgeom.a ../libpgcommon/libpgcommon.a ../postg
 
 ../libpgcommon/libpgcommon.a:
 	$(MAKE) -C ../libpgcommon libpgcommon.a
+
+# Get protobuf-c compiler command
+PROTOCC=@PROTOCC@
+
+# Generate geobuf encoder/decoder using protobuf-c compiler 
+geobuf.pb-c.c geobuf.pb-c.h: geobuf.proto
+	$(PROTOCC) --c_out=. $<
+
+ifeq (@HAVE_PROTOBUF@,yes)
+lwgeom_out_geobuf.o: geobuf.pb-c.h
+geobuf.o: geobuf.pb-c.h
+endif
 
 # Borrow the $libdir substitution from PGXS but customise by running the preprocessor
 # and adding the version number

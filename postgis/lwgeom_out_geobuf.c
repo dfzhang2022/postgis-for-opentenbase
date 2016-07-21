@@ -1,0 +1,62 @@
+#include "geobuf.h"
+
+/**
+ * @file
+ * Geobuf export functions
+ */
+
+#include "postgres.h"
+#include "utils/builtins.h"
+#include "executor/spi.h"
+
+#include "../postgis_config.h"
+#include "lwgeom_pg.h"
+#include "lwgeom_log.h"
+#include "liblwgeom.h"
+#include "geobuf.h"
+
+/**
+ * Encode query result to Geobuf
+ */
+PG_FUNCTION_INFO_V1(LWGEOM_asGeobuf);
+Datum LWGEOM_asGeobuf(PG_FUNCTION_ARGS)
+{
+#ifndef HAVE_LIBPROTOBUF
+	lwerror("Missing libprotobuf-c");
+	PG_RETURN_NULL();
+#else
+	bytea *buf;
+	size_t buf_size;
+	text *query_text;
+	char *query;
+	text *geom_name_text;
+	char *geom_name;
+
+	query_text = PG_GETARG_TEXT_P(0);
+	query = text_to_cstring(query_text);
+	geom_name_text = PG_GETARG_TEXT_P(1);
+	geom_name = text_to_cstring(geom_name_text);
+
+	SPI_connect();
+	SPI_execute(query, true, 0);
+
+	buf = encode_to_geobuf(&buf_size, geom_name);
+
+	SPI_finish();
+
+	SET_VARSIZE(buf, buf_size + VARHDRSZ);
+	PG_RETURN_BYTEA_P(buf);
+#endif
+}
+
+PG_FUNCTION_INFO_V1(postgis_libprotobuf_version);
+Datum postgis_libprotobuf_version(PG_FUNCTION_ARGS)
+{
+#ifndef HAVE_LIBPROTOBUF
+	PG_RETURN_NULL();
+#else /* HAVE_LIBPROTOBUF  */
+	const char *ver = protobuf_c_version();
+	text *result = cstring2text(ver);
+	PG_RETURN_POINTER(result);
+#endif
+}
