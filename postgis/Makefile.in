@@ -52,6 +52,7 @@ endif
 
 ifeq (@HAVE_PROTOBUF@,yes)
 PROTOBUF_OBJ=geobuf.pb-c.o
+PROTOBUF_OBJ=vector_tile.pb-c.o
 endif
 
 # SQL preprocessor
@@ -83,6 +84,8 @@ PG_OBJS= \
 	$(PROTOBUF_OBJ) \
 	geobuf.o \
 	lwgeom_out_geobuf.o \
+	mvt.o \
+	lwgeom_out_mvt.o \
 	lwgeom_triggers.o \
 	lwgeom_dump.o \
 	lwgeom_dumppoints.o \
@@ -134,7 +137,9 @@ EXTRA_CLEAN=$(SQL_OBJS) \
 	sfcgal_upgrade.sql.in \
 	sfcgal_upgrade.sql \
 	geobuf.pb-c.c \
-	geobuf.pb-c.h
+	geobuf.pb-c.h \
+	vector_tile.pb-c.c \
+	vector_tile.pb-c.h
 
 # PGXS information
 PG_CONFIG = @PG_CONFIG@
@@ -185,9 +190,15 @@ PROTOCC=@PROTOCC@
 geobuf.pb-c.c geobuf.pb-c.h: geobuf.proto
 	$(PROTOCC) --c_out=. $<
 
+# Generate Mapbox Vector Tile encoder/decoder using protobuf-c compiler 
+vector_tile.pb-c.c vector_tile.pb-c.h: vector_tile.proto
+	$(PROTOCC) --c_out=. $<
+
 ifeq (@HAVE_PROTOBUF@,yes)
 lwgeom_out_geobuf.o: geobuf.pb-c.h
 geobuf.o: geobuf.pb-c.h
+lwgeom_out_mvt.o: vector_tile.pb-c.h
+mvt.o: vector_tile.pb-c.h
 endif
 
 # Borrow the $libdir substitution from PGXS but customise by running the preprocessor
