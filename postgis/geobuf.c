@@ -74,7 +74,7 @@ Data__Geometry *galloc(Data__Geometry__Type type) {
     data__geometry__init(geometry);
     geometry->type = type;
     return geometry;
-};
+}
 
 void tupdesc_analyze(Context *ctx) {
     int i, c, natts;
