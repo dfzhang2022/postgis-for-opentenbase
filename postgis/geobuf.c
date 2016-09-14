@@ -152,7 +152,8 @@ void set_int_value(Data__Value *value, int64 intval) {
 }
 
 int get_geom_index(Context *ctx) {
-    for (int i = 0; i < SPI_tuptable->tupdesc->natts; i++) {
+    int i;
+    for (i = 0; i < SPI_tuptable->tupdesc->natts; i++) {
         char *key = SPI_tuptable->tupdesc->attrs[i]->attname.data;
         if (strcmp(key, ctx->geom_name) == 0) return i + 1;
     }
@@ -429,8 +430,9 @@ void analyze_val(Context *ctx, double val) {
 }
 
 void analyze_pa(Context *ctx, POINTARRAY *pa) {
+    int i;
     POINT4D pt;
-    for (int i = 0; i < pa->npoints; i++) {
+    for (i = 0; i < pa->npoints; i++) {
         getPoint4d_p(pa, i, &pt);
         analyze_val(ctx, pt.x);
         analyze_val(ctx, pt.y);
