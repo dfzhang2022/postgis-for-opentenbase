@@ -77,11 +77,12 @@ lwpoly_construct(int srid, GBOX *bbox, uint32_t nrings, POINTARRAY **points)
 }
 
 LWPOLY*
-lwpoly_construct_rectangle(char hasz, char hasm, POINT4D *p1, POINT4D *p2,
+lwpoly_construct_rectangle(int srid, char hasz, char hasm, POINT4D *p1, POINT4D *p2,
 		POINT4D *p3, POINT4D *p4)
 {
+	srid = srid ? srid : SRID_UNKNOWN;
 	POINTARRAY *pa = ptarray_construct_empty(hasz, hasm, 5);
-	LWPOLY *lwpoly = lwpoly_construct_empty(SRID_UNKNOWN, hasz, hasm);
+	LWPOLY *lwpoly = lwpoly_construct_empty(srid, hasz, hasm);
 
 	ptarray_append_point(pa, p1, LW_TRUE);
 	ptarray_append_point(pa, p2, LW_TRUE);
@@ -92,6 +93,29 @@ lwpoly_construct_rectangle(char hasz, char hasm, POINT4D *p1, POINT4D *p2,
 	lwpoly_add_ring(lwpoly, pa);
 
 	return lwpoly;
+}
+
+
+LWPOLY *
+lwpoly_construct_envelope(int srid, double x1, double y1, double x2, double y2)
+{
+	POINT4D p1, p2, p3, p4;
+	LWPOLY *poly;
+
+	p1.x = x1;
+	p1.y = y1;
+	p2.x = x1;
+	p2.y = y2;
+	p3.x = x2;
+	p3.y = y2;
+	p4.x = x2;
+	p4.y = y1;
+
+	poly = lwpoly_construct_rectangle(srid, 0, 0, &p1, &p2, &p3, &p4);
+
+	lwgeom_add_bbox(lwpoly_as_lwgeom(poly));
+
+	return poly;
 }
 
 LWPOLY*

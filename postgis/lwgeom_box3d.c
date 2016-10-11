@@ -266,7 +266,7 @@ Datum BOX3D_to_LWGEOM(PG_FUNCTION_ARGS)
 		points[2] = (POINT4D) { box->xmin, box->ymax, box->zmax };
 		points[3] = (POINT4D) { box->xmin, box->ymin, box->zmax };
 
-		lwpoly = lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		lwpoly = lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				&points[0], &points[1], &points[2], &points[3]);
 		result = geometry_serialize(lwpoly_as_lwgeom(lwpoly));
 		lwpoly_free(lwpoly);
@@ -283,7 +283,7 @@ Datum BOX3D_to_LWGEOM(PG_FUNCTION_ARGS)
 		points[2] = (POINT4D) { box->xmax, box->ymin, box->zmax };
 		points[3] = (POINT4D) { box->xmin, box->ymin, box->zmax };
 
-		lwpoly = lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		lwpoly = lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				&points[0], &points[1], &points[2], &points[3]);
 		result = geometry_serialize(lwpoly_as_lwgeom(lwpoly));
 		lwpoly_free(lwpoly);
@@ -300,7 +300,7 @@ Datum BOX3D_to_LWGEOM(PG_FUNCTION_ARGS)
 		points[2] = (POINT4D) { box->xmax, box->ymax, box->zmin };
 		points[3] = (POINT4D) { box->xmax, box->ymin, box->zmin };
 
-		lwpoly = lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		lwpoly = lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 			   	&points[0], &points[1], &points[2], &points[3]);
 		result = geometry_serialize(lwpoly_as_lwgeom(lwpoly));
 		lwpoly_free(lwpoly);
@@ -324,22 +324,22 @@ Datum BOX3D_to_LWGEOM(PG_FUNCTION_ARGS)
 		points[7] = (POINT4D) { box->xmax, box->ymin, box->zmax };
 
 		/* add bottom polygon */
-		geoms[0] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[0] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[0], &points[1], &points[2], &points[3]));
 		/* add top polygon */
-		geoms[1] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[1] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[4], &points[5], &points[6], &points[7]));
 		/* add left polygon */
-		geoms[2] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[2] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[0], &points[1], &points[5], &points[4]));
 		/* add right polygon */
-		geoms[3] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[3] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[3], &points[2], &points[6], &points[7]));
 		/* add back polygon */
-		geoms[4] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[4] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[0], &points[3], &points[7], &points[4]));
 		/* add front polygon */
-		geoms[5] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(LW_TRUE, LW_FALSE,
+		geoms[5] = lwpoly_as_lwgeom(lwpoly_construct_rectangle(SRID_UNKNOWN, LW_TRUE, LW_FALSE,
 				   	&points[1], &points[2], &points[6], &points[5]));
 
 		geom = (LWGEOM *) lwcollection_construct(POLYHEDRALSURFACETYPE,

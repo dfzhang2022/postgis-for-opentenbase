@@ -514,7 +514,7 @@ Datum BOX2D_to_LWGEOM(PG_FUNCTION_ARGS)
 		points[3] = (POINT4D) { box->xmax, box->ymin };
 
 		/* Construct polygon */
-		poly = lwpoly_construct_rectangle(LW_FALSE, LW_FALSE, &points[0], &points[1],
+		poly = lwpoly_construct_rectangle(SRID_UNKNOWN, LW_FALSE, LW_FALSE, &points[0], &points[1],
 				&points[2], &points[3]);
 		result = geometry_serialize(lwpoly_as_lwgeom(poly));
 		lwpoly_free(poly);
