@@ -94,11 +94,6 @@ static inline uint32_t p_int(int32_t value)
 	return (value << 1) ^ (value >> 31);
 }
 
-static inline int32_t scale_translate(double value, double res,
-				      double offset) {
-	return (value - offset) / res;
-}
-
 static uint32_t encode_ptarray(struct mvt_agg_context *ctx, enum mvt_type type,
 			       POINTARRAY *pa, uint32_t *buffer,
 			       int32_t *px, int32_t *py)
@@ -108,10 +103,6 @@ static uint32_t encode_ptarray(struct mvt_agg_context *ctx, enum mvt_type type,
 	uint32_t i, c = 0;
 	int32_t dx, dy, x, y;
 	uint32_t cmd_offset;
-	double xres = ctx->xres;
-	double yres = ctx->yres;
-	double xmin = ctx->bounds->xmin;
-	double ymin = ctx->bounds->ymin;
 
 	/* loop points, scale to extent and add to buffer if not repeated */
 	for (i = 0; i < pa->npoints; i++) {
@@ -119,8 +110,8 @@ static uint32_t encode_ptarray(struct mvt_agg_context *ctx, enum mvt_type type,
 		if (i == 0 || (i == 1 && type > MVT_POINT))
 			cmd_offset = offset++;
 		getPoint2d_p(pa, i, &p);
-		x = scale_translate(p.x, xres, xmin);
-		y = ctx->extent - scale_translate(p.y, yres, ymin);
+		x = p.x;
+		y = p.y;
 		dx = x - *px;
 		dy = y - *py;
 		/* skip point if repeated */
@@ -250,74 +241,6 @@ static void encode_mpoly(struct mvt_agg_context *ctx, LWMPOLY *lwmpoly)
 				poly->rings[j],	feature->geometry + offset,
 				&px, &py);
 	feature->n_geometry = offset;
-}
-
-static bool check_geometry_size(LWGEOM *lwgeom, struct mvt_agg_context *ctx)
-{
-	GBOX bbox;
-	lwgeom_calculate_gbox(lwgeom, &bbox);
-	double w = bbox.xmax - bbox.xmin;
-	double h = bbox.ymax - bbox.ymin;
-	return w >= ctx->xres * 2 && h >= ctx->yres * 2;
-}
-
-static bool clip_geometry(struct mvt_agg_context *ctx)
-{
-	LWGEOM *lwgeom = ctx->lwgeom;
-	GBOX *bounds = ctx->bounds;
-	int type = lwgeom->type;
-	double buffer_map_xunits = ctx->xres * ctx->buffer;
-	double buffer_map_yunits = ctx->yres * ctx->buffer;
-	double x0 = bounds->xmin - buffer_map_xunits;
-	double y0 = bounds->ymin - buffer_map_yunits;
-	double x1 = bounds->xmax + buffer_map_xunits;
-	double y1 = bounds->ymax + buffer_map_yunits;
-#if POSTGIS_GEOS_VERSION < 35
-	LWPOLY *lwenv = lwpoly_construct_envelope(0, x0, y0, x1, y1);
-	lwgeom = lwgeom_intersection(lwgeom, lwpoly_as_lwgeom(lwenv));
-#else
-	lwgeom = lwgeom_clip_by_rect(lwgeom, x0, y0, x1, y1);
-#endif
-	if (lwgeom_is_empty(lwgeom))
-		return false;
-	if (lwgeom->type == COLLECTIONTYPE) {
-		if (type == MULTIPOLYGONTYPE)
-			type = POLYGONTYPE;
-		else if (type == MULTILINETYPE)
-			type = LINETYPE;
-		else if (type == MULTIPOINTTYPE)
-			type = POINTTYPE;
-		lwgeom = lwcollection_as_lwgeom(lwcollection_extract((LWCOLLECTION*)lwgeom, type));
-	}
-	ctx->lwgeom = lwgeom;
-	return true;
-}
-
-static bool coerce_geometry(struct mvt_agg_context *ctx)
-{
-	LWGEOM *lwgeom;
-
-	if (ctx->clip_geoms && !clip_geometry(ctx))
-		return false;
-
-	lwgeom = ctx->lwgeom;
-
-	switch (lwgeom->type) {
-	case POINTTYPE:
-		return true;
-	case LINETYPE:
-	case POLYGONTYPE:
-	case MULTIPOINTTYPE:
-	case MULTILINETYPE:
-	case MULTIPOLYGONTYPE:
-		if (!check_geometry_size(lwgeom, ctx))
-			ctx->lwgeom = lwgeom_centroid(lwgeom);
-		return true;
-	default: lwerror("encode_geometry: '%s' geometry type not supported",
-		lwtype_name(lwgeom->type));
-	}
-
-	return true;
 }
 
 static void encode_geometry(struct mvt_agg_context *ctx)
@@ -505,6 +428,59 @@ static void parse_values(struct mvt_agg_context *ctx)
 	ctx->feature->tags = tags;
 }
 
+static void ptarray_mirror_y(POINTARRAY *pa, uint32_t extent) {
+	int i;
+	double d;
+	POINT4D p;
+
+	for (i = 0; i < pa->npoints; i++) {
+		getPoint4d_p(pa, i, &p);
+		p.y = extent - p.y;
+		ptarray_set_point4d(pa, i, &p);
+	}
+}
+
+static void lwgeom_mirror_y(LWGEOM *in, uint32_t extent)
+{
+	LWCOLLECTION *col;
+	LWPOLY *poly;
+	int i;
+
+	if ( (!in) || lwgeom_is_empty(in) ) return;
+
+	switch (in->type) {
+	case POINTTYPE:
+		ptarray_mirror_y(lwgeom_as_lwpoint(in)->point, extent);
+		break;
+	case LINETYPE:
+		ptarray_mirror_y(lwgeom_as_lwline(in)->points, extent);
+		break;
+	case POLYGONTYPE:
+		poly = (LWPOLY *) in;
+		for (i=0; i<poly->nrings; i++) {
+			ptarray_mirror_y(poly->rings[i], extent);
+		}
+		break;
+	case MULTIPOINTTYPE:
+	case MULTILINETYPE:
+	case MULTIPOLYGONTYPE:
+	case COLLECTIONTYPE:
+		col = (LWCOLLECTION *) in;
+		for (i=0; i<col->ngeoms; i++) {
+			lwgeom_mirror_y(col->geoms[i], extent);
+		}
+		break;
+
+	default:
+		lwerror("lwgeom_mirror_y: unsupported geometry type: %s",
+		        lwtype_name(in->type));
+		return;
+	}
+
+	lwgeom_drop_bbox(in);
+	lwgeom_add_bbox(in);
+}
+
 /**
  * Transform a geometry into vector tile coordinate space.
  *
@@ -515,6 +491,8 @@ LWGEOM *mvt_geom(LWGEOM *lwgeom, GBOX *gbox, uint32_t extent, uint32_t buffer,
 		 bool clip_geom) {
 	double width = gbox->xmax - gbox->xmin;
 	double height = gbox->ymax - gbox->ymin;
+	double resx = width / extent;
+	double resy = height / extent;
 
 	if (width == 0 || height == 0)
 		lwerror("mvt_geom: bounds width or height cannot be 0");
@@ -522,10 +500,24 @@ LWGEOM *mvt_geom(LWGEOM *lwgeom, GBOX *gbox, uint32_t extent, uint32_t buffer,
 	if (extent == 0)
 		lwerror("mvt_geom: extent cannot be 0");
 
-	POINT4D factors;
+	if (clip_geom) {
+		double buffer_map_xunits = resx * buffer;
+		double buffer_map_yunits = resy * buffer;
+		double x0 = gbox->xmin - buffer_map_xunits;
+		double y0 = gbox->ymin - buffer_map_yunits;
+		double x1 = gbox->xmax + buffer_map_xunits;
+		double y1 = gbox->ymax + buffer_map_yunits;
+#if POSTGIS_GEOS_VERSION < 35
+		LWPOLY *lwenv = lwpoly_construct_envelope(0, x0, y0, x1, y1);
+		lwgeom = lwgeom_intersection(lwgeom, lwpoly_as_lwgeom(lwenv));
+#else
+		lwgeom = lwgeom_clip_by_rect(lwgeom, x0, y0, x1, y1);
+#endif
+	}
 
-	factors.x = width / extent;
-	factors.y = height / extent;
+	POINT4D factors;
+	factors.x = resx;
+	factors.y = resy;
 	factors.z = 1;
 	factors.m = 1;
 
@@ -545,6 +537,8 @@ LWGEOM *mvt_geom(LWGEOM *lwgeom, GBOX *gbox, uint32_t extent, uint32_t buffer,
 		lwgeom_out = lwgeom_grid(lwgeom_out, &grid);
 	}
 
+	lwgeom_mirror_y(lwgeom_out, extent);
+
 	lwgeom_out = lwgeom_make_valid(lwgeom_out);
 
 	return lwgeom_out;
@@ -556,18 +550,10 @@ LWGEOM *mvt_geom(LWGEOM *lwgeom, GBOX *gbox, uint32_t extent, uint32_t buffer,
 void mvt_agg_init_context(struct mvt_agg_context *ctx) 
 {
 	VectorTile__Tile__Layer *layer;
-	double width, height;
 
-	width = ctx->bounds->xmax - ctx->bounds->xmin;
-	height = ctx->bounds->ymax - ctx->bounds->ymin;
-
-	if (width == 0 || height == 0)
-		lwerror("mvt_agg_init_context: bounds width or height cannot be 0");
 	if (ctx->extent == 0)
 		lwerror("mvt_agg_init_context: extent cannot be 0");
 
-	ctx->xres = width / ctx->extent;
-	ctx->yres = height / ctx->extent;
 	ctx->features_capacity = FEATURES_CAPACITY_INITIAL;
 	ctx->string_values_hash = NULL;
 	ctx->float_values_hash = NULL;
@@ -620,9 +606,6 @@ void mvt_agg_transfn(struct mvt_agg_context *ctx)
 		lwerror("mvt_agg_transfn: geometry column cannot be null");
 	GSERIALIZED *gs = (GSERIALIZED *) PG_DETOAST_DATUM(datum);
 	ctx->lwgeom = lwgeom_from_gserialized(gs);
-
-	if (!coerce_geometry(ctx))
-		return;
 
 	layer->features[layer->n_features++] = feature;
 

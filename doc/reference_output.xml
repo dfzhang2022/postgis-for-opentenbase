@@ -1311,10 +1311,7 @@ SELECT ST_GeoHash(ST_SetSRID(ST_MakePoint(-126,48),4326),5);
 			<funcprototype>
 				<funcdef>bytea <function>ST_AsMVT</function></funcdef>
 				<paramdef><type>text </type> <parameter>name</parameter></paramdef>
-				<paramdef><type>box2d </type> <parameter>bounds</parameter></paramdef>
 				<paramdef><type>int4 </type> <parameter>extent</parameter></paramdef>
-				<paramdef><type>int4 </type> <parameter>buffer</parameter></paramdef>
-				<paramdef><type>bool </type> <parameter>clip_geom</parameter></paramdef>
 				<paramdef><type>text </type> <parameter>geom_name</parameter></paramdef>
 				<paramdef><type>anyelement </type> <parameter>row</parameter></paramdef>
 			</funcprototype>
@@ -1331,10 +1328,7 @@ SELECT ST_GeoHash(ST_SetSRID(ST_MakePoint(-126,48),4326),5);
 		</para>
 
 		<para><varname>name</varname> is the name of the Layer</para>
-		<para><varname>bounds</varname> is the bounds of the tile in the coordinate system of the geometry field in the row data.</para>
 		<para><varname>extent</varname> is the tile extent in screen space as defined by the specification. If NULL it will default to 4096.</para>
-		<para><varname>buffer</varname> is the buffer distance in screen space to optionally clip geometries. If NULL it will default to 0.</para>
-		<para><varname>clip_geom</varname> is a boolean to control if geometries should be clipped or encoded as is. If NULL it will default to true.</para>
 		<para><varname>geom_name</varname> is the name of the geometry column in the row data.</para>
 		<para><varname>row</varname> row data with at least a geometry column.</para>
 

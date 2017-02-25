@@ -84,23 +84,18 @@ Datum pgis_asmvt_transfn(PG_FUNCTION_ARGS)
 		if (PG_ARGISNULL(1))
 			lwerror("pgis_asmvt_transfn: parameter name cannot be null");
 		ctx->name = text_to_cstring(PG_GETARG_TEXT_P(1));
-		if (PG_ARGISNULL(2))
-			lwerror("pgis_asmvt_transfn: parameter bounds cannot be null");
-		ctx->bounds = (GBOX *) PG_GETARG_POINTER(2);
-		ctx->extent = PG_ARGISNULL(3) ? 4096 : PG_GETARG_INT32(3);
-		ctx->buffer = PG_ARGISNULL(4) ? 0 : PG_GETARG_INT32(4);
-		ctx->clip_geoms = PG_ARGISNULL(5) ? true : PG_GETARG_BOOL(5);
-		if (PG_ARGISNULL(6))
+		ctx->extent = PG_ARGISNULL(2) ? 4096 : PG_GETARG_INT32(2);
+		if (PG_ARGISNULL(3))
 			lwerror("pgis_asmvt_transfn: parameter geom_name cannot be null");
-		ctx->geom_name = text_to_cstring(PG_GETARG_TEXT_P(6));
+		ctx->geom_name = text_to_cstring(PG_GETARG_TEXT_P(3));
 		mvt_agg_init_context(ctx);
 	} else {
 		ctx = (struct mvt_agg_context *) PG_GETARG_POINTER(0);
 	}
 
-	if (!type_is_rowtype(get_fn_expr_argtype(fcinfo->flinfo, 7)))
+	if (!type_is_rowtype(get_fn_expr_argtype(fcinfo->flinfo, 4)))
 		lwerror("pgis_asmvt_transfn: parameter row cannot be other than a rowtype");
-	ctx->row = PG_GETARG_HEAPTUPLEHEADER(7);
+	ctx->row = PG_GETARG_HEAPTUPLEHEADER(4);
 
 	mvt_agg_transfn(ctx);
 	PG_RETURN_POINTER(ctx);

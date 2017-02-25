@@ -46,11 +46,8 @@
 #include "vector_tile.pb-c.h"
 
 struct mvt_agg_context {
-	GBOX *bounds;
 	char *name;
 	uint32_t extent;
-	uint32_t buffer;
-	bool clip_geoms;
 	char *geom_name;
 	uint32_t geom_index;
 	LWGEOM *lwgeom;
@@ -58,8 +55,6 @@ struct mvt_agg_context {
 	VectorTile__Tile__Feature *feature;
 	VectorTile__Tile__Layer *layer;
 	size_t features_capacity;
-	double xres;
-	double yres;
 	struct mvt_kv_string_value *string_values_hash;
 	struct mvt_kv_float_value *float_values_hash;
 	struct mvt_kv_double_value *double_values_hash;
