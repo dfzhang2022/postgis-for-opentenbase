@@ -37,6 +37,7 @@
 #include "access/htup.h"
 #include "../postgis_config.h"
 #include "liblwgeom.h"
+#include "liblwgeom_internal.h"
 #include "lwgeom_pg.h"
 #include "lwgeom_log.h"
 
@@ -69,6 +70,7 @@ struct mvt_agg_context {
 	uint32_t values_hash_i;
 } ;
 
+LWGEOM *mvt_geom(LWGEOM *geom, GBOX *bounds, uint32_t extent, uint32_t buffer, bool clip_geom);
 void mvt_agg_init_context(struct mvt_agg_context *ctx);
 void mvt_agg_transfn(struct mvt_agg_context *ctx);
 uint8_t *mvt_agg_finalfn(struct mvt_agg_context *ctx);

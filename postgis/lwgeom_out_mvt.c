@@ -36,6 +36,33 @@
 #endif  /* HAVE_LIBPROTOBUF */
 
 /**
+ * Process input parameters to mvt_geom and returned serialized geometry
+ */
+PG_FUNCTION_INFO_V1(ST_AsMVTGeom);
+Datum ST_AsMVTGeom(PG_FUNCTION_ARGS)
+{
+	LWGEOM *lwgeom;
+	GSERIALIZED *geom;
+	GBOX *bounds;
+	int extent, buffer;
+	bool clip_geom;
+	if (PG_ARGISNULL(0))
+		lwerror("ST_AsMVTGeom: geom cannot be null");
+	geom = PG_GETARG_GSERIALIZED_P(0);
+	lwgeom = lwgeom_from_gserialized(geom);
+	if (PG_ARGISNULL(1))
+		lwerror("ST_AsMVTGeom: parameter bounds cannot be null");
+	bounds = (GBOX *) PG_GETARG_POINTER(1);
+	extent = PG_ARGISNULL(2) ? 4096 : PG_GETARG_INT32(2);
+	buffer = PG_ARGISNULL(3) ? 0 : PG_GETARG_INT32(3);
+	clip_geom = PG_ARGISNULL(4) ? true : PG_GETARG_BOOL(4);
+	lwgeom = mvt_geom(lwgeom, bounds, extent, buffer, clip_geom);
+	geom = geometry_serialize(lwgeom);
+	lwgeom_free(lwgeom);
+	PG_RETURN_POINTER(geom);
+}
+
+/**
  * Process input parameters and row data into state
  */
 PG_FUNCTION_INFO_V1(pgis_asmvt_transfn);

@@ -4407,6 +4407,12 @@ CREATE AGGREGATE ST_AsMVT(text, box2d, int4, int4, bool, text, anyelement)
 );
 
 -- Availability: 2.4.0
+CREATE OR REPLACE FUNCTION ST_AsMVTGeom(geom geometry, bounds box2d, extent int4, buffer int4, clip_geom bool)
+	RETURNS geometry
+	AS 'MODULE_PATHNAME','ST_AsMVTGeom'
+	LANGUAGE 'c' IMMUTABLE  _PARALLEL;
+
+-- Availability: 2.4.0
 CREATE OR REPLACE FUNCTION postgis_libprotobuf_version()
 	RETURNS text
 	AS 'MODULE_PATHNAME','postgis_libprotobuf_version'

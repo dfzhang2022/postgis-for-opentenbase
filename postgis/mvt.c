@@ -506,6 +506,51 @@ static void parse_values(struct mvt_agg_context *ctx)
 }
 
 /**
+ * Transform a geometry into vector tile coordinate space.
+ *
+ * Makes best effort to keep validity which might collapse geometry into lower
+ * dimension.
+ */
+LWGEOM *mvt_geom(LWGEOM *lwgeom, GBOX *gbox, uint32_t extent, uint32_t buffer, 
+		 bool clip_geom) {
+	double width = gbox->xmax - gbox->xmin;
+	double height = gbox->ymax - gbox->ymin;
+
+	if (width == 0 || height == 0)
+		lwerror("mvt_geom: bounds width or height cannot be 0");
+
+	if (extent == 0)
+		lwerror("mvt_geom: extent cannot be 0");
+
+	POINT4D factors;
+
+	factors.x = width / extent;
+	factors.y = height / extent;
+	factors.z = 1;
+	factors.m = 1;
+
+	lwgeom_scale(lwgeom, &factors);
+
+	gridspec grid;
+	memset(&grid, 0, sizeof(gridspec));
+	grid.ipx = 0;
+	grid.ipy = 0;
+	grid.xsize = 1;
+	grid.ysize = 1;
+
+	LWGEOM *lwgeom_out = lwgeom_grid(lwgeom, &grid);
+
+	if ( lwgeom_out == NULL ) {
+		lwgeom_out = lwgeom_centroid(lwgeom);
+		lwgeom_out = lwgeom_grid(lwgeom_out, &grid);
+	}
+
+	lwgeom_out = lwgeom_make_valid(lwgeom_out);
+
+	return lwgeom_out;
+}
+
+/**
  * Initialize aggregation context.
  */
 void mvt_agg_init_context(struct mvt_agg_context *ctx) 

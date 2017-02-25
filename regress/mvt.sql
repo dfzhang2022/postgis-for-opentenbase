@@ -1,3 +1,25 @@
+-- geometry preprocessing tests
+select 'PG1', ST_AsText(ST_AsMVTGeom(
+	ST_Point(1, 2),
+	ST_MakeBox2D(ST_Point(0, 0), ST_Point(4096, 4096)),
+	4096, 0, false));
+select 'PG2', ST_AsText(ST_AsMVTGeom(
+	ST_Point(1, 2),
+	ST_MakeBox2D(ST_Point(0, 0), ST_Point(4096*2, 4096*2)),
+	4096, 0, false));
+select 'PG3', ST_AsText(ST_AsMVTGeom(
+	ST_Point(1, 2),
+	ST_MakeBox2D(ST_Point(0, 0), ST_Point(4096/2, 4096/2)),
+	4096, 0, false));
+select 'PG4', ST_AsText(ST_AsMVTGeom(
+	ST_GeomFromText('POLYGON ((0 0, 10 0, 10 5, 0 -5, 0 0))'),
+	ST_MakeBox2D(ST_Point(0, 0), ST_Point(4096, 4096)),
+	4096, 0, false));
+select 'PG5', ST_AsText(ST_AsMVTGeom(
+	ST_GeomFromText('POLYGON ((0 0, 10 0, 10 5, 0 -5, 0 0))'),
+	ST_MakeBox2D(ST_Point(0, 0), ST_Point(1, 1)),
+	4096, 0, false));
+
 -- geometry encoding tests
 SELECT 'TG1', encode(ST_AsMVT('test',
     ST_MakeBox2D(ST_Point(0, 0), ST_Point(4096, 4096)), 4096, 0, false, 'geom', q
