@@ -686,13 +686,19 @@ ptarray_is_closed(const POINTARRAY *in)
 int
 ptarray_is_closed_2d(const POINTARRAY *in)
 {
-	return 0 == memcmp(getPoint_internal(in, 0), getPoint_internal(in, in->npoints-1), sizeof(POINT2D));
+	const POINT2D *pt1;const POINT2D *pt2;
+	pt1 = getPoint2d_cp(in, 0);
+	pt2 = getPoint2d_cp(in, in->npoints-1);
+	return 0 == memcmp(pt1, pt2, sizeof(POINT2D));
 }
 
 int
 ptarray_is_closed_3d(const POINTARRAY *in)
 {
-	return 0 == memcmp(getPoint_internal(in, 0), getPoint_internal(in, in->npoints-1), sizeof(POINT3D));
+	const POINT3D *pt1;const POINT3D *pt2;
+	pt1 = getPoint3dz_cp(in, 0);
+	pt2 = getPoint3dz_cp(in, in->npoints-1);
+	return 0 == memcmp(pt1, pt2, sizeof(POINT3D));
 }
 
 int
