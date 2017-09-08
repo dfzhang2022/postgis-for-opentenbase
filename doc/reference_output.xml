@@ -1310,7 +1310,7 @@ SELECT ST_GeoHash(ST_SetSRID(ST_MakePoint(-126,48),4326),5);
 		<funcsynopsis>
 		<funcprototype>
 				<funcdef>bytea <function>ST_AsGeobuf</function></funcdef>
-				<paramdef><type>anyelement </type> <parameter>row</parameter></paramdef>
+				<paramdef><type>anyelement set </type> <parameter>row</parameter></paramdef>
 			</funcprototype>
 			<funcprototype>
 				<funcdef>bytea <function>ST_AsGeobuf</function></funcdef>
@@ -1408,7 +1408,7 @@ SELECT ST_GeoHash(ST_SetSRID(ST_MakePoint(-126,48),4326),5);
 		<funcsynopsis>
 		<funcprototype>
 				<funcdef>bytea <function>ST_AsMVT</function></funcdef>
-				<paramdef><type>anyelement </type> <parameter>row</parameter></paramdef>
+				<paramdef><type>anyelement set </type> <parameter>row</parameter></paramdef>
 			</funcprototype>
 			<funcprototype>
 				<funcdef>bytea <function>ST_AsMVT</function></funcdef>
