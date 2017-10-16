@@ -26,6 +26,7 @@ PREREL_PREFIX = $(shell echo $(EXTVERSION) | \
 DATA_built = \
 	$(EXTENSION).control \
 	sql/$(EXTENSION)--$(EXTVERSION).sql \
+	sql/$(EXTENSION)--$(EXTVERSION)noraster.sql \
 	sql/$(EXTENSION)--unpackaged--$(EXTVERSION).sql \
 	$(NULL)
 
@@ -78,7 +79,7 @@ EXTRA_CLEAN += ${SQL_BITS} sql/*.sql
 
 CURV_big=@POSTGIS_MAJOR_VERSION@@POSTGIS_MINOR_VERSION@
 
-all: sql/$(EXTENSION)--$(EXTVERSION).sql sql/$(EXTENSION)--unpackaged--$(EXTVERSION).sql
+all: sql/$(EXTENSION)--$(EXTVERSION).sql sql/$(EXTENSION)--$(EXTVERSION)noraster.sql sql/$(EXTENSION)--unpackaged--$(EXTVERSION).sql
 
 sql/$(EXTENSION).sql: $(EXTENSION_SCRIPTS)
 	mkdir -p sql
@@ -154,11 +155,16 @@ install: install-upgrade-paths
 # revisions of the same version
 install-upgrade-paths: sql_bits/postgis_extension_upgrade_minor.sql
 	tpl='$(EXTENSION)--ANY-$(EXTVERSION).sql'; \
+	tplnoraster='$(EXTENSION)--ANY-$(EXTVERSION)noraster.sql'; \
+	$(INSTALL_DATA) $^ "$(EXTDIR)/$${tpl}"; \
+	$(INSTALL_DATA) $^ "$(EXTDIR)/$${tplnoraster}"; \
 	ln -fs "$${tpl}" $(EXTDIR)/$(EXTENSION)--$(EXTVERSION)--$(EXTVERSION)next.sql; \
 	ln -fs "$${tpl}" $(EXTDIR)/$(EXTENSION)--$(EXTVERSION)next--$(EXTVERSION).sql; \
-	$(INSTALL_DATA) $^ "$(EXTDIR)/$${tpl}"; \
+	ln -fs "$${tplnoraster}" $(EXTDIR)/$(EXTENSION)--$(EXTVERSION)noraster--$(EXTVERSION)norasternext.sql; \
+	ln -fs "$${tplnoraster}" $(EXTDIR)/$(EXTENSION)--$(EXTVERSION)norasternext--$(EXTVERSION)noraster.sql; \
 	for OLD_VERSION in $(UPGRADEABLE_VERSIONS); do \
 		ln -fs "$${tpl}" $(EXTDIR)/$(EXTENSION)--$$OLD_VERSION--$(EXTVERSION).sql; \
+		ln -fs "$${tplnoraster}" $(EXTDIR)/$(EXTENSION)--$${OLD_VERSION}noraster--$(EXTVERSION)noraster.sql; \
 	done
 
 uninstall: uninstall-upgrade-paths
