@@ -2792,23 +2792,45 @@ $$ LANGUAGE 'sql' STABLE;
 
 
 -- Availability: 2.5.0
-CREATE OR REPLACE FUNCTION postgis_extensions_upgrade() RETURNS text AS
-$$
+CREATE OR REPLACE FUNCTION postgis_extensions_upgrade() RETURNS text
+AS $$
+DECLARE rec record; sql text;
 BEGIN
- DECLARE rec record; BEGIN for rec in SELECT 'ALTER EXTENSION ' || name || ' UPDATE TO "' || CASE WHEN installed_version ILIKE '%noraster' THEN replace(default_version,'noraster','') ||'noraster' ELSE replace(default_version,'noraster','') END    || '";' AS sql
-FROM pg_available_extensions
-WHERE installed_version > '' AND name IN('address_standardizer', 'postgis', 'postgis_sfcgal', 'postgis_tiger_geocoder', 'postgis_topology')
-and ( replace(default_version,'noraster','') <> replace(installed_version, 'noraster','') ) LOOP
+	-- if at a version different from default version or we are at a dev version,
+	-- then do an upgrade to default version
 
-    EXECUTE rec.sql;
-    RAISE NOTICE '%', rec.sql;
-END LOOP; END;
+	FOR rec in SELECT  name, default_version, installed_version
+		FROM pg_available_extensions
+		WHERE installed_version > '' AND name IN('postgis', 'postgis_sfcgal', 'postgis_tiger_geocoder', 'postgis_topology')
+		AND ( default_version <> installed_version  OR
+			( default_version = installed_version AND default_version ILIKE '%dev%' AND  installed_version ILIKE '%dev%'  )  ) LOOP
 
-RETURN postgis_full_version();
+		-- we need to upgrade to next so our installed is different from current
+		-- and then we can upgrade to default_version
+		IF rec.installed_version = rec.default_version THEN
+			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || quote_ident(rec.default_version || 'next')   || ';';
+			EXECUTE sql;
+			RAISE NOTICE '%', sql;
+		END IF;
+
+		-- if you had noraster installed before upgrade to next noraster even if default has raster
+		-- if you had full, do not upgrade to noraster even if it's the default
+		IF replace(rec.installed_version, 'noraster', '') != replace(rec.installed_version, 'noraster', '')   THEN
+			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || quote_ident(rec.default_version)   || ';';
+			EXECUTE sql;
+			RAISE NOTICE '%', sql;
+		ELSE
+			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || quote_ident(rec.default_version)   || ';';
+			EXECUTE sql;
+			RAISE NOTICE '%', sql;
+		END IF;
+	END LOOP;
+
+	RETURN @extschema@.postgis_full_version();
 
 END
-
 $$ language plpgsql;
+
 
 
 -- Changed: 2.4.0
