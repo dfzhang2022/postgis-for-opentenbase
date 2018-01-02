@@ -1,4 +1,4 @@
--- postgres
+-- postgres 9.x
 
 -- SRID is preserved
 SELECT 1,  32145 = ST_SRID(ST_VoronoiPolygons('SRID=32145;MULTIPOINT (0 0, 1 1, 2 2)'));
@@ -13,3 +13,5 @@ SELECT 6,  GeometryType(ST_VoronoiPolygons('MULTIPOINT (0 0, 1 1, 2 2)')) = 'GEO
 SELECT 7,  GeometryType(ST_VoronoiLines('MULTIPOINT (0 0, 1 1, 2 2)')) = 'MULTILINESTRING';
 -- Clipping extent is handled correctly
 SELECT 8,  ST_Equals(ST_Envelope('LINESTRING (-20 -10, 10 10)'::geometry), ST_Envelope(ST_VoronoiPolygons('MULTIPOINT (0 0, 1 1, 2 2)', 0.0, 'MULTIPOINT (-20 -10, 10 10)')));
+-- trivial example
+SELECT 9, SELECT ST_VoronoiPolygons(geom) As geom FROM (SELECT 'MULTIPOINT (50 30, 60 30, 100 100,10 150, 110 120)'::geometry As geom ) As g;
