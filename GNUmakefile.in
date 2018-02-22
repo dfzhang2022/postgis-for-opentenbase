@@ -164,7 +164,7 @@ raster-sql:
 
 .PHONY: fmt
 fmt:
-	./astyle.sh
+	PATH=utils/external/astyle:$$PATH ./astyle.sh
 
 commit:
 	$(MAKE) fmt && $(MAKE) clean && $(MAKE) check && svn commit
