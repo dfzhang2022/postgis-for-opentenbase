@@ -25,6 +25,7 @@ dnl Compilers
 dnl
 AC_PROG_CC
 AC_PROG_CPP
+AC_PROG_CXX dnl needed for Astyle
 AC_PROG_GREP
 AC_C_BIGENDIAN
 
