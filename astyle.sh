@@ -23,10 +23,10 @@ fi
 #   - not topology/* files
 CFILES_TAB=`find . -name '*.c' -not \( \
   -name '*_parse.c' -o \
-  -name '*_lex.c' -o \
-  -name './topology/*' -o \
-  -name './liblwgeom/liblwgeom_topo.*' \
-\)`
+  -name '*_lex.c' \
+\) | grep -v '/topology/' | \
+   grep -v '/liblwgeom/lwgeom_topo\.c' \
+`
 
 # Run the standard format on the files, and do not
 # leave .orig files around for altered files.
@@ -36,7 +36,7 @@ astyle --style=ansi --indent=tab --suffix=none $CFILES_TAB
 #   - not .in.c used for .sql generation
 #   - not lex.yy.c or wktparse.tab.c as these are generated files
 #   - not topology/* files
-CFILES_SPACE="liblwgeom/*.c topology/*.c"
+CFILES_SPACE="liblwgeom/lwgeom_topo.c topology/*.c"
 
 # Run the standard format on the files, and do not
 # leave .orig files around for altered files.
