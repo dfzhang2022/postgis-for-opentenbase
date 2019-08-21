@@ -26,6 +26,7 @@ steps:
       - make install
       - utils/check_all_upgrades.sh -s
         `grep '^POSTGIS_' Version.config | cut -d= -f2 | paste -sd '.'`
+      - utils/check_all_upgrades.sh -s :auto!
 ---
 test-image: &test-image docker.kbt.io/postgis/build-test:trisquel2
 kind: pipeline
@@ -49,6 +50,7 @@ steps:
       - make install
       - utils/check_all_upgrades.sh -s
         `grep '^POSTGIS_' Version.config | cut -d= -f2 | paste -sd '.'`
+      - utils/check_all_upgrades.sh -s :auto!
 ---
 test-image: &test-image docker.kbt.io/postgis/build-test:trisquel2
 kind: pipeline
@@ -72,4 +74,5 @@ steps:
       - make install
       - utils/check_all_upgrades.sh -s
         `grep '^POSTGIS_' Version.config | cut -d= -f2 | paste -sd '.'`
+      - utils/check_all_upgrades.sh -s :auto!
 ...
