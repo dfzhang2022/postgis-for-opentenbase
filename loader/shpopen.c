@@ -1170,7 +1170,8 @@ int SHPAPI_CALL
 SHPWriteObject(SHPHandle psSHP, int nShapeId, SHPObject * psObject )
 
 {
-    unsigned int	       	nRecordOffset, nRecordSize=0;
+    SAOffset nRecordOffset;
+    unsigned int nRecordSize=0;
     int i;
     uchar	*pabyRec;
     int32	i32;
