@@ -1498,12 +1498,17 @@ SHPWriteObject(SHPHandle psSHP, int nShapeId, SHPObject * psObject )
 /* -------------------------------------------------------------------- */
 /*      Write out record.                                               */
 /* -------------------------------------------------------------------- */
-    if( psSHP->sHooks.FSeek( psSHP->fpSHP, nRecordOffset, 0 ) != 0 )
-    {
-        psSHP->sHooks.Error( "Error in psSHP->sHooks.FSeek() while writing object to .shp file." );
+    SAOffset shpTellPos;
+    if ( (shpTellPos = psSHP->sHooks.FTell( psSHP->fpSHP )) != nRecordOffset ) {
+        char str[256];
+        sprintf( str, "Error before writing object to .shp file: file position %lu unexpectedly mismatches record offset %lu.",
+                      shpTellPos,
+                      nRecordOffset );
+        psSHP->sHooks.Error( str );
         free( pabyRec );
         return -1;
     }
+
     if( psSHP->sHooks.FWrite( pabyRec, nRecordSize, 1, psSHP->fpSHP ) < 1 )
     {
         psSHP->sHooks.Error( "Error in psSHP->sHooks.Fwrite() while writing object to .shp file." );

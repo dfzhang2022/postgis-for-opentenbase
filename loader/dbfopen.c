@@ -265,8 +265,19 @@ DBFFlushRecord(DBFHandle psDBF)
 
 		nRecordOffset = psDBF->nRecordLength * (SAOffset)psDBF->nCurrentRecord + psDBF->nHeaderLength;
 
-		if (psDBF->sHooks.FSeek(psDBF->fp, nRecordOffset, 0) != 0 ||
-		    psDBF->sHooks.FWrite(psDBF->pszCurrentRecord, psDBF->nRecordLength, 1, psDBF->fp) != 1)
+		SAOffset dbfTellPos;
+		if ( (dbfTellPos = psDBF->sHooks.FTell( psDBF->fp )) != nRecordOffset ) {
+			char szMessage[256];
+			sprintf( szMessage,
+			         "Error before writing DBF record %d: file position %lu unexpectedly mismatches record offset %lu.",
+			         psDBF->nCurrentRecord,
+			         dbfTellPos,
+			         nRecordOffset );
+			psDBF->sHooks.Error( szMessage );
+			return FALSE;
+		}
+
+		if (psDBF->sHooks.FWrite(psDBF->pszCurrentRecord, psDBF->nRecordLength, 1, psDBF->fp) != 1)
 		{
 			char szMessage[128];
 			sprintf(szMessage, "Failure writing DBF record %d.", psDBF->nCurrentRecord);
