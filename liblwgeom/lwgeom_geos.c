@@ -673,7 +673,13 @@ lwgeom_normalize(const LWGEOM* geom)
 }
 
 LWGEOM*
-lwgeom_intersection(const LWGEOM* geom1, const LWGEOM* geom2)
+lwgeom_intersection(const LWGEOM* g1, const LWGEOM* g2)
+{
+	return lwgeom_intersection_prec(g1, g2, -1);
+}
+
+LWGEOM*
+lwgeom_intersection_prec(const LWGEOM* geom1, const LWGEOM* geom2, double prec)
 {
 	LWGEOM* result;
 	int32_t srid = RESULT_SRID(geom1, geom2);
@@ -695,7 +701,18 @@ lwgeom_intersection(const LWGEOM* geom1, const LWGEOM* geom2)
 	if (!(g1 = LWGEOM2GEOS(geom1, AUTOFIX))) GEOS_FAIL();
 	if (!(g2 = LWGEOM2GEOS(geom2, AUTOFIX))) GEOS_FREE_AND_FAIL(g1);
 
-	g3 = GEOSIntersection(g1, g2);
+	if ( prec >= 0) {
+#if POSTGIS_GEOS_VERSION < 39
+		lwerror("Fixed-precision intersection requires GEOS-3.9 or higher");
+		return NULL
+#else
+		g3 = GEOSIntersectionPrec(g1, g2, prec);
+#endif
+	}
+	else
+	{
+		g3 = GEOSIntersection(g1, g2);
+	}
 
 	if (!g3) GEOS_FREE_AND_FAIL(g1);
 	GEOSSetSRID(g3, srid);

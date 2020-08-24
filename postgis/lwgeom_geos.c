@@ -1406,14 +1406,17 @@ Datum ST_Intersection(PG_FUNCTION_ARGS)
 	GSERIALIZED *geom2;
 	GSERIALIZED *result;
 	LWGEOM *lwgeom1, *lwgeom2, *lwresult;
+	double prec = -1;
 
 	geom1 = PG_GETARG_GSERIALIZED_P(0);
 	geom2 = PG_GETARG_GSERIALIZED_P(1);
+	if (PG_NARGS() > 2 && ! PG_ARGISNULL(2))
+		prec = PG_GETARG_FLOAT8(2);
 
 	lwgeom1 = lwgeom_from_gserialized(geom1);
 	lwgeom2 = lwgeom_from_gserialized(geom2);
 
-	lwresult = lwgeom_intersection(lwgeom1, lwgeom2);
+	lwresult = lwgeom_intersection_prec(lwgeom1, lwgeom2, prec);
 	result = geometry_serialize(lwresult);
 
 	lwgeom_free(lwgeom1);
