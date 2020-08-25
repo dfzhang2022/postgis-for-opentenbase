@@ -675,7 +675,7 @@ lwgeom_normalize(const LWGEOM* geom)
 LWGEOM*
 lwgeom_intersection(const LWGEOM* g1, const LWGEOM* g2)
 {
-	return lwgeom_intersection_prec(g1, g2, -1);
+	return lwgeom_intersection_prec(g1, g2, -1.0);
 }
 
 LWGEOM*
@@ -704,6 +704,7 @@ lwgeom_intersection_prec(const LWGEOM* geom1, const LWGEOM* geom2, double prec)
 	if ( prec >= 0) {
 #if POSTGIS_GEOS_VERSION < 39
 		lwerror("Fixed-precision intersection requires GEOS-3.9 or higher");
+		GEOS_FREE_AND_FAIL(g1, g2);
 		return NULL
 #else
 		g3 = GEOSIntersectionPrec(g1, g2, prec);

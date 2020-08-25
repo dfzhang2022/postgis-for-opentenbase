@@ -4,7 +4,7 @@
 -- PostGIS - Spatial Types for PostgreSQL
 -- http://postgis.net
 --
--- Copyright (C) 2011-2012 Sandro Santilli <strk@kbt.io>
+-- Copyright (C) 2011-2020 Sandro Santilli <strk@kbt.io>
 -- Copyright (C) 2010-2012 Regina Obe <lr@pcorp.us>
 -- Copyright (C) 2009      Paul Ramsey <pramsey@cleverelephant.ca>
 --
@@ -227,6 +227,7 @@ DROP FUNCTION IF EXISTS st_locate_along_measure(geometry, float8);
 DROP FUNCTION IF EXISTS st_combine_bbox(box3d, geometry);
 DROP FUNCTION IF EXISTS st_combine_bbox(box2d, geometry);
 DROP FUNCTION IF EXISTS st_distance_sphere(geometry, geometry);
+DROP FUNCTION IF EXISTS st_subdivide(geometry, integer);
 
 -- dev function 3.0 cycle
 DROP FUNCTION IF EXISTS pgis_geometry_union_transfn(internal, geometry);
