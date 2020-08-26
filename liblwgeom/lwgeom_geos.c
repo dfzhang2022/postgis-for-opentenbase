@@ -705,7 +705,7 @@ lwgeom_intersection_prec(const LWGEOM* geom1, const LWGEOM* geom2, double prec)
 #if POSTGIS_GEOS_VERSION < 39
 		lwerror("Fixed-precision intersection requires GEOS-3.9 or higher");
 		GEOS_FREE_AND_FAIL(g1, g2);
-		return NULL
+		return NULL;
 #else
 		g3 = GEOSIntersectionPrec(g1, g2, prec);
 #endif
