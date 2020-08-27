@@ -327,7 +327,7 @@ NOTICE:  Too few points in geometry component at or near point 0 0
 #4011|ST_MultiLineString|MULTILINESTRING EMPTY|t|t
 #4011|ST_GeometryCollection|MULTILINESTRING((0 0,0 0))|f|f
 #4025|
-ERROR:  lwgeom_intersection: GEOS Error: TopologyException: Input geom 0 is invalid: Self-intersection
+ERROR:  lwgeom_intersection_prec: GEOS Error: TopologyException: Input geom 0 is invalid: Self-intersection
 ERROR:  lwgeom_difference: GEOS Error: TopologyException: Input geom 0 is invalid: Self-intersection
 ERROR:  lwgeom_symdifference: GEOS Error: TopologyException: Input geom 0 is invalid: Self-intersection
 ERROR:  lwgeom_union: GEOS Error: TopologyException: Input geom 0 is invalid: Self-intersection

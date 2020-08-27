@@ -3422,13 +3422,7 @@ CREATE OR REPLACE FUNCTION ST_IsValidTrajectory(geometry)
 -- GEOS
 ---------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION ST_Intersection(geom1 geometry, geom2 geometry)
-	RETURNS geometry
-	AS 'MODULE_PATHNAME','ST_Intersection'
-	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
-	_COST_HIGH;
-
-CREATE OR REPLACE FUNCTION ST_Intersection(geom1 geometry, geom2 geometry, prec float8)
+CREATE OR REPLACE FUNCTION ST_Intersection(geom1 geometry, geom2 geometry, prec float8 DEFAULT -1)
 	RETURNS geometry
 	AS 'MODULE_PATHNAME','ST_Intersection'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE

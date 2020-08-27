@@ -1631,6 +1631,10 @@ Returns a geometry that represents the shared portion of geomA and geomB.
                         <type>geometry</type>
                         <parameter>geomB</parameter>
                     </paramdef>
+                    <paramdef choice="opt">
+                        <type>float8</type>
+                        <parameter>gridSize</parameter>
+                    </paramdef>
                 </funcprototype>
                 <funcprototype>
                     <funcdef>geography <function>ST_Intersection</function></funcdef>
@@ -1658,6 +1662,12 @@ Returns a geometry that represents the shared portion of geomA and geomB.
             <para>ST_Intersection in conjunction with ST_Intersects is very useful for clipping geometries such as in bounding box, buffer, region
                 queries where you only want to return that portion of a geometry that sits in a country or region of interest.</para>
 
+            <para>
+If a gridSize argument is provided, the inputs are
+snapped to a grid of the given size and all intersections are computed
+on that same grid. This method requires GEOS-3.9.0 or higher.
+            </para>
+
             <note><para>Geography: For geography this is really a thin wrapper around the geometry implementation. It first determines the best SRID that
                     fits the bounding box of the 2 geography objects (if geography objects are within one half zone UTM but not same UTM will pick one of those) (favoring UTM or Lambert Azimuthal Equal Area (LAEA) north/south pole, and falling back on mercator in worst case scenario)  and then intersection in that best fit planar spatial ref and retransforms back to WGS84 geography.</para></note>
 
@@ -1669,6 +1679,7 @@ Returns a geometry that represents the shared portion of geomA and geomB.
 
           <para>Availability: 1.5 support for geography data type was introduced.</para>
             <para>Changed: 3.0.0 does not depend on SFCGAL.</para>
+            <para>Changed: 3.1.0 added gridSize argument.</para>
 
           <para>&sfs_compliant; s2.1.1.3</para>
           <para>&sqlmm_compliant; SQL-MM 3: 5.1.18</para>
