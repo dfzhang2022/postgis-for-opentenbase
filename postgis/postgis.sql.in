@@ -3423,7 +3423,7 @@ CREATE OR REPLACE FUNCTION ST_IsValidTrajectory(geometry)
 ---------------------------------------------------------------
 
 -- Changed: 3.1.0 to add gridSize default argument
-CREATE OR REPLACE FUNCTION ST_Intersection(geom1 geometry, geom2 geometry, prec float8 DEFAULT -1)
+CREATE OR REPLACE FUNCTION ST_Intersection(geom1 geometry, geom2 geometry, gridSize float8 DEFAULT -1)
 	RETURNS geometry
 	AS 'MODULE_PATHNAME','ST_Intersection'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
@@ -3566,7 +3566,7 @@ CREATE OR REPLACE FUNCTION ST_MaximumInscribedCircle(geometry, OUT center geomet
 
 -- PostGIS equivalent function: ST_difference(geom1 geometry, geom2 geometry)
 -- Changed: 3.1.0 to add gridSize default argument
-CREATE OR REPLACE FUNCTION ST_Difference(geom1 geometry, geom2 geometry, prec float8 DEFAULT -1.0)
+CREATE OR REPLACE FUNCTION ST_Difference(geom1 geometry, geom2 geometry, gridSize float8 DEFAULT -1.0)
 	RETURNS geometry
 	AS 'MODULE_PATHNAME','ST_Difference'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
@@ -3588,7 +3588,7 @@ CREATE OR REPLACE FUNCTION ST_Points(geometry)
 
 -- PostGIS equivalent function: symdifference(geom1 geometry, geom2 geometry)
 -- Changed: 3.1.0 to add gridSize default argument
-CREATE OR REPLACE FUNCTION ST_SymDifference(geom1 geometry, geom2 geometry, prec float8 DEFAULT -1.0)
+CREATE OR REPLACE FUNCTION ST_SymDifference(geom1 geometry, geom2 geometry, gridSize float8 DEFAULT -1.0)
 	RETURNS geometry
 	AS 'MODULE_PATHNAME','ST_SymDifference'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
@@ -3614,7 +3614,8 @@ CREATE OR REPLACE FUNCTION ST_Union(geom1 geometry, geom2 geometry, gridSize flo
 	_COST_HIGH;
 
 -- Availability: 2.0.0
-CREATE OR REPLACE FUNCTION ST_UnaryUnion(geometry)
+-- Changed: 3.1.0 to add gridSize default argument
+CREATE OR REPLACE FUNCTION ST_UnaryUnion(geometry, gridSize float8 DEFAULT -1.0)
 	RETURNS geometry
 	AS 'MODULE_PATHNAME','ST_UnaryUnion'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE

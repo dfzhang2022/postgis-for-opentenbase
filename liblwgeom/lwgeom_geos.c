@@ -758,6 +758,12 @@ lwgeom_linemerge(const LWGEOM* geom)
 LWGEOM*
 lwgeom_unaryunion(const LWGEOM* geom)
 {
+	return lwgeom_unaryunion_prec(geom, -1.0);
+}
+
+LWGEOM*
+lwgeom_unaryunion_prec(const LWGEOM* geom, double prec)
+{
 	LWGEOM* result;
 	int32_t srid = RESULT_SRID(geom);
 	uint8_t is3d = FLAGS_GET_Z(geom->flags);
@@ -773,7 +779,19 @@ lwgeom_unaryunion(const LWGEOM* geom)
 
 	if (!(g1 = LWGEOM2GEOS(geom, AUTOFIX))) GEOS_FAIL();
 
-	g3 = GEOSUnaryUnion(g1);
+	if ( prec >= 0) {
+#if POSTGIS_GEOS_VERSION < 39
+		lwerror("Fixed-precision union requires GEOS-3.9 or higher");
+		GEOS_FREE_AND_FAIL(g1);
+		return NULL;
+#else
+		g3 = GEOSUnaryUnionPrec(g1, prec);
+#endif
+	}
+	else
+	{
+		g3 = GEOSUnaryUnion(g1);
+	}
 
 	if (!g3) GEOS_FREE_AND_FAIL(g1);
 	GEOSSetSRID(g3, srid);

@@ -3776,6 +3776,7 @@ MULTILINESTRING((3 4,4 5),(1 2,3 4))
           <funcprototype>
             <funcdef>geometry <function>ST_UnaryUnion</function></funcdef>
             <paramdef><type>geometry </type> <parameter>geom</parameter></paramdef>
+            <paramdef choice="opt"><type>float8 </type> <parameter>gridSize</parameter></paramdef>
           </funcprototype>
 
         </funcsynopsis>
@@ -3802,9 +3803,16 @@ MULTILINESTRING((3 4,4 5),(1 2,3 4))
         balance between ST_Union and ST_MemUnion.
         </para>
 
+        <para>
+If a gridSize argument is provided, the inputs are
+snapped to a grid of the given size and all intersections are computed
+on that same grid. This method requires GEOS-3.9.0 or higher.
+        </para>
+
         <para>&Z_support;</para>
 
         <para>Availability: 2.0.0</para>
+        <para>Enhanced: 3.1.0 accept a gridSize parameter.</para>
       </refsection>
 
 

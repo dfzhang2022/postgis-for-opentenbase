@@ -737,12 +737,15 @@ Datum ST_UnaryUnion(PG_FUNCTION_ARGS)
 	GSERIALIZED *geom1;
 	GSERIALIZED *result;
 	LWGEOM *lwgeom1, *lwresult ;
+	double prec = -1;
 
 	geom1 = PG_GETARG_GSERIALIZED_P(0);
+	if (PG_NARGS() > 1 && ! PG_ARGISNULL(1))
+		prec = PG_GETARG_FLOAT8(1);
 
 	lwgeom1 = lwgeom_from_gserialized(geom1) ;
 
-	lwresult = lwgeom_unaryunion(lwgeom1);
+	lwresult = lwgeom_unaryunion_prec(lwgeom1, prec);
 	result = geometry_serialize(lwresult) ;
 
 	lwgeom_free(lwgeom1) ;
