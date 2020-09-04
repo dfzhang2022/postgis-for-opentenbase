@@ -789,6 +789,12 @@ lwgeom_unaryunion(const LWGEOM* geom)
 LWGEOM*
 lwgeom_difference(const LWGEOM* geom1, const LWGEOM* geom2)
 {
+	return lwgeom_difference_prec(geom1, geom2, -1.0);
+}
+
+LWGEOM*
+lwgeom_difference_prec(const LWGEOM* geom1, const LWGEOM* geom2, double prec)
+{
 	LWGEOM* result;
 	int32_t srid = RESULT_SRID(geom1, geom2);
 	uint8_t is3d = (FLAGS_GET_Z(geom1->flags) || FLAGS_GET_Z(geom2->flags));
@@ -807,7 +813,19 @@ lwgeom_difference(const LWGEOM* geom1, const LWGEOM* geom2)
 	if (!(g1 = LWGEOM2GEOS(geom1, AUTOFIX))) GEOS_FAIL();
 	if (!(g2 = LWGEOM2GEOS(geom2, AUTOFIX))) GEOS_FREE_AND_FAIL(g1);
 
-	g3 = GEOSDifference(g1, g2);
+	if ( prec >= 0) {
+#if POSTGIS_GEOS_VERSION < 39
+		lwerror("Fixed-precision difference requires GEOS-3.9 or higher");
+		GEOS_FREE_AND_FAIL(g1, g2);
+		return NULL;
+#else
+		g3 = GEOSDifferencePrec(g1, g2, prec);
+#endif
+	}
+	else
+	{
+		g3 = GEOSDifference(g1, g2);
+	}
 
 	if (!g3) GEOS_FREE_AND_FAIL(g1, g2);
 	GEOSSetSRID(g3, srid);
@@ -821,6 +839,12 @@ lwgeom_difference(const LWGEOM* geom1, const LWGEOM* geom2)
 
 LWGEOM*
 lwgeom_symdifference(const LWGEOM* geom1, const LWGEOM* geom2)
+{
+	return lwgeom_symdifference_prec(geom1, geom2, -1.0);
+}
+
+LWGEOM*
+lwgeom_symdifference_prec(const LWGEOM* geom1, const LWGEOM* geom2, double prec)
 {
 	LWGEOM* result;
 	int32_t srid = RESULT_SRID(geom1, geom2);
@@ -840,7 +864,19 @@ lwgeom_symdifference(const LWGEOM* geom1, const LWGEOM* geom2)
 	if (!(g1 = LWGEOM2GEOS(geom1, AUTOFIX))) GEOS_FAIL();
 	if (!(g2 = LWGEOM2GEOS(geom2, AUTOFIX))) GEOS_FREE_AND_FAIL(g1);
 
-	g3 = GEOSSymDifference(g1, g2);
+	if ( prec >= 0) {
+#if POSTGIS_GEOS_VERSION < 39
+		lwerror("Fixed-precision difference requires GEOS-3.9 or higher");
+		GEOS_FREE_AND_FAIL(g1, g2);
+		return NULL;
+#else
+		g3 = GEOSSymDifferencePrec(g1, g2, prec);
+#endif
+	}
+	else
+	{
+		g3 = GEOSSymDifference(g1, g2);
+	}
 
 	if (!g3) GEOS_FREE_AND_FAIL(g1, g2);
 	GEOSSetSRID(g3, srid);

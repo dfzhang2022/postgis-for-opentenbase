@@ -229,6 +229,8 @@ DROP FUNCTION IF EXISTS st_combine_bbox(box2d, geometry);
 DROP FUNCTION IF EXISTS st_distance_sphere(geometry, geometry);
 DROP FUNCTION IF EXISTS st_subdivide(geometry, integer); -- replaced in 3.1.0 by 3 args version
 DROP FUNCTION IF EXISTS st_intersection(geometry, geometry); -- replaced in 3.1.0 by 3 args version
+DROP FUNCTION IF EXISTS st_difference(geometry, geometry); -- replaced in 3.1.0 by 3 args version
+DROP FUNCTION IF EXISTS st_symdifference(geometry, geometry); -- replaced in 3.1.0 by 3 args version
 
 -- dev function 3.0 cycle
 DROP FUNCTION IF EXISTS pgis_geometry_union_transfn(internal, geometry);

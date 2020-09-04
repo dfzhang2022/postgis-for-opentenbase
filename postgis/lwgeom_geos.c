@@ -83,7 +83,7 @@ Datum convexhull(PG_FUNCTION_ARGS);
 Datum topologypreservesimplify(PG_FUNCTION_ARGS);
 Datum ST_Difference(PG_FUNCTION_ARGS);
 Datum boundary(PG_FUNCTION_ARGS);
-Datum symdifference(PG_FUNCTION_ARGS);
+Datum ST_SymDifference(PG_FUNCTION_ARGS);
 Datum ST_Union(PG_FUNCTION_ARGS);
 Datum issimple(PG_FUNCTION_ARGS);
 Datum isring(PG_FUNCTION_ARGS);
@@ -788,21 +788,24 @@ Datum ST_Union(PG_FUNCTION_ARGS)
  *      'POLYGON((0 0, 10 0, 10 10, 0 10, 0 0))',
  *      'POLYGON((5 5, 15 5, 15 7, 5 7, 5 5))');
  */
-PG_FUNCTION_INFO_V1(symdifference);
-Datum symdifference(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(ST_SymDifference);
+Datum ST_SymDifference(PG_FUNCTION_ARGS)
 {
 	GSERIALIZED *geom1;
 	GSERIALIZED *geom2;
 	GSERIALIZED *result;
 	LWGEOM *lwgeom1, *lwgeom2, *lwresult ;
+	double prec = -1;
 
 	geom1 = PG_GETARG_GSERIALIZED_P(0);
 	geom2 = PG_GETARG_GSERIALIZED_P(1);
+	if (PG_NARGS() > 2 && ! PG_ARGISNULL(2))
+		prec = PG_GETARG_FLOAT8(2);
 
 	lwgeom1 = lwgeom_from_gserialized(geom1) ;
 	lwgeom2 = lwgeom_from_gserialized(geom2) ;
 
-	lwresult = lwgeom_symdifference(lwgeom1, lwgeom2) ;
+	lwresult = lwgeom_symdifference_prec(lwgeom1, lwgeom2, prec);
 	result = geometry_serialize(lwresult) ;
 
 	lwgeom_free(lwgeom1) ;
@@ -1439,14 +1442,17 @@ Datum ST_Difference(PG_FUNCTION_ARGS)
 	GSERIALIZED *geom2;
 	GSERIALIZED *result;
 	LWGEOM *lwgeom1, *lwgeom2, *lwresult;
+	double prec = -1;
 
 	geom1 = PG_GETARG_GSERIALIZED_P(0);
 	geom2 = PG_GETARG_GSERIALIZED_P(1);
+	if (PG_NARGS() > 2 && ! PG_ARGISNULL(2))
+		prec = PG_GETARG_FLOAT8(2);
 
 	lwgeom1 = lwgeom_from_gserialized(geom1);
 	lwgeom2 = lwgeom_from_gserialized(geom2);
 
-	lwresult = lwgeom_difference(lwgeom1, lwgeom2);
+	lwresult = lwgeom_difference_prec(lwgeom1, lwgeom2, prec);
 	result = geometry_serialize(lwresult);
 
 	lwgeom_free(lwgeom1);
