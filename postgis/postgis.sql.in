@@ -4016,6 +4016,15 @@ CREATE AGGREGATE ST_Union (geometry) (
 	finalfunc = pgis_geometry_union_finalfn
 	);
 
+-- Availability: 3.1.0
+CREATE AGGREGATE ST_Union (geometry, gridSize float8) (
+	sfunc = pgis_geometry_accum_transfn,
+	stype = internal,
+	parallel = safe,
+	finalfunc = pgis_geometry_union_finalfn
+	);
+
+
 -- Availability: 1.2.2
 -- Changed: 2.4.0: marked parallel safe
 -- Changed: 2.5.0 use 'internal' stype
