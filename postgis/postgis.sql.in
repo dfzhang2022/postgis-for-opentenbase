@@ -3597,7 +3597,7 @@ CREATE OR REPLACE FUNCTION ST_SymDifference(geom1 geometry, geom2 geometry, grid
 -- Availability: 1.2.2
 CREATE OR REPLACE FUNCTION ST_SymmetricDifference(geom1 geometry, geom2 geometry)
 	RETURNS geometry
-	AS 'SELECT ST_SymDifference(geom1, geom2);'
+	AS 'SELECT ST_SymDifference(geom1, geom2, -1.0);'
 	LANGUAGE 'sql';
 
 CREATE OR REPLACE FUNCTION ST_Union(geom1 geometry, geom2 geometry)
