@@ -115,7 +115,7 @@ pgis_geometry_accum_transfn(PG_FUNCTION_ARGS)
 	if (PG_NARGS()>2 && !PG_ARGISNULL(2))
 	{
 		gridSize = PG_GETARG_FLOAT8(2);
-		lwnotice("Passed gridSize %g", gridSize);
+		/*lwnotice("Passed gridSize %g", gridSize);*/
 		if ( gridSize > state->gridSize ) state->gridSize = gridSize;
 	}
 
