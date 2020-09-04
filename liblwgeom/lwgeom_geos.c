@@ -18,7 +18,7 @@
  *
  **********************************************************************
  *
- * Copyright 2011-2014 Sandro Santilli <strk@kbt.io>
+ * Copyright 2011-2020 Sandro Santilli <strk@kbt.io>
  * Copyright 2015-2018 Daniel Baston <dbaston@gmail.com>
  * Copyright 2017-2018 Darafei Praliaskouski <me@komzpa.net>
  *
@@ -919,7 +919,13 @@ lwgeom_pointonsurface(const LWGEOM *geom)
 }
 
 LWGEOM*
-lwgeom_union(const LWGEOM* geom1, const LWGEOM* geom2)
+lwgeom_union(const LWGEOM* g1, const LWGEOM* g2)
+{
+	return lwgeom_union_prec(g1, g2, -1.0);
+}
+
+LWGEOM*
+lwgeom_union_prec(const LWGEOM* geom1, const LWGEOM* geom2, double gridSize)
 {
 	LWGEOM* result;
 	int32_t srid = RESULT_SRID(geom1, geom2);
@@ -939,7 +945,19 @@ lwgeom_union(const LWGEOM* geom1, const LWGEOM* geom2)
 	if (!(g1 = LWGEOM2GEOS(geom1, AUTOFIX))) GEOS_FAIL();
 	if (!(g2 = LWGEOM2GEOS(geom2, AUTOFIX))) GEOS_FREE_AND_FAIL(g1);
 
-	g3 = GEOSUnion(g1, g2);
+	if ( gridSize >= 0) {
+#if POSTGIS_GEOS_VERSION < 39
+		lwerror("Fixed-precision union requires GEOS-3.9 or higher");
+		GEOS_FREE_AND_FAIL(g1, g2);
+		return NULL;
+#else
+		g3 = GEOSUnionPrec(g1, g2, gridSize);
+#endif
+	}
+	else
+	{
+		g3 = GEOSUnion(g1, g2);
+	}
 
 	if (!g3) GEOS_FREE_AND_FAIL(g1, g2);
 	GEOSSetSRID(g3, srid);
