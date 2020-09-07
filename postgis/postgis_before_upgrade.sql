@@ -221,7 +221,7 @@ DROP FUNCTION IF EXISTS st_intersection(geometry, geometry); -- replaced in 3.1.
 DROP FUNCTION IF EXISTS st_subdivide(geometry, integer); -- replaced in 3.1.0 by 3 args version
 DROP FUNCTION IF EXISTS st_difference(geometry, geometry); -- replaced in 3.1.0 by 3 args version
 DROP FUNCTION IF EXISTS st_symdifference(geometry, geometry); -- replaced in 3.1.0 by 3 args version
-DROP FUNCTION IF EXISTS st_unaryunion(geometry, geometry); -- replaced in 3.1.0 by 3 args version
+DROP FUNCTION IF EXISTS st_unaryunion(geometry); -- replaced in 3.1.0 by 3 args version
 
 -- geometry_columns changed parameter types so we verify if it needs to be dropped
 -- We check the catalog to see if the view (geometry_columns) has a column
