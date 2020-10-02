@@ -62,7 +62,7 @@ sql/$(EXTENSION)--$(EXTVERSION).sql: $(EXTENSION_SCRIPTS) | sql
 	printf '\\echo Use "CREATE EXTENSION $(EXTENSION)" to load this file. \\quit\n' > $@
 	cat $^ > $@
 
-sql_bits/sfcgal.sql: ../../postgis/sfcgal.sql
+sql_bits/sfcgal.sql: ../../sfcgal/sfcgal.sql
 	mkdir -p sql_bits
 	$(PERL) -pe 's/BEGIN\;//g ; s/COMMIT\;//g' $< > $@
 
