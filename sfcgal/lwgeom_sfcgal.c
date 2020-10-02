@@ -21,13 +21,14 @@
  * Copyright 2012-2020 Oslandia <infos@oslandia.com>
  *
  **********************************************************************/
-#include "../postgis/lwgeom_log.h"
-#include "../postgis/lwgeom_pg.h"
-#include "lwgeom_sfcgal.h"
-#include "../postgis_config.h"
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"
+#include "lwgeom_pg.h"
+#include "lwgeom_sfcgal.h"
+#include "../postgis_config.h"
+
+
 #include "utils/elog.h"
 #include "utils/guc.h"
 #include "libpq/pqsignal.h"
@@ -87,12 +88,6 @@ handleInterrupt(int sig)
    * TODO: block interrupts during execution, to fix the problem
    */
   /* printf("Interrupt requested\n"); fflush(stdout); */
-
-  GEOS_interruptRequest();
-
-#ifdef HAVE_WAGYU
-  lwgeom_wagyu_interruptRequest();
-#endif
 
   /* request interruption of liblwgeom as well */
   lwgeom_request_interrupt();

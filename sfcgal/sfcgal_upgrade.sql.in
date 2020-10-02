@@ -65,7 +65,7 @@ CREATE TEMPORARY TABLE _postgis_upgrade_info AS WITH versions AS (
 ;
 
 CREATE OR REPLACE FUNCTION postgis_sfcgal_scripts_installed() RETURNS text
-	AS $$ SELECT trim('3.1.0dev'::text || $rev$ 3.1.0alpha2-75-g5e595cf4c $rev$) AS version $$
+	AS $$ SELECT trim('3.1.0dev'::text || $rev$ 3.1.0alpha2-78-g7ff67bc36 $rev$) AS version $$
 	LANGUAGE 'sql' IMMUTABLE;
 CREATE OR REPLACE FUNCTION postgis_sfcgal_version() RETURNS text
         AS '$libdir/postgis_sfcgal-3.1'
