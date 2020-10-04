@@ -154,6 +154,7 @@ regress/postgis_garden_result.txt
 regress/raster_garden_result.txt
 sfcgal/Makefile
 sfcgal/*.sql
+sfcgal/sfcgal_ungrade.sql.in
 *.so
 st_*.png
 .svn

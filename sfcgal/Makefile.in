@@ -41,7 +41,12 @@ DATA=
 SQLPP = @SQLPP@
 
 # SQL objects (files requiring pre-processing)
-SQL_objs=$(MODULE_NAME).sql
+SQL_OBJS = \
+  sfcgal.sql \
+	sfcgal_upgrade.sql.in \
+  sfcgal_upgrade.sql \
+  sfcgal_drop_before.sql \
+  sfcgal_drop_after.sql
 
 # Objects to build using PGXS
 
@@ -92,9 +97,7 @@ endif
 
 # Extra files to remove during 'make clean'
 EXTRA_CLEAN=$(SQL_OBJS) \
-	uninstall_sfcgal.sql \
-	sfcgal_upgrade.sql.in \
-	sfcgal_upgrade.sql
+	uninstall_sfcgal.sql
 
 # PGXS information
 PG_CONFIG := @PG_CONFIG@
@@ -135,14 +138,8 @@ endif
 #
 $(PG_OBJS): ../liblwgeom/.libs/liblwgeom.a ../libpgcommon/libpgcommon.a ../postgis_config.h ../postgis_revision.h
 
-../postgis_revision.h:
-	$(MAKE) -C .. postgis_revision.h
-
-../liblwgeom/.libs/liblwgeom.a:
-	$(MAKE) -C ../liblwgeom liblwgeom.la
-
-../libpgcommon/libpgcommon.a:
-	$(MAKE) -C ../libpgcommon libpgcommon.a
+sfcgal_upgrade.sql.in: sfcgal.sql ../utils/postgis_proc_upgrade.pl
+	$(PERL) ../utils/postgis_proc_upgrade.pl $< UNUSED > $@
 
 # Borrow the $libdir substitution from PGXS but customise by running the preprocessor
 # and adding the version number
@@ -151,11 +148,11 @@ $(PG_OBJS): ../liblwgeom/.libs/liblwgeom.a ../libpgcommon/libpgcommon.a ../postg
 	$(SQLPP) -I../libpgcommon $< | grep -v '^#' | \
 	$(PERL) -lpe "s'MODULE_PATHNAME'\$(MODULEPATH)'g;s'@extschema@\.''g" > $@
 
-sfcgal_upgrade.sql.in: sfcgal.sql ../utils/postgis_proc_upgrade.pl
-	$(PERL) ../utils/postgis_proc_upgrade.pl $< UNUSED > $@
 
-sfcgal_upgrade.sql: sfcgal_upgrade.sql.in
-	cat $^ > $@
+sfcgal_upgrade.sql: sfcgal_before_upgrade.sql sfcgal_upgrade.sql.in sfcgal_after_upgrade.sql
+	echo "BEGIN;" > $@
+	cat $^ >> $@
+	echo "COMMIT;" >> $@
 
 # SQL objects are also dependent on postgis_config.h for PostgreSQL version
 $(SQL_OBJS): ../postgis_config.h ../postgis_revision.h
