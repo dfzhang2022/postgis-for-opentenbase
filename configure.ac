@@ -781,8 +781,8 @@ if test "x$with_sfcgal" != "xno"; then
 			AC_MSG_WARN([The SFCGAL version found is not installed as a dynamic library.])
 		else
         		SFCGAL="sfcgal"
-			HAVE_SFCGAL="yes"
-                        AC_DEFINE([HAVE_SFCGAL], [1], [Define to 1 if sfcgal is being built])
+						HAVE_SFCGAL="yes"
+            AC_DEFINE([HAVE_SFCGAL], [1], [Define to 1 if sfcgal is being built])
 		fi
 		if test ! "$POSTGIS_SFCGAL_VERSION" -ge 10301; then
 			AC_MSG_ERROR([PostGIS requires SFCGAL >= 1.3.1 (found $SFCGAL_VERSION)])

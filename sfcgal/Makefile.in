@@ -45,8 +45,8 @@ SQL_OBJS = \
   sfcgal.sql \
 	sfcgal_upgrade.sql.in \
   sfcgal_upgrade.sql \
-  sfcgal_drop_before.sql \
-  sfcgal_drop_after.sql
+  sfcgal_after_upgrade.sql \
+  sfcgal_before_upgrade.sql
 
 # Objects to build using PGXS
 
@@ -138,9 +138,6 @@ endif
 #
 $(PG_OBJS): ../liblwgeom/.libs/liblwgeom.a ../libpgcommon/libpgcommon.a ../postgis_config.h ../postgis_revision.h
 
-sfcgal_upgrade.sql.in: sfcgal.sql ../utils/postgis_proc_upgrade.pl
-	$(PERL) ../utils/postgis_proc_upgrade.pl $< UNUSED > $@
-
 # Borrow the $libdir substitution from PGXS but customise by running the preprocessor
 # and adding the version number
 # replace @extschema@. with nothing, this is only used as placeholder for extension install
@@ -148,6 +145,8 @@ sfcgal_upgrade.sql.in: sfcgal.sql ../utils/postgis_proc_upgrade.pl
 	$(SQLPP) -I../libpgcommon $< | grep -v '^#' | \
 	$(PERL) -lpe "s'MODULE_PATHNAME'\$(MODULEPATH)'g;s'@extschema@\.''g" > $@
 
+sfcgal_upgrade.sql.in: sfcgal.sql ../utils/postgis_proc_upgrade.pl
+	$(PERL) ../utils/postgis_proc_upgrade.pl $< UNUSED > $@
 
 sfcgal_upgrade.sql: sfcgal_before_upgrade.sql sfcgal_upgrade.sql.in sfcgal_after_upgrade.sql
 	echo "BEGIN;" > $@
