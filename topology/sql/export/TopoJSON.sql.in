@@ -45,7 +45,6 @@ DECLARE
   old_search_path TEXT;
   all_faces int[];
   faces int[];
-  bounding_edges int[];
   visited_face int;
   shell_faces int[];
   visited_edges int[];
@@ -132,13 +131,6 @@ BEGIN
     looking_for_holes := false;
     shell_faces := ARRAY[]::int[];
 
-    SELECT array_agg(edge_id)
-    FROM edge_data e
-    WHERE
-         ( e.left_face = ANY ( faces ) OR
-           e.right_face = ANY ( faces ) )
-    INTO bounding_edges;
-
     CREATE TEMP TABLE _postgis_topology_astopojson_tmp_edges
     ON COMMIT DROP
     AS
@@ -155,11 +147,13 @@ BEGIN
          e.next_right_edge,
          e.next_left_edge
     FROM edge e
-    WHERE edge_id = ANY (bounding_edges)
+    WHERE
+         ( e.left_face = ANY ( faces ) OR
+           e.right_face = ANY ( faces ) )
     ;
     CREATE INDEX on _postgis_topology_astopojson_tmp_edges (edge_id);
 
-    LOOP -- { until all bounding_edges were visited
+    LOOP -- { until all edges were visited
 
       arcs := NULL;
       edges_found := false;
