@@ -3,7 +3,7 @@
 -- PostGIS - Spatial Types for PostgreSQL
 -- http://postgis.net
 --
--- Copyright (C) 2013 Sandro Santilli <strk@kbt.io>
+-- Copyright (C) 2013-2020 Sandro Santilli <strk@kbt.io>
 --
 -- This is free software; you can redistribute and/or modify it under
 -- the terms of the GNU General Public Licence. See the COPYING file.
@@ -33,7 +33,6 @@ DECLARE
   toponame text;
   json text;
   sql text;
-  bounds GEOMETRY;
   rec RECORD;
   rec2 RECORD;
   side int;
@@ -45,7 +44,6 @@ DECLARE
   old_search_path TEXT;
   all_faces int[];
   faces int[];
-  visited_face int;
   shell_faces int[];
   visited_edges int[];
   looking_for_holes BOOLEAN;
@@ -148,8 +146,8 @@ BEGIN
          e.next_left_edge
     FROM edge e
     WHERE
-         ( e.left_face = ANY ( faces ) OR
-           e.right_face = ANY ( faces ) )
+         ( e.left_face = ANY ( all_faces ) OR
+           e.right_face = ANY ( all_faces ) )
     ;
     CREATE INDEX on _postgis_topology_astopojson_tmp_edges (edge_id);
 
