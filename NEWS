@@ -31,6 +31,9 @@ Only tickets not included in 3.1.0alpha3
   - Fix axis order issue with urn:ogc:def:crs:EPSG in ST_GeomFromGML()
            (Even Roualt)
 
+* Enhancements *
+  - #4813, ST_MakeValid removing NaN coordinates (Sandro Santilli)
+
 PostGIS 3.1.0alpha3
 2020/11/19
 Only tickets not included in 3.1.0alpha2
