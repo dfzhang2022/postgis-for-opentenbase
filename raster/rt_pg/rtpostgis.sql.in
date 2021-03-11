@@ -4531,6 +4531,8 @@ CREATE OR REPLACE FUNCTION ST_BandPixelType(rast raster, band integer DEFAULT 1)
     RETURNS text
     AS 'MODULE_PATHNAME','RASTER_getBandPixelTypeName'
     LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE;
+
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION ST_BandMetaData(
 	rast raster,
 	band int[])
@@ -4547,6 +4549,7 @@ CREATE OR REPLACE FUNCTION ST_BandMetaData(
 	AS 'MODULE_PATHNAME','RASTER_bandmetadata'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION ST_BandMetaData(
 	rast raster,
 	band int DEFAULT 1)
@@ -4642,6 +4645,7 @@ CREATE OR REPLACE FUNCTION st_pixelofvalue(
 	AS 'MODULE_PATHNAME', 'RASTER_pixelOfValue'
 	LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION ST_PixelofValue(
 	rast raster,
 	search double precision[],
@@ -4655,6 +4659,7 @@ CREATE OR REPLACE FUNCTION ST_PixelofValue(
 	AS $$ SELECT val, x, y FROM @extschema@.ST_PixelOfValue($1, 1, $2, $3) $$
 	LANGUAGE 'sql' IMMUTABLE STRICT PARALLEL SAFE;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_pixelofvalue(
 	rast raster,
 	nband integer,
@@ -4668,6 +4673,7 @@ CREATE OR REPLACE FUNCTION st_pixelofvalue(
 	AS $$ SELECT x, y FROM @extschema@.ST_PixelofValue($1, $2, ARRAY[$3], $4) $$
 	LANGUAGE 'sql' IMMUTABLE STRICT PARALLEL SAFE;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_pixelofvalue(
 	rast raster,
 	search double precision,
@@ -5052,6 +5058,7 @@ CREATE OR REPLACE FUNCTION st_dumpaspolygons(rast raster, band integer DEFAULT 1
 -----------------------------------------------------------------------
 -- ST_DumpValues
 -----------------------------------------------------------------------
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_dumpvalues(
 	rast raster, nband integer[] DEFAULT NULL, exclude_nodata_value boolean DEFAULT TRUE
 	)
@@ -5078,6 +5085,7 @@ CREATE OR REPLACE FUNCTION st_polygon(rast raster, band integer DEFAULT 1)
 -- Should be called like this:
 -- SELECT (gv).geom, (gv).val FROM (SELECT ST_PixelAsPolygons(rast) gv FROM mytable) foo
 -----------------------------------------------------------------------
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION _st_pixelaspolygons(
 	rast raster,
 	band integer DEFAULT 1,
@@ -5094,6 +5102,7 @@ CREATE OR REPLACE FUNCTION _st_pixelaspolygons(
 	AS 'MODULE_PATHNAME', 'RASTER_getPixelPolygons'
 	LANGUAGE 'c' IMMUTABLE PARALLEL SAFE;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_pixelaspolygons(
 	rast raster,
 	band integer DEFAULT 1,
@@ -5120,7 +5129,7 @@ CREATE OR REPLACE FUNCTION st_pixelaspolygon(rast raster, x integer, y integer)
 -----------------------------------------------------------------------
 -- ST_PixelAsPoints
 -----------------------------------------------------------------------
-
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_pixelaspoints(
 	rast raster,
 	band integer DEFAULT 1,
@@ -5147,7 +5156,7 @@ CREATE OR REPLACE FUNCTION st_pixelaspoint(rast raster, x integer, y integer)
 -----------------------------------------------------------------------
 -- ST_PixelAsCentroids
 -----------------------------------------------------------------------
-
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_pixelascentroids(
 	rast raster,
 	band integer DEFAULT 1,
@@ -5327,14 +5336,12 @@ CREATE OR REPLACE FUNCTION st_worldtorastercoordy(rast raster, pt geometry)
 ---------------------------------------------------------------------------------
 -- ST_RasterToWorldCoord
 ---------------------------------------------------------------------------------
-
 CREATE OR REPLACE FUNCTION _st_rastertoworldcoord(
 	rast raster,
-	columnx integer DEFAULT NULL, rowy integer DEFAULT NULL)
-	RETURNS TABLE(
-		longitude double precision,
-		latitude double precision
-	)
+	columnx integer DEFAULT NULL, rowy integer DEFAULT NULL,
+	OUT longitude double precision,
+	OUT latitude double precision
+	) RETURNS record
 	AS 'MODULE_PATHNAME', 'RASTER_rasterToWorldCoord'
 	LANGUAGE 'c' IMMUTABLE PARALLEL SAFE;
 
@@ -5345,13 +5352,13 @@ CREATE OR REPLACE FUNCTION _st_rastertoworldcoord(
 -- This function works even if the provided raster column and row are beyond or
 -- below the raster width and height.
 ---------------------------------------------------------------------------------
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION st_rastertoworldcoord(
 	rast raster,
-	columnx integer, rowy integer)
-	RETURNS TABLE(
-		longitude double precision,
-		latitude double precision
-	)
+	columnx integer, rowy integer,
+	OUT	longitude double precision,
+	OUT latitude double precision
+	) RETURNS record
 	AS $$ SELECT longitude, latitude FROM @extschema@._ST_rastertoworldcoord($1, $2, $3) $$
 	LANGUAGE 'sql' IMMUTABLE STRICT PARALLEL SAFE;
 
@@ -8217,13 +8224,13 @@ CREATE OR REPLACE FUNCTION _overview_constraint(ov raster, factor integer, refsc
 	LANGUAGE 'sql' STABLE
 	COST 100;
 
+-- Changed: 3.1.2
 CREATE OR REPLACE FUNCTION _overview_constraint_info(
-	ovschema name, ovtable name, ovcolumn name)
-	RETURNS TABLE(
-		refschema name,
-		reftable name,
-		refcolumn name,
-		factor integer
+	ovschema name, ovtable name, ovcolumn name,
+		OUT refschema name,
+		OUT reftable name,
+		OUT refcolumn name,
+		OUT factor integer
 	)
 	AS $$
 	SELECT
@@ -8241,7 +8248,7 @@ CREATE OR REPLACE FUNCTION _overview_constraint_info(
 		AND s.connamespace = n.oid
 		AND s.conrelid = c.oid
 		AND a.attnum = ANY (s.conkey)
-		AND s.consrc LIKE '%_overview_constraint(%'
+		AND s.consrc LIKE '%_overview_constraint(%' LIMIT 1
 	$$ LANGUAGE sql STABLE STRICT
   COST 100;
 
