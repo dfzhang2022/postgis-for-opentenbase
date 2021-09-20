@@ -11,7 +11,7 @@ set -e
 # export JENKINS_HOME=/var/lib/jenkins/workspace
 # export GEOS_VER=3.6.0dev
 # export GDAL_VER=2.0
-# export SFCGAL_VER=1.3
+# export SFCGAL_VER=1.4.0
 export MAKE_GARDEN=0
 export MAKE_EXTENSION=1
 export DUMP_RESTORE=0
