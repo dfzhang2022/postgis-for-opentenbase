@@ -8,6 +8,7 @@
 |  [![Build Status](https://debbie.postgis.net/buildStatus/icon?job=PostGIS_Worker_Run%2Flabel%3Dbessie)](https://debbie.postgis.net/view/PostGIS/job/PostGIS_Worker_Run/label=bessie/) |  [![Build Status](https://debbie.postgis.net/buildStatus/icon?job=PostGIS_Worker_Run%2Flabel%3Dbessie32)](https://debbie.postgis.net/view/PostGIS/job/PostGIS_Worker_Run/label=bessie32/) |  [![Build Status](https://api.cirrus-ci.com/github/postgis/postgis.svg?branch=master)](http://cirrus-ci.com/github/postgis/postgis) |  |
 | **Berrie** | **Berrie64** | | |
 |  [![Build Status](https://debbie.postgis.net/buildStatus/icon?job=PostGIS_Worker_Run/label=berrie&build=last:${params.reference=refs/heads/master})](https://debbie.postgis.net/view/PostGIS/job/PostGIS_Worker_Run/label=berrie/) |  [![Build Status](https://debbie.postgis.net/buildStatus/icon?job=PostGIS_Worker_Run/label=berrie64&build=last:${params.reference=refs/heads/master})](https://debbie.postgis.net/view/PostGIS/job/PostGIS_Worker_Run/label=berrie64/) | | |
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5879631.svg)](https://doi.org/10.5281/zenodo.5879631)
 
 This file is here to play nicely with modern code repository facilities.
 Actual readme is [here](README.postgis).
