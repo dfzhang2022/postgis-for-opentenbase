@@ -210,7 +210,7 @@ while(<INPUT>)
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 DECLARE
-    replaced_proc regprocedure;
+    replaced_proc pg_catalog.regprocedure;
     rec RECORD;
     new_view_def TEXT;
     sql TEXT;
@@ -368,7 +368,7 @@ EOF
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 BEGIN
-  IF current_setting('server_version_num')::integer >= 120000
+  IF pg_catalog.current_setting('server_version_num')::integer >= 120000
   THEN
     EXECUTE \$postgis_proc_upgrade_parsed_def\$ $pg12_def \$postgis_proc_upgrade_parsed_def\$;
   ELSIF $last_updated > version_from_num OR (
@@ -603,7 +603,7 @@ print <<"EOF";
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 DECLARE
-    deprecated_functions regprocedure[];
+    deprecated_functions pg_catalog.regprocedure[];
     rec RECORD;
     sql TEXT;
     detail TEXT;
@@ -611,7 +611,7 @@ DECLARE
 BEGIN
     -- Fetch a list of deprecated functions
 
-    SELECT array_agg(oid::regprocedure)
+    SELECT pg_catalog.array_agg(oid::regprocedure)
     FROM pg_catalog.pg_proc
     WHERE proname = ANY ('${deprecated_names}'::name[])
     INTO deprecated_functions;
@@ -622,17 +622,17 @@ BEGIN
 --    FOR rec IN
 --        SELECT n.nspname AS schemaname,
 --            c.relname AS viewname,
---            pg_get_userbyid(c.relowner) AS viewowner,
---            pg_get_viewdef(c.oid) AS definition,
+--            pg_catalog.pg_get_userbyid(c.relowner) AS viewowner,
+--            pg_catalog.pg_get_viewdef(c.oid) AS definition,
 --            CASE
 --                WHEN 'check_option=cascaded' = ANY (c.reloptions) THEN 'WITH CASCADED CHECK OPTION'
 --                WHEN 'check_option=local' = ANY (c.reloptions) THEN 'WITH LOCAL CHECK OPTION'
 --                ELSE ''
 --            END::text AS check_option
 --        FROM pg_catalog.pg_class c
---        LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+--        LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
 --        WHERE c.relkind = 'v'
---        AND pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
+--        AND pg_catalog.pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
 --    LOOP
 --        sql := format('CREATE OR REPLACE VIEW %I.%I AS %s %s',
 --            rec.schemaname,
@@ -717,8 +717,8 @@ BEGIN
         SELECT into old_scripts MODULE_scripts_installed();
     END;
     SELECT into new_scripts 'NEWVERSION';
-    SELECT into old_maj substring(old_scripts from 1 for 1);
-    SELECT into new_maj substring(new_scripts from 1 for 1);
+    SELECT into old_maj pg_catalog.substring(old_scripts from 1 for 1);
+    SELECT into new_maj pg_catalog.substring(new_scripts from 1 for 1);
 
     -- 2.x to 3.x was upgrade-compatible, see
     -- https://trac.osgeo.org/postgis/ticket/4170#comment:1
@@ -739,11 +739,11 @@ CREATE TEMPORARY TABLE _postgis_upgrade_info AS WITH versions AS (
 ) SELECT
   upgraded as scripts_upgraded,
   installed as scripts_installed,
-  substring(upgraded from '([0-9]*)\.')::int * 100 +
-  substring(upgraded from '[0-9]*\.([0-9]*)\.')::int
+  pg_catalog.substring(upgraded from '([0-9]*)\.')::int * 100 +
+  pg_catalog.substring(upgraded from '[0-9]*\.([0-9]*)\.')::int
     as version_to_num,
-  substring(installed from '([0-9]*)\.')::int * 100 +
-  substring(installed from '[0-9]*\.([0-9]*)\.')::int
+  pg_catalog.substring(installed from '([0-9]*)\.')::int * 100 +
+  pg_catalog.substring(installed from '[0-9]*\.([0-9]*)\.')::int
     as version_from_num,
   installed ~ 'dev|alpha|beta'
     as version_from_isdev

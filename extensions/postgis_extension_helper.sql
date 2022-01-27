@@ -28,7 +28,7 @@ DECLARE
 	var_class text := '';
 	var_is_aggregate boolean := false;
 	var_sql_list text := '';
-	var_pgsql_version integer := current_setting('server_version_num');
+	var_pgsql_version integer := pg_catalog.current_setting('server_version_num');
 BEGIN
 		var_class := CASE WHEN lower(param_type) = 'function' OR lower(param_type) = 'aggregate' THEN 'pg_proc' ELSE '' END;
 		var_is_aggregate := CASE WHEN lower(param_type) = 'aggregate' THEN true ELSE false END;
@@ -85,7 +85,7 @@ CREATE OR REPLACE FUNCTION postgis_extension_drop_if_exists(param_extension text
   RETURNS boolean AS
 $$
 DECLARE
-	var_sql_ext text := 'ALTER EXTENSION ' || pg_catalog.quote_ident(param_extension) || ' ' || replace(param_statement, 'IF EXISTS', '');
+	var_sql_ext text := 'ALTER EXTENSION ' || pg_catalog.quote_ident(param_extension) || ' ' || pg_catalog.replace(param_statement, 'IF EXISTS', '');
 	var_result boolean := false;
 BEGIN
 	BEGIN

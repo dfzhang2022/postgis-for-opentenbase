@@ -363,7 +363,7 @@ CREATE OR REPLACE FUNCTION _rename_raster_tables()
 	BEGIN
 		SELECT count(*) INTO cnt
 		FROM pg_catalog.pg_class c
-		JOIN pg_namespace n
+		JOIN pg_catalog.pg_namespace n
 			ON c.relnamespace = n.oid
 		WHERE c.relname = 'raster_columns'
 			AND c.relkind = 'r'::char
@@ -375,7 +375,7 @@ CREATE OR REPLACE FUNCTION _rename_raster_tables()
 
 		SELECT count(*) INTO cnt
 		FROM pg_catalog.pg_class c
-		JOIN pg_namespace n
+		JOIN pg_catalog.pg_namespace n
 			ON c.relnamespace = n.oid
 		WHERE c.relname = 'raster_overviews'
 			AND c.relkind = 'r'::char
