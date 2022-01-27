@@ -244,8 +244,8 @@ BEGIN
     FOR rec IN
         SELECT e.extname
         FROM
-            pg_extension e,
-            pg_depend d
+            pg_catalog.pg_extension e,
+            pg_catalog.pg_depend d
         WHERE
             d.refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass AND
             d.refobjid = e.oid AND
@@ -629,7 +629,7 @@ BEGIN
 --                WHEN 'check_option=local' = ANY (c.reloptions) THEN 'WITH LOCAL CHECK OPTION'
 --                ELSE ''
 --            END::text AS check_option
---        FROM pg_class c
+--        FROM pg_catalog.pg_class c
 --        LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
 --        WHERE c.relkind = 'v'
 --        AND pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
