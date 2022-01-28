@@ -210,7 +210,7 @@ while(<INPUT>)
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 DECLARE
-    replaced_proc pg_catalog.regprocedure;
+    replaced_proc regprocedure;
     rec RECORD;
     new_view_def TEXT;
     sql TEXT;
@@ -244,8 +244,8 @@ BEGIN
     FOR rec IN
         SELECT e.extname
         FROM
-            pg_catalog.pg_extension e,
-            pg_catalog.pg_depend d
+            pg_extension e,
+            pg_depend d
         WHERE
             d.refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass AND
             d.refobjid = e.oid AND
@@ -368,7 +368,7 @@ EOF
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 BEGIN
-  IF pg_catalog.current_setting('server_version_num')::integer >= 120000
+  IF current_setting('server_version_num')::integer >= 120000
   THEN
     EXECUTE \$postgis_proc_upgrade_parsed_def\$ $pg12_def \$postgis_proc_upgrade_parsed_def\$;
   ELSIF $last_updated > version_from_num OR (
@@ -603,7 +603,7 @@ print <<"EOF";
 DO LANGUAGE 'plpgsql'
 \$postgis_proc_upgrade\$
 DECLARE
-    deprecated_functions pg_catalog.regprocedure[];
+    deprecated_functions regprocedure[];
     rec RECORD;
     sql TEXT;
     detail TEXT;
@@ -611,7 +611,7 @@ DECLARE
 BEGIN
     -- Fetch a list of deprecated functions
 
-    SELECT pg_catalog.array_agg(oid::regprocedure)
+    SELECT array_agg(oid::regprocedure)
     FROM pg_catalog.pg_proc
     WHERE proname = ANY ('${deprecated_names}'::name[])
     INTO deprecated_functions;
@@ -622,8 +622,8 @@ BEGIN
 --    FOR rec IN
 --        SELECT n.nspname AS schemaname,
 --            c.relname AS viewname,
---            pg_catalog.pg_get_userbyid(c.relowner) AS viewowner,
---            pg_catalog.pg_get_viewdef(c.oid) AS definition,
+--            pg_get_userbyid(c.relowner) AS viewowner,
+--            pg_get_viewdef(c.oid) AS definition,
 --            CASE
 --                WHEN 'check_option=cascaded' = ANY (c.reloptions) THEN 'WITH CASCADED CHECK OPTION'
 --                WHEN 'check_option=local' = ANY (c.reloptions) THEN 'WITH LOCAL CHECK OPTION'
@@ -632,12 +632,12 @@ BEGIN
 --        FROM pg_catalog.pg_class c
 --        LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
 --        WHERE c.relkind = 'v'
---        AND pg_catalog.pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
+--        AND pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
 --    LOOP
 --        sql := format('CREATE OR REPLACE VIEW %I.%I AS %s %s',
 --            rec.schemaname,
 --            rec.viewname,
---            regexp_replace(rec.definition, '_deprecated_by_postgis_[^(]*', '', 'g'),
+--            pg_catalog.regexp_replace(rec.definition, '_deprecated_by_postgis_[^(]*', '', 'g'),
 --            rec.check_option
 --        );
 --        RAISE NOTICE 'Updating view % to not use deprecated signatures', rec.viewname;
@@ -669,7 +669,7 @@ BEGIN
                 hint = format(
                     'Replace the view changing all occurrences of %s in its definition with %s',
                     rec.proc,
-                    regexp_replace(rec.proc::text, '_deprecated_by_postgis[^(]*', '')
+                    pg_catalog.regexp_replace(rec.proc::text, '_deprecated_by_postgis[^(]*', '')
                 );
             END IF;
             hint = hint || ' and upgrade again';
@@ -717,8 +717,8 @@ BEGIN
         SELECT into old_scripts MODULE_scripts_installed();
     END;
     SELECT into new_scripts 'NEWVERSION';
-    SELECT into old_maj pg_catalog.substring(old_scripts from 1 for 1);
-    SELECT into new_maj pg_catalog.substring(new_scripts from 1 for 1);
+    SELECT into old_maj pg_catalog.substring(old_scripts, 1, 1);
+    SELECT into new_maj pg_catalog.substring(new_scripts, 1, 1);
 
     -- 2.x to 3.x was upgrade-compatible, see
     -- https://trac.osgeo.org/postgis/ticket/4170#comment:1
@@ -739,11 +739,11 @@ CREATE TEMPORARY TABLE _postgis_upgrade_info AS WITH versions AS (
 ) SELECT
   upgraded as scripts_upgraded,
   installed as scripts_installed,
-  pg_catalog.substring(upgraded from '([0-9]*)\.')::int * 100 +
-  pg_catalog.substring(upgraded from '[0-9]*\.([0-9]*)\.')::int
+  pg_catalog.substring( upgraded , '([0-9]*)\.' )::int * 100 +
+  pg_catalog.substring( upgraded , '[0-9]*\.([0-9]*)\.' )::int
     as version_to_num,
-  pg_catalog.substring(installed from '([0-9]*)\.')::int * 100 +
-  pg_catalog.substring(installed from '[0-9]*\.([0-9]*)\.')::int
+  pg_catalog.substring( installed , '([0-9]*)\.' )::int * 100 +
+  pg_catalog.substring( installed , '[0-9]*\.([0-9]*)\.' )::int
     as version_from_num,
   installed ~ 'dev|alpha|beta'
     as version_from_isdev

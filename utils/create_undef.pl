@@ -261,7 +261,7 @@ DECLARE
 BEGIN
 	FOR rec IN
 		SELECT n.nspname, c.relname, a.attname, t.typname
-		FROM pg_attribute a
+		FROM pg_catalog.pg_attribute a
 		JOIN pg_catalog.pg_class c ON a.attrelid = c.oid
 		JOIN pg_catalog.pg_namespace n ON c.relnamespace = n.oid
 		JOIN pg_catalog.pg_type t ON a.atttypid = t.oid
@@ -366,7 +366,7 @@ BEGIN
 	IF var_search_path NOT LIKE '%' || pg_catalog.quote_ident(a_schema_name) || '%' THEN
 		var_result := a_schema_name || ' not in database search_path';
 	ELSE
-    var_search_path := btrim( regexp_replace(
+    var_search_path := pg_catalog.btrim( pg_catalog.regexp_replace(
         pg_catalog.replace(var_search_path, a_schema_name, ''), ', *,', ','),
         ', ');
     RAISE NOTICE 'New search_path: %', var_search_path;
