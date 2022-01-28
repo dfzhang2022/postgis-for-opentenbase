@@ -8298,7 +8298,7 @@ CREATE OR REPLACE VIEW raster_overviews AS
 		current_database() AS r_table_catalog,
 		split_part(split_part(s.consrc, '''::name', 1), '''', 2)::name AS r_table_schema,
 		split_part(split_part(s.consrc, '''::name', 2), '''', 2)::name AS r_table_name,
-		pg_catalog.split_part(split_part(s.consrc, '''::name', 3), '''', 2)::name AS r_raster_column,
+		pg_catalog.split_part(pg_catalog.split_part(s.consrc, '''::name', 3), '''', 2)::name AS r_raster_column,
 		trim(both from pg_catalog.split_part(s.consrc, ',', 2))::integer AS overview_factor
 	FROM
 		pg_class c,

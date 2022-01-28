@@ -253,7 +253,7 @@ BEGIN
             d.objid = replaced_proc::oid
     LOOP
         RAISE DEBUG 'Unpackaging ${renamed} from extension %', rec.extname;
-        sql := format('ALTER EXTENSION %I DROP FUNCTION ${renamed}(${args})', rec.extname);
+        sql := pg_catalog.format('ALTER EXTENSION %I DROP FUNCTION ${renamed}(${args})', rec.extname);
         EXECUTE sql;
     END LOOP;
 
@@ -622,8 +622,8 @@ BEGIN
 --    FOR rec IN
 --        SELECT n.nspname AS schemaname,
 --            c.relname AS viewname,
---            pg_get_userbyid(c.relowner) AS viewowner,
---            pg_get_viewdef(c.oid) AS definition,
+--            pg_catalog.pg_get_userbyid(c.relowner) AS viewowner,
+--            pg_catalog.pg_get_viewdef(c.oid) AS definition,
 --            CASE
 --                WHEN 'check_option=cascaded' = ANY (c.reloptions) THEN 'WITH CASCADED CHECK OPTION'
 --                WHEN 'check_option=local' = ANY (c.reloptions) THEN 'WITH LOCAL CHECK OPTION'
@@ -632,9 +632,9 @@ BEGIN
 --        FROM pg_catalog.pg_class c
 --        LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
 --        WHERE c.relkind = 'v'
---        AND pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
+--        AND pg_catalog.pg_get_viewdef(c.oid) ~ 'deprecated_by_postgis'
 --    LOOP
---        sql := format('CREATE OR REPLACE VIEW %I.%I AS %s %s',
+--        sql := pg_catalog.format('CREATE OR REPLACE VIEW %I.%I AS %s %s',
 --            rec.schemaname,
 --            rec.viewname,
 --            pg_catalog.regexp_replace(rec.definition, '_deprecated_by_postgis_[^(]*', '', 'g'),
@@ -647,17 +647,17 @@ BEGIN
 --        WHEN OTHERS THEN
 --                GET STACKED DIAGNOSTICS detail := PG_EXCEPTION_DETAIL;
 --                RAISE WARNING 'Could not rewrite view % using deprecated functions', rec.viewname
---                        USING DETAIL = format('%s: %s', SQLERRM, detail);
+--                        USING DETAIL = pg_catalog.format('%s: %s', SQLERRM, detail);
 --        END;
 --    END LOOP;
 
     -- Try to drop all deprecated functions, raising a warning
     -- for each one which cannot be drop
 
-    FOR rec IN SELECT unnest(deprecated_functions) as proc
+    FOR rec IN SELECT pg_catalog.unnest(deprecated_functions) as proc
     LOOP --{
 
-        sql := format('DROP FUNCTION %s', rec.proc);
+        sql := pg_catalog.format('DROP FUNCTION %s', rec.proc);
         --RAISE DEBUG 'SQL: %', sql;
         BEGIN
             EXECUTE sql;
@@ -666,7 +666,7 @@ BEGIN
             hint = 'Resolve the issue';
             GET STACKED DIAGNOSTICS detail := PG_EXCEPTION_DETAIL;
             IF detail LIKE '%view % depends%' THEN
-                hint = format(
+                hint = pg_catalog.format(
                     'Replace the view changing all occurrences of %s in its definition with %s',
                     rec.proc,
                     pg_catalog.regexp_replace(rec.proc::text, '_deprecated_by_postgis[^(]*', '')
