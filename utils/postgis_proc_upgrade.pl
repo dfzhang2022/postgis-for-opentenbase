@@ -249,8 +249,8 @@ BEGIN
         WHERE
             d.refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass AND
             d.refobjid = e.oid AND
-            d.classid = 'pg_proc'::regclass AND
-            d.objid = replaced_proc::oid
+            d.classid = 'pg_catalog.pg_proc'::pg_catalog.regclass AND
+            d.objid = replaced_proc::pg_catalog.oid
     LOOP
         RAISE DEBUG 'Unpackaging ${renamed} from extension %', rec.extname;
         sql := pg_catalog.format('ALTER EXTENSION %I DROP FUNCTION ${renamed}(${args})', rec.extname);
@@ -611,7 +611,7 @@ DECLARE
 BEGIN
     -- Fetch a list of deprecated functions
 
-    SELECT array_agg(oid::regprocedure)
+    SELECT array_agg(pg_catalog.oid::regprocedure)
     FROM pg_catalog.pg_proc
     WHERE proname = ANY ('${deprecated_names}'::name[])
     INTO deprecated_functions;
