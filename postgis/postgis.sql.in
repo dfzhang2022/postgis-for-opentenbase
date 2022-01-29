@@ -2090,7 +2090,7 @@ BEGIN
 
             IF use_typmod THEN
                 BEGIN
-                    EXECUTE 'ALTER TABLE ' || quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' ALTER COLUMN ' || quote_ident(gcs.attname) ||
+                    EXECUTE 'ALTER TABLE ' || pg_catalog.quote_ident(gcs.nspname) || '.' || quote_ident(gcs.relname) || ' ALTER COLUMN ' || quote_ident(gcs.attname) ||
                         ' TYPE geometry(' || postgis_type_name(gtype, gndims, true) || ', ' || gsrid::text  || ') ';
                     inserted := inserted + 1;
                 EXCEPTION
@@ -2821,7 +2821,7 @@ BEGIN
 	-- then do an upgrade to default version
 
 	FOR rec in SELECT  name, default_version, installed_version
-		FROM pg_available_extensions
+		FROM pg_catalog.pg_available_extensions
 		WHERE installed_version > '' AND name IN('postgis', 'postgis_sfcgal', 'postgis_tiger_geocoder', 'postgis_topology')
 		AND ( default_version <> installed_version  OR
 			( default_version = installed_version AND default_version ILIKE '%dev%' AND  installed_version ILIKE '%dev%'  )  ) LOOP
@@ -2829,12 +2829,12 @@ BEGIN
 		-- we need to upgrade to next so our installed is different from current
 		-- and then we can upgrade to default_version
 		IF rec.installed_version = rec.default_version THEN
-			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || quote_ident(rec.default_version || 'next')   || ';';
+			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || pg_catalog.quote_ident(rec.default_version || 'next')   || ';';
 			EXECUTE sql;
 			RAISE NOTICE '%', sql;
 		END IF;
 
-		sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || quote_ident(rec.default_version)   || ';';
+		sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' || pg_catalog.quote_ident(rec.default_version)   || ';';
 		EXECUTE sql;
 		RAISE NOTICE '%', sql;
 	END LOOP;
