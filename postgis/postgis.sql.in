@@ -2968,7 +2968,7 @@ BEGIN
 		ELSIF rec.default_version != rec.installed_version
 		THEN
 			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' ||
-						quote_ident(rec.default_version)   || ';';
+						pg_catalog.quote_ident(rec.default_version)   || ';';
 			RAISE NOTICE 'Updating extension % from % to %',
 				rec.name, rec.installed_version, rec.default_version;
 			RAISE DEBUG '%', sql;
@@ -2980,11 +2980,11 @@ BEGIN
 			RAISE NOTICE 'Updating extension % %',
 				rec.name, rec.installed_version;
 			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' ||
-						quote_ident(rec.default_version || 'next')   || ';';
+						pg_catalog.quote_ident(rec.default_version || 'next')   || ';';
 			RAISE DEBUG '%', sql;
 			EXECUTE sql;
 			sql = 'ALTER EXTENSION ' || rec.name || ' UPDATE TO ' ||
-						quote_ident(rec.default_version)   || ';';
+						pg_catalog.quote_ident(rec.default_version)   || ';';
 			RAISE DEBUG '%', sql;
 			EXECUTE sql;
 		END IF;

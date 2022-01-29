@@ -370,7 +370,7 @@ BEGIN
         pg_catalog.replace(var_search_path, a_schema_name, ''), ', *,', ','),
         ', ');
     RAISE NOTICE 'New search_path: %', var_search_path;
-		EXECUTE 'ALTER DATABASE ' || pg_catalog.quote_ident(current_database()) || ' SET search_path = ' || var_search_path;
+		EXECUTE 'ALTER DATABASE ' || pg_catalog.quote_ident(pg_catalog.current_database()) || ' SET search_path = ' || var_search_path;
 		var_result := a_schema_name || ' has been stripped off database search_path ';
 	END IF;
 
