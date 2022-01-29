@@ -311,7 +311,7 @@ BEGIN
 	IF var_search_path NOT LIKE '%' || quote_ident(a_schema_name) || '%' THEN
 		var_result := a_schema_name || ' not in database search_path';
 	ELSE
-    var_search_path := btrim( regexp_replace(
+    var_search_path := pg_catalog.btrim( pg_catalog.regexp_replace(
         replace(var_search_path, a_schema_name, ''), ', *,', ','),
         ', ');
     RAISE NOTICE 'New search_path: %', var_search_path;
