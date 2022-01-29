@@ -31,7 +31,7 @@ DECLARE
   rec RECORD;
 BEGIN
   FOR rec IN
-    SELECT n.nspname, p.proname FROM pg_proc p, pg_namespace n
+    SELECT n.nspname, p.proname FROM pg_catalog.pg_proc p, pg_catalog.pg_namespace n
     WHERE p.proname = 'postgis_version'
     AND p.pronamespace = n.oid
   LOOP
