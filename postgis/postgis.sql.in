@@ -3181,7 +3181,7 @@ BEGIN
 	END IF;
 
 	-- Check for the presence of deprecated functions
-	IF EXISTS ( SELECT oid FROM pg_catalog.pg_catalog.pg_proc WHERE proname LIKE '%_deprecated_by_postgis_%' )
+	IF EXISTS ( SELECT oid FROM pg_catalog.pg_proc WHERE proname LIKE '%_deprecated_by_postgis_%' )
 	THEN
 		fullver = fullver || ' (deprecated functions exist, upgrade is not complete)';
 	END IF;
