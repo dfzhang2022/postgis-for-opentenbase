@@ -1,7 +1,7 @@
 DO $unpackage_if_needed$
 BEGIN
 	IF EXISTS (
-		select t.typname from pg_depend d, pg_extension e, pg_catalog.pg_type t where
+		select t.typname from pg_catalog.pg_depend d, pg_extension e, pg_catalog.pg_type t where
 		e.extname = 'postgis' and d.refclassid =
 		'pg_catalog.pg_extension'::pg_catalog.regclass and d.refobjid = e.oid
 		and d.classid = 'pg_catalog.pg_type'::pg_catalog.regclass and d.objid = t.oid
