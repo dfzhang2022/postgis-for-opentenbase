@@ -67,7 +67,7 @@ BEGIN
   WHERE p.proname = 'postgis_lib_version'
   AND p.pronamespace = n.oid;
 
-	IF nsp != current_schema() THEN
+	IF nsp != pg_catalog.current_schema() THEN
     RAISE EXCEPTION
 			'PostGIS Raster must be in the same schema as PostGIS (%)',
 			nsp;
