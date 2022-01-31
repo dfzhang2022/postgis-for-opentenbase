@@ -611,7 +611,7 @@ DECLARE
 BEGIN
     -- Fetch a list of deprecated functions
 
-    SELECT array_agg(pg_catalog.oid::regprocedure)
+    SELECT array_agg(oid::pg_catalog.regprocedure)
     FROM pg_catalog.pg_proc
     WHERE proname = ANY ('${deprecated_names}'::name[])
     INTO deprecated_functions;
