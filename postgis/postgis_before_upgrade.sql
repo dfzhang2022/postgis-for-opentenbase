@@ -39,7 +39,7 @@ CREATE OR REPLACE FUNCTION _postgis_drop_function_if_needed(
 DECLARE
 	sql_drop text;
 	postgis_namespace OID;
-	matching_function REGPROCEDURE;
+	matching_function pg_catalog.REGPROCEDURE;
 BEGIN
 
 	-- Fetch install namespace for PostGIS
@@ -53,9 +53,9 @@ BEGIN
 	SELECT oid
 	FROM pg_catalog.pg_proc p
 	WHERE pronamespace = postgis_namespace
-	AND LOWER(p.proname) = LOWER(function_name)
+	AND pg_catalog.LOWER(p.proname) = pg_catalog.LOWER(function_name)
 	AND pg_catalog.pg_function_is_visible(p.oid)
-	AND LOWER(pg_catalog.pg_get_function_identity_arguments(p.oid)) ~ LOWER(function_arguments)
+	AND pg_catalog.LOWER(pg_catalog.pg_get_function_identity_arguments(p.oid)) ~ pg_catalog.LOWER(function_arguments)
 	INTO matching_function;
 
 	IF matching_function IS NOT NULL THEN

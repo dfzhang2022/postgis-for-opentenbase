@@ -2893,9 +2893,9 @@ $$ LANGUAGE 'sql' STABLE;
 CREATE OR REPLACE FUNCTION postgis_extensions_upgrade() RETURNS text
 AS $$
 DECLARE
-	rec record;
-	sql text;
-	var_schema text;
+	rec pg_catalog.record;
+	sql pg_catalog.text;
+	var_schema pg_catalog.text;
 BEGIN
 
 	FOR rec IN
@@ -3000,28 +3000,28 @@ $$ LANGUAGE plpgsql VOLATILE;
 CREATE OR REPLACE FUNCTION postgis_full_version() RETURNS text
 AS $$
 DECLARE
-	libver text;
-	librev text;
-	projver text;
-	geosver text;
-	sfcgalver text;
-	gdalver text := NULL;
-	libxmlver text;
-	liblwgeomver text;
-	dbproc text;
-	relproc text;
-	fullver text;
-	rast_lib_ver text := NULL;
-	rast_scr_ver text := NULL;
-	topo_scr_ver text := NULL;
-	json_lib_ver text;
-	protobuf_lib_ver text;
-	wagyu_lib_ver text;
-	sfcgal_lib_ver text;
-	sfcgal_scr_ver text;
-	pgsql_scr_ver text;
-	pgsql_ver text;
-	core_is_extension bool;
+	libver pg_catalog.text;
+	librev pg_catalog.text;
+	projver pg_catalog.text;
+	geosver pg_catalog.text;
+	sfcgalver pg_catalog.text;
+	gdalver pg_catalog.text := NULL;
+	libxmlver pg_catalog.text;
+	liblwgeomver pg_catalog.text;
+	dbproc pg_catalog.text;
+	relproc pg_catalog.text;
+	fullver pg_catalog.text;
+	rast_lib_ver pg_catalog.text := NULL;
+	rast_scr_ver pg_catalog.text := NULL;
+	topo_scr_ver pg_catalog.text := NULL;
+	json_lib_ver pg_catalog.text;
+	protobuf_lib_ver pg_catalog.text;
+	wagyu_lib_ver pg_catalog.text;
+	sfcgal_lib_ver pg_catalog.text;
+	sfcgal_scr_ver pg_catalog.text;
+	pgsql_scr_ver pg_catalog.text;
+	pgsql_ver pg_catalog.text;
+	core_is_extension pg_catalog.bool;
 BEGIN
 	SELECT @extschema@.postgis_lib_version() INTO libver;
 	SELECT @extschema@.postgis_proj_version() INTO projver;

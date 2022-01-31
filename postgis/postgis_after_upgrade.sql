@@ -231,7 +231,7 @@ DROP FUNCTION IF EXISTS st_distance_sphere(geometry, geometry);
 DROP FUNCTION IF EXISTS pgis_geometry_union_transfn(internal, geometry);
 
 -- #4394
-update pg_catalog.pg_operator set oprcanhash = true, oprcanmerge = true where oprname = '=' and oprcode = 'geometry_eq'::regproc;
+update pg_catalog.pg_operator set oprcanhash = true, oprcanmerge = true where oprname = '=' and oprcode = 'geometry_eq'::pg_catalog.regproc;
 
 
 DO language 'plpgsql'
