@@ -31,7 +31,7 @@ DECLARE
   rec RECORD;
 BEGIN
   FOR rec IN
-    SELECT n.nspname, p.proname FROM pg_proc p, pg_namespace n
+    SELECT n.nspname, p.proname FROM pg_catalog.pg_proc p, pg_catalog.pg_namespace n
     WHERE p.proname = 'postgis_version'
     AND p.pronamespace = n.oid
   LOOP
@@ -2779,7 +2779,7 @@ CREATE OR REPLACE FUNCTION _postgis_scripts_pgsql_version() RETURNS text
 CREATE OR REPLACE FUNCTION _postgis_pgsql_version() RETURNS text
 AS $$
 	SELECT CASE WHEN split_part(s,'.',1)::integer > 9 THEN split_part(s,'.',1) || '0' ELSE split_part(s,'.', 1) || split_part(s,'.', 2) END AS v
-	FROM substring(version(), 'PostgreSQL ([0-9\.]+)') AS s;
+	FROM pg_catalog.substring(version(), 'PostgreSQL ([0-9\.]+)') AS s;
 $$ LANGUAGE 'sql' STABLE;
 
 CREATE OR REPLACE FUNCTION postgis_full_version() RETURNS text

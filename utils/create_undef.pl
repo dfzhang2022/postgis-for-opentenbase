@@ -25,9 +25,9 @@ eval "exec perl -w $0 $@"
 # drops are in the following order:
 #	1. Indexing system stuff
 #	2. Meta datatables <not done>
-#	3. Aggregates 
+#	3. Aggregates
 #	3. Casts
-#	4. Operators 
+#	4. Operators
 #	5. Functions
 #	6. Types
 #	7. Tables
@@ -176,7 +176,7 @@ foreach my $agg (@aggs)
 	{
 		print "DROP AGGREGATE IF EXISTS $1 ($2);\n";
 	}
-	else 
+	else
 	{
 		die "Couldn't parse AGGREGATE line: $agg\n";
 	}
@@ -202,7 +202,7 @@ foreach my $op (@ops)
 	}
 }
 
-	
+
 print "-- Drop all casts.\n";
 foreach my $cast (@casts)
 {
@@ -231,7 +231,7 @@ foreach my $fn (@funcs)
 		if ( ! exists($type_funcs{$fn_nm}) )
 		{
 			print "DROP FUNCTION IF EXISTS $fn_nm ($fn_arg);\n";
-		} 
+		}
 		else
 		{
 			if ( $type_funcs{$fn_nm} =~ /(typmod|analyze)/ ) {
@@ -295,7 +295,7 @@ create schema undef_helper;
 --  StripFromSearchPath(schema_name)
 --
 -- Strips the specified schema from the database search path
--- 
+--
 -- This is a helper function for uninstall
 -- We may want to move this function as a generic helper
 --
@@ -308,17 +308,17 @@ DECLARE
 	var_search_path text;
 BEGIN
 	SELECT reset_val INTO var_search_path FROM pg_settings WHERE name = 'search_path';
-	IF var_search_path NOT LIKE '%' || quote_ident(a_schema_name) || '%' THEN
+	IF var_search_path NOT LIKE '%' || pg_catalog.quote_ident(a_schema_name) || '%' THEN
 		var_result := a_schema_name || ' not in database search_path';
 	ELSE
-    var_search_path := btrim( regexp_replace(
+    var_search_path := pg_catalog.btrim( pg_catalog.regexp_replace(
         replace(var_search_path, a_schema_name, ''), ', *,', ','),
         ', ');
     RAISE NOTICE 'New search_path: %', var_search_path;
-		EXECUTE 'ALTER DATABASE ' || quote_ident(current_database()) || ' SET search_path = ' || var_search_path;
+		EXECUTE 'ALTER DATABASE ' || pg_catalog.quote_ident(pg_catalog.current_database()) || ' SET search_path = ' || var_search_path;
 		var_result := a_schema_name || ' has been stripped off database search_path ';
 	END IF;
-  
+
   RETURN var_result;
 END
 $$
