@@ -307,7 +307,7 @@ DECLARE
 	var_result text;
 	var_search_path text;
 BEGIN
-	SELECT reset_val INTO var_search_path FROM pg_settings WHERE name = 'search_path';
+	SELECT reset_val INTO var_search_path FROM pg_catalog.pg_settings WHERE name = 'search_path';
 	IF var_search_path NOT LIKE '%' || pg_catalog.quote_ident(a_schema_name) || '%' THEN
 		var_result := a_schema_name || ' not in database search_path';
 	ELSE
