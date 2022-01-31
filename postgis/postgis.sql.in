@@ -2943,7 +2943,7 @@ BEGIN
 			THEN
 				-- Force install in same schema as postgis
 				SELECT INTO var_schema n.nspname
-				  FROM pg_namespace n, pg_proc p
+				  FROM pg_catalog.pg_namespace n, pg_catalog.pg_proc p
 				  WHERE p.proname = 'postgis_full_version'
 				    AND n.oid = p.pronamespace
 				  LIMIT 1;
@@ -3066,7 +3066,7 @@ BEGIN
 	END;
 
 	BEGIN
-		SELECT postgis_raster_scripts_installed() INTO rast_scr_ver;
+		SELECT @extschema@.postgis_raster_scripts_installed() INTO rast_scr_ver;
 	EXCEPTION
 		WHEN undefined_function THEN
 			RAISE DEBUG 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and rtpostgis.sql installed?';
@@ -3181,7 +3181,7 @@ BEGIN
 	END IF;
 
 	-- Check for the presence of deprecated functions
-	IF EXISTS ( SELECT oid FROM pg_catalog.pg_proc WHERE proname LIKE '%_deprecated_by_postgis_%' )
+	IF EXISTS ( SELECT oid FROM pg_catalog.pg_catalog.pg_proc WHERE proname LIKE '%_deprecated_by_postgis_%' )
 	THEN
 		fullver = fullver || ' (deprecated functions exist, upgrade is not complete)';
 	END IF;
