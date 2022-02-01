@@ -27,11 +27,11 @@ SET LOCAL client_min_messages TO warning;
 
 DO $$
 DECLARE
-	pgver text;
+	pgver pg_catalog.text;
 BEGIN
 	SELECT pg_catalog.substring(pg_catalog.version(), 'PostgreSQL ([0-9\.]+)') INTO pgver;
 
-	IF POSTGIS_PGSQL_VERSION::text != ( SELECT CASE
+	IF POSTGIS_PGSQL_VERSION::pg_catalog.text != ( SELECT CASE
 		WHEN pg_catalog.split_part(s,'.',1)::integer > 9
 			THEN pg_catalog.split_part(s,'.',1) || '0'
 		ELSE
