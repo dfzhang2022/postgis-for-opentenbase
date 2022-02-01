@@ -47,6 +47,8 @@ RUNTESTFLAGS=-v make installcheck
 CURRENTVERSION=`grep '^POSTGIS_' ${SRCDIR}/Version.config | cut -d= -f2 | paste -sd '.'`
 mkfifo check.fifo
 tee check.log < check.fifo &
+teepid=$!
 ${SRCDIR}/utils/check_all_upgrades.sh -s ${CURRENTVERSION}! > check.fifo
 echo "-- Summary of upgrade tests --"
 egrep '(PASS|FAIL|SKIP)' check.log
+kill $teepid
