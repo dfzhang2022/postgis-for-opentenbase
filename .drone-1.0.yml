@@ -7,7 +7,7 @@
 test-image: &test-image docker.osgeo.org/postgis/build-test:trisquel2
 clone: &clone
     image: plugins/git
-    depth: 20
+    depth: 1
     recursive: false
 
 kind: pipeline
@@ -15,42 +15,9 @@ name: build
 clone: *clone
 steps:
 
-  - name: autogen
-    image: *test-image
-    pull: always
-    commands:
-      - ./autogen.sh
-    depends_on: [ clone ]
-
   - name: build-9.6
     image: *test-image
     pull: never
     commands:
       - PGVER=9.6 sh ci/dronie/postgis_regress.sh
-    depends_on: [ autogen ]
-
-  - name: build-10
-    image: *test-image
-    pull: never
-    commands:
-      - PGVER=10 sh ci/dronie/postgis_regress.sh
-    depends_on: [ autogen ]
-
-  - name: build-11
-    image: *test-image
-    pull: never
-    commands:
-      - PGVER=11 sh ci/dronie/postgis_regress.sh
-    depends_on: [ autogen ]
-
-  - name: build-docs
-    image: *test-image
-    pull: never
-    commands:
-      - mkdir -p build-docs && cd build-docs
-      - ../configure
-      - make docs
-      - make -C doc check
-      - make docs-localized
-      - make -C doc/ check-localized
-    depends_on: [ autogen ]
+    depends_on: [ clone ]
