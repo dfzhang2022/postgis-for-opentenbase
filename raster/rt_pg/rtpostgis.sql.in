@@ -67,7 +67,7 @@ BEGIN
   WHERE p.proname = 'postgis_lib_version'
   AND p.pronamespace = n.oid;
 
-	IF nsp != current_schema() THEN
+	IF nsp != pg_catalog.current_schema() THEN
     RAISE EXCEPTION
 			'PostGIS Raster must be in the same schema as PostGIS (%)',
 			nsp;
@@ -7216,7 +7216,7 @@ CREATE OR REPLACE FUNCTION _raster_constraint_info_srid(rastschema name, rasttab
 			split_part(s.consrc, ' = ', 2),
 			'[\(\)]', '', 'g'
 		)::integer
-	FROM pg_class c, pg_namespace n, pg_attribute a
+	FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n, pg_catalog.pg_attribute a
 		, (SELECT connamespace, conrelid, conkey, pg_get_constraintdef(oid) As consrc
 		    FROM pg_constraint) AS s
 	WHERE n.nspname = $1
