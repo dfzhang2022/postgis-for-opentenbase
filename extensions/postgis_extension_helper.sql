@@ -43,7 +43,7 @@ BEGIN
 					LEFT JOIN pg_catalog.pg_type AS typ ON typ.oid = d.objid
 					LEFT JOIN pg_catalog.pg_class As cd ON cd.oid = d.objid
 					LEFT JOIN pg_operator As op ON op.oid = d.objid
-					LEFT JOIN pg_cast AS ca ON ca.oid = d.objid
+					LEFT JOIN pg_catalog.pg_cast AS ca ON ca.oid = d.objid
 					LEFT JOIN pg_catalog.pg_type AS cs ON ca.castsource = cs.oid
 					LEFT JOIN pg_catalog.pg_type AS ct ON ca.casttarget = ct.oid
 					LEFT JOIN pg_opclass As oc ON oc.oid = d.objid
@@ -59,7 +59,7 @@ BEGIN
 					LEFT JOIN pg_catalog.pg_type AS typ ON typ.oid = d.objid
 					LEFT JOIN pg_catalog.pg_class As cd ON cd.oid = d.objid
 					LEFT JOIN pg_operator As op ON op.oid = d.objid
-					LEFT JOIN pg_cast AS ca ON ca.oid = d.objid
+					LEFT JOIN pg_catalog.pg_cast AS ca ON ca.oid = d.objid
 					LEFT JOIN pg_catalog.pg_type AS cs ON ca.castsource = cs.oid
 					LEFT JOIN pg_catalog.pg_type AS ct ON ca.casttarget = ct.oid
 					LEFT JOIN pg_opclass As oc ON oc.oid = d.objid
