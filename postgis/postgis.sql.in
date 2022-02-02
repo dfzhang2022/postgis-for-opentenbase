@@ -52,7 +52,7 @@ BEGIN
   -- a WARNING if in a previous version (only up to minor version checked)
   --
     curver_text := POSTGIS_LIB_VERSION;
-    IF split_part(curver_text,'.',1)::int > split_part(version,'.',1)::int OR
+    IF pg_catalog.split_part(curver_text,'.',1)::int > split_part(version,'.',1)::int OR
        ( split_part(curver_text,'.',1) = split_part(version,'.',1) AND
          split_part(curver_text,'.',2) != split_part(version,'.',2) )
     THEN
@@ -2915,7 +2915,7 @@ BEGIN
 	END;
 
 	BEGIN
-		SELECT postgis_raster_scripts_installed() INTO rast_scr_ver;
+		SELECT @extschema@.postgis_raster_scripts_installed() INTO rast_scr_ver;
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_scr_ver := NULL;
