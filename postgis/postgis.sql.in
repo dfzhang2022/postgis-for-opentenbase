@@ -2591,7 +2591,7 @@ BEGIN
         -- We are using postgis_type_name to lookup the new name
         -- (in case Paul changes his mind and flips geometry_columns to return old upper case name)
         EXECUTE 'ALTER TABLE ' || quote_ident(real_schema) || '.' || quote_ident(table_name) ||
-        ' ALTER COLUMN ' || quote_ident(column_name) || ' TYPE  geometry(' || @extschema@.postgis_type_name(myrec.type, myrec.coord_dimension, true) || ', ' || new_srid::text || ') USING @extschema@.ST_SetSRID(' || quote_ident(column_name) || ',' || new_srid::text || ');' ;
+        ' ALTER COLUMN ' || pg_catalog.quote_ident(column_name) || ' TYPE  geometry(' || @extschema@.postgis_type_name(myrec.type, myrec.coord_dimension, true) || ', ' || new_srid::text || ') USING @extschema@.ST_SetSRID(' || pg_catalog.quote_ident(column_name) || ',' || new_srid::text || ');' ;
     END IF;
 
 	RETURN real_schema || '.' || table_name || '.' || column_name ||' SRID changed to ' || new_srid::text;
@@ -2788,7 +2788,7 @@ CREATE OR REPLACE FUNCTION _postgis_scripts_pgsql_version() RETURNS text
 
 CREATE OR REPLACE FUNCTION _postgis_pgsql_version() RETURNS text
 AS $$
-	SELECT CASE WHEN split_part(s,'.',1)::integer > 9 THEN split_part(s,'.',1) || '0' ELSE split_part(s,'.', 1) || split_part(s,'.', 2) END AS v
+	SELECT CASE WHEN pg_catalog.split_part(s,'.',1)::integer > 9 THEN pg_catalog.split_part(s,'.',1) || '0' ELSE pg_catalog.split_part(s,'.', 1) || pg_catalog.split_part(s,'.', 2) END AS v
 	FROM pg_catalog.substring(pg_catalog.version(), 'PostgreSQL ([0-9\.]+)') AS s;
 $$ LANGUAGE 'sql' STABLE;
 
