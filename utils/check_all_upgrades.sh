@@ -1,6 +1,14 @@
 #!/bin/sh
 
 EXIT_ON_FIRST_FAILURE=0
+BUILDDIR=$PWD
+EXTDIR=`pg_config --sharedir`/extension/
+CTBDIR=`pg_config --sharedir`/contrib/
+TMPDIR=/tmp/check_all_upgrades-$$-tmp
+PGVER=`pg_config --version | awk '{print $2}'`
+PGVER_MAJOR=$(echo "${PGVER}" | sed 's/\.[^\.]*//')
+echo "INFO: PostgreSQL version: ${PGVER} [${PGVER_MAJOR}]"
+
 
 if test "$1" = "-s"; then
   EXIT_ON_FIRST_FAILURE=1
@@ -14,14 +22,13 @@ if test -z "$1"; then
   exit 1
 fi
 
-to_version_param="$1"
-to_version=$to_version_param
-if expr $to_version : ':auto' >/dev/null; then
-  export PGDATABASE=template1
-  to_version=`psql -XAtc "select default_version from pg_available_extensions where name = 'postgis'"` || exit 1
-elif expr $to_version : '.*!$' >/dev/null; then
-  to_version=$(echo "${to_version}" | sed 's/\!$//')
-fi
+mkdir -p ${TMPDIR}
+cleanup()
+{
+  rm -rf ${TMPDIR}
+}
+
+trap 'cleanup' 0
 
 
 # Return -1, 1 or 0 if the first version
@@ -53,33 +60,38 @@ semver_compare()
   echo 0; return;
 }
 
-
-BUILDDIR=$PWD
-EXTDIR=`pg_config --sharedir`/extension/
-CTBDIR=`pg_config --sharedir`/contrib/
-PGVER=`pg_config --version | awk '{print $2}'`
-
-echo "PostgreSQL version: ${PGVER}"
-
-cd $EXTDIR
-failures=0
-
-INSTALLED_EXTENSIONS=postgis
-if test -f postgis_topology--${to_version}.sql; then
-  INSTALLED_EXTENSIONS="$INSTALLED_EXTENSIONS postgis_topology"
-fi
-if test -f postgis_raster--${to_version}.sql; then
-  INSTALLED_EXTENSIONS="$INSTALLED_EXTENSIONS postgis_raster"
-fi
-
-echo "INFO: installed extensions: $INSTALLED_EXTENSIONS"
-
 failed()
 {
   failures=$((failures+1))
   if test $EXIT_ON_FIRST_FAILURE != 0 -a $failures != 0; then
     exit $failures
   fi
+}
+
+minimum_postgis_version_for_postgresql_major_version()
+{
+  pgver=$1
+  supportfile=${TMPDIR}/minimum_supported_version_for_postgresql
+
+  if ! test -e ${supportfile}; then
+    # Source: https://trac.osgeo.org/postgis/wiki/UsersWikiPostgreSQLPostGIS
+    cat > ${supportfile} <<EOF
+9.6:2.3
+10:2.4
+11:2.5
+12:2.5
+13:3.0
+14:3.1
+EOF
+  fi
+
+  # Drop patch-level number from PostgreSQL version
+  minsupported=`grep ^${pgver}: ${supportfile} | cut -d: -f2`
+  test -n "${minsupported}" || {
+    echo "Cannot detemine minimum supported PostGIS version for PostgreSQL major version ${pgver}" >&2
+    exit 1
+  }
+  echo "${minsupported}"
 }
 
 compatible_upgrade()
@@ -99,21 +111,41 @@ compatible_upgrade()
     echo "SKIP: $label ($to is not newer than $from)"
     return 1
   fi
-  cmp=`semver_compare "${PGVER}" "11"`
-  if test $cmp -ge 0; then
-    #
-    # If PostgreSQL version is 11 or newer
-    # we require PostgIS 3.0 or newer
-    #
-    cmp=`semver_compare "3.0" "${from}"`
-    if test $cmp -gt 0; then
-      echo "SKIP: $label ($from older than 3.0, which is required to run in PostgreSQL ${PGVER})"
-      return 1
-    fi
+  cmp=`semver_compare "${PGIS_MIN_VERSION}" "${from}"`
+  if test $cmp -gt 0; then
+    echo "SKIP: $label ($from older than ${PGIS_MIN_VERSION}, which is required to run in PostgreSQL ${PGVER})"
+    return 1
   fi
 
   return 0
 }
+
+to_version_param="$1"
+to_version=$to_version_param
+if expr $to_version : ':auto' >/dev/null; then
+  export PGDATABASE=template1
+  to_version=`psql -XAtc "select default_version from pg_available_extensions where name = 'postgis'"` || exit 1
+elif expr $to_version : '.*!$' >/dev/null; then
+  to_version=$(echo "${to_version}" | sed 's/\!$//')
+fi
+
+
+PGIS_MIN_VERSION=`minimum_postgis_version_for_postgresql_major_version "${PGVER_MAJOR}"`
+echo "INFO: minimum PostGIS version supporting PostgreSQL ${PGVER_MAJOR}: ${PGIS_MIN_VERSION}"
+
+
+cd $EXTDIR
+failures=0
+
+INSTALLED_EXTENSIONS=postgis
+if test -f postgis_topology--${to_version}.sql; then
+  INSTALLED_EXTENSIONS="$INSTALLED_EXTENSIONS postgis_topology"
+fi
+if test -f postgis_raster--${to_version}.sql; then
+  INSTALLED_EXTENSIONS="$INSTALLED_EXTENSIONS postgis_raster"
+fi
+
+echo "INFO: installed extensions: $INSTALLED_EXTENSIONS"
 
 for EXT in ${INSTALLED_EXTENSIONS}; do
   if test "${EXT}" = "postgis"; then
