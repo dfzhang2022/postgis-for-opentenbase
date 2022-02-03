@@ -30,7 +30,7 @@ DECLARE
 	var_sql_list text := '';
 	var_pgsql_version integer := current_setting('server_version_num');
 BEGIN
-		var_class := CASE WHEN pg_catalog.lower(param_type) = 'function' OR pg_catalog.lower(param_type) = 'aggregate' THEN 'pg_proc' ELSE '' END;
+		var_class := CASE WHEN pg_catalog.lower(param_type) = 'function' OR pg_catalog.lower(param_type) = 'aggregate' THEN 'pg_catalog.pg_proc' ELSE '' END;
 		var_is_aggregate := CASE WHEN pg_catalog.lower(param_type) = 'aggregate' THEN true ELSE false END;
 
 		IF var_pgsql_version < 110000 THEN

@@ -2809,7 +2809,7 @@ CREATE OR REPLACE FUNCTION _postgis_scripts_pgsql_version() RETURNS text
 CREATE OR REPLACE FUNCTION _postgis_pgsql_version() RETURNS text
 AS $$
 	SELECT CASE WHEN pg_catalog.split_part(s,'.',1)::integer > 9 THEN pg_catalog.split_part(s,'.',1) || '0' ELSE pg_catalog.split_part(s,'.', 1) || pg_catalog.split_part(s,'.', 2) END AS v
-	FROM pg_catalog.substring(version(), 'PostgreSQL ([0-9\.]+)') AS s;
+	FROM pg_catalog.substring(pg_catalog.version(), 'PostgreSQL ([0-9\.]+)') AS s;
 $$ LANGUAGE 'sql' STABLE;
 
 -- Availability: 2.5.0

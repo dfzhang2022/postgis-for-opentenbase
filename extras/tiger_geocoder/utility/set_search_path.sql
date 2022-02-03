@@ -13,7 +13,7 @@ DECLARE
 	var_result text;
 	var_cur_search_path text;
 BEGIN
-	SELECT reset_val INTO var_cur_search_path FROM pg_settings WHERE name = 'search_path';
+	SELECT reset_val INTO var_cur_search_path FROM pg_catalog.pg_settings WHERE name = 'search_path';
 
 	EXECUTE 'SET search_path = ' || pg_catalog.quote_ident(a_schema_name) || ', ' || var_cur_search_path;
 	var_result := a_schema_name || ' has been made primary for install ';
