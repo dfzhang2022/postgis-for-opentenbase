@@ -84,7 +84,7 @@ failed()
 
 compatible_upgrade()
 {
-  upgrade_path=$1
+  label=$1
   from=$2
   to=$3
 
@@ -92,17 +92,22 @@ compatible_upgrade()
   #echo "XXXX compatible_upgrade: from=${from}"
   #echo "XXXX compatible_upgrade: to=${to}"
 
-  # only consider versions older than ${to_version_param}
+  # only consider versions older than ${to}
   cmp=`semver_compare "${from}" "${to}"`
+  #echo "INFO: semver_compare ${from} ${to} returned $cmp"
   if test $cmp -ge 0; then
-    echo "SKIP: upgrade $upgrade_path ($to is not newer than $from)"
+    echo "SKIP: $label ($to is not newer than $from)"
     return 1
   fi
   cmp=`semver_compare "${PGVER}" "11"`
   if test $cmp -ge 0; then
+    #
+    # If PostgreSQL version is 11 or newer
+    # we require PostgIS 3.0 or newer
+    #
     cmp=`semver_compare "3.0" "${from}"`
     if test $cmp -gt 0; then
-      echo "SKIP: upgrade $UPGRADE_PATH ($from older than 3.0, which is required to run in PostgreSQL ${PGVER})"
+      echo "SKIP: $label ($from older than 3.0, which is required to run in PostgreSQL ${PGVER})"
       return 1
     fi
   fi
@@ -128,45 +133,45 @@ for EXT in ${INSTALLED_EXTENSIONS}; do
   for fname in $files; do
     from_version="$fname"
     UPGRADE_PATH="${from_version}--${to_version_param}"
-    UPGRADE_FILE="${EXT}--${from_version}--${to_version}.sql"
-    compatible_upgrade ${UPGRADE_PATH} ${from_version} ${to_version} || continue
-    if test -e ${UPGRADE_FILE}; then
-      if expr $to_version_param : ':auto' >/dev/null; then
-        echo "Testing ${EXT} upgrade $UPGRADE_PATH ($to_version)"
-      else
-        echo "Testing ${EXT} upgrade $UPGRADE_PATH"
-      fi
-      RUNTESTFLAGS="-v --extension --upgrade-path=${UPGRADE_PATH} ${USERTESTFLAGS}" \
-      make -C ${REGDIR} check && {
-        echo "PASS: ${EXT} upgrade $UPGRADE_PATH"
-      } || {
-        echo "FAIL: ${EXT} upgrade $UPGRADE_PATH"
-        failed
-      }
-    else
-      echo "SKIP: ${EXT} upgrade $UPGRADE_FILE is missing"
+    test_label="${EXT} extension upgrade ${UPGRADE_PATH}"
+    if expr $to_version_param : ':auto' >/dev/null; then
+      test_label="${test_label} ($to_version)"
     fi
+    compatible_upgrade "${test_label}" ${from_version} ${to_version} || continue
+    UPGRADE_FILE="${EXT}--${from_version}--${to_version}.sql"
+    if ! test -e ${UPGRADE_FILE}; then
+      echo "SKIP: ${test_label} ($UPGRADE_FILE is missing)"
+      continue
+    fi
+    echo "Testing ${test_label}"
+    RUNTESTFLAGS="-v --extension --upgrade-path=${UPGRADE_PATH} ${USERTESTFLAGS}" \
+    make -C ${REGDIR} check && {
+      echo "PASS: ${test_label}"
+    } || {
+      echo "FAIL: ${test_label}"
+      failed
+    }
   done
 
   # Check unpackaged->extension upgrades
   for majmin in `'ls' -d ${CTBDIR}/postgis-* | sed 's/.*postgis-//'`; do
     UPGRADE_PATH="unpackaged${majmin}--${to_version_param}"
+    test_label="${EXT} extension upgrade ${UPGRADE_PATH}"
+    if expr $to_version_param : ':auto' >/dev/null; then
+      test_label="${test_label} ($to_version)"
+    fi
+    compatible_upgrade "${test_label}" ${majmin} ${to_version} || continue
     UPGRADE_FILE="${EXT}--unpackaged--${to_version}.sql"
     if ! test -e ${UPGRADE_FILE}; then
-      echo "SKIP: ${EXT} upgrade $UPGRADE_FILE is missing"
+      echo "SKIP: ${test_label} ($UPGRADE_FILE is missing)"
       continue
     fi
-    compatible_upgrade ${UPGRADE_PATH} ${majmin} ${to_version} || continue
-    if expr $to_version_param : ':auto' >/dev/null; then
-      echo "Testing ${EXT} upgrade $UPGRADE_PATH ($to_version)"
-    else
-      echo "Testing ${EXT} upgrade $UPGRADE_PATH"
-    fi
+    echo "Testing ${test_label}"
     RUNTESTFLAGS="-v --extension --upgrade-path=${UPGRADE_PATH} ${USERTESTFLAGS}" \
     make -C ${REGDIR} check && {
-      echo "PASS: ${EXT} upgrade $UPGRADE_PATH"
+      echo "PASS: ${test_label}"
     } || {
-      echo "FAIL: ${EXT} upgrade $UPGRADE_PATH"
+      echo "FAIL: ${test_label}"
       failed
     }
   done
