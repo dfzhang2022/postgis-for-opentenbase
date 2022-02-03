@@ -101,8 +101,8 @@ compatible_upgrade()
   cmp=`semver_compare "${PGVER}" "11"`
   if test $cmp -ge 0; then
     cmp=`semver_compare "3.0" "${from}"`
-    if test $cmp -ge 0; then
-      echo "SKIP: upgrade $UPGRADE_PATH ($from < 3.0 which is required to run in PostgreSQL ${PGVER})"
+    if test $cmp -gt 0; then
+      echo "SKIP: upgrade $UPGRADE_PATH ($from older than 3.0, which is required to run in PostgreSQL ${PGVER})"
       return 1
     fi
   fi
