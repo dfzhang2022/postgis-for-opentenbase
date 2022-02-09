@@ -88,9 +88,7 @@ static inline uint32_t p_int(int32_t value)
 	return (value << 1) ^ (value >> 31);
 }
 
-static uint32_t encode_ptarray(__attribute__((__unused__)) mvt_agg_context *ctx,
-			       enum mvt_type type, POINTARRAY *pa, uint32_t *buffer,
-			       int32_t *px, int32_t *py)
+static uint32_t encode_ptarray(enum mvt_type type, POINTARRAY *pa, uint32_t *buffer, int32_t *px, int32_t *py)
 {
 	uint32_t offset = 0;
 	uint32_t i, c = 0;
@@ -139,12 +137,10 @@ static uint32_t encode_ptarray(__attribute__((__unused__)) mvt_agg_context *ctx,
 	return offset;
 }
 
-static uint32_t encode_ptarray_initial(mvt_agg_context *ctx,
-				       enum mvt_type type,
-				       POINTARRAY *pa, uint32_t *buffer)
+static uint32_t encode_ptarray_initial(enum mvt_type type, POINTARRAY *pa, uint32_t *buffer)
 {
 	int32_t px = 0, py = 0;
-	return encode_ptarray(ctx, type, pa, buffer, &px, &py);
+	return encode_ptarray(type, pa, buffer, &px, &py);
 }
 
 static void encode_point(mvt_agg_context *ctx, LWPOINT *point)
@@ -153,7 +149,7 @@ static void encode_point(mvt_agg_context *ctx, LWPOINT *point)
 	feature->type = VECTOR_TILE__TILE__GEOM_TYPE__POINT;
 	feature->n_geometry = 3;
 	feature->geometry = palloc(sizeof(*feature->geometry) * 3);
-	encode_ptarray_initial(ctx, MVT_POINT, point->point, feature->geometry);
+	encode_ptarray_initial(MVT_POINT, point->point, feature->geometry);
 }
 
 static void encode_mpoint(mvt_agg_context *ctx, LWMPOINT *mpoint)
@@ -165,7 +161,7 @@ static void encode_mpoint(mvt_agg_context *ctx, LWMPOINT *mpoint)
 	feature->type = VECTOR_TILE__TILE__GEOM_TYPE__POINT;
 	c = 1 + lwline->points->npoints * 2;
 	feature->geometry = palloc(sizeof(*feature->geometry) * c);
-	feature->n_geometry = encode_ptarray_initial(ctx, MVT_POINT,
+	feature->n_geometry = encode_ptarray_initial(MVT_POINT,
 		lwline->points, feature->geometry);
 }
 
@@ -176,7 +172,7 @@ static void encode_line(mvt_agg_context *ctx, LWLINE *lwline)
 	feature->type = VECTOR_TILE__TILE__GEOM_TYPE__LINESTRING;
 	c = 2 + lwline->points->npoints * 2;
 	feature->geometry = palloc(sizeof(*feature->geometry) * c);
-	feature->n_geometry = encode_ptarray_initial(ctx, MVT_LINE,
+	feature->n_geometry = encode_ptarray_initial(MVT_LINE,
 		lwline->points, feature->geometry);
 }
 
@@ -191,7 +187,7 @@ static void encode_mline(mvt_agg_context *ctx, LWMLINE *lwmline)
 		c += 2 + lwmline->geoms[i]->points->npoints * 2;
 	feature->geometry = palloc(sizeof(*feature->geometry) * c);
 	for (i = 0; i < lwmline->ngeoms; i++)
-		offset += encode_ptarray(ctx, MVT_LINE,
+		offset += encode_ptarray(MVT_LINE,
 			lwmline->geoms[i]->points,
 			feature->geometry + offset, &px, &py);
 	feature->n_geometry = offset;
@@ -208,7 +204,7 @@ static void encode_poly(mvt_agg_context *ctx, LWPOLY *lwpoly)
 		c += 3 + ((lwpoly->rings[i]->npoints - 1) * 2);
 	feature->geometry = palloc(sizeof(*feature->geometry) * c);
 	for (i = 0; i < lwpoly->nrings; i++)
-		offset += encode_ptarray(ctx, MVT_RING,
+		offset += encode_ptarray(MVT_RING,
 			lwpoly->rings[i],
 			feature->geometry + offset, &px, &py);
 	feature->n_geometry = offset;
@@ -228,7 +224,7 @@ static void encode_mpoly(mvt_agg_context *ctx, LWMPOLY *lwmpoly)
 	feature->geometry = palloc(sizeof(*feature->geometry) * c);
 	for (i = 0; i < lwmpoly->ngeoms; i++)
 		for (j = 0; poly = lwmpoly->geoms[i], j < poly->nrings; j++)
-			offset += encode_ptarray(ctx, MVT_RING,
+			offset += encode_ptarray(MVT_RING,
 				poly->rings[j],	feature->geometry + offset,
 				&px, &py);
 	feature->n_geometry = offset;
