@@ -992,7 +992,7 @@ void mvt_agg_init_context(mvt_agg_context *ctx)
 }
 
 /**
- * Aggregation step.
+ * Aggregation step. Parse a row, turn it into a feature, and add it to the layer.
  *
  * Expands features array if needed by a factor of 2.
  * Allocates a new feature, increment feature counter and
@@ -1006,9 +1006,28 @@ void mvt_agg_transfn(mvt_agg_context *ctx)
 	LWGEOM *lwgeom;
 	VectorTile__Tile__Feature *feature;
 	VectorTile__Tile__Layer *layer = ctx->layer;
-/*	VectorTile__Tile__Feature **features = layer->features; */
 	POSTGIS_DEBUG(2, "mvt_agg_transfn called");
 
+	/* geom_index is the cached index of the geometry. if missing, it needs to be initialized */
+	if (ctx->geom_index == UINT32_MAX)
+		parse_column_keys(ctx);
+
+	/* Get the geometry column */
+	datum = GetAttributeByNum(ctx->row, ctx->geom_index + 1, &isnull);
+	if (isnull) /* Skip rows that have null geometry */
+		return;
+
+	/* Allocate a new feature object */
+	feature = palloc(sizeof(*feature));
+	vector_tile__tile__feature__init(feature);
+	ctx->feature = feature;
+
+	/* Deserialize the geometry */
+	gs = (GSERIALIZED *) PG_DETOAST_DATUM(datum);
+	lwgeom = lwgeom_from_gserialized(gs);
+
+	/* Add the feature to the result */
+	POSTGIS_DEBUGF(3, "mvt_agg_transfn encoded feature count: %zd", layer->n_features);
 	if (layer->n_features >= ctx->features_capacity)
 	{
 		size_t new_capacity = ctx->features_capacity * 2;
@@ -1017,29 +1036,6 @@ void mvt_agg_transfn(mvt_agg_context *ctx)
 		ctx->features_capacity = new_capacity;
 		POSTGIS_DEBUGF(3, "mvt_agg_transfn new_capacity: %zd", new_capacity);
 	}
-
-	if (ctx->geom_index == UINT32_MAX)
-		parse_column_keys(ctx);
-
-	datum = GetAttributeByNum(ctx->row, ctx->geom_index + 1, &isnull);
-	POSTGIS_DEBUGF(3, "mvt_agg_transfn ctx->geom_index: %d", ctx->geom_index);
-	POSTGIS_DEBUGF(3, "mvt_agg_transfn isnull: %u", isnull);
-	POSTGIS_DEBUGF(3, "mvt_agg_transfn datum: %lu", datum);
-	if (isnull) /* Skip rows that have null geometry */
-	{
-		POSTGIS_DEBUG(3, "mvt_agg_transfn got null geom");
-		return;
-	}
-
-	feature = palloc(sizeof(*feature));
-	vector_tile__tile__feature__init(feature);
-
-	ctx->feature = feature;
-
-	gs = (GSERIALIZED *) PG_DETOAST_DATUM(datum);
-	lwgeom = lwgeom_from_gserialized(gs);
-
-	POSTGIS_DEBUGF(3, "mvt_agg_transfn encoded feature count: %zd", layer->n_features);
 	layer->features[layer->n_features++] = feature;
 
 	encode_geometry(ctx, lwgeom);
