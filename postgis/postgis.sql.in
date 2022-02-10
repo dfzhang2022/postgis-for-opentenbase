@@ -27,7 +27,7 @@ SET LOCAL client_min_messages TO warning;
 
 DO $$
 DECLARE
-	pgver pg_catalog.text;
+	pgver text;
 BEGIN
 	SELECT pg_catalog.substring(pg_catalog.version(), 'PostgreSQL ([0-9\.]+)') INTO pgver;
 
