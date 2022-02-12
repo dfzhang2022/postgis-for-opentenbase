@@ -1,5 +1,5 @@
-PostGIS 3.2.1dev
-2022/02/DD
+PostGIS 3.2.1
+2022/02/12
 
 * Bug Fixes *
   - #5033, #5035, allow upgrades in presence of views using deprecated
