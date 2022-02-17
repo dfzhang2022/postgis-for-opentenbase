@@ -26,24 +26,30 @@ steps:
     image: *test-image
     pull: never
     commands:
-      - PGVER=11 sh ci/dronie/postgis_regress.sh
+      - false
     depends_on: [ autogen ]
 
   - name: build-12
     image: *test-image
     pull: never
     commands:
-      - PGVER=12 sh ci/dronie/postgis_regress.sh
+      - true
     depends_on: [ autogen ]
 
   - name: build-docs
     image: *test-image
     pull: never
     commands:
-      - mkdir -p build-docs && cd build-docs
-      - ../configure
-      - make docs
-      - make -C doc check
-      - make docs-localized
-      - make -C doc/ check-localized
+      - true
     depends_on: [ autogen ]
+
+  - name: notify-irc
+    image: plugins/irc
+    settings:
+      nick: dronie
+      channel: '#postgis-test'
+      host: irc.libera.chat
+    failure: ignore
+    when:
+      status:
+      - failure
