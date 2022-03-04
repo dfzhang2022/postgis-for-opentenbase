@@ -21,6 +21,7 @@
  * Copyright 2012-2020 Oslandia <infos@oslandia.com>
  *
  **********************************************************************/
+#include "SFCGAL/capi/sfcgal_c.h"
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"
@@ -656,3 +657,62 @@ Datum sfcgal_convexhull3D(PG_FUNCTION_ARGS)
 
 	PG_RETURN_POINTER(output);
 }
+
+#if POSTGIS_SFCGAL_VERSION >= 10401
+PG_FUNCTION_INFO_V1(sfcgal_alphashapes);
+Datum sfcgal_alphashapes(PG_FUNCTION_ARGS)
+{
+	GSERIALIZED *input, *output;
+	sfcgal_geometry_t *geom;
+	sfcgal_geometry_t *result;
+        double alpha;
+        bool allow_holes;
+	srid_t srid;
+
+	sfcgal_postgis_init();
+
+	input = PG_GETARG_GSERIALIZED_P(0);
+	srid = gserialized_get_srid(input);
+	geom = POSTGIS2SFCGALGeometry(input);
+	PG_FREE_IF_COPY(input, 0);
+
+	alpha = PG_GETARG_FLOAT8(1);
+	allow_holes = PG_GETARG_BOOL(2);
+	result = sfcgal_geometry_alpha_shapes(geom, alpha, allow_holes);
+	sfcgal_geometry_delete(geom);
+
+	output = SFCGALGeometry2POSTGIS(result, 0, srid);
+	sfcgal_geometry_delete(result);
+
+	PG_RETURN_POINTER(output);
+}
+
+PG_FUNCTION_INFO_V1(sfcgal_optimalalphashapes);
+Datum sfcgal_optimalalphashapes(PG_FUNCTION_ARGS)
+{
+	GSERIALIZED *input, *output;
+	sfcgal_geometry_t *geom;
+	sfcgal_geometry_t *result;
+        bool allow_holes;
+        size_t nb_components;
+	srid_t srid;
+
+	sfcgal_postgis_init();
+
+	input = PG_GETARG_GSERIALIZED_P(0);
+	srid = gserialized_get_srid(input);
+	geom = POSTGIS2SFCGALGeometry(input);
+	PG_FREE_IF_COPY(input, 0);
+
+	allow_holes = PG_GETARG_BOOL(1);
+	nb_components = (size_t)PG_GETARG_INT32(2);
+	result = sfcgal_geometry_optimal_alpha_shapes(geom, allow_holes, nb_components);
+	sfcgal_geometry_delete(geom);
+
+	output = SFCGALGeometry2POSTGIS(result, 0, srid);
+	sfcgal_geometry_delete(result);
+
+	PG_RETURN_POINTER(output);
+}
+#endif
+
