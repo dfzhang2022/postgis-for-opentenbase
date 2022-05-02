@@ -1282,7 +1282,7 @@ FROM ST_Subdivide(ST_Letters('CH'),5) WITH ORDINALITY AS sd(geom,i)
 	  </refsection>
       <refsection>
 		<title>See Also</title>
-                <para><xref linkend="ST_ConcaveHull" />, <xref linkend="ST_OptimalAlphaShape"</para>
+                <para><xref linkend="ST_ConcaveHull" />, <xref linkend="ST_OptimalAlphaShape" /></para>
 	  </refsection>
 
 	</refentry>
