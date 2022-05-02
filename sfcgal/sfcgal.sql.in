@@ -175,17 +175,17 @@ CREATE OR REPLACE FUNCTION ST_3DConvexHull(geometry)
 COMMIT;
 
 -- Availability: 3.3.0
-CREATE OR REPLACE FUNCTION ST_AlphaShapes(g1 geometry, alpha float8 DEFAULT 1.0, allow_holes boolean DEFAULT false)
+CREATE OR REPLACE FUNCTION ST_AlphaShape(g1 geometry, alpha float8 DEFAULT 1.0, allow_holes boolean DEFAULT false)
        RETURNS geometry
-       AS 'MODULE_PATHNAME', 'sfcgal_alphashapes'
+       AS 'MODULE_PATHNAME', 'sfcgal_alphashape'
        LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
        COST 100;
 COMMIT;
 
 -- Availability: 3.3.0
-CREATE OR REPLACE FUNCTION ST_OptimalAlphaShapes(g1 geometry, allow_holes boolean DEFAULT false, nb_components int DEFAULT 1)
+CREATE OR REPLACE FUNCTION ST_OptimalAlphaShape(g1 geometry, allow_holes boolean DEFAULT false, nb_components int DEFAULT 1)
        RETURNS geometry
-       AS 'MODULE_PATHNAME', 'sfcgal_optimalalphashapes'
+       AS 'MODULE_PATHNAME', 'sfcgal_optimalalphashape'
        LANGUAGE 'c' IMMUTABLE STRICT PARALLEL SAFE
        COST 100;
 COMMIT;

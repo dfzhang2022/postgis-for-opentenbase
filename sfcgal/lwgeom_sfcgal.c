@@ -659,8 +659,8 @@ Datum sfcgal_convexhull3D(PG_FUNCTION_ARGS)
 }
 
 #if POSTGIS_SFCGAL_VERSION >= 10401
-PG_FUNCTION_INFO_V1(sfcgal_alphashapes);
-Datum sfcgal_alphashapes(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(sfcgal_alphashape);
+Datum sfcgal_alphashape(PG_FUNCTION_ARGS)
 {
 	GSERIALIZED *input, *output;
 	sfcgal_geometry_t *geom;
@@ -678,7 +678,7 @@ Datum sfcgal_alphashapes(PG_FUNCTION_ARGS)
 
 	alpha = PG_GETARG_FLOAT8(1);
 	allow_holes = PG_GETARG_BOOL(2);
-	result = sfcgal_geometry_alpha_shapes(geom, alpha, allow_holes);
+	result = sfcgal_geometry_alpha_shape(geom, alpha, allow_holes);
 	sfcgal_geometry_delete(geom);
 
 	output = SFCGALGeometry2POSTGIS(result, 0, srid);
@@ -687,8 +687,8 @@ Datum sfcgal_alphashapes(PG_FUNCTION_ARGS)
 	PG_RETURN_POINTER(output);
 }
 
-PG_FUNCTION_INFO_V1(sfcgal_optimalalphashapes);
-Datum sfcgal_optimalalphashapes(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(sfcgal_optimalalphashape);
+Datum sfcgal_optimalalphashape(PG_FUNCTION_ARGS)
 {
 	GSERIALIZED *input, *output;
 	sfcgal_geometry_t *geom;
@@ -706,7 +706,7 @@ Datum sfcgal_optimalalphashapes(PG_FUNCTION_ARGS)
 
 	allow_holes = PG_GETARG_BOOL(1);
 	nb_components = (size_t)PG_GETARG_INT32(2);
-	result = sfcgal_geometry_optimal_alpha_shapes(geom, allow_holes, nb_components);
+	result = sfcgal_geometry_optimal_alpha_shape(geom, allow_holes, nb_components);
 	sfcgal_geometry_delete(geom);
 
 	output = SFCGALGeometry2POSTGIS(result, 0, srid);
