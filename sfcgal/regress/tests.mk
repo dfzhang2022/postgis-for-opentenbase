@@ -12,5 +12,6 @@
 
 TESTS += \
 		$(topsrcdir)/sfcgal/regress/regress_sfcgal \
-		$(topsrcdir)/sfcgal/regress/approximatemedialaxis.sql
+		$(topsrcdir)/sfcgal/regress/approximatemedialaxis.sql \
+		$(topsrcdir)/sfcgal/regress/alphashape.sql
 
