@@ -1243,7 +1243,7 @@ FROM ST_Subdivide(ST_Letters('CH'),5) WITH ORDINALITY AS sd(geom,i)
             This function compute the concave hull of a set of geometry, but using CGAL and a different algorithm than ST_ConcaveHull performed by the GEOS module.
             See : http://lin-ear-th-inking.blogspot.com/2022/01/concave-hulls-in-jts.html
 
-		<para>Availability: 3.3.0</para>
+		<para>Availability: 3.3.0 - requires SFCGAL &gt;= 1.4.1.</para>
 		<para>&sfcgal_required;</para>
 		<para>&Z_support;</para>
 		<para>&P_support;</para>
@@ -1315,7 +1315,7 @@ FROM ST_Subdivide(ST_Letters('CH'),5) WITH ORDINALITY AS sd(geom,i)
 
               The result will be generated such as the number of solid component of the alpha shape is equal to or smaller than <varname>param_nb_components</varname>.
 
-		<para>Availability: 3.3.0</para>
+		<para>Availability: 3.3.0 - requires SFCGAL &gt;= 1.4.1.</para>
 		<para>&sfcgal_required;</para>
 		<para>&Z_support;</para>
 		<para>&P_support;</para>
