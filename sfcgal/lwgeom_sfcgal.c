@@ -658,10 +658,16 @@ Datum sfcgal_convexhull3D(PG_FUNCTION_ARGS)
 	PG_RETURN_POINTER(output);
 }
 
-#if POSTGIS_SFCGAL_VERSION >= 10401
 PG_FUNCTION_INFO_V1(sfcgal_alphashape);
 Datum sfcgal_alphashape(PG_FUNCTION_ARGS)
 {
+#ifdef POSTGIS_SFCGAL_VERSION < 10401
+  lwpgerror("The SFCGAL version this PostGIS binary "
+	          "was compiled against (%d) doesn't support "
+	          "'sfcgal_geometry_alpha_shape' function (1.4.1+ required)",
+	          POSTGIS_SFCGAL_VERSION);
+	          PG_RETURN_NULL();
+#else /* POSTGIS_SFCGAL_VERSION >= 10401 */
 	GSERIALIZED *input, *output;
 	sfcgal_geometry_t *geom;
 	sfcgal_geometry_t *result;
@@ -685,11 +691,19 @@ Datum sfcgal_alphashape(PG_FUNCTION_ARGS)
 	sfcgal_geometry_delete(result);
 
 	PG_RETURN_POINTER(output);
+#endif
 }
 
 PG_FUNCTION_INFO_V1(sfcgal_optimalalphashape);
 Datum sfcgal_optimalalphashape(PG_FUNCTION_ARGS)
 {
+#ifdef POSTGIS_SFCGAL_VERSION < 10401
+  lwpgerror("The SFCGAL version this PostGIS binary "
+	          "was compiled against (%d) doesn't support "
+	          "'sfcgal_geometry_optimal_alpha_shape' function (1.4.1+ required)",
+	          POSTGIS_SFCGAL_VERSION);
+	          PG_RETURN_NULL();
+#else /* POSTGIS_SFCGAL_VERSION >= 10401 */
 	GSERIALIZED *input, *output;
 	sfcgal_geometry_t *geom;
 	sfcgal_geometry_t *result;
@@ -713,6 +727,6 @@ Datum sfcgal_optimalalphashape(PG_FUNCTION_ARGS)
 	sfcgal_geometry_delete(result);
 
 	PG_RETURN_POINTER(output);
-}
 #endif
+}
 
