@@ -25,6 +25,8 @@
     - echo "Build dir is ${PWD}"
     - ${SRCDIR}/configure CFLAGS="-Wall -fno-omit-frame-pointer -Werror"
     - make
+    - grep 'into new_scripts' postgis/postgis_upgrade.sql
+    - grep 'UPGRADE SCRIPT' postgis/postgis_upgrade.sql
     - RUNTESTFLAGS=-v make check
     - RUNTESTFLAGS="-v --dumprestore" make check-regress
     - make install
