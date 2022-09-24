@@ -20,15 +20,15 @@ steps:
 #    commands:
 #      - PGVER=9.6 sh ci/dronie/postgis_regress.sh
 #
-#  - name: build-10
-#    image: *test-image
-#    pull: always
-#    commands:
-#      - PGVER=10 sh ci/dronie/postgis_regress.sh
-
-  - name: build-13
+  - name: build-10
     image: *test-image
     pull: always
     commands:
-      - PGVER=13 sh ci/dronie/postgis_regress.sh
+      - PGVER=10 sh ci/dronie/postgis_regress.sh
+
+#  - name: build-13
+#    image: *test-image
+#    pull: always
+#    commands:
+#      - PGVER=13 sh ci/dronie/postgis_regress.sh
 ...
