@@ -18,17 +18,13 @@ steps:
     image: *test-image
     pull: always
     commands:
-      - PGVER=9.6 sh ci/dronie/postgis_regress.sh
+      - ./autogen.sh
+      - ./configure CFLAGS="-O2 -Wall -fno-omit-frame-pointer -Werror" --without-interrupt-tests
+      - make -j
+      - echo '---- postgis/uninstall_postgis.sql'
+      - cat postgis/uninstall_postgis.sql
+      - echo '---- extensions/postgis/sql/postgis--unpackaged--3.1.8dev.sql'
+      - cat extensions/postgis/sql/postgis--unpackaged--3.1.8dev.sql
 
-  - name: build-10
-    image: *test-image
-    pull: always
-    commands:
-      - PGVER=10 sh ci/dronie/postgis_regress.sh
 
-  - name: build-13
-    image: *test-image
-    pull: always
-    commands:
-      - PGVER=13 sh ci/dronie/postgis_regress.sh
 ...

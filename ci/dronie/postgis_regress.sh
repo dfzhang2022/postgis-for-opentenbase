@@ -11,10 +11,13 @@ psql --version
 ./configure CFLAGS="-O2 -Wall -fno-omit-frame-pointer -Werror" --without-interrupt-tests
 make clean
 make -j
+perl --version
+echo '--------------------'
+cat postgis/uninstall_postgis.sql
+echo '--------------------'
+
 # we should maybe wait for postgresql service to startup here...
 psql -c "select version()" template1
 RUNTESTFLAGS=-v make check
 make install
-RUNTESTFLAGS=-v make installcheck
-utils/check_all_upgrades.sh -s \
-  `grep '^POSTGIS_' Version.config | cut -d= -f2 | paste -sd '.'`
+RUNTESTFLAGS=-v make installcheck-by-func
