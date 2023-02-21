@@ -1292,7 +1292,7 @@ CREATE OR REPLACE FUNCTION topology.TopoElement(topo topology.TopoGeometry)
     COST 1
     IMMUTABLE PARALLEL SAFE
 AS  $$SELECT ARRAY[topo.id,topo.layer_id]::topology.topoelement;$$;
---} TopoElement
+--} TopoElement(TopoGeometry)
 
 --{
 -- TopoGeometry(int[])
@@ -1302,7 +1302,7 @@ AS  $$SELECT ARRAY[topo.id,topo.layer_id]::topology.topoelement;$$;
 -- Availability: 3.4.0
 -- }{
 CREATE CAST (topogeometry AS int[]) WITH FUNCTION TopoElement(topogeometry) AS ASSIGNMENT;
---} TopoGeometry
+--} TopoGeometry(int[])
 
 --{
 --  DropTopology(name)
