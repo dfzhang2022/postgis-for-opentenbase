@@ -41,17 +41,6 @@ INSERT INTO features.big_parcels(feature_name, feature) VALUES ('F3F6', -- Featu
      WHERE feature_name in ('F3','F6'))
   ));
 
--- using cast
-  INSERT INTO features.big_parcels(feature_name, feature) VALUES ('F1F2F6', -- Feature name
-  topology.CreateTopoGeom(
-    'city_data', -- Topology name
-    3, -- Topology geometry type (polygon/multipolygon)
-    (SELECT layer_id FROM topology.layer WHERE table_name = 'big_parcels'),
-    (SELECT topoelementarray_agg(feature::topoelement)
-     FROM features.land_parcels
-     WHERE feature_name in ('F1', 'F3','F6'))
-  ));
-
 --
 -- Streets
 --

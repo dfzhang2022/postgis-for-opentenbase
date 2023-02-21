@@ -1280,19 +1280,19 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 CREATE CAST (topology.TopoGeometry AS Geometry) WITH FUNCTION topology.Geometry(topology.TopoGeometry) AS IMPLICIT;
 
 --{
--- ToTopoElement(TopoGeometry)
+-- TopoElement(TopoGeometry)
 --
 -- Construct a TopoElement from a TopoGeometry.
 --
 -- Availability: 3.4.0
 -- }{
-CREATE OR REPLACE FUNCTION topology.ToTopoElement(topo topology.TopoGeometry)
+CREATE OR REPLACE FUNCTION topology.TopoElement(topo topology.TopoGeometry)
     RETURNS topology.TopoElement
     LANGUAGE sql
     COST 1
     IMMUTABLE PARALLEL SAFE
 AS  $$SELECT ARRAY[topo.id,topo.layer_id]::topology.topoelement;$$;
---} ToTopoElement
+--} TopoElement
 
 --{
 -- TopoGeometry(int[])
@@ -1301,7 +1301,7 @@ AS  $$SELECT ARRAY[topo.id,topo.layer_id]::topology.topoelement;$$;
 --
 -- Availability: 3.4.0
 -- }{
-CREATE CAST (topogeometry AS int[]) WITH FUNCTION ToTopoElement(topogeometry) AS IMPLICIT;
+CREATE CAST (topogeometry AS int[]) WITH FUNCTION TopoElement(topogeometry) AS ASSIGNMENT;
 --} TopoGeometry
 
 --{

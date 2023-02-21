@@ -3607,16 +3607,16 @@ SELECT ST_GetFaceGeometry('topo_boston_test', f.face_id)
 			</refsection>
           </refentry>
 
-        <refentry id="ToTopoElement">
+        <refentry id="TopoElement">
 			<refnamediv>
-				<refname>ToTopoElement</refname>
+				<refname>TopoElement</refname>
 				<refpurpose>Converts a topogeometry to a topoelement.</refpurpose>
 			</refnamediv>
 
 			<refsynopsisdiv>
 				<funcsynopsis>
 					<funcprototype>
-					<funcdef>topoelement <function>ToTopoElement</function></funcdef>
+					<funcdef>topoelement <function>TopoElement</function></funcdef>
 					<paramdef><type>topogeometry </type> <parameter>topo</parameter></paramdef>
 					</funcprototype>
 				</funcsynopsis>
@@ -3634,7 +3634,7 @@ SELECT ST_GetFaceGeometry('topo_boston_test', f.face_id)
 				<para>This is a full self-contained workflow</para>
 				<programlisting>-- do this if you don't have a topology setup already
 -- Creates topology not allowing any tolerance
-SELECT ToTopoElement(topo)
+SELECT TopoElement(topo)
 FROM neighborhoods;</programlisting>
 
 				<programlisting>-- using as cast
