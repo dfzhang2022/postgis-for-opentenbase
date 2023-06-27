@@ -19,4 +19,4 @@ msgstr ""
 #: tag_sqlmm_compliant.xml:5
 #, no-c-format
 msgid "This method implements the SQL/MM specification."
-msgstr ""
+msgstr "Questo metodo implementa la specifica SQL/MM."

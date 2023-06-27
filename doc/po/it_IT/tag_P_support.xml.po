@@ -19,4 +19,4 @@ msgstr ""
 #: tag_P_support.xml:5
 #, no-c-format
 msgid "This function supports Polyhedral surfaces."
-msgstr ""
+msgstr "Questa funzione supporta le Polyhedral Surface."

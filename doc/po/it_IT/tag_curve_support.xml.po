@@ -19,4 +19,4 @@ msgstr ""
 #: tag_curve_support.xml:3
 #, no-c-format
 msgid "This method supports Circular Strings and Curves."
-msgstr ""
+msgstr "Questo metodo supporta le Curve e le Circular String."

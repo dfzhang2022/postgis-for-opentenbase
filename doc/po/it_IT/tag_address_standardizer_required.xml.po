@@ -19,4 +19,4 @@ msgstr ""
 #: tag_address_standardizer_required.xml:5
 #, no-c-format
 msgid "This method needs address_standardizer extension."
-msgstr ""
+msgstr "Questo metodo richiede l'estensione address_standardizer."

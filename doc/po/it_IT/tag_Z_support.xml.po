@@ -19,4 +19,4 @@ msgstr ""
 #: tag_Z_support.xml:5
 #, no-c-format
 msgid "This function supports 3d and will not drop the z-index."
-msgstr ""
+msgstr "Questa funzione supporta il 3d e non distrugge gli z-index."

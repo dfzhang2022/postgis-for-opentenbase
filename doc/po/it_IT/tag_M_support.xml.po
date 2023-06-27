@@ -19,4 +19,4 @@ msgstr ""
 #: tag_M_support.xml:5
 #, no-c-format
 msgid "This function supports M coordinates."
-msgstr ""
+msgstr "Questa funzione supporta le coordinate M."

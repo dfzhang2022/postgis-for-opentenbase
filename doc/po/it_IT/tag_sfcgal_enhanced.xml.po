@@ -19,4 +19,4 @@ msgstr ""
 #: tag_sfcgal_enhanced.xml:3
 #, no-c-format
 msgid "This method is also provided by SFCGAL backend."
-msgstr ""
+msgstr "Questo metodo e' fornito anche dal backend SFCGAL."
