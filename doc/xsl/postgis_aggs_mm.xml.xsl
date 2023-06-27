@@ -93,9 +93,11 @@
 			<!-- For each section if there is note that it implements SQL/MM catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:for-each select="remark[@conformance='sqlmm']">
-									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /> <xsl:value-of select="." /></simpara></listitem>
-								</xsl:for-each>
+								<xsl:choose>
+									<xsl:when test="contains(remark/@conformance, 'sqlmm')">
+										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /> <xsl:value-of select="." /></simpara></listitem>
+									</xsl:when>
+								</xsl:choose>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -232,9 +234,11 @@
 			<!-- For each section if there is note that it supports 3d catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:for-each select="remark[@conformance='3d']">
-									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-								</xsl:for-each>
+								<xsl:choose>
+									<xsl:when test="contains(remark/@conformance, '3d')">
+										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+									</xsl:when>
+								</xsl:choose>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -261,9 +265,11 @@
 			<!-- For each section if there is note that it implements Circular String catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:for-each select="remark[@conformance='curve']">
-									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-								</xsl:for-each>
+								<xsl:choose>
+									<xsl:when test="contains(remark/@conformance, 'curve')">
+										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+									</xsl:when>
+								</xsl:choose>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -290,9 +296,11 @@
 			<!-- For each section if there is note that it supports Polyhedral surfaces catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:for-each select="remark[@conformance='polyhedral']">
-									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-								</xsl:for-each>
+								<xsl:choose>
+									<xsl:when test="contains(remark/@conformance, 'sqlmm')">
+										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+									</xsl:when>
+								</xsl:choose>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
