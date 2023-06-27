@@ -93,11 +93,9 @@
 			<!-- For each section if there is note that it implements SQL/MM catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:choose>
-									<xsl:when test="contains(.,'implements the SQL/MM')">
-										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /> <xsl:value-of select="." /></simpara></listitem>
-									</xsl:when>
-								</xsl:choose>
+								<xsl:for-each select="remark[@conformance='sqlmm']">
+									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /> <xsl:value-of select="." /></simpara></listitem>
+								</xsl:for-each>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -234,11 +232,9 @@
 			<!-- For each section if there is note that it supports 3d catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:choose>
-									<xsl:when test="contains(.,'This function supports 3d')">
-										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-									</xsl:when>
-								</xsl:choose>
+								<xsl:for-each select="remark[@conformance='3d']">
+									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refid" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+								</xsl:for-each>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -265,11 +261,9 @@
 			<!-- For each section if there is note that it implements Circular String catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:choose>
-									<xsl:when test="contains(.,'supports Circular Strings')">
-										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-									</xsl:when>
-								</xsl:choose>
+								<xsl:for-each select="remark[@conformance='curve']">
+									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+								</xsl:for-each>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -296,11 +290,9 @@
 			<!-- For each section if there is note that it supports Polyhedral surfaces catalog it -->
 						<xsl:for-each select="refsection">
 							<xsl:for-each select="para">
-								<xsl:choose>
-									<xsl:when test="contains(.,'supports Polyhedral')">
-										<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
-									</xsl:when>
-								</xsl:choose>
+								<xsl:for-each select="remark[@conformance='polyhedral']">
+									<listitem><simpara><link linkend="{$refid}"><xsl:value-of select="$refname" /></link> - <xsl:value-of select="$comment" /></simpara></listitem>
+								</xsl:for-each>
 							</xsl:for-each>
 						</xsl:for-each>
 				</xsl:for-each>
@@ -408,6 +400,7 @@
 								<!-- If at least one paragraph contains support 3d -->
 								<xsl:choose>
 									<!-- supports -->
+									<!-- TODO: change to contains tag with attribute conformance='3d' -->
 									<xsl:when test="contains(.,'This function supports 3d')">
 										<!-- if 3d denote if it needs sfcgal -->
 										<entry><xsl:choose><xsl:when test="contains(.,'needs SFCGAL')"><xsl:value-of select="$matrix_sfcgal_required" disable-output-escaping="yes"/></xsl:when>
@@ -422,6 +415,7 @@
 								<!-- Support for Curve -->
 								<xsl:choose>
 									<!-- supports -->
+									<!-- TODO: change to contains tag with attribute conformance='curve' -->
 									<xsl:when test="contains(.,'supports Circular Strings')">
 										<entry><xsl:value-of select="$matrix_checkmark" disable-output-escaping="yes"/></entry>
 									</xsl:when>
@@ -433,6 +427,7 @@
 								<!-- SQL MM compliance -->
 								<xsl:choose>
 									<!-- supports -->
+									<!-- TODO: change to contains tag with attribute conformance='sqlmm' -->
 									<xsl:when test="contains(.,'implements the SQL/MM')">
 										<entry><xsl:choose><xsl:when test="contains(.,'needs SFCGAL')"><xsl:value-of select="$matrix_sfcgal_required" disable-output-escaping="yes"/></xsl:when>
 										<xsl:when test="contains(.,'provided by SFCGAL')"><xsl:value-of select="$matrix_sfcgal_enhanced" disable-output-escaping="yes"/></xsl:when>
@@ -446,6 +441,7 @@
 							<!-- Polyhedral surface support -->
 								<xsl:choose>
 									<!-- supports -->
+									<!-- TODO: change to contains tag with attribute conformance='polyhedral' -->
 									<xsl:when test="contains(.,'Polyhedral')">
 										<entry><xsl:choose><xsl:when test="contains(.,'needs SFCGAL')"><xsl:value-of select="$matrix_sfcgal_required" disable-output-escaping="yes"/></xsl:when>
 										<xsl:when test="contains(.,'provided by SFCGAL')"><xsl:value-of select="$matrix_sfcgal_enhanced" disable-output-escaping="yes"/></xsl:when>
@@ -459,6 +455,7 @@
 							<!-- Triangle and TIN surface support -->
 								<xsl:choose>
 									<!-- supports -->
+									<!-- TODO: change to contains tag with attribute conformance='triangle' -->
 									<xsl:when test="contains(.,'Triang')">
 										<entry><xsl:choose><xsl:when test="contains(.,'needs SFCGAL')"><xsl:value-of select="$matrix_sfcgal_required" disable-output-escaping="yes"/></xsl:when>
 										<xsl:when test="contains(.,'provided by SFCGAL')"><xsl:value-of select="$matrix_sfcgal_enhanced" disable-output-escaping="yes"/></xsl:when>
