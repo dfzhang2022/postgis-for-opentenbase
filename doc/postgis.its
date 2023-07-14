@@ -1,0 +1,14 @@
+<its:rules
+  xmlns:its="http://www.w3.org/2005/11/its" version="2.0"
+	xmlns:db="http://docbook.org/ns/docbook"
+>
+  <its:translateRule translate="no" selector="//db:code"/>
+  <its:translateRule translate="no" selector="//db:funcion"/>
+  <its:translateRule translate="no" selector="//db:funcprototype"/>
+  <its:translateRule translate="no" selector="//db:funcsynopsis"/>
+  <its:translateRule translate="no" selector="//db:option"/>
+  <its:translateRule translate="no" selector="//db:programlisting"/>
+  <its:translateRule translate="no" selector="//db:refname"/>
+  <its:translateRule translate="no" selector="//db:screen"/>
+  <its:translateRule translate="no" selector="//db:varname"/>
+</its:rules>

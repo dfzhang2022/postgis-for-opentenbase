@@ -128,8 +128,7 @@ MSGMERGE=@MSGMERGE@
 MSGINIT=@MSGINIT@
 MSGATTRIB=@MSGATTRIB@
 
-# XML gettext tools
-XML2POT=@XML2POT@
+ITSTOOL=@ITSTOOL@
 
 # DOCBOOK to EPUB
 DBTOEPUB=@DBTOEPUB@
@@ -236,8 +235,6 @@ XML_GENERATED_SOURCES = \
 
 XML_INPUTS = $(XML_SOURCES) $(XML_GENERATED_SOURCES) $(TAG_GENERATED_SOURCES)
 
-XML_SOURCE_POTS = $(XML_SOURCES:%.xml=%.xml.pot)
-
 XML_UNIFIED_POT = $(srcdir)/po/templates/postgis-manual.pot
 
 PO_FILES = $(patsubst \
@@ -259,7 +256,6 @@ GENERATED_CHEATSHEET_FILES = $(patsubst \
 )
 
 VPATH = $(srcdir)
-
 
 CAN_CHECK_XML = yes
 
@@ -305,8 +301,8 @@ ifeq ($(MSGINIT),)
 $(PO_FILES): requirements_not_met_msginit
 endif
 
-ifeq ($(XML2POT),)
-$(XML_SOURCE_POTS): requirements_not_met_xml2pot
+ifeq ($(ITSTOOL),)
+$(XML_UNIFIED_POT): requirements_not_met_itstool
 endif
 
 CHECK_UNIT_TARGET =
@@ -315,16 +311,11 @@ ifeq ($(CAN_CHECK_XML),yes)
 CHECK_UNIT_TARGET = check-xml
 endif
 
-
-$(XML_SOURCE_POTS): %.xml.pot: %.xml po/strip_untranslatable.sh
-	$(XML2POT) $< > $@
-	$(abs_srcdir)/po/strip_untranslatable.sh $@
-
 # Update translation template
 update-pot: $(XML_UNIFIED_POT)
 
-$(XML_UNIFIED_POT): $(XML_SOURCE_POTS)
-	@$(MSGCAT) --use-first --no-location -o $@.tmp $(XML_SOURCE_POTS)
+$(XML_UNIFIED_POT): postgis-out.xml
+	$(ITSTOOL) --its $(abs_srcdir)/postgis.its $< > $@.tmp
 	@if test -f $@; then \
     if test -n "$$($(MSGCOMM) --unique $@.tmp $@ | tail -1)"; then \
       echo "$@ updated"; \
@@ -703,8 +694,9 @@ requirements_not_met_gettext:
 	@echo
 	@false
 
-requirements_not_met_xml2pot:
+requirements_not_met_itstool:
 	@echo
-	@echo "configure was unable to find the 'xml2pot' utility program."
-	@echo "To update the translation templates, install poxml and then re-run configure."
+	@echo "configure was unable to find the 'itstool' utility program."
+	@echo "To update the translation templates, install itstool and then re-run configure."
 	@echo
+	@false

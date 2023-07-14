@@ -218,10 +218,9 @@ if test "x$XMLLINT" = "x"; then
 fi
 
 
-
-AC_PATH_PROG([XML2POT], [xml2pot], [])
-if test "x$XML2POT" = "x"; then
-	AC_MSG_WARN([xml2pot is not installed so translation template cannot be updated])
+AC_PATH_PROG([ITSTOOL], [itstool], [])
+if test "x$ITSTOOL" = "x"; then
+	AC_MSG_WARN([itstool is not installed so translation template cannot be updated])
 fi
 
 AC_PATH_PROG([MSGMERGE], [msgmerge], [])
