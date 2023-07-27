@@ -3458,14 +3458,14 @@ UPDATE boston.blockgroups SET new_geom = topo::geometry;
 					<paramdef><type>geometry </type> <parameter>geom</parameter></paramdef>
 					<paramdef><type>varchar </type> <parameter>toponame</parameter></paramdef>
 					<paramdef><type>integer</type> <parameter>layer_id</parameter></paramdef>
-					<paramdef choice="opt"><type>float8</type> <parameter>tolerance</parameter></paramdef>
+					<paramdef choice="opt"><type>float8</type> <parameter>tolerance=-1</parameter></paramdef>
 					</funcprototype>
 
 					<funcprototype>
 					<funcdef>topogeometry <function>toTopoGeom</function></funcdef>
 					<paramdef><type>geometry </type> <parameter>geom</parameter></paramdef>
 					<paramdef><type>topogeometry </type> <parameter>topogeom</parameter></paramdef>
-					<paramdef choice="opt"><type>float8</type> <parameter>tolerance</parameter></paramdef>
+					<paramdef choice="opt"><type>float8</type> <parameter>tolerance=-1</parameter></paramdef>
 					</funcprototype>
 				</funcsynopsis>
 			</refsynopsisdiv>
@@ -3491,7 +3491,8 @@ Existing TopoGeometry objects (with the possible exception of
 
                 <para>
 When <varname>tolerance</varname> is given it will be used to snap the
-input geometry to existing primitives.
+input geometry to existing primitives. The special value -1 means
+use the topology precision value.
                 </para>
 
                 <para>
