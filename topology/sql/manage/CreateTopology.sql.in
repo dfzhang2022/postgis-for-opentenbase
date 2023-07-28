@@ -275,14 +275,14 @@ RETURNS integer AS
 ' SELECT topology.CreateTopology($1, $2, $3, false);'
 LANGUAGE 'sql' VOLATILE STRICT;
 
---  CreateTopology(name, SRID) -- precision = 0
+--  CreateTopology(name, SRID) -- precision = -1
 -- Availability: 1.1.0
 CREATE OR REPLACE FUNCTION topology.CreateTopology(varchar, integer)
 RETURNS integer AS
-' SELECT topology.CreateTopology($1, $2, 0); '
+' SELECT topology.CreateTopology($1, $2, -1); '
 LANGUAGE 'sql' VOLATILE STRICT;
 
---  CreateTopology(name) -- srid = unknown, precision = 0
+--  CreateTopology(name) -- srid = unknown, precision = -1
 -- Availability: 1.1.0
 CREATE OR REPLACE FUNCTION topology.CreateTopology(varchar)
 RETURNS integer AS
