@@ -41,5 +41,4 @@ steps:
     pull: never
     commands:
       - sh ci/dronie/postgis_tools.sh
-    depends_on: [ autogen ]
 
