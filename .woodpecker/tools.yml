@@ -5,5 +5,5 @@ steps:
     when:
       - event: pull_request
     commands:
-      - sh ci/dronie/postgis_regress.sh
+      - sh ci/dronie/postgis_tools.sh
 
