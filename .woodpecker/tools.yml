@@ -5,12 +5,5 @@ steps:
     when:
       - event: pull_request
     commands:
-      - ./autogen.sh
-      - ./configure --without-pgconfig --prefix=/tmp/pgx
-      - make
-      - make check
-      - make install
-      - /tmp/pgx/bin/postgis help
-      - /tmp/pgx/bin/shp2pgsql
-      - /tmp/pgx/bin/raster2pgsql
+      - sh ci/dronie/postgis_regress.sh
 
