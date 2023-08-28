@@ -222,12 +222,13 @@ while(<INPUT>)
                     $numnamedargs++;
                 }
 
+                $argtype =~ s/^\s+|\s+$//g;
                 push @argtypearray, "$argtype";
             }
             my $argnames = join ',', @argnamearray;
             my $argtypes = join ',', @argtypearray;
 
-            my $renamed = $name . '_deprecated_by_postgis_' . ${ver};
+            my $renamed = $name . '_' . (join '_', @argtypearray) .   '_deprecated_by_postgis_' . ${ver};
             my $replacement = "${renamed}(${args})";
             push @renamed_deprecated_functions, ${renamed};
             print <<"EOF";
