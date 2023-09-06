@@ -9,5 +9,5 @@
           - <<: *common_doc_paths
           # Localized assets
           - "doc/po/@LANG@/Makefile.in"
+          - "doc/po/@LANG@/texstyle.sty"
           - "doc/po/@LANG@/*.po"
-          - "utils/check_localized_cheatsheets.sh"
