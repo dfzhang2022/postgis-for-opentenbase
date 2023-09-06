@@ -1,5 +1,22 @@
 variables:
   test-image: &test-image docker.osgeo.org/postgis/build-test:trisquel3
+  regress-paths: &regress-paths
+    - ci/dronie/postgis_regress.sh
+    - configure.ac
+    - autogen.sh
+    - regress/**
+    - ./**/*.h
+    - ./**/*.c
+    - ./**/*.sql
+    - ./**/*.sql.in
+    - ./**/Makefile.in
+    - ./**/Makefile
+    - GNUMakefile.in
+    - ./**/tests.mk
+  when-regress: &when-regress
+    path:
+      include:
+        - <<: *regress-paths
 
 clone:
   clone:
@@ -11,17 +28,20 @@ steps:
   autogen:
     image: *test-image
     pull: true
+    when: *when-regress
     commands:
       - ./autogen.sh
 
   regress-pg12:
     image: *test-image
     group: build
+    when: *when-regress
     commands:
       - PGVER=12 sh ci/dronie/postgis_regress.sh
 
   regress-pg15:
     image: *test-image
     group: build
+    when: *when-regress
     commands:
       - PGVER=15 sh ci/dronie/postgis_regress.sh

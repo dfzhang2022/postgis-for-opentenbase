@@ -4,3 +4,15 @@ steps:
     pull: true
     commands:
       - sh ci/dronie/postgis_tools.sh
+    when:
+      path:
+        include:
+          - configure.ac
+          - autogen.sh
+          - ci/dronie/postgis_tools.sh
+          - ./**/Makefile.in
+          - ./**/Makefile
+          - loader/**
+          - utils/**
+          - raster/loader/**
+          - GNUMakefile.in
