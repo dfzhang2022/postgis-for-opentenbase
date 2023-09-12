@@ -1123,9 +1123,9 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<refpurpose>Generates a set of vector contours from the provided raster "
-"band, using the <ulink url=\"https://gdal.org/api/gdal_alg.html?"
+"band, using the <link xlink:href=\"https://gdal.org/api/gdal_alg.html?"
 "highlight=contour#_CPPv421GDALContourGenerateEx15GDALRasterBandHPv12CSLConstList16GDALProgressFuncPv\">GDAL "
-"contouring algorithm</ulink>.</refpurpose>"
+"contouring algorithm</link>.</refpurpose>"
 msgstr ""
 
 #. Tag: para
@@ -1133,9 +1133,9 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<para>Generates a set of vector contours from the provided raster band, "
-"using the <ulink url=\"https://gdal.org/api/gdal_alg.html?"
+"using the <link xlink:href=\"https://gdal.org/api/gdal_alg.html?"
 "highlight=contour#_CPPv421GDALContourGenerateEx15GDALRasterBandHPv12CSLConstList16GDALProgressFuncPv\">GDAL "
-"contouring algorithm</ulink>.</para>"
+"contouring algorithm</link>.</para>"
 msgstr ""
 
 #. Tag: para
@@ -1222,12 +1222,12 @@ msgid ""
 "the X- and Y-values to position the points on the grid and the Z-value of "
 "the points as the surface elevation. There are five interpolation algorithms "
 "available: inverse distance, inverse distance nearest-neighbor, moving "
-"average, nearest neighbor, and linear interpolation. See the <ulink "
-"url=\"https://gdal.org/programs/gdal_grid.html#interpolation-"
-"algorithms\">gdal_grid documentation</ulink> for more details on the "
+"average, nearest neighbor, and linear interpolation. See the <link "
+"xlink:href=\"https://gdal.org/programs/gdal_grid.html#interpolation-"
+"algorithms\">gdal_grid documentation</link> for more details on the "
 "algorithms and their parameters. For more information on how interpolations "
-"are calculated, see the <ulink url=\"https://gdal.org/tutorials/"
-"gdal_grid_tut.html\">GDAL grid tutorial</ulink>."
+"are calculated, see the <link xlink:href=\"https://gdal.org/tutorials/"
+"gdal_grid_tut.html\">GDAL grid tutorial</link>."
 msgstr ""
 
 #. Tag: para
@@ -1261,8 +1261,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "A string defining the algorithm and algorithm options, in the format used by "
-"<ulink url=\"https://gdal.org/programs/gdal_grid.html#interpolation-"
-"algorithms\">gdal_grid</ulink>. For example, for an inverse-distance "
+"<link xlink:href=\"https://gdal.org/programs/gdal_grid.html#interpolation-"
+"algorithms\">gdal_grid</link>. For example, for an inverse-distance "
 "interpolation with a smoothing of 2, you would use \"invdist:smoothing=2.0\""
 msgstr ""
 
@@ -1371,8 +1371,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Algorithm options are: 'NearestNeighbor', 'Bilinear', 'Cubic', "
-"'CubicSpline', and 'Lanczos'. Refer to: <ulink url=\"http://www.gdal.org/"
-"gdalwarp.html\">GDAL Warp resampling methods</ulink> for more details."
+"'CubicSpline', and 'Lanczos'. Refer to: <link xlink:href=\"http://www.gdal.org/"
+"gdalwarp.html\">GDAL Warp resampling methods</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -1918,8 +1918,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns the georeference meta data including carriage return in GDAL or ESRI "
-"format as commonly seen in a <ulink url=\"http://en.wikipedia.org/wiki/"
-"World_file\">world file</ulink>. Default is GDAL if no type specified. type "
+"format as commonly seen in a <link xlink:href=\"http://en.wikipedia.org/wiki/"
+"World_file\">world file</link>. Default is GDAL if no type specified. type "
 "is string 'GDAL' or 'ESRI'."
 msgstr ""
 
@@ -2145,8 +2145,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns the X component of the pixel width in units of coordinate reference "
-"system. Refer to <ulink url=\"http://en.wikipedia.org/wiki/"
-"World_file\">World File</ulink> for more details."
+"system. Refer to <link xlink:href=\"http://en.wikipedia.org/wiki/"
+"World_file\">World File</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -2168,8 +2168,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns the Y component of the pixel height in units of coordinate reference "
-"system. May be negative. Refer to <ulink url=\"http://en.wikipedia.org/wiki/"
-"World_file\">World File</ulink> for more details."
+"system. May be negative. Refer to <link xlink:href=\"http://en.wikipedia.org/wiki/"
+"World_file\">World File</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -2306,8 +2306,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns the uniform rotation of the raster in radian. If a raster does not "
-"have uniform rotation, NaN is returned. Refer to <ulink url=\"http://en."
-"wikipedia.org/wiki/World_file\">World File</ulink> for more details."
+"have uniform rotation, NaN is returned. Refer to <link xlink:href=\"http://en."
+"wikipedia.org/wiki/World_file\">World File</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -2327,8 +2327,8 @@ msgstr ""
 #: reference_raster.xml:2638
 #, no-c-format
 msgid ""
-"Returns the georeference X skew (or rotation parameter). Refer to <ulink "
-"url=\"http://en.wikipedia.org/wiki/World_file\">World File</ulink> for more "
+"Returns the georeference X skew (or rotation parameter). Refer to <link "
+"xlink:href=\"http://en.wikipedia.org/wiki/World_file\">World File</link> for more "
 "details."
 msgstr ""
 
@@ -2348,8 +2348,8 @@ msgstr ""
 #: reference_raster.xml:2674
 #, no-c-format
 msgid ""
-"Returns the georeference Y skew (or rotation parameter). Refer to <ulink "
-"url=\"http://en.wikipedia.org/wiki/World_file\">World File</ulink> for more "
+"Returns the georeference Y skew (or rotation parameter). Refer to <link "
+"xlink:href=\"http://en.wikipedia.org/wiki/World_file\">World File</link> for more "
 "details."
 msgstr ""
 
@@ -3148,8 +3148,8 @@ msgstr ""
 msgid ""
 "The allowed values of the <varname>resample</varname> parameter are "
 "\"nearest\" which performs the default nearest-neighbor resampling, and "
-"\"bilinear\" which performs a <ulink url=\"https://en.wikipedia.org/wiki/"
-"Bilinear_interpolation\">bilinear interpolation</ulink> to estimate the "
+"\"bilinear\" which performs a <link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Bilinear_interpolation\">bilinear interpolation</link> to estimate the "
 "value between pixel centers."
 msgstr ""
 
@@ -3245,8 +3245,8 @@ msgstr ""
 msgid ""
 "The <varname>resample</varname> parameter can be set to \"nearest\" to copy "
 "the values from the cell each vertex falls within, or \"bilinear\" to use "
-"<ulink url=\"https://en.wikipedia.org/wiki/Bilinear_interpolation\">bilinear "
-"interpolation</ulink> to calculate a value that takes neighboring cells into "
+"<link xlink:href=\"https://en.wikipedia.org/wiki/Bilinear_interpolation\">bilinear "
+"interpolation</link> to calculate a value that takes neighboring cells into "
 "account also."
 msgstr ""
 
@@ -3581,8 +3581,8 @@ msgstr ""
 #: reference_raster.xml:4555
 #, no-c-format
 msgid ""
-"Uniformly rotate the raster. Rotation is in radian. Refer to <ulink "
-"url=\"http://en.wikipedia.org/wiki/World_file\">World File</ulink> for more "
+"Uniformly rotate the raster. Rotation is in radian. Refer to <link "
+"xlink:href=\"http://en.wikipedia.org/wiki/World_file\">World File</link> for more "
 "details."
 msgstr ""
 
@@ -3645,8 +3645,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Sets the georeference X and Y skew (or rotation parameter). If only one is "
-"passed in, sets X and Y to the same value. Refer to <ulink url=\"http://en."
-"wikipedia.org/wiki/World_file\">World File</ulink> for more details."
+"passed in, sets X and Y to the same value. Refer to <link xlink:href=\"http://en."
+"wikipedia.org/wiki/World_file\">World File</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -3801,8 +3801,8 @@ msgstr ""
 #: reference_raster.xml:4969 reference_raster.xml:5047
 #, no-c-format
 msgid ""
-"Refer to: <ulink url=\"http://www.gdal.org/gdalwarp.html\">GDAL Warp "
-"resampling methods</ulink> for more details."
+"Refer to: <link xlink:href=\"http://www.gdal.org/gdalwarp.html\">GDAL Warp "
+"resampling methods</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -4898,8 +4898,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<varname>options</varname> text array of GDAL options. Valid options are "
-"dependent on the format. Refer to <ulink url=\"http://www.gdal.org/"
-"frmt_various.html\">GDAL Raster format options</ulink> for more details."
+"dependent on the format. Refer to <link xlink:href=\"http://www.gdal.org/"
+"frmt_various.html\">GDAL Raster format options</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -4926,9 +4926,9 @@ msgstr ""
 #: reference_raster.xml:6309
 #, no-c-format
 msgid ""
-"One way to export raster into another format is using <ulink url=\"https://"
+"One way to export raster into another format is using <link xlink:href=\"https://"
 "www.postgresql.org/docs/current/static/lo-funcs.html\">PostgreSQL large "
-"object export functions</ulink>. We'lll repeat the prior example but also "
+"object export functions</link>. We'lll repeat the prior example but also "
 "exporting. Note for this you'll need to have super user access to db since "
 "it uses server side lo functions. It will also export to path on server "
 "network. If you need export locally, use the psql equivalent lo_ functions "
@@ -5001,8 +5001,8 @@ msgid ""
 "(look at create_options for JPEG <xref linkend=\"RT_ST_GDALDrivers\"/>). For "
 "JPEG valid ones are <varname>PROGRESSIVE</varname> ON or OFF and "
 "<varname>QUALITY</varname> a range from 0 to 100 and default to 75. Refer to "
-"<ulink url=\"http://www.gdal.org/frmt_various.html\">GDAL Raster format "
-"options</ulink> for more details."
+"<link xlink:href=\"http://www.gdal.org/frmt_various.html\">GDAL Raster format "
+"options</link> for more details."
 msgstr ""
 
 #. Tag: title
@@ -5071,8 +5071,8 @@ msgid ""
 "(look at create_options for PNG of <xref linkend=\"RT_ST_GDALDrivers\"/>). "
 "For PNG valid one is only ZLEVEL (amount of time to spend on compression -- "
 "default 6) e.g. ARRAY['ZLEVEL=9']. WORLDFILE is not allowed since the "
-"function would have to output two outputs. Refer to <ulink url=\"http://www."
-"gdal.org/frmt_various.html\">GDAL Raster format options</ulink> for more "
+"function would have to output two outputs. Refer to <link xlink:href=\"http://www."
+"gdal.org/frmt_various.html\">GDAL Raster format options</link> for more "
 "details."
 msgstr ""
 
@@ -5129,8 +5129,8 @@ msgstr ""
 msgid ""
 "<varname>options</varname> text Array of GDAL create options as defined for "
 "GTiff (look at create_options for GTiff of <xref "
-"linkend=\"RT_ST_GDALDrivers\"/>). or refer to <ulink url=\"http://www.gdal."
-"org/frmt_various.html\">GDAL Raster format options</ulink> for more details."
+"linkend=\"RT_ST_GDALDrivers\"/>). or refer to <link xlink:href=\"http://www.gdal."
+"org/frmt_various.html\">GDAL Raster format options</link> for more details."
 msgstr ""
 
 #. Tag: para
@@ -5213,9 +5213,9 @@ msgstr ""
 #: reference_raster.xml:6676
 #, no-c-format
 msgid ""
-"Examples here use Massachusetts aerial data available on MassGIS site <ulink "
-"url=\"http://www.mass.gov/mgis/colororthos2008.htm\">MassGIS Aerial Orthos</"
-"ulink>. Coordinates are in Massachusetts State Plane Meters."
+"Examples here use Massachusetts aerial data available on MassGIS site <link "
+"xlink:href=\"http://www.mass.gov/mgis/colororthos2008.htm\">MassGIS Aerial Orthos</"
+"link>. Coordinates are in Massachusetts State Plane Meters."
 msgstr ""
 
 #. Tag: title
@@ -5354,8 +5354,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "The syntax of <varname>colormap</varname> is similar to that of the color-"
-"relief mode of GDAL <ulink url=\"http://www.gdal.org/gdaldem."
-"html#gdaldem_color_relief\">gdaldem</ulink>."
+"relief mode of GDAL <link xlink:href=\"http://www.gdal.org/gdaldem."
+"html#gdaldem_color_relief\">gdaldem</link>."
 msgstr ""
 
 #. Tag: para
@@ -5393,8 +5393,8 @@ msgstr ""
 #: reference_raster.xml:6923
 #, no-c-format
 msgid ""
-"A great reference for colormaps is <ulink url=\"http://www.colorbrewer2."
-"org\">ColorBrewer</ulink>."
+"A great reference for colormaps is <link xlink:href=\"http://www.colorbrewer2."
+"org\">ColorBrewer</link>."
 msgstr ""
 
 #. Tag: para
@@ -5901,8 +5901,8 @@ msgstr ""
 msgid ""
 "For more information about the VARIADIC keyword, please refer to the "
 "PostgreSQL documentation and the \"SQL Functions with Variable Numbers of "
-"Arguments\" section of <ulink url=\"http://www.postgresql.org/docs/current/"
-"static/xfunc-sql.html\">Query Language (SQL) Functions</ulink>."
+"Arguments\" section of <link xlink:href=\"http://www.postgresql.org/docs/current/"
+"static/xfunc-sql.html\">Query Language (SQL) Functions</link>."
 msgstr ""
 
 #. Tag: para
@@ -6872,8 +6872,8 @@ msgstr "argomenti da passare alla funzione utente."
 #, no-c-format
 msgid ""
 "Examples utilize the katrina raster loaded as a single tile described in "
-"<ulink url=\"http://trac.osgeo.org/gdal/wiki/frmts_wtkraster.html\">http://"
-"trac.osgeo.org/gdal/wiki/frmts_wtkraster.html</ulink> and then prepared in "
+"<link xlink:href=\"http://trac.osgeo.org/gdal/wiki/frmts_wtkraster.html\">http://"
+"trac.osgeo.org/gdal/wiki/frmts_wtkraster.html</link> and then prepared in "
 "the <xref linkend=\"RT_ST_Rescale\"/> examples"
 msgstr ""
 
@@ -7421,11 +7421,11 @@ msgstr ""
 #, no-c-format
 msgid ""
 "For more information about Slope, Aspect and Hillshade, please refer to "
-"<ulink url=\"http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?"
-"TopicName=How%20Hillshade%20works\">ESRI - How hillshade works</ulink> and "
-"<ulink url=\"http://e2b.erdas.com/fieldguide/wwhelp/wwhimpl/common/html/"
+"<link xlink:href=\"http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?"
+"TopicName=How%20Hillshade%20works\">ESRI - How hillshade works</link> and "
+"<link xlink:href=\"http://e2b.erdas.com/fieldguide/wwhelp/wwhimpl/common/html/"
 "wwhelp.htm?context=FieldGuide&amp;file=Aspect_Images.html\">ERDAS Field "
-"Guide - Aspect Images</ulink>."
+"Guide - Aspect Images</link>."
 msgstr ""
 
 #. Tag: para
@@ -7526,9 +7526,9 @@ msgstr ""
 #: reference_raster.xml:9681
 #, no-c-format
 msgid ""
-"For more information about Hillshade, please refer to <ulink url=\"http://"
+"For more information about Hillshade, please refer to <link xlink:href=\"http://"
 "webhelp.esri.com/arcgisdesktop/9.3/index.cfm?"
-"TopicName=How%20Hillshade%20works\">How hillshade works</ulink>."
+"TopicName=How%20Hillshade%20works\">How hillshade works</link>."
 msgstr ""
 
 #. Tag: para
@@ -7609,11 +7609,11 @@ msgstr ""
 #, no-c-format
 msgid ""
 "For more information about Slope, Aspect and Hillshade, please refer to "
-"<ulink url=\"http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?"
-"TopicName=How%20Hillshade%20works\">ESRI - How hillshade works</ulink> and "
-"<ulink url=\"http://e2b.erdas.com/fieldguide/wwhelp/wwhimpl/common/html/"
+"<link xlink:href=\"http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?"
+"TopicName=How%20Hillshade%20works\">ESRI - How hillshade works</link> and "
+"<link xlink:href=\"http://e2b.erdas.com/fieldguide/wwhelp/wwhimpl/common/html/"
 "wwhelp.htm?context=FieldGuide&amp;file=Slope_Images.html\">ERDAS Field Guide "
-"- Slope Images</ulink>."
+"- Slope Images</link>."
 msgstr ""
 
 #. Tag: para
@@ -7755,8 +7755,8 @@ msgstr ""
 #: reference_raster.xml:10021
 #, no-c-format
 msgid ""
-"Refer to <ulink url=\"http://trac.osgeo.org/postgis/wiki/WKTRaster/"
-"SpecificationWorking01\">PostGIS Raster Specification</ulink> for a diagram "
+"Refer to <link xlink:href=\"http://trac.osgeo.org/postgis/wiki/WKTRaster/"
+"SpecificationWorking01\">PostGIS Raster Specification</link> for a diagram "
 "of this."
 msgstr ""
 
@@ -8643,9 +8643,9 @@ msgstr ""
 #, no-c-format
 msgid ""
 "To control this behavior, GDAL provides the following environment variable: "
-"<ulink url=\"https://trac.osgeo.org/gdal/wiki/"
+"<link xlink:href=\"https://trac.osgeo.org/gdal/wiki/"
 "ConfigOptions#GDAL_DISABLE_READDIR_ON_OPEN\">GDAL_DISABLE_READDIR_ON_OPEN</"
-"ulink>. Set <varname>GDAL_DISABLE_READDIR_ON_OPEN</varname> to "
+"link>. Set <varname>GDAL_DISABLE_READDIR_ON_OPEN</varname> to "
 "<varname>TRUE</varname> to disable directory scanning."
 msgstr ""
 
@@ -8684,9 +8684,9 @@ msgstr ""
 #: reference_raster.xml:11795
 #, no-c-format
 msgid ""
-"The easiest change to make is the following PostgreSQL setting: <ulink "
-"url=\"https://www.postgresql.org/docs/current/static/runtime-config-resource."
-"html#GUC-MAX-FILES-PER-PROCESS\">max_files_per_process</ulink>. The default "
+"The easiest change to make is the following PostgreSQL setting: <link "
+"xlink:href=\"https://www.postgresql.org/docs/current/static/runtime-config-resource."
+"html#GUC-MAX-FILES-PER-PROCESS\">max_files_per_process</link>. The default "
 "is set to 1000, which is far too low for Out-DB Rasters. A safe starting "
 "value could be 65536 but this really depends on your datasets and the "
 "queries run against those datasets. This setting can only be made on server "

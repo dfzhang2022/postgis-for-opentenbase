@@ -41,44 +41,44 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Sandro Santilli's presentation at PostGIS Day Paris 2011 conference gives a "
-"good synopsis of PostGIS Topology and where it is headed <ulink url=\"http://"
+"good synopsis of PostGIS Topology and where it is headed <link xlink:href=\"http://"
 "strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0."
-"pdf\">Topology with PostGIS 2.0 slide deck</ulink>."
+"pdf\">Topology with PostGIS 2.0 slide deck</link>."
 msgstr ""
 "PostGIS Day Paris 2011におけるSandro Santilliさんの講演が、PostGISトポロジの"
-"概略説明として良いです。<ulink url=\"http://strk.keybit.net/projects/postgis/"
+"概略説明として良いです。<link xlink:href=\"http://strk.keybit.net/projects/postgis/"
 "Paris2011_TopologyWithPostGIS_2_0.pdf\">Topology with PostGIS 2.0 slide "
-"deck</ulink>にあります。"
+"deck</link>にあります。"
 
 #. Tag: para
 #: extras_topology.xml:6
 #, no-c-format
 msgid ""
 "Vincent Picavet provides a good synopsis and overview of what is Topology, "
-"how is it used, and various FOSS4G tools that support it in <ulink "
-"url=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
+"how is it used, and various FOSS4G tools that support it in <link "
+"xlink:href=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
 "master/2012/pgconf_eu_2012/pgconfeu2012_vincent_picavet_postgis_topology."
-"pdf\">PostGIS Topology PGConf EU 2012</ulink>."
+"pdf\">PostGIS Topology PGConf EU 2012</link>."
 msgstr ""
 "Vincent Picavetさんはトポロジとは何か、どのように使われるか、および、対応する"
-"FOSS4Gツールに関する良い概略説明を <ulink url=\"https://gitlab.com/Oslandia/"
+"FOSS4Gツールに関する良い概略説明を <link xlink:href=\"https://gitlab.com/Oslandia/"
 "documentation/presentations/-/blob/master/2012/pgconf_eu_2012/"
 "pgconfeu2012_vincent_picavet_postgis_topology.pdf\">PostGIS Topology PGConf "
-"EU 2012</ulink>で出しています。"
+"EU 2012</link>で出しています。"
 
 #. Tag: para
 #: extras_topology.xml:11
 #, no-c-format
 msgid ""
-"An example of a topologically based GIS database is the <ulink url=\"https://"
+"An example of a topologically based GIS database is the <link xlink:href=\"https://"
 "www.census.gov/geo/maps-data/data/tiger.html\">US Census Topologically "
-"Integrated Geographic Encoding and Referencing System (TIGER)</ulink> "
+"Integrated Geographic Encoding and Referencing System (TIGER)</link> "
 "database. If you want to experiment with PostGIS topology and need some "
 "data, check out <xref linkend=\"Topology_Load_Tiger\"/>."
 msgstr ""
-"トポロジベースのGISデータベースの例として<ulink url=\"https://www.census.gov/"
+"トポロジベースのGISデータベースの例として<link xlink:href=\"https://www.census.gov/"
 "geo/maps-data/data/tiger.html\">US Census Topologically Integrated "
-"Geographic Encoding and Referencing System (TIGER)</ulink>があります。PostGIS"
+"Geographic Encoding and Referencing System (TIGER)</link>があります。PostGIS"
 "トポロジの試験がしたくて、何らかのデータが必要なら<xref "
 "linkend=\"Topology_Load_Tiger\"/>をご覧下さい。"
 
@@ -101,11 +101,11 @@ msgstr ""
 #: extras_topology.xml:14
 #, no-c-format
 msgid ""
-"Details of this project can be found at <ulink url=\"http://trac.osgeo.org/"
-"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>"
+"Details of this project can be found at <link xlink:href=\"http://trac.osgeo.org/"
+"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>"
 msgstr ""
-"このプロジェクトの詳細情報は<ulink url=\"http://trac.osgeo.org/postgis/wiki/"
-"UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>にあります。"
+"このプロジェクトの詳細情報は<link xlink:href=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>にあります。"
 
 #. Tag: para
 #: extras_topology.xml:15
@@ -3993,13 +3993,13 @@ msgstr ""
 msgid ""
 "A full TopoJSON document will be need to contain, in addition to the "
 "snippets returned by this function, the actual arcs plus some headers. See "
-"the <ulink url=\"http://github.com/mbostock/topojson-specification/blob/"
-"master/README.md\">TopoJSON specification</ulink>."
+"the <link xlink:href=\"http://github.com/mbostock/topojson-specification/blob/"
+"master/README.md\">TopoJSON specification</link>."
 msgstr ""
 "完全なTopoJSON文書は、この関数が返すスニペットだけでなく、実際のarcsメンバ"
-"と、いくつかのヘッダを含む必要があります。 <ulink url=\"http://github.com/"
+"と、いくつかのヘッダを含む必要があります。 <link xlink:href=\"http://github.com/"
 "mbostock/topojson-specification/blob/master/README.md\">TopoJSON "
-"specification</ulink>をご覧ください。"
+"specification</link>をご覧ください。"
 
 #. Tag: para
 #: extras_topology.xml:3743

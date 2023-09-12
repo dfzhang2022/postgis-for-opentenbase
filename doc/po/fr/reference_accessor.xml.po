@@ -1560,14 +1560,14 @@ msgstr ""
 #: reference_accessor.xml:1413
 #, no-c-format
 msgid ""
-"This complements the PostgreSQL built-in <ulink url=\"https://www.postgresql."
+"This complements the PostgreSQL built-in <link xlink:href=\"https://www.postgresql."
 "org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">database "
-"object functions</ulink> pg_column_size, pg_size_pretty, pg_relation_size, "
+"object functions</link> pg_column_size, pg_size_pretty, pg_relation_size, "
 "pg_total_relation_size."
 msgstr ""
-"Ceci complète les fonctions intégrées de PostgreSQL <ulink url=\"https://www."
+"Ceci complète les fonctions intégrées de PostgreSQL <link xlink:href=\"https://www."
 "postgresql.org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-"
-"DBOBJECT\">fonctions d'objet de base de données</ulink> pg_column_size, "
+"DBOBJECT\">fonctions d'objet de base de données</link> pg_column_size, "
 "pg_size_pretty, pg_relation_size, pg_total_relation_size."
 
 #. Tag: para

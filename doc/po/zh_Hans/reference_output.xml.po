@@ -579,12 +579,12 @@ msgstr "返回一组行的 FlatGeobuf 表示形式。"
 #: reference_output.xml:458
 #, no-c-format
 msgid ""
-"Return a FlatGeobuf representation (<ulink url=\"http://flatgeobuf."
-"org\">http://flatgeobuf.org</ulink>) of a set of rows corresponding to a "
+"Return a FlatGeobuf representation (<link xlink:href=\"http://flatgeobuf."
+"org\">http://flatgeobuf.org</link>) of a set of rows corresponding to a "
 "FeatureCollection. NOTE: PostgreSQL bytea cannot exceed 1GB."
 msgstr ""
-"返回与 FeatureCollection 对应的一组行的 FlatGeobuf 表示形式 (<ulink "
-"url=\"http://flatgeobuf.org\">http://flatgeobuf.org</ulink>)。 注意："
+"返回与 FeatureCollection 对应的一组行的 FlatGeobuf 表示形式 (<link "
+"xlink:href=\"http://flatgeobuf.org\">http://flatgeobuf.org</link>)。 注意："
 "PostgreSQL bytea 不能超过 1GB。"
 
 #. Tag: para
@@ -626,15 +626,15 @@ msgstr "返回一组行的 Geobuf 表示。"
 #: reference_output.xml:496
 #, no-c-format
 msgid ""
-"Return a Geobuf representation (<ulink url=\"https://github.com/mapbox/"
-"geobuf\">https://github.com/mapbox/geobuf</ulink>) of a set of rows "
+"Return a Geobuf representation (<link xlink:href=\"https://github.com/mapbox/"
+"geobuf\">https://github.com/mapbox/geobuf</link>) of a set of rows "
 "corresponding to a FeatureCollection. Every input geometry is analyzed to "
 "determine maximum precision for optimal storage. Note that Geobuf in its "
 "current form cannot be streamed so the full output will be assembled in "
 "memory."
 msgstr ""
-"返回与FeatureCollection对应的一组行的Geobuf表示（<ulink url=\"https://github."
-"com/mapbox/geobuf\">https://github.com/mapbox/geobuf</ulink>）。 分析每个输入"
+"返回与FeatureCollection对应的一组行的Geobuf表示（<link xlink:href=\"https://github."
+"com/mapbox/geobuf\">https://github.com/mapbox/geobuf</link>）。 分析每个输入"
 "几何形状以确定最佳存储的最大精度。 请注意，当前形式的 Geobuf 无法进行流式传"
 "输，因此完整的输出将在内存中组装。"
 
@@ -655,14 +655,14 @@ msgstr "以 GeoJSON 元素的形式返回几何图形。"
 #, no-c-format
 msgid ""
 "Returns a geometry as a GeoJSON \"geometry\", or a row as a GeoJSON "
-"\"feature\". (See the <ulink url=\"https://tools.ietf.org/html/"
-"rfc7946\">GeoJSON specifications RFC 7946</ulink>). 2D and 3D Geometries are "
+"\"feature\". (See the <link xlink:href=\"https://tools.ietf.org/html/"
+"rfc7946\">GeoJSON specifications RFC 7946</link>). 2D and 3D Geometries are "
 "both supported. GeoJSON only support SFS 1.1 geometry types (no curve "
 "support for example)."
 msgstr ""
 "将几何图形返回为 GeoJSON“几何图形”，或将行返回为 GeoJSON“特征”。 （请参阅 "
-"<ulink url=\"https://tools.ietf.org/html/rfc7946\">GeoJSON 规范 RFC 7946</"
-"ulink>）。 2D 和 3D 几何图形均受支持。 GeoJSON 仅支持 SFS 1.1 几何类型（例如"
+"<link xlink:href=\"https://tools.ietf.org/html/rfc7946\">GeoJSON 规范 RFC 7946</"
+"link>）。 2D 和 3D 几何图形均受支持。 GeoJSON 仅支持 SFS 1.1 几何类型（例如"
 "不支持曲线）。"
 
 #. Tag: para
@@ -738,27 +738,27 @@ msgstr ""
 #: reference_output.xml:597
 #, no-c-format
 msgid ""
-"GeoJSON can be tested and viewed online at <ulink url=\"http://geojson.io/"
-"\">geojson.io</ulink> and <ulink url=\"http://geojson.io/\">geojsonlint.com</"
-"ulink>. It is widely supported by web mapping frameworks:"
+"GeoJSON can be tested and viewed online at <link xlink:href=\"http://geojson.io/"
+"\">geojson.io</link> and <link xlink:href=\"http://geojson.io/\">geojsonlint.com</"
+"link>. It is widely supported by web mapping frameworks:"
 msgstr ""
-"GeoJSON 可以在<ulink url=\"http://geojson.io/\"> geojson.io </ulink>和 "
-"<ulink url=\"http://geojson.io/\">geojsonlint.com </ulink>上在线测试和查看。 "
+"GeoJSON 可以在<link xlink:href=\"http://geojson.io/\"> geojson.io </link>和 "
+"<link xlink:href=\"http://geojson.io/\">geojsonlint.com </link>上在线测试和查看。 "
 "它受到网络地图框架的广泛支持："
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:601
 #, no-c-format
 msgid "OpenLayers GeoJSON Example"
 msgstr "OpenLayers GeoJSON Example"
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:602
 #, no-c-format
 msgid "Leaflet GeoJSON Example"
 msgstr "Leaflet GeoJSON Example"
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:603
 #, no-c-format
 msgid "Mapbox GL GeoJSON Example"
@@ -1149,17 +1149,17 @@ msgstr "将几何图形返回为带有地理数据字段 (034) 的 MARC21/XML �
 #: reference_output.xml:947
 #, no-c-format
 msgid ""
-"This function returns a MARC21/XML record with <ulink url=\"https://www.loc."
+"This function returns a MARC21/XML record with <link xlink:href=\"https://www.loc."
 "gov/marc/bibliographic/bd034.html\">Coded Cartographic Mathematical Data</"
-"ulink> representing the bounding box of a given geometry. The "
+"link> representing the bounding box of a given geometry. The "
 "<varname>format</varname> parameter allows to encode the coordinates in "
 "subfields <varname>$d</varname>,<varname>$e</varname>,<varname>$f</varname> "
 "and <varname>$g</varname> in all formats supported by the MARC21/XML "
 "standard. Valid formats are:"
 msgstr ""
-"此函数返回一个 MARC21/XML 记录，其中包含表示给定几何图形的边界框的<ulink "
-"url=\"https://www.loc.gov/marc/bibliographic/bd034.html\">编码制图数学数据</"
-"ulink>。 <varname>格式</varname>参数允许以 MARC21/XML 标准支持的所有格式对子"
+"此函数返回一个 MARC21/XML 记录，其中包含表示给定几何图形的边界框的<link "
+"xlink:href=\"https://www.loc.gov/marc/bibliographic/bd034.html\">编码制图数学数据</"
+"link>。 <varname>格式</varname>参数允许以 MARC21/XML 标准支持的所有格式对子"
 "字段<varname> $d</varname>、<varname>$e</varname>、<varname>$f </varname>和 "
 "<varname>$g</varname> 中的坐标进行编码。 有效格式为："
 
@@ -1234,7 +1234,7 @@ msgstr "此函数忽略 Z 和 M维度。"
 msgid "LOC MARC21/XML versions supported:"
 msgstr "支持的 LOC MARC21/XML 版本："
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:967
 #, no-c-format
 msgid "MARC21/XML 1.1"
@@ -1304,19 +1304,19 @@ msgstr "将几何图形转换为 MVT 瓦片的坐标空间。"
 #: reference_output.xml:1027
 #, no-c-format
 msgid ""
-"Transforms a geometry into the coordinate space of a MVT (<ulink "
-"url=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</ulink>) "
+"Transforms a geometry into the coordinate space of a MVT (<link "
+"xlink:href=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</link>) "
 "tile, clipping it to the tile bounds if required. The geometry must be in "
 "the coordinate system of the target map (using <xref "
-"linkend=\"ST_Transform\"/> if needed). Commonly this is <ulink url=\"https://"
-"en.wikipedia.org/wiki/Web_Mercator_projection\">Web Mercator</ulink> "
+"linkend=\"ST_Transform\"/> if needed). Commonly this is <link xlink:href=\"https://"
+"en.wikipedia.org/wiki/Web_Mercator_projection\">Web Mercator</link> "
 "(SRID:3857)."
 msgstr ""
-"将几何图形转换为 MVT（<ulink url=\"https://www.mapbox.com/vector-tiles/"
-"\">Mapbox 矢量切片</ulink>）瓦片的坐标空间，如果需要，将其剪切到图块边界。 几"
+"将几何图形转换为 MVT（<link xlink:href=\"https://www.mapbox.com/vector-tiles/"
+"\">Mapbox 矢量切片</link>）瓦片的坐标空间，如果需要，将其剪切到图块边界。 几"
 "何图形必须位于目标地图的坐标系中（如果需要，请使用 <xref "
-"linkend=\"ST_Transform\"/>）。 通常这是 <ulink url=\"https://en.wikipedia."
-"org/wiki/Web_Mercator_projection\">Web 墨卡托</ulink> (SRID:3857)。"
+"linkend=\"ST_Transform\"/>）。 通常这是 <link xlink:href=\"https://en.wikipedia."
+"org/wiki/Web_Mercator_projection\">Web 墨卡托</link> (SRID:3857)。"
 
 #. Tag: para
 #: reference_output.xml:1032
@@ -1371,11 +1371,11 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<varname>extent</varname> is the tile extent size in tile coordinate space "
-"as defined by the <ulink url=\"https://www.mapbox.com/vector-tiles/"
-"specification/\">MVT specification</ulink>. Defaults to 4096."
+"as defined by the <link xlink:href=\"https://www.mapbox.com/vector-tiles/"
+"specification/\">MVT specification</link>. Defaults to 4096."
 msgstr ""
-"<varname>extent</varname>是由 <ulink url=\"https://www.mapbox.com/vector-"
-"tiles/specification/\">MVT 规范</ulink>定义的切片坐标空间中切片的大小。 默认"
+"<varname>extent</varname>是由 <link xlink:href=\"https://www.mapbox.com/vector-"
+"tiles/specification/\">MVT 规范</link>定义的切片坐标空间中切片的大小。 默认"
 "值为 4096。"
 
 #. Tag: para
@@ -1437,33 +1437,33 @@ msgstr "返回一组行的 MVT 表示形式的聚合函数。"
 #: reference_output.xml:1120
 #, no-c-format
 msgid ""
-"An aggregate function which returns a binary <ulink url=\"https://www.mapbox."
-"com/vector-tiles/\">Mapbox Vector Tile</ulink> representation of a set of "
+"An aggregate function which returns a binary <link xlink:href=\"https://www.mapbox."
+"com/vector-tiles/\">Mapbox Vector Tile</link> representation of a set of "
 "rows corresponding to a tile layer. The rows must contain a geometry column "
 "which will be encoded as a feature geometry. The geometry must be in tile "
-"coordinate space and valid as per the <ulink url=\"https://www.mapbox.com/"
-"vector-tiles/specification/\">MVT specification</ulink>. <xref "
+"coordinate space and valid as per the <link xlink:href=\"https://www.mapbox.com/"
+"vector-tiles/specification/\">MVT specification</link>. <xref "
 "linkend=\"ST_AsMVTGeom\"/> can be used to transform geometry into tile "
 "coordinate space. Other row columns are encoded as feature attributes."
 msgstr ""
-"一个聚合函数，返回与图块图层对应的一组行的二进制<ulink url=\"https://www."
-"mapbox.com/vector-tiles/\"> Mapbox 矢量瓦片</ulink>表示。 这些行必须包含一个"
+"一个聚合函数，返回与图块图层对应的一组行的二进制<link xlink:href=\"https://www."
+"mapbox.com/vector-tiles/\"> Mapbox 矢量瓦片</link>表示。 这些行必须包含一个"
 "几何列，该几何列将被编码为要素几何。 几何图形必须位于图块坐标空间中，并且根据"
-"<ulink url=\"https://www.mapbox.com/vector-tiles/specification/\"> MVT 规范</"
-"ulink>有效。 <xref linkend=\"ST_AsMVTGeom\"/> 可用于将几何图形转换为图块坐标"
+"<link xlink:href=\"https://www.mapbox.com/vector-tiles/specification/\"> MVT 规范</"
+"link>有效。 <xref linkend=\"ST_AsMVTGeom\"/> 可用于将几何图形转换为图块坐标"
 "空间。 其他行列被编码为特征属性。"
 
 #. Tag: para
 #: reference_output.xml:1129
 #, no-c-format
 msgid ""
-"The <ulink url=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</"
-"ulink> format can store features with varying sets of attributes. To use "
+"The <link xlink:href=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</"
+"link> format can store features with varying sets of attributes. To use "
 "this capability supply a JSONB column in the row data containing Json "
 "objects one level deep. The keys and values in the JSONB values will be "
 "encoded as feature attributes."
 msgstr ""
-"<ulink url=\"https://www.mapbox.com/vector-tiles/\">Mapbox 矢量切片</ulink>格"
+"<link xlink:href=\"https://www.mapbox.com/vector-tiles/\">Mapbox 矢量切片</link>格"
 "式可以存储具有不同属性集的要素。 要使用此功能，请在包含一层深度的 Json 对象的"
 "行数据中提供一个 JSONB 列。 JSONB 值中的键和值将被编码为功能属性。"
 
@@ -1512,16 +1512,16 @@ msgstr ""
 msgid ""
 "<varname>geom_name</varname> is the name of the geometry column in the row "
 "data. Default is the first geometry column. Note that PostgreSQL by default "
-"automatically <ulink url=\"https://www.postgresql.org/docs/current/sql-"
+"automatically <link xlink:href=\"https://www.postgresql.org/docs/current/sql-"
 "syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS\">folds unquoted identifiers to "
-"lower case</ulink>, which means that unless the geometry column is quoted, e."
+"lower case</link>, which means that unless the geometry column is quoted, e."
 "g. <varname>\"MyMVTGeom\"</varname>, this parameter must be provided as "
 "lowercase."
 msgstr ""
 "<varname>geom_name </varname>是行数据中几何列的名称。 默认为第一个几何列。 请"
-"注意，PostgreSQL 默认情况下会自动<ulink url=\"https://www.postgresql.org/"
+"注意，PostgreSQL 默认情况下会自动<link xlink:href=\"https://www.postgresql.org/"
 "docs/current/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS\">将未加引号的标"
-"识符折叠为小写</ulink>，这意味着除非几何列被加引号，例如<varname> "
+"识符折叠为小写</link>，这意味着除非几何列被加引号，例如<varname> "
 "“MyMVTGeom”</varname>，此参数必须以小写形式提供。"
 
 #. Tag: para
@@ -1584,12 +1584,12 @@ msgstr ""
 #: reference_output.xml:1207
 #, no-c-format
 msgid ""
-"For working with PostGIS SVG graphics, checkout <ulink url=\"https://github."
-"com/dr-jts/pg_svg\">pg_svg</ulink> library which provides plpgsql functions "
+"For working with PostGIS SVG graphics, checkout <link xlink:href=\"https://github."
+"com/dr-jts/pg_svg\">pg_svg</link> library which provides plpgsql functions "
 "for working with outputs from ST_AsSVG."
 msgstr ""
-"要使用 PostGIS SVG 图形，请查看<ulink url=\"https://github.com/dr-jts/"
-"pg_svg\"> pg_svg </ulink>库，它提供了用于处理 ST_AsSVG 输出的 plpgsql 函数。"
+"要使用 PostGIS SVG 图形，请查看<link xlink:href=\"https://github.com/dr-jts/"
+"pg_svg\"> pg_svg </link>库，它提供了用于处理 ST_AsSVG 输出的 plpgsql 函数。"
 
 #. Tag: para
 #: reference_output.xml:1210
@@ -1608,13 +1608,13 @@ msgstr "更改： 2.0.0 - 添加了对默认参数和命名参数的支持"
 #, no-c-format
 msgid ""
 "Availability: 1.2.2. Availability: 1.4.0 Changed in PostGIS 1.4.0 to include "
-"L command in absolute path to conform to <ulink url=\"http://www.w3.org/TR/"
+"L command in absolute path to conform to <link xlink:href=\"http://www.w3.org/TR/"
 "SVG/paths.html#PathDataBNF\">http://www.w3.org/TR/SVG/paths."
-"html#PathDataBNF</ulink>"
+"html#PathDataBNF</link>"
 msgstr ""
 "可用性：1.2.2。 可用性：1.4.0 PostGIS 1.4.0 中更改为在绝对路径中包含 L 命令以"
-"符合<ulink url=\"http://www.w3.org/TR/SVG/paths.html#PathDataBNF\"> http://"
-"www.w3.org/TR/SVG/paths.html#PathDataBNF</ulink>"
+"符合<link xlink:href=\"http://www.w3.org/TR/SVG/paths.html#PathDataBNF\"> http://"
+"www.w3.org/TR/SVG/paths.html#PathDataBNF</link>"
 
 #. Tag: para
 #: reference_output.xml:1223
@@ -1645,13 +1645,13 @@ msgstr "返回几何形式为 TWKB，又名“微小的已知的二进制”"
 #, no-c-format
 msgid ""
 "Returns the geometry in TWKB (Tiny Well-Known Binary) format. TWKB is a "
-"<ulink url=\"https://github.com/TWKB/Specification/blob/master/twkb."
-"md\">compressed binary format</ulink> with a focus on minimizing the size of "
+"<link xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb."
+"md\">compressed binary format</link> with a focus on minimizing the size of "
 "the output."
 msgstr ""
-"返回 TWKB（微小已知的二进制）格式的几何图形。 TWKB 是一种<ulink "
-"url=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">压缩的二进"
-"制格式</ulink>，注重最小化输出的大小。"
+"返回 TWKB（微小已知的二进制）格式的几何图形。 TWKB 是一种<link "
+"xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">压缩的二进"
+"制格式</link>，注重最小化输出的大小。"
 
 #. Tag: para
 #: reference_output.xml:1265
@@ -1689,29 +1689,29 @@ msgid ""
 "geometries and unique identifiers into a TWKB collection that preserves the "
 "identifiers. This is useful for clients that expect to unpack a collection "
 "and then access further information about the objects inside. You can create "
-"the arrays using the <ulink url=\"https://www.postgresql.org/docs/current/"
-"functions-aggregate.html\">array_agg</ulink> function. The other parameters "
+"the arrays using the <link xlink:href=\"https://www.postgresql.org/docs/current/"
+"functions-aggregate.html\">array_agg</link> function. The other parameters "
 "operate the same as for the simple form of the function."
 msgstr ""
 "该函数的数组输入形式用于将几何图形和唯一标识符的集合转换为保留标识符的 TWKB "
 "集合。 这对于希望解压集合然后访问有关内部对象的更多信息的客户端非常有用。 您"
-"可以使用 <ulink url=\"https://www.postgresql.org/docs/current/functions-"
-"aggregate.html\">array_agg </ulink>函数创建数组。 其他参数的操作与函数的简单"
+"可以使用 <link xlink:href=\"https://www.postgresql.org/docs/current/functions-"
+"aggregate.html\">array_agg </link>函数创建数组。 其他参数的操作与函数的简单"
 "形式相同。"
 
 #. Tag: para
 #: reference_output.xml:1269
 #, no-c-format
 msgid ""
-"The format specification is available online at <ulink url=\"https://github."
-"com/TWKB/Specification\">https://github.com/TWKB/Specification</ulink>, and "
-"code for building a JavaScript client can be found at <ulink url=\"https://"
-"github.com/TWKB/twkb.js\">https://github.com/TWKB/twkb.js</ulink>."
+"The format specification is available online at <link xlink:href=\"https://github."
+"com/TWKB/Specification\">https://github.com/TWKB/Specification</link>, and "
+"code for building a JavaScript client can be found at <link xlink:href=\"https://"
+"github.com/TWKB/twkb.js\">https://github.com/TWKB/twkb.js</link>."
 msgstr ""
-"格式规范可在 <ulink url=\"https://github.com/TWKB/Specification\">https://"
-"github.com/TWKB/Specification </ulink>在线获取，构建 JavaScript 客户端的代码"
-"可在<ulink url=\"https://github.com/TWKB/twkb.js\"> https://github.com/TWKB/"
-"twkb.js</ulink> 找到。"
+"格式规范可在 <link xlink:href=\"https://github.com/TWKB/Specification\">https://"
+"github.com/TWKB/Specification </link>在线获取，构建 JavaScript 客户端的代码"
+"可在<link xlink:href=\"https://github.com/TWKB/twkb.js\"> https://github.com/TWKB/"
+"twkb.js</link> 找到。"
 
 #. Tag: para
 #: reference_output.xml:1272
@@ -1753,14 +1753,14 @@ msgstr ""
 #: reference_output.xml:1313
 #, no-c-format
 msgid ""
-"Returns a geometry as an X3D xml formatted node element <ulink url=\"http://"
+"Returns a geometry as an X3D xml formatted node element <link xlink:href=\"http://"
 "www.web3d.org/standards/number/19776-1\">http://www.web3d.org/standards/"
-"number/19776-1</ulink>. If <varname>maxdecimaldigits</varname> (precision) "
+"number/19776-1</link>. If <varname>maxdecimaldigits</varname> (precision) "
 "is not specified then defaults to 15."
 msgstr ""
-"以 X3D xml 格式的节点元素形式返回几何图形 <ulink url=\"http://www.web3d.org/"
+"以 X3D xml 格式的节点元素形式返回几何图形 <link xlink:href=\"http://www.web3d.org/"
 "standards/number/19776-1\">http://www.web3d.org/standards/number/19776-1</"
-"ulink>。 如果未指定 <varname>maxdecimaldigits</varname>（精度），则默认为 "
+"link>。 如果未指定 <varname>maxdecimaldigits</varname>（精度），则默认为 "
 "15。"
 
 #. Tag: para
@@ -1827,19 +1827,19 @@ msgstr ""
 msgid ""
 "2: Output coordinates in GeoSpatial GeoCoordinates. This option will throw "
 "an error if geometries are not in WGS 84 long lat (srid: 4326). This is "
-"currently the only GeoCoordinate type supported. <ulink url=\"http://www."
+"currently the only GeoCoordinate type supported. <link xlink:href=\"http://www."
 "web3d.org/documents/specifications/19775-1/V3.2/Part01/components/geodata."
 "html#Specifyingaspatialreference\">Refer to X3D specs specifying a spatial "
-"reference system.</ulink>. Default output will be <code>GeoCoordinate "
+"reference system.</link>. Default output will be <code>GeoCoordinate "
 "geoSystem='\"GD\" \"WE\" \"longitude_first\"'</code>. If you prefer the X3D "
 "default of <code>GeoCoordinate geoSystem='\"GD\" \"WE\" \"latitude_first\"'</"
 "code> use <code>(2 + 1)</code> = <code>3</code>"
 msgstr ""
 "2：GeoSpatial GeoCoordinates 中的输出坐标。 如果几何图形不在 WGS 84 长纬度 "
-"(srid: 4326) 中，此选项将引发错误。 这是目前唯一支持的地理坐标类型。 <ulink "
-"url=\"http://www.web3d.org/documents/specifications/19775-1/V3.2/Part01/"
+"(srid: 4326) 中，此选项将引发错误。 这是目前唯一支持的地理坐标类型。 <link "
+"xlink:href=\"http://www.web3d.org/documents/specifications/19775-1/V3.2/Part01/"
 "components/geodata.html#Specifyingaspatialreference\">请参阅指定空间参考系统"
-"的 X3D 规范</ulink>。默认输出将为<code> GeoCoordinate geoSystem='\"GD\" "
+"的 X3D 规范</link>。默认输出将为<code> GeoCoordinate geoSystem='\"GD\" "
 "\"WE\" \"longitude_first\"'</code>。 如果您更喜欢 <code>GeoCoordinate "
 "geoSystem='\"GD\" \"WE\" \"latitude_first\"'</code> 的 X3D 默认值，请使用"
 "<code> (2+1)</code> = <code>3</code>"
@@ -1971,39 +1971,39 @@ msgstr ""
 #: reference_output.xml:1382
 #, no-c-format
 msgid ""
-"Lots of advancements happening in 3D space particularly with <ulink "
-"url=\"https://www.web3d.org/wiki/index.php/X3D_and_HTML5\">X3D Integration "
-"with HTML5</ulink>"
+"Lots of advancements happening in 3D space particularly with <link "
+"xlink:href=\"https://www.web3d.org/wiki/index.php/X3D_and_HTML5\">X3D Integration "
+"with HTML5</link>"
 msgstr ""
-"3D 空间中发生了许多进步，特别是<ulink url=\"https://www.web3d.org/wiki/index."
-"php/X3D_and_HTML5\"> X3D 与 HTML5 的集成</ulink>"
+"3D 空间中发生了许多进步，特别是<link xlink:href=\"https://www.web3d.org/wiki/index."
+"php/X3D_and_HTML5\"> X3D 与 HTML5 的集成</link>"
 
 #. Tag: para
 #: reference_output.xml:1383
 #, no-c-format
 msgid ""
 "There is also a nice open source X3D viewer you can use to view rendered "
-"geometries. Free Wrl <ulink url=\"http://freewrl.sourceforge.net/\">http://"
-"freewrl.sourceforge.net/</ulink> binaries available for Mac, Linux, and "
+"geometries. Free Wrl <link xlink:href=\"http://freewrl.sourceforge.net/\">http://"
+"freewrl.sourceforge.net/</link> binaries available for Mac, Linux, and "
 "Windows. Use the FreeWRL_Launcher packaged to view the geometries."
 msgstr ""
 "还有一个很好的开源 X3D 查看器，您可以使用它来查看渲染的几何图形。 Free "
-"Wrl<ulink url=\"http://freewrl.sourceforge.net/\"> http://freewrl."
-"sourceforge.net/ </ulink>二进制文件适用于 Mac、Linux 和 Windows。 使用打包的 "
+"Wrl<link xlink:href=\"http://freewrl.sourceforge.net/\"> http://freewrl."
+"sourceforge.net/ </link>二进制文件适用于 Mac、Linux 和 Windows。 使用打包的 "
 "FreeWRL_Launcher 来查看几何图形。"
 
 #. Tag: para
 #: reference_output.xml:1384
 #, no-c-format
 msgid ""
-"Also check out <ulink url=\"https://git.osgeo.org/gitea/robe/"
-"postgis_x3d_viewer\">PostGIS minimalist X3D viewer</ulink> that utilizes "
-"this function and <ulink url=\"http://www.x3dom.org/\">x3dDom html/js open "
-"source toolkit</ulink>."
+"Also check out <link xlink:href=\"https://git.osgeo.org/gitea/robe/"
+"postgis_x3d_viewer\">PostGIS minimalist X3D viewer</link> that utilizes "
+"this function and <link xlink:href=\"http://www.x3dom.org/\">x3dDom html/js open "
+"source toolkit</link>."
 msgstr ""
-"另请查看利用此功能的<ulink url=\"https://git.osgeo.org/gitea/robe/"
-"postgis_x3d_viewer\"> PostGIS 简约 X3D 查看器</ulink>和<ulink url=\"http://"
-"www.x3dom.org/\"> x3dDom html/js 开源工具包</ulink>。"
+"另请查看利用此功能的<link xlink:href=\"https://git.osgeo.org/gitea/robe/"
+"postgis_x3d_viewer\"> PostGIS 简约 X3D 查看器</link>和<link xlink:href=\"http://"
+"www.x3dom.org/\"> x3dDom html/js 开源工具包</link>。"
 
 #. Tag: para
 #: reference_output.xml:1385
@@ -2041,11 +2041,11 @@ msgstr "PostGIS 建筑"
 #: reference_output.xml:1403
 #, no-c-format
 msgid ""
-"Copy and paste the output of this query to <ulink url=\"http://postgis.net/"
-"docs/support/viewers/x3d_viewer.htm\">x3d scene viewer</ulink> and click Show"
+"Copy and paste the output of this query to <link xlink:href=\"http://postgis.net/"
+"docs/support/viewers/x3d_viewer.htm\">x3d scene viewer</link> and click Show"
 msgstr ""
-"将此查询的输出复制并粘贴到<ulink url=\"http://postgis.net/docs/support/"
-"viewers/x3d_viewer.htm\"> x3d 场景查看器</ulink>，然后单击“显示”"
+"将此查询的输出复制并粘贴到<link xlink:href=\"http://postgis.net/docs/support/"
+"viewers/x3d_viewer.htm\"> x3d 场景查看器</link>，然后单击“显示”"
 
 #. Tag: para
 #: reference_output.xml:1414
@@ -2081,14 +2081,14 @@ msgstr "返回几何图形的 GeoHash 表示形式。"
 #: reference_output.xml:1452
 #, no-c-format
 msgid ""
-"Computes a <ulink url=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
-"ulink> representation of a geometry. A GeoHash encodes a geographic Point "
+"Computes a <link xlink:href=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
+"link> representation of a geometry. A GeoHash encodes a geographic Point "
 "into a text form that is sortable and searchable based on prefixing. A "
 "shorter GeoHash is a less precise representation of a point. It can be "
 "thought of as a box that contains the point."
 msgstr ""
-"计算几何图形的 <ulink url=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
-"ulink> 表示。 GeoHash 将地理点编码为可基于前缀排序和搜索的文本形式。 较短的 "
+"计算几何图形的 <link xlink:href=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
+"link> 表示。 GeoHash 将地理点编码为可基于前缀排序和搜索的文本形式。 较短的 "
 "GeoHash 是点的不太精确的表示。 它可以被认为是一个包含点的盒子。"
 
 #. Tag: para

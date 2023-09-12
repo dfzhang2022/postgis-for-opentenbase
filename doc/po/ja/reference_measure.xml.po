@@ -252,12 +252,12 @@ msgstr ""
 #: reference_measure.xml:105
 #, no-c-format
 msgid ""
-"For the geography type, the azimuth solution is known as the <ulink "
-"url=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
-"geodesic problem</ulink>."
+"For the geography type, the azimuth solution is known as the <link "
+"xlink:href=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
+"geodesic problem</link>."
 msgstr ""
-"ジオグラフィでは、方位角計算問題は<ulink url=\"https://en.wikipedia.org/wiki/"
-"Geodesics_on_an_ellipsoid\">inverse geodesic problem</ulink>として知られま"
+"ジオグラフィでは、方位角計算問題は<link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Geodesics_on_an_ellipsoid\">inverse geodesic problem</link>として知られま"
 "す。"
 
 #. Tag: para
@@ -279,13 +279,13 @@ msgstr ""
 msgid ""
 "Azimuth can be used in conjunction with <xref linkend=\"ST_Translate\"/> to "
 "shift an object along its perpendicular axis. See the "
-"<varname>upgis_lineshift()</varname> function in the <ulink url=\"http://"
-"trac.osgeo.org/postgis/wiki/UsersWikiplpgsqlfunctions\">PostGIS wiki</ulink> "
+"<varname>upgis_lineshift()</varname> function in the <link xlink:href=\"http://"
+"trac.osgeo.org/postgis/wiki/UsersWikiplpgsqlfunctions\">PostGIS wiki</link> "
 "for an implementation of this."
 msgstr ""
 "方位角は、垂直軸に沿ってシフトさせるには<xref linkend=\"ST_Translate\"/>と併"
-"用します。実装については<ulink url=\"http://trac.osgeo.org/postgis/wiki/"
-"UsersWikiplpgsqlfunctions\">PostGIS wiki</ulink>内の関数"
+"用します。実装については<link xlink:href=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiplpgsqlfunctions\">PostGIS wiki</link>内の関数"
 "<varname>upgis_lineshift()</varname>をご覧下さい。"
 
 #. Tag: para
@@ -339,12 +339,12 @@ msgstr "青: 原点 (75,100)、緑: 目標点 (25,45)、黄: Y軸または北、
 #, no-c-format
 msgid ""
 ", <xref linkend=\"ST_Point\"/>, <xref linkend=\"ST_Translate\"/>, <xref "
-"linkend=\"ST_Project\"/>, <ulink url=\"http://www.postgresql.org/docs/"
-"current/interactive/functions-math.html\">PostgreSQL Math Functions</ulink>"
+"linkend=\"ST_Project\"/>, <link xlink:href=\"http://www.postgresql.org/docs/"
+"current/interactive/functions-math.html\">PostgreSQL Math Functions</link>"
 msgstr ""
 ", <xref linkend=\"ST_Point\"/>, <xref linkend=\"ST_Translate\"/>, <xref "
-"linkend=\"ST_Project\"/>, <ulink url=\"http://www.postgresql.org/docs/"
-"current/interactive/functions-math.html\">PostgreSQL Math Functions</ulink>"
+"linkend=\"ST_Project\"/>, <link xlink:href=\"http://www.postgresql.org/docs/"
+"current/interactive/functions-math.html\">PostgreSQL Math Functions</link>"
 
 #. Tag: refpurpose
 #: reference_measure.xml:162
@@ -636,13 +636,13 @@ msgstr ""
 #: reference_measure.xml:417
 #, no-c-format
 msgid ""
-"Enhanced: 2.1.0 improved speed for geography. See <ulink url=\"http://"
+"Enhanced: 2.1.0 improved speed for geography. See <link xlink:href=\"http://"
 "boundlessgeo.com/2012/07/making-geography-faster/\">Making Geography faster</"
-"ulink> for details."
+"link> for details."
 msgstr ""
-"Enhanced: 2.1.0 ジオグラフィでの速度が改善されました。詳細は<ulink "
-"url=\"http://boundlessgeo.com/2012/07/making-geography-faster/\">Making "
-"Geography faster</ulink>をご覧ください。"
+"Enhanced: 2.1.0 ジオグラフィでの速度が改善されました。詳細は<link "
+"xlink:href=\"http://boundlessgeo.com/2012/07/making-geography-faster/\">Making "
+"Geography faster</link>をご覧ください。"
 
 #. Tag: para
 #: reference_measure.xml:418
@@ -894,16 +894,16 @@ msgstr "二つのジオメトリのフレシェ距離を返します。"
 #, no-c-format
 msgid ""
 "Implements algorithm for computing the Fréchet distance restricted to "
-"discrete points for both geometries, based on <ulink url=\"http://www.kr."
+"discrete points for both geometries, based on <link xlink:href=\"http://www.kr."
 "tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf\">Computing Discrete "
-"Fréchet Distance</ulink>. The Fréchet distance is a measure of similarity "
+"Fréchet Distance</link>. The Fréchet distance is a measure of similarity "
 "between curves that takes into account the location and ordering of the "
 "points along the curves. Therefore it is often better than the Hausdorff "
 "distance."
 msgstr ""
 "両方のジオメトリの離散点への制限を受けたフレシェ距離の計算アルゴリズムの実装"
-"は<ulink url=\"http://www.kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464."
-"pdf\">Computing Discrete Fréchet Distance</ulink>を基にしています。フレシェ距"
+"は<link xlink:href=\"http://www.kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464."
+"pdf\">Computing Discrete Fréchet Distance</link>を基にしています。フレシェ距"
 "離は曲線の位置と点の並び順とを考慮に入れた曲線間の類似度を計測するものです。"
 "ハウスドルフ距離よりも良いことがしばしばあります。"
 
@@ -972,14 +972,14 @@ msgstr "二つのジオメトリ間のハウスドルフ距離を返します。
 #: reference_measure.xml:705
 #, no-c-format
 msgid ""
-"Returns the <ulink url=\"http://en.wikipedia.org/wiki/"
-"Hausdorff_distance\">Hausdorff distance</ulink> between two geometries. The "
+"Returns the <link xlink:href=\"http://en.wikipedia.org/wiki/"
+"Hausdorff_distance\">Hausdorff distance</link> between two geometries. The "
 "Hausdorff distance is a measure of how similar or dissimilar 2 geometries "
 "are."
 msgstr ""
-"二つのジオメトリ間の<ulink url=\"https://ja.wikipedia.org/wiki/"
+"二つのジオメトリ間の<link xlink:href=\"https://ja.wikipedia.org/wiki/"
 "%E3%83%8F%E3%82%A6%E3%82%B9%E3%83%89%E3%83%AB%E3%83%95%E8%B7%9D%E9%9B%A2\">ハ"
-"ウスドルフ距離</ulink>を返します。ハウスドルフ距離は二つのジオメトリのどれぐ"
+"ウスドルフ距離</link>を返します。ハウスドルフ距離は二つのジオメトリのどれぐ"
 "らい似ているかを示す尺度です。"
 
 #. Tag: para

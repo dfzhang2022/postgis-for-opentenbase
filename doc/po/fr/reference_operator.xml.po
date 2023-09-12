@@ -1261,12 +1261,12 @@ msgstr ""
 #: reference_operator.xml:1646
 #, no-c-format
 msgid ""
-"Refer to <ulink url=\"https://postgis.net/workshops/postgis-intro/knn."
-"html\">PostGIS workshop: Nearest-Neighbor Searching</ulink> for a detailed "
+"Refer to <link xlink:href=\"https://postgis.net/workshops/postgis-intro/knn."
+"html\">PostGIS workshop: Nearest-Neighbor Searching</link> for a detailed "
 "example."
 msgstr ""
-"Reportez-vous à <ulink url=\"https://postgis.net/workshops/postgis-intro/knn."
-"html\">l'atelier PostGIS : La recherche du plus proche voisin</ulink> pour "
+"Reportez-vous à <link xlink:href=\"https://postgis.net/workshops/postgis-intro/knn."
+"html\">l'atelier PostGIS : La recherche du plus proche voisin</link> pour "
 "un exemple détaillé."
 
 #. Tag: para

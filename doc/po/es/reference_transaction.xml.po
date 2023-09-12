@@ -22,14 +22,14 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid ""
 "These functions implement a row locking mechanism to support long "
-"transactions. They are provided primarily for implementors of the <ulink "
-"url=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
-"ulink> specification."
+"transactions. They are provided primarily for implementors of the <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
+"link> specification."
 msgstr ""
 "Este módulo y las funciones asociadas pl/pgsql se han implementado para "
 "proporcionar soporte a bloqueos extensos que son requeridos por la "
-"especificación <ulink url=\"http://www.opengeospatial.org/standards/"
-"wfs\">Web Feature Service</ulink>"
+"especificación <link xlink:href=\"http://www.opengeospatial.org/standards/"
+"wfs\">Web Feature Service</link>"
 
 #. Tag: title
 #: reference_transaction.xml:13
@@ -42,12 +42,12 @@ msgstr "Soporte para transacciones grandes"
 #, fuzzy, no-c-format
 msgid ""
 "For the locking mechanism to operate correctly the <emphasis "
-"role=\"bold\">serializable</emphasis> <ulink url=\"http://www.postgresql.org/"
+"role=\"bold\">serializable</emphasis> <link xlink:href=\"http://www.postgresql.org/"
 "docs/current/static/transaction-iso.html\"> transaction isolation level</"
-"ulink> must be used."
+"link> must be used."
 msgstr ""
-"Los usuarios deben usar <ulink url=\"http://www.postgresql.org/docs/current/"
-"static/transaction-iso.html\">el nivel de transacción en serie</ulink> sino "
+"Los usuarios deben usar <link xlink:href=\"http://www.postgresql.org/docs/current/"
+"static/transaction-iso.html\">el nivel de transacción en serie</link> sino "
 "se rompería el mecanismo de bloqueo."
 
 #. Tag: refpurpose

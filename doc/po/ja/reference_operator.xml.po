@@ -1242,12 +1242,12 @@ msgstr ""
 #: reference_operator.xml:1646
 #, no-c-format
 msgid ""
-"Refer to <ulink url=\"https://postgis.net/workshops/postgis-intro/knn."
-"html\">PostGIS workshop: Nearest-Neighbor Searching</ulink> for a detailed "
+"Refer to <link xlink:href=\"https://postgis.net/workshops/postgis-intro/knn."
+"html\">PostGIS workshop: Nearest-Neighbor Searching</link> for a detailed "
 "example."
 msgstr ""
-"詳細な例については<ulink url=\"http://workshops.opengeo.org/postgis-intro/"
-"knn.html\">OpenGeo workshop: Nearest-Neighbour Searching</ulink>を参照して下"
+"詳細な例については<link xlink:href=\"http://workshops.opengeo.org/postgis-intro/"
+"knn.html\">OpenGeo workshop: Nearest-Neighbour Searching</link>を参照して下"
 "さい。"
 
 #. Tag: para

@@ -52,25 +52,25 @@ msgstr ""
 #, no-c-format
 msgid ""
 "If you aren't using the latest release, it's worth taking a look at its "
-"<ulink url=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
-"NEWS\">release changelog</ulink> first, to find out if your bug has already "
+"<link xlink:href=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
+"NEWS\">release changelog</link> first, to find out if your bug has already "
 "been fixed."
 msgstr ""
-"最新版を使っていない場合には<ulink url=\"https://git.osgeo.org/gitea/postgis/"
-"postgis/raw/branch/master/NEWS\">release changelog</ulink>をまず見て、既にバ"
+"最新版を使っていない場合には<link xlink:href=\"https://git.osgeo.org/gitea/postgis/"
+"postgis/raw/branch/master/NEWS\">release changelog</link>をまず見て、既にバ"
 "グフィクスされていないかを探すのは価値のあることです。"
 
 #. Tag: para
 #: reporting.xml:21
 #, no-c-format
 msgid ""
-"Using the <ulink url=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
-"ulink> will ensure your reports are not discarded, and will keep you "
+"Using the <link xlink:href=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
+"link> will ensure your reports are not discarded, and will keep you "
 "informed on its handling process. Before reporting a new bug please query "
 "the database to see if it is a known one, and if it is please add any new "
 "information you have about it."
 msgstr ""
-"<ulink url=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</ulink>を使"
+"<link xlink:href=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</link>を使"
 "うと、レポートが捨てられず、それの対応プロセスが通知されることを保証します。"
 "新しいバグを報告する前にデータベースに問い合わせて、既知のバグかどうかを見て"
 "下さい。既知のものでしたら、それに関して持っているあらゆる新しい情報を追加し"
@@ -80,12 +80,12 @@ msgstr ""
 #: reporting.xml:28
 #, no-c-format
 msgid ""
-"You might want to read Simon Tatham's paper about <ulink url=\"http://www."
+"You might want to read Simon Tatham's paper about <link xlink:href=\"http://www."
 "chiark.greenend.org.uk/~sgtatham/bugs.html\">How to Report Bugs Effectively</"
-"ulink> before filing a new report."
+"link> before filing a new report."
 msgstr ""
-"新しいレポートを記入する前にSimon Tathamさんの<ulink url=\"http://www.chiark."
-"greenend.org.uk/~sgtatham/bugs.html\">How to Report Bugs Effectively</ulink>"
+"新しいレポートを記入する前にSimon Tathamさんの<link xlink:href=\"http://www.chiark."
+"greenend.org.uk/~sgtatham/bugs.html\">How to Report Bugs Effectively</link>"
 "に関するページを読むと良いでしょう。"
 
 #. Tag: title
@@ -110,11 +110,11 @@ msgstr ""
 #: reporting.xml:40
 #, no-c-format
 msgid ""
-"Documentation issues can also be reported to the <ulink url=\"http://trac."
-"osgeo.org/postgis\">PostGIS bug tracker</ulink>."
+"Documentation issues can also be reported to the <link xlink:href=\"http://trac."
+"osgeo.org/postgis\">PostGIS bug tracker</link>."
 msgstr ""
-"文書の問題も<ulink url=\"http://trac.osgeo.org/postgis\">PostGIS bug "
-"tracker</ulink>に報告することができます。"
+"文書の問題も<link xlink:href=\"http://trac.osgeo.org/postgis\">PostGIS bug "
+"tracker</link>に報告することができます。"
 
 #. Tag: para
 #: reporting.xml:44
@@ -131,11 +131,11 @@ msgstr ""
 #, no-c-format
 msgid ""
 "If your changes are more extensive, a patch is definitely preferred. This is "
-"a four step process on Unix (assuming you already have <ulink url=\"https://"
-"git-scm.com/\">git</ulink> installed):"
+"a four step process on Unix (assuming you already have <link xlink:href=\"https://"
+"git-scm.com/\">git</link> installed):"
 msgstr ""
 "変更が大きい場合は、パッチが確実に好まれます。Unix上で次の4ステップの処理を行"
-"います (既に<ulink url=\"https://git-scm.com/\">git</ulink>をインストールして"
+"います (既に<link xlink:href=\"https://git-scm.com/\">git</link>をインストールして"
 "いると仮定します)。"
 
 #. Tag: para

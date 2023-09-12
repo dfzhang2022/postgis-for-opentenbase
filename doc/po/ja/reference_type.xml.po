@@ -33,17 +33,17 @@ msgstr ""
 #: reference_type.xml:8
 #, no-c-format
 msgid ""
-"Each data type describes its type casting behavior. A <ulink url=\"https://"
+"Each data type describes its type casting behavior. A <link xlink:href=\"https://"
 "www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-TYPE-"
-"CASTS\">type cast</ulink> converts values of one data type into another "
+"CASTS\">type cast</link> converts values of one data type into another "
 "type. PostgreSQL allows defining casting behavior for custom types, along "
 "with the functions used to convert type values. Casts can have <emphasis "
 "role=\"bold\">automatic</emphasis> behavior, which allows automatic "
 "conversion of a function argument to a type supported by the function."
 msgstr ""
-"データ型ごとに、型キャストのふるまいが記述されています。<ulink url=\"https://"
+"データ型ごとに、型キャストのふるまいが記述されています。<link xlink:href=\"https://"
 "www.postgresql.jp/document/current/html/sql-expressions.html#SQL-SYNTAX-TYPE-"
-"CASTS\">型キャスト</ulink>によって、あるデータ型の値が他のデータ型に変換され"
+"CASTS\">型キャスト</link>によって、あるデータ型の値が他のデータ型に変換され"
 "ます。PostgreSQLでは、型を変換するために使われる関数に加えて、ユーザ定義型の"
 "キャストのふるまいの定義が可能です。キャストは<emphasis role=\"bold\">自動</"
 "emphasis>的なふるまいを持つことができ、それによって、関数の引数をその関数が対"
@@ -307,12 +307,12 @@ msgstr "複雑なジオメトリの部品を記述するために使われる複
 #: reference_type.xml:195
 #, no-c-format
 msgid ""
-"<varname>geometry_dump</varname> is a <ulink url=\"https://www.postgresql."
-"org/docs/current/rowtypes.html\">composite data type</ulink> containing the "
+"<varname>geometry_dump</varname> is a <link xlink:href=\"https://www.postgresql."
+"org/docs/current/rowtypes.html\">composite data type</link> containing the "
 "fields:"
 msgstr ""
-"<varname>geometry_dump</varname>は、次のフィールドを持つ<ulink url=\"https://"
-"www.postgresql.jp/document/current/html/rowtypes.html\">複合型</ulink>です。"
+"<varname>geometry_dump</varname>は、次のフィールドを持つ<link xlink:href=\"https://"
+"www.postgresql.jp/document/current/html/rowtypes.html\">複合型</link>です。"
 
 #. Tag: para
 #: reference_type.xml:200

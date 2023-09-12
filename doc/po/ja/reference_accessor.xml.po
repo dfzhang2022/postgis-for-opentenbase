@@ -1506,14 +1506,14 @@ msgstr "ジオメトリが取るメモリ空間の合計をバイト単位で返
 #: reference_accessor.xml:1413
 #, no-c-format
 msgid ""
-"This complements the PostgreSQL built-in <ulink url=\"https://www.postgresql."
+"This complements the PostgreSQL built-in <link xlink:href=\"https://www.postgresql."
 "org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">database "
-"object functions</ulink> pg_column_size, pg_size_pretty, pg_relation_size, "
+"object functions</link> pg_column_size, pg_size_pretty, pg_relation_size, "
 "pg_total_relation_size."
 msgstr ""
-"この関数は、PostgreSQLビルトイン<ulink url=\"https://www.postgresql.jp/"
+"この関数は、PostgreSQLビルトイン<link xlink:href=\"https://www.postgresql.jp/"
 "document/current/html/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">データ"
-"ベースオブジェクト管理関数</ulink>のpg_column_size, pg_size_pretty, "
+"ベースオブジェクト管理関数</link>のpg_column_size, pg_size_pretty, "
 "pg_relation_size, pg_total_relation_sizeを補完します。"
 
 #. Tag: para

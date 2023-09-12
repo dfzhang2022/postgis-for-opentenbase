@@ -55,27 +55,27 @@ msgstr ""
 #, no-c-format
 msgid ""
 "If you aren't using the latest release, it's worth taking a look at its "
-"<ulink url=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
-"NEWS\">release changelog</ulink> first, to find out if your bug has already "
+"<link xlink:href=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
+"NEWS\">release changelog</link> first, to find out if your bug has already "
 "been fixed."
 msgstr ""
 "Si vous n'utilisez pas la dernière version, il vaut la peine de jeter un "
-"coup d'œil à son <ulink url=\"https://git.osgeo.org/gitea/postgis/postgis/"
-"raw/branch/master/NEWS\">journal des changements de la version</ulink> "
+"coup d'œil à son <link xlink:href=\"https://git.osgeo.org/gitea/postgis/postgis/"
+"raw/branch/master/NEWS\">journal des changements de la version</link> "
 "d'abord, pour savoir si votre bug a déjà été corrigé."
 
 #. Tag: para
 #: reporting.xml:21
 #, no-c-format
 msgid ""
-"Using the <ulink url=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
-"ulink> will ensure your reports are not discarded, and will keep you "
+"Using the <link xlink:href=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
+"link> will ensure your reports are not discarded, and will keep you "
 "informed on its handling process. Before reporting a new bug please query "
 "the database to see if it is a known one, and if it is please add any new "
 "information you have about it."
 msgstr ""
-"L'utilisation du <ulink url=\"http://trac.osgeo.org/postgis/\">PostGIS bug "
-"tracker</ulink> permettra de s'assurer que vos rapports ne sont pas rejetés "
+"L'utilisation du <link xlink:href=\"http://trac.osgeo.org/postgis/\">PostGIS bug "
+"tracker</link> permettra de s'assurer que vos rapports ne sont pas rejetés "
 "et vous tiendra informé du processus de traitement. Avant de signaler un "
 "nouveau bug, veuillez interroger la base de données pour voir s'il s'agit "
 "d'un bug connu, et si c'est le cas, veuillez ajouter toute nouvelle "
@@ -85,13 +85,13 @@ msgstr ""
 #: reporting.xml:28
 #, no-c-format
 msgid ""
-"You might want to read Simon Tatham's paper about <ulink url=\"http://www."
+"You might want to read Simon Tatham's paper about <link xlink:href=\"http://www."
 "chiark.greenend.org.uk/~sgtatham/bugs.html\">How to Report Bugs Effectively</"
-"ulink> before filing a new report."
+"link> before filing a new report."
 msgstr ""
-"Vous pouvez lire l'article de Simon Tatham sur <ulink url=\"http://www."
+"Vous pouvez lire l'article de Simon Tatham sur <link xlink:href=\"http://www."
 "chiark.greenend.org.uk/~sgtatham/bugs.html\">Comment signaler efficacement "
-"les bugs</ulink> avant de déposer un nouveau rapport."
+"les bugs</link> avant de déposer un nouveau rapport."
 
 #. Tag: title
 #: reporting.xml:34
@@ -115,11 +115,11 @@ msgstr ""
 #: reporting.xml:40
 #, no-c-format
 msgid ""
-"Documentation issues can also be reported to the <ulink url=\"http://trac."
-"osgeo.org/postgis\">PostGIS bug tracker</ulink>."
+"Documentation issues can also be reported to the <link xlink:href=\"http://trac."
+"osgeo.org/postgis\">PostGIS bug tracker</link>."
 msgstr ""
-"Les problèmes de documentation peuvent également être signalés au <ulink "
-"url=\"http://trac.osgeo.org/postgis\">PostGIS bug tracker</ulink>."
+"Les problèmes de documentation peuvent également être signalés au <link "
+"xlink:href=\"http://trac.osgeo.org/postgis\">PostGIS bug tracker</link>."
 
 #. Tag: para
 #: reporting.xml:44
@@ -136,13 +136,13 @@ msgstr ""
 #, no-c-format
 msgid ""
 "If your changes are more extensive, a patch is definitely preferred. This is "
-"a four step process on Unix (assuming you already have <ulink url=\"https://"
-"git-scm.com/\">git</ulink> installed):"
+"a four step process on Unix (assuming you already have <link xlink:href=\"https://"
+"git-scm.com/\">git</link> installed):"
 msgstr ""
 "Si vos modifications sont plus importantes, il est préférable d'utiliser un "
 "correctif. Il s'agit d'un processus en quatre étapes sous Unix (en supposant "
-"que vous ayez déjà installé <ulink url=\"https://git-scm.com/\">git</"
-"ulink>) :"
+"que vous ayez déjà installé <link xlink:href=\"https://git-scm.com/\">git</"
+"link>) :"
 
 #. Tag: para
 #: reporting.xml:54

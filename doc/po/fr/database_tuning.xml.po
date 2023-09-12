@@ -41,13 +41,13 @@ msgstr ""
 #: database_tuning.xml:10
 #, no-c-format
 msgid ""
-"For general details about optimizing PostgreSQL, refer to <ulink "
-"url=\"https://wiki.postgresql.org/wiki/"
-"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</ulink>."
+"For general details about optimizing PostgreSQL, refer to <link "
+"xlink:href=\"https://wiki.postgresql.org/wiki/"
+"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</link>."
 msgstr ""
 "Pour plus de détails sur l'optimisation de PostgreSQL, reportez-vous à "
-"<ulink url=\"https://wiki.postgresql.org/wiki/"
-"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</ulink>."
+"<link xlink:href=\"https://wiki.postgresql.org/wiki/"
+"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</link>."
 
 #. Tag: para
 #: database_tuning.xml:12
@@ -83,7 +83,7 @@ msgstr "Démarrage"
 msgid "These settings are configured in <code>postgresql.conf</code>:"
 msgstr "Ces paramètres sont configurés dans <code>postgresql.conf</code> :"
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:26
 #, no-c-format
 msgid "constraint_exclusion"
@@ -110,7 +110,7 @@ msgstr ""
 "compte des contraintes que si elles sont dans une hiérarchie héritée et à ne "
 "pas payer de pénalité au planificateur dans le cas contraire."
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:45
 #, no-c-format
 msgid "shared_buffers"
@@ -136,14 +136,14 @@ msgstr ""
 #: database_tuning.xml:62
 #, no-c-format
 msgid ""
-"<ulink url=\"https://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</ulink> This "
+"<link xlink:href=\"https://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</link> This "
 "setting is only available for PostgreSQL 9.4+. For PostgreSQL 9.6+ this "
 "setting has additional importance in that it controls the max number of "
 "processes you can have for parallel queries."
 msgstr ""
-"<ulink url=\"https://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</ulink> Ce "
+"<link xlink:href=\"https://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</link> Ce "
 "paramètre n'est disponible que pour PostgreSQL 9.4+. Pour PostgreSQL 9.6+, "
 "ce paramètre a une importance supplémentaire car il contrôle le nombre "
 "maximum de processus que vous pouvez avoir pour les requêtes parallèles."
@@ -175,12 +175,12 @@ msgstr "Temps d'exécution"
 #: database_tuning.xml:87
 #, no-c-format
 msgid ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-WORK-MEM\">work_mem</ulink> - sets the size of memory used "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-WORK-MEM\">work_mem</link> - sets the size of memory used "
 "for sort operations and complex queries"
 msgstr ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-WORK-MEM\">work_mem</ulink> - définit la taille de la "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-WORK-MEM\">work_mem</link> - définit la taille de la "
 "mémoire utilisée pour les opérations de tri et les requêtes complexes."
 
 #. Tag: para
@@ -215,12 +215,12 @@ msgstr "Si vous avez beaucoup de mémoire vive et peu de développeurs :"
 #: database_tuning.xml:116
 #, no-c-format
 msgid ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</ulink> - the "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</link> - the "
 "memory size used for VACUUM, CREATE INDEX, etc."
 msgstr ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</ulink> - la "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</link> - la "
 "taille de la mémoire utilisée pour VACUUM, CREATE INDEX, etc."
 
 #. Tag: para
@@ -248,7 +248,7 @@ msgstr ""
 "RAM, mais cela dépend du nombre d'utilisateurs simultanés. Si vous avez "
 "beaucoup de RAM et peu de développeurs :"
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:142
 #, no-c-format
 msgid "max_parallel_workers_per_gather"

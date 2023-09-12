@@ -373,7 +373,7 @@ msgstr ""
 msgid "LOC MARC21/XML versions supported:"
 msgstr "支持的 LOC MARC21/XML 版本："
 
-#. Tag: ulink
+#. Tag: link
 #: reference_input.xml:304
 #, no-c-format
 msgid "MARC21/XML 1.1"
@@ -1250,15 +1250,15 @@ msgid ""
 "Namespace</para> </listitem> <listitem> <para>GML 3.1.1 Simple Features "
 "profile SF-2 (with GML 3.1.0 and 3.0.0 backward compatibility)</para> </"
 "listitem> <listitem> <para>GML 2.1.2</para> </listitem> </itemizedlist> OGC "
-"GML standards, cf: <ulink url=\"http://www.opengeospatial.org/standards/"
-"gml\">http://www.opengeospatial.org/standards/gml</ulink>:"
+"GML standards, cf: <link xlink:href=\"http://www.opengeospatial.org/standards/"
+"gml\">http://www.opengeospatial.org/standards/gml</link>:"
 msgstr ""
 "支持的 OGC GML 版本包括：<itemizedlist><listitem><para>GML 3.2.1 命名空间</"
 "para></listitem><listitem><para>GML 3.1.1 简单功能配置文件 SF-2（向后兼容 "
 "GML 3.1.0 和 3.0.0）</para></listitem><listitem><para>GML 2.1.2</para></"
-"listitem></itemizedlist>有关 OGC GML 标准，请参阅<ulink url=\"http://www."
+"listitem></itemizedlist>有关 OGC GML 标准，请参阅<link xlink:href=\"http://www."
 "opengeospatial.org/standards/gml\">http://www.opengeospatial.org/standards/"
-"gml</ulink>："
+"gml</link>："
 
 #. Tag: para
 #: reference_input.xml:1288 reference_input.xml:1485
@@ -1435,14 +1435,14 @@ msgstr ""
 #, no-c-format
 msgid ""
 "OGC KML versions supported: <itemizedlist> <listitem> <para>KML 2.2.0 "
-"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <ulink "
-"url=\"http://www.opengeospatial.org/standards/kml\">http://www."
-"opengeospatial.org/standards/kml</ulink>:"
+"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/kml\">http://www."
+"opengeospatial.org/standards/kml</link>:"
 msgstr ""
 "OGC KML 的相应版本包括：<itemizedlist><listitem><para>KML 2.2.0 命名空间</"
-"para></listitem></itemizedlist>有关 OGC KML 标准，请参见<ulink url=\"http://"
+"para></listitem></itemizedlist>有关 OGC KML 标准，请参见<link xlink:href=\"http://"
 "www.opengeospatial.org/standards/kml\">http://www.opengeospatial.org/"
-"standards/kml</ulink>："
+"standards/kml</link>："
 
 #. Tag: para
 #: reference_input.xml:1408
@@ -1466,24 +1466,24 @@ msgstr ", <xref linkend=\"ST_AsKML\"/>"
 #: reference_input.xml:1430
 #, no-c-format
 msgid ""
-"Creates a geometry instance from a TWKB (\"<ulink url=\"https://github.com/"
-"TWKB/Specification/blob/master/twkb.md\">Tiny Well-Known Binary</ulink>\") "
+"Creates a geometry instance from a TWKB (\"<link xlink:href=\"https://github.com/"
+"TWKB/Specification/blob/master/twkb.md\">Tiny Well-Known Binary</link>\") "
 "geometry representation."
 msgstr ""
-"从 TWKB（“<ulink url=\"https://github.com/TWKB/Specification/blob/master/"
-"twkb.md\">微小的已知的二进制</ulink>”）几何表示创建几何实例。"
+"从 TWKB（“<link xlink:href=\"https://github.com/TWKB/Specification/blob/master/"
+"twkb.md\">微小的已知的二进制</link>”）几何表示创建几何实例。"
 
 #. Tag: para
 #: reference_input.xml:1446
 #, no-c-format
 msgid ""
-"The <varname>ST_GeomFromTWKB</varname> function, takes a a TWKB (\"<ulink "
-"url=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
-"Known Binary</ulink>\") geometry representation (WKB) and creates an "
+"The <varname>ST_GeomFromTWKB</varname> function, takes a a TWKB (\"<link "
+"xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
+"Known Binary</link>\") geometry representation (WKB) and creates an "
 "instance of the appropriate geometry type."
 msgstr ""
-"<varname>ST_GeomFromTWKB</varname>采用 TWKB（“<ulink url=\"https://github."
-"com/TWKB/Specification/blob/master/twkb.md\">微小的已知二进制</ulink>”）几何"
+"<varname>ST_GeomFromTWKB</varname>采用 TWKB（“<link xlink:href=\"https://github."
+"com/TWKB/Specification/blob/master/twkb.md\">微小的已知二进制</link>”）几何"
 "表示形式，并创建相应几何类型的实例。"
 
 #. Tag: refpurpose
@@ -1599,11 +1599,11 @@ msgstr "根据 FlatGeobuf 数据的结构创建一个表。"
 #: reference_input.xml:1597
 #, no-c-format
 msgid ""
-"Creates a table based on the structure of FlatGeobuf data. (<ulink "
-"url=\"http://flatgeobuf.org\">http://flatgeobuf.org</ulink>)."
+"Creates a table based on the structure of FlatGeobuf data. (<link "
+"xlink:href=\"http://flatgeobuf.org\">http://flatgeobuf.org</link>)."
 msgstr ""
-"根据 FlatGeobuf 数据的结构创建一个表。（<ulink url=\"http://flatgeobuf."
-"org\">http://flatgeobuf.org</ulink>）。"
+"根据 FlatGeobuf 数据的结构创建一个表。（<link xlink:href=\"http://flatgeobuf."
+"org\">http://flatgeobuf.org</link>）。"
 
 #. Tag: para
 #: reference_input.xml:1601
@@ -1639,11 +1639,11 @@ msgstr "读取FlatGeobuf数据。"
 #: reference_input.xml:1628
 #, no-c-format
 msgid ""
-"Reads FlatGeobuf data (<ulink url=\"http://flatgeobuf.org\">http://"
-"flatgeobuf.org</ulink>). NOTE: PostgreSQL bytea cannot exceed 1GB."
+"Reads FlatGeobuf data (<link xlink:href=\"http://flatgeobuf.org\">http://"
+"flatgeobuf.org</link>). NOTE: PostgreSQL bytea cannot exceed 1GB."
 msgstr ""
-"读取 FlatGeobuf 数据 （<ulink url=\"http://flatgeobuf.org\">http://"
-"flatgeobuf.org</ulink>）。 注意：PostgreSQL bytea 类型不能超过 1GB。"
+"读取 FlatGeobuf 数据 （<link xlink:href=\"http://flatgeobuf.org\">http://"
+"flatgeobuf.org</link>）。 注意：PostgreSQL bytea 类型不能超过 1GB。"
 
 #. Tag: para
 #: reference_input.xml:1634

@@ -543,12 +543,12 @@ msgstr ""
 #: administration.xml:256
 #, no-c-format
 msgid ""
-"Supplementary instructions for windows users are available at <ulink "
-"url=\"http://trac.osgeo.org/postgis/wiki/UsersWikiWinUpgrade\">Windows Hard "
-"upgrade</ulink>."
+"Supplementary instructions for windows users are available at <link "
+"xlink:href=\"http://trac.osgeo.org/postgis/wiki/UsersWikiWinUpgrade\">Windows Hard "
+"upgrade</link>."
 msgstr ""
-"有关 Windows 的其他信息，请参阅 Windows <ulink url=\"http://trac.osgeo.org/"
-"postgis/wiki/UsersWikiWinUpgrade\">Windows 硬升级</ulink>。"
+"有关 Windows 的其他信息，请参阅 Windows <link xlink:href=\"http://trac.osgeo.org/"
+"postgis/wiki/UsersWikiWinUpgrade\">Windows 硬升级</link>。"
 
 #. Tag: para
 #: administration.xml:259
@@ -686,13 +686,13 @@ msgstr ""
 #: administration.xml:372
 #, no-c-format
 msgid ""
-"If you are upgrading an old database containing french <ulink url=\"https://"
-"en.wikipedia.org/wiki/Institut_g%C3%A9ographique_national\"> IGN </ulink> "
+"If you are upgrading an old database containing french <link xlink:href=\"https://"
+"en.wikipedia.org/wiki/Institut_g%C3%A9ographique_national\"> IGN </link> "
 "cartography, you will have probably SRIDs out of range and you will see, "
 "when importing your database, issues like this :"
 msgstr ""
-"如果要升级包含法国 <ulink url=\"https://en.wikipedia.org/wiki/"
-"Institut_g%C3%A9ographique_national\"> IGN </ulink> 映射的旧数据库，则可能会"
+"如果要升级包含法国 <link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Institut_g%C3%A9ographique_national\"> IGN </link> 映射的旧数据库，则可能会"
 "超出 SRID 的范围，并在导入数据库时遇到以下问题："
 
 #. Tag: para
@@ -717,12 +717,12 @@ msgstr "运行以下命令："
 #, no-c-format
 msgid ""
 "Create then your newdb, activate the required Postgis extensions, and insert "
-"properly the french system IGN with : <ulink url=\"https://raw."
+"properly the french system IGN with : <link xlink:href=\"https://raw."
 "githubusercontent.com/Remi-C/IGN_spatial_ref_for_PostGIS/master/"
-"Put_IGN_SRS_into_Postgis.sql\"> this script </ulink> After these operations, "
+"Put_IGN_SRS_into_Postgis.sql\"> this script </link> After these operations, "
 "import your data :"
 msgstr ""
-"之后，生成一个新数据库，启用必要的 PostGIS 扩展，并确保使用此 <ulink "
-"url=\"https://raw.githubusercontent.com/Remi-C/IGN_spatial_ref_for_PostGIS/"
-"master/Put_IGN_SRS_into_Postgis.sql\"> 脚本</ulink>插入法语 IGN 系统。 完成这"
+"之后，生成一个新数据库，启用必要的 PostGIS 扩展，并确保使用此 <link "
+"xlink:href=\"https://raw.githubusercontent.com/Remi-C/IGN_spatial_ref_for_PostGIS/"
+"master/Put_IGN_SRS_into_Postgis.sql\"> 脚本</link>插入法语 IGN 系统。 完成这"
 "些过程后，按如下方式导入数据："

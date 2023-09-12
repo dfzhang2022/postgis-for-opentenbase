@@ -21,12 +21,12 @@ msgstr ""
 #: reference_transformation.xml:5
 #, no-c-format
 msgid ""
-"These functions change the position and shape of geometries using <ulink "
-"url=\"https://en.wikipedia.org/wiki/Affine_transformation\">affine "
-"transformations</ulink>."
+"These functions change the position and shape of geometries using <link "
+"xlink:href=\"https://en.wikipedia.org/wiki/Affine_transformation\">affine "
+"transformations</link>."
 msgstr ""
-"这些函数使用<ulink url=\"https://en.wikipedia.org/wiki/"
-"Affine_transformation\">仿射变换</ulink>来改变几何图形的位置和形状。"
+"这些函数使用<link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Affine_transformation\">仿射变换</link>来改变几何图形的位置和形状。"
 
 #. Tag: title
 #: reference_transformation.xml:10

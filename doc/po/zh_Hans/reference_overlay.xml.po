@@ -650,14 +650,14 @@ msgstr ""
 #: reference_overlay.xml:538
 #, no-c-format
 msgid ""
-"This is a <ulink url=\"https://www.postgresql.org/docs/current/queries-table-"
-"expressions.html#QUERIES-TABLEFUNCTIONS\">set-returning function</ulink> "
+"This is a <link xlink:href=\"https://www.postgresql.org/docs/current/queries-table-"
+"expressions.html#QUERIES-TABLEFUNCTIONS\">set-returning function</link> "
 "(SRF) that return a set of rows containing single geometry values. It can be "
 "used in a SELECT list or a FROM clause to produce a result set with one "
 "record for each result geometry."
 msgstr ""
-"这是一个返回集合的 <ulink url=\"https://www.postgresql.org/docs/current/"
-"queries-table-expressions.html#QUERIES-TABLEFUNCTIONS\">集合返回函数</ulink> "
+"这是一个返回集合的 <link xlink:href=\"https://www.postgresql.org/docs/current/"
+"queries-table-expressions.html#QUERIES-TABLEFUNCTIONS\">集合返回函数</link> "
 "(SRF) 包含单个几何值的线。 它可以在 SELECT 列表或 FROM 子句中使用，以生成一个"
 "结果集，其中每个结果几何图形都有一个记录。"
 
@@ -912,13 +912,13 @@ msgstr "请参阅 <xref linkend=\"ST_UnaryUnion\"/> 了解非聚合、单输入�
 #, no-c-format
 msgid ""
 "The ST_Union array and set variants use the fast Cascaded Union algorithm "
-"described in <ulink url=\"http://blog.cleverelephant.ca/2009/01/must-faster-"
+"described in <link xlink:href=\"http://blog.cleverelephant.ca/2009/01/must-faster-"
 "unions-in-postgis-14.html\">http://blog.cleverelephant.ca/2009/01/must-"
-"faster-unions-in-postgis-14.html</ulink>"
+"faster-unions-in-postgis-14.html</link>"
 msgstr ""
-"ST_Union的数组和聚合形式使用<ulink url=\"http://blog.cleverelephant."
+"ST_Union的数组和聚合形式使用<link xlink:href=\"http://blog.cleverelephant."
 "ca/2009/01/must-faster-unions-in-postgis-14.html\"> http://blog."
-"cleverelephant.ca/2009/01/must-faster-unions-in-postgis-14.html </ulink>中引"
+"cleverelephant.ca/2009/01/must-faster-unions-in-postgis-14.html </link>中引"
 "入的快速级联连接算法"
 
 #. Tag: para

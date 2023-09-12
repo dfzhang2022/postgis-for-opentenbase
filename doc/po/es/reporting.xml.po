@@ -53,26 +53,26 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid ""
 "If you aren't using the latest release, it's worth taking a look at its "
-"<ulink url=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
-"NEWS\">release changelog</ulink> first, to find out if your bug has already "
+"<link xlink:href=\"https://git.osgeo.org/gitea/postgis/postgis/raw/branch/master/"
+"NEWS\">release changelog</link> first, to find out if your bug has already "
 "been fixed."
 msgstr ""
 "Si no está usando la última versión, vale la pena echar un vistazo a su "
-"<ulink url=\"http://svn.osgeo.org/postgis/trunk/NEWS\">lista de cambios en "
-"la versión</ulink> primero, para ver si el error ya se ha solucionado."
+"<link xlink:href=\"http://svn.osgeo.org/postgis/trunk/NEWS\">lista de cambios en "
+"la versión</link> primero, para ver si el error ya se ha solucionado."
 
 #. Tag: para
 #: reporting.xml:21
 #, no-c-format
 msgid ""
-"Using the <ulink url=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
-"ulink> will ensure your reports are not discarded, and will keep you "
+"Using the <link xlink:href=\"http://trac.osgeo.org/postgis/\">PostGIS bug tracker</"
+"link> will ensure your reports are not discarded, and will keep you "
 "informed on its handling process. Before reporting a new bug please query "
 "the database to see if it is a known one, and if it is please add any new "
 "information you have about it."
 msgstr ""
-"Usar el <ulink url=\"http://trac.osgeo.org/postgis/\">seguimiento de errores "
-"de PostGIS</ulink> servirá para asegurarnos de que nuestros informes no son "
+"Usar el <link xlink:href=\"http://trac.osgeo.org/postgis/\">seguimiento de errores "
+"de PostGIS</link> servirá para asegurarnos de que nuestros informes no son "
 "descartados, y nos mantendrá informados de como progresa su gestión. Antes "
 "de informar acerca de un nuevo error por favor consulte la base de datos "
 "para ver si es uno ya conocido, y si lo es, por favor, agregue la nueva "
@@ -82,13 +82,13 @@ msgstr ""
 #: reporting.xml:28
 #, no-c-format
 msgid ""
-"You might want to read Simon Tatham's paper about <ulink url=\"http://www."
+"You might want to read Simon Tatham's paper about <link xlink:href=\"http://www."
 "chiark.greenend.org.uk/~sgtatham/bugs.html\">How to Report Bugs Effectively</"
-"ulink> before filing a new report."
+"link> before filing a new report."
 msgstr ""
-"Puede leer la documentación de Simon Tatham acerca de <ulink url=\"http://"
+"Puede leer la documentación de Simon Tatham acerca de <link xlink:href=\"http://"
 "www.chiark.greenend.org.uk/~sgtatham/bugs.html\">Cómo informar de errores de "
-"manera eficiente</ulink> antes de rellenar un nuevo informe."
+"manera eficiente</link> antes de rellenar un nuevo informe."
 
 #. Tag: title
 #: reporting.xml:34
@@ -112,12 +112,12 @@ msgstr ""
 #: reporting.xml:40
 #, no-c-format
 msgid ""
-"Documentation issues can also be reported to the <ulink url=\"http://trac."
-"osgeo.org/postgis\">PostGIS bug tracker</ulink>."
+"Documentation issues can also be reported to the <link xlink:href=\"http://trac."
+"osgeo.org/postgis\">PostGIS bug tracker</link>."
 msgstr ""
-"Los problemas con la documentación se pueden enviar también al <ulink "
-"url=\"http://trac.osgeo.org/postgis\">Seguimiento de errores de PostGIS</"
-"ulink>."
+"Los problemas con la documentación se pueden enviar también al <link "
+"xlink:href=\"http://trac.osgeo.org/postgis\">Seguimiento de errores de PostGIS</"
+"link>."
 
 #. Tag: para
 #: reporting.xml:44
@@ -135,12 +135,12 @@ msgstr ""
 #, fuzzy, no-c-format
 msgid ""
 "If your changes are more extensive, a patch is definitely preferred. This is "
-"a four step process on Unix (assuming you already have <ulink url=\"https://"
-"git-scm.com/\">git</ulink> installed):"
+"a four step process on Unix (assuming you already have <link xlink:href=\"https://"
+"git-scm.com/\">git</link> installed):"
 msgstr ""
 "Si sus cambios son más extensos, es preferible un envío por Subversion. Este "
 "es un proceso en cuatro pasos en Unix (suponiendo que tiene instalado ya "
-"<ulink url=\"http://subversion.apache.org/\">Subversion</ulink>):"
+"<link xlink:href=\"http://subversion.apache.org/\">Subversion</link>):"
 
 #. Tag: para
 #: reporting.xml:54

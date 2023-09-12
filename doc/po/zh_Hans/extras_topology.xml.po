@@ -37,44 +37,44 @@ msgstr "PostGIS拓扑类型和函数用于管理拓扑对象，例如面、边�
 #, no-c-format
 msgid ""
 "Sandro Santilli's presentation at PostGIS Day Paris 2011 conference gives a "
-"good synopsis of PostGIS Topology and where it is headed <ulink url=\"http://"
+"good synopsis of PostGIS Topology and where it is headed <link xlink:href=\"http://"
 "strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0.pdf"
-"\">Topology with PostGIS 2.0 slide deck</ulink>."
+"\">Topology with PostGIS 2.0 slide deck</link>."
 msgstr ""
 "Sandro Santilli在2011年PostGIS Day Paris会议上的演示提供了关于PostGIS拓扑和未"
-"来发展方向的很好概述。您可以查看他的幻灯片演示，链接如下：<ulink url="
+"来发展方向的很好概述。您可以查看他的幻灯片演示，链接如下：<link xlink:href="
 "\"http://strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0.pdf"
-"\">Topology with PostGIS 2.0 slide deck</ulink>。"
+"\">Topology with PostGIS 2.0 slide deck</link>。"
 
 #. Tag: para
 #: extras_topology.xml:6
 #, no-c-format
 msgid ""
 "Vincent Picavet provides a good synopsis and overview of what is Topology, "
-"how is it used, and various FOSS4G tools that support it in <ulink url="
+"how is it used, and various FOSS4G tools that support it in <link xlink:href="
 "\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/master/2012/"
 "pgconf_eu_2012/pgconfeu2012_vincent_picavet_postgis_topology.pdf\">PostGIS "
-"Topology PGConf EU 2012</ulink>."
+"Topology PGConf EU 2012</link>."
 msgstr ""
-"Vincent Picavet 在<ulink url=\"https://gitlab.com/Oslandia/documentation/"
+"Vincent Picavet 在<link xlink:href=\"https://gitlab.com/Oslandia/documentation/"
 "presentations/-/blob/master/2012/pgconf_eu_2012/"
 "pgconfeu2012_vincent_picavet_postgis_topology.pdf\"> PostGIS 拓扑 PGConf EU "
-"2012 </ulink>中对拓扑是什么、如何使用以及支持它的各种 FOSS4G 工具提供了很好的"
+"2012 </link>中对拓扑是什么、如何使用以及支持它的各种 FOSS4G 工具提供了很好的"
 "概要和概述。"
 
 #. Tag: para
 #: extras_topology.xml:11
 #, no-c-format
 msgid ""
-"An example of a topologically based GIS database is the <ulink url=\"https://"
+"An example of a topologically based GIS database is the <link xlink:href=\"https://"
 "www.census.gov/geo/maps-data/data/tiger.html\">US Census Topologically "
-"Integrated Geographic Encoding and Referencing System (TIGER)</ulink> "
+"Integrated Geographic Encoding and Referencing System (TIGER)</link> "
 "database. If you want to experiment with PostGIS topology and need some "
 "data, check out <xref linkend=\"Topology_Load_Tiger\"/>."
 msgstr ""
-"基于拓扑的 GIS 数据库的一个示例是<ulink url=\"https://www.census.gov/geo/"
+"基于拓扑的 GIS 数据库的一个示例是<link xlink:href=\"https://www.census.gov/geo/"
 "maps-data/data/tiger.html\">美国人口普查拓扑集成地理编码和参考系统 (TIGER) </"
-"ulink>数据库。 如果您想尝试 PostGIS 拓扑并需要一些数据，请查看 <xref linkend="
+"link>数据库。 如果您想尝试 PostGIS 拓扑并需要一些数据，请查看 <xref linkend="
 "\"Topology_Load_Tiger\"/>。"
 
 #. Tag: para
@@ -96,11 +96,11 @@ msgstr ""
 #: extras_topology.xml:14
 #, no-c-format
 msgid ""
-"Details of this project can be found at <ulink url=\"http://trac.osgeo.org/"
-"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>"
+"Details of this project can be found at <link xlink:href=\"http://trac.osgeo.org/"
+"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>"
 msgstr ""
-"该项目的详细信息可以在 <ulink url=\"http://trac.osgeo.org/postgis/wiki/"
-"UsersWikiPostgisTopology\">PostGIS Topology Wiki </ulink>中找到"
+"该项目的详细信息可以在 <link xlink:href=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiPostgisTopology\">PostGIS Topology Wiki </link>中找到"
 
 #. Tag: para
 #: extras_topology.xml:15
@@ -3709,12 +3709,12 @@ msgstr ""
 msgid ""
 "A full TopoJSON document will be need to contain, in addition to the "
 "snippets returned by this function, the actual arcs plus some headers. See "
-"the <ulink url=\"http://github.com/mbostock/topojson-specification/blob/"
-"master/README.md\">TopoJSON specification</ulink>."
+"the <link xlink:href=\"http://github.com/mbostock/topojson-specification/blob/"
+"master/README.md\">TopoJSON specification</link>."
 msgstr ""
 "除了该函数返回的片段之外，完整的 TopoJSON 文档还需要包含实际的弧和一些标头。 "
-"请参阅 <ulink url=\"http://github.com/mbostock/topojson-specification/blob/"
-"master/README.md\">TopoJSON 规范</ulink>。"
+"请参阅 <link xlink:href=\"http://github.com/mbostock/topojson-specification/blob/"
+"master/README.md\">TopoJSON 规范</link>。"
 
 #. Tag: para
 #: extras_topology.xml:3743

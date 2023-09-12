@@ -30,15 +30,15 @@ msgstr "주소 표준화 도구"
 #: extras_address_standardizer.xml:4
 #, no-c-format
 msgid ""
-"This is a fork of the <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-11."
-"html\">PAGC standardizer</ulink> (original code for this portion was <ulink "
-"url=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
-"postgresql\">PAGC PostgreSQL Address Standardizer</ulink>)."
+"This is a fork of the <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-11."
+"html\">PAGC standardizer</link> (original code for this portion was <link "
+"xlink:href=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
+"postgresql\">PAGC PostgreSQL Address Standardizer</link>)."
 msgstr ""
-"이 도구는 <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-11.html\">PAGC "
-"standardizer</ulink> 의 한 갈래(fork)입니다(이 갈래의 원본 코드는 <ulink "
-"url=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
-"postgresql\">PAGC PostgreSQL 주소 표준화 도구</ulink> 였습니다)."
+"이 도구는 <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-11.html\">PAGC "
+"standardizer</link> 의 한 갈래(fork)입니다(이 갈래의 원본 코드는 <link "
+"xlink:href=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
+"postgresql\">PAGC PostgreSQL 주소 표준화 도구</link> 였습니다)."
 
 #. Tag: para
 #: extras_address_standardizer.xml:5
@@ -49,9 +49,9 @@ msgid ""
 "helper lex and gaz tables."
 msgstr ""
 "주소 표준화 도구는 단일 라인 주소 파싱 도구로, 주소를 입력받아 테이블에 저장"
-"된 일련의 규칙 및 도우미 <ulink url=\"http://postgis.net/docs/lextab.html\">"
-"어휘 목록(lexicon; lex) 테이블</ulink> 과 <ulink url=\"http://postgis.net/"
-"docs/gaztab.html\">지명 색인(gazetteer; gaz) 테이블</ulink> 에 기반해서 정규"
+"된 일련의 규칙 및 도우미 <link xlink:href=\"http://postgis.net/docs/lextab.html\">"
+"어휘 목록(lexicon; lex) 테이블</link> 과 <link xlink:href=\"http://postgis.net/"
+"docs/gaztab.html\">지명 색인(gazetteer; gaz) 테이블</link> 에 기반해서 정규"
 "화합니다."
 
 #. Tag: para
@@ -211,13 +211,13 @@ msgstr "설명"
 msgid ""
 "A composite type that consists of elements of an address. This is the return "
 "type for <xref linkend=\"standardize_address\"/> function. Some descriptions "
-"for elements are borrowed from <ulink url=\"http://www.pagcgeo.org/docs/html/"
-"pagc-12.html#ss12.1\">PAGC Postal Attributes</ulink>."
+"for elements are borrowed from <link xlink:href=\"http://www.pagcgeo.org/docs/html/"
+"pagc-12.html#ss12.1\">PAGC Postal Attributes</link>."
 msgstr ""
 "주소의 요소들로 이루어진 합성 유형입니다. <xref "
-"linkend=\"standardize_address\"/> 함수가 이 유형을 반환합니다. <ulink "
-"url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.1\">PAGC Postal "
-"Attributes</ulink> 에서 요소들에 대한 몇몇 설명을 빌려왔습니다."
+"linkend=\"standardize_address\"/> 함수가 이 유형을 반환합니다. <link "
+"xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.1\">PAGC Postal "
+"Attributes</link> 에서 요소들에 대한 몇몇 설명을 빌려왔습니다."
 
 #. Tag: para
 #: extras_address_standardizer.xml:51
@@ -556,12 +556,12 @@ msgstr "rule"
 #: extras_address_standardizer.xml:165
 #, no-c-format
 msgid ""
-"text field denoting the rule. Details at <ulink url=\"http://www.pagcgeo.org/"
+"text field denoting the rule. Details at <link xlink:href=\"http://www.pagcgeo.org/"
 "docs/html/pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</"
-"ulink>."
+"link>."
 msgstr ""
-"규칙을 표시하는 텍스트 항목입니다. <ulink url=\"http://www.pagcgeo.org/docs/"
-"html/pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</ulink> "
+"규칙을 표시하는 텍스트 항목입니다. <link xlink:href=\"http://www.pagcgeo.org/docs/"
+"html/pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</link> "
 "에서 자세히 설명하고 있습니다."
 
 #. Tag: para
@@ -615,13 +615,13 @@ msgstr "입력 토큰"
 #, no-c-format
 msgid ""
 "Each rule starts with a set of input tokens followed by a terminator "
-"<code>-1</code>. Valid input tokens excerpted from <ulink url=\"http://www."
-"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</ulink> are as "
+"<code>-1</code>. Valid input tokens excerpted from <link xlink:href=\"http://www."
+"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</link> are as "
 "follows:"
 msgstr ""
 "각 규칙은 입력 토큰 집합과 그 다음의 종결자 <code>-1</code> 로 시작합니다. "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC "
-"Input Tokens</ulink> 에서 발췌한 유효한 입력 토큰들은 다음과 같습니다:"
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC "
+"Input Tokens</link> 에서 발췌한 유효한 입력 토큰들은 다음과 같습니다:"
 
 #. Tag: emphasis
 #: extras_address_standardizer.xml:176
@@ -1042,12 +1042,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MACRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">MACRO_C 출력 토큰</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">MACRO_C 출력 토큰</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink> 에서 발췌)"
+"docs/html/pagc-12.html#--r-typ--</link> 에서 발췌)"
 
 #. Tag: term
 #: extras_address_standardizer.xml:366
@@ -1130,12 +1130,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MICRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">MICRO_C 출력 토큰</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">MICRO_C 출력 토큰</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink> 에서 발췌)."
+"docs/html/pagc-12.html#--r-typ--</link> 에서 발췌)."
 
 #. Tag: term
 #: extras_address_standardizer.xml:395
@@ -1206,12 +1206,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">EXTRA_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">EXTRA_C 출력 토큰</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">EXTRA_C 출력 토큰</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink> 에서 발췌)."
+"docs/html/pagc-12.html#--r-typ--</link> 에서 발췌)."
 
 #. Tag: term
 #: extras_address_standardizer.xml:441
@@ -1378,12 +1378,12 @@ msgstr "token"
 #, no-c-format
 msgid ""
 "integer: the kind of word it is. Only if it is used in this context will it "
-"be replaced. Refer to <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12."
-"html#--i-tok--\">PAGC Tokens</ulink>."
+"be replaced. Refer to <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12."
+"html#--i-tok--\">PAGC Tokens</link>."
 msgstr ""
 "정수형: 단어의 유형을 나타냅니다. 단어가 해당 맥락에서 쓰였을 경우에만 대체"
-"될 것입니다. <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-"
-"tok--\">PAGC Tokens</ulink> 를 참조하십시오."
+"될 것입니다. <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-"
+"tok--\">PAGC Tokens</link> 를 참조하십시오."
 
 #. Tag: refpurpose
 #: extras_address_standardizer.xml:525

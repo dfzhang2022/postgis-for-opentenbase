@@ -37,9 +37,9 @@ msgstr ""
 #: database_tuning.xml:10
 #, no-c-format
 msgid ""
-"For general details about optimizing PostgreSQL, refer to <ulink "
-"url=\"https://wiki.postgresql.org/wiki/"
-"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</ulink>."
+"For general details about optimizing PostgreSQL, refer to <link "
+"xlink:href=\"https://wiki.postgresql.org/wiki/"
+"Tuning_Your_PostgreSQL_Server\">Tuning your PostgreSQL Server</link>."
 msgstr ""
 
 #. Tag: para
@@ -71,7 +71,7 @@ msgstr ""
 msgid "These settings are configured in <code>postgresql.conf</code>:"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:26
 #, no-c-format
 msgid "constraint_exclusion"
@@ -93,7 +93,7 @@ msgid ""
 "they are in an inherited hierarchy and not pay the planner penalty otherwise."
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:45
 #, no-c-format
 msgid "shared_buffers"
@@ -117,8 +117,8 @@ msgstr ""
 #: database_tuning.xml:62
 #, no-c-format
 msgid ""
-"<ulink url=\"https://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</ulink> This "
+"<link xlink:href=\"https://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAX-WORKER-PROCESSES\">max_worker_processes</link> This "
 "setting is only available for PostgreSQL 9.4+. For PostgreSQL 9.6+ this "
 "setting has additional importance in that it controls the max number of "
 "processes you can have for parallel queries."
@@ -148,8 +148,8 @@ msgstr ""
 #: database_tuning.xml:87
 #, no-c-format
 msgid ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-WORK-MEM\">work_mem</ulink> - sets the size of memory used "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-WORK-MEM\">work_mem</link> - sets the size of memory used "
 "for sort operations and complex queries"
 msgstr ""
 
@@ -181,8 +181,8 @@ msgstr ""
 #: database_tuning.xml:116
 #, no-c-format
 msgid ""
-"<ulink url=\"http://www.postgresql.org/docs/current/static/runtime-config-"
-"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</ulink> - the "
+"<link xlink:href=\"http://www.postgresql.org/docs/current/static/runtime-config-"
+"resource.html#GUC-MAINTENANCE-WORK-MEM\">maintenance_work_mem</link> - the "
 "memory size used for VACUUM, CREATE INDEX, etc."
 msgstr ""
 
@@ -206,7 +206,7 @@ msgid ""
 "the # of concurrent users. If you have lots of RAM and few developers:"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: database_tuning.xml:142
 #, no-c-format
 msgid "max_parallel_workers_per_gather"

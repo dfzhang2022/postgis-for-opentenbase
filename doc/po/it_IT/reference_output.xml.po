@@ -529,8 +529,8 @@ msgstr ""
 #: reference_output.xml:458
 #, no-c-format
 msgid ""
-"Return a FlatGeobuf representation (<ulink url=\"http://flatgeobuf."
-"org\">http://flatgeobuf.org</ulink>) of a set of rows corresponding to a "
+"Return a FlatGeobuf representation (<link xlink:href=\"http://flatgeobuf."
+"org\">http://flatgeobuf.org</link>) of a set of rows corresponding to a "
 "FeatureCollection. NOTE: PostgreSQL bytea cannot exceed 1GB."
 msgstr ""
 
@@ -571,8 +571,8 @@ msgstr ""
 #: reference_output.xml:496
 #, no-c-format
 msgid ""
-"Return a Geobuf representation (<ulink url=\"https://github.com/mapbox/"
-"geobuf\">https://github.com/mapbox/geobuf</ulink>) of a set of rows "
+"Return a Geobuf representation (<link xlink:href=\"https://github.com/mapbox/"
+"geobuf\">https://github.com/mapbox/geobuf</link>) of a set of rows "
 "corresponding to a FeatureCollection. Every input geometry is analyzed to "
 "determine maximum precision for optimal storage. Note that Geobuf in its "
 "current form cannot be streamed so the full output will be assembled in "
@@ -596,8 +596,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns a geometry as a GeoJSON \"geometry\", or a row as a GeoJSON "
-"\"feature\". (See the <ulink url=\"https://tools.ietf.org/html/"
-"rfc7946\">GeoJSON specifications RFC 7946</ulink>). 2D and 3D Geometries are "
+"\"feature\". (See the <link xlink:href=\"https://tools.ietf.org/html/"
+"rfc7946\">GeoJSON specifications RFC 7946</link>). 2D and 3D Geometries are "
 "both supported. GeoJSON only support SFS 1.1 geometry types (no curve "
 "support for example)."
 msgstr ""
@@ -666,24 +666,24 @@ msgstr ""
 #: reference_output.xml:597
 #, no-c-format
 msgid ""
-"GeoJSON can be tested and viewed online at <ulink url=\"http://geojson.io/"
-"\">geojson.io</ulink> and <ulink url=\"http://geojson.io/\">geojsonlint.com</"
-"ulink>. It is widely supported by web mapping frameworks:"
+"GeoJSON can be tested and viewed online at <link xlink:href=\"http://geojson.io/"
+"\">geojson.io</link> and <link xlink:href=\"http://geojson.io/\">geojsonlint.com</"
+"link>. It is widely supported by web mapping frameworks:"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:601
 #, no-c-format
 msgid "OpenLayers GeoJSON Example"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:602
 #, no-c-format
 msgid "Leaflet GeoJSON Example"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:603
 #, no-c-format
 msgid "Mapbox GL GeoJSON Example"
@@ -1045,9 +1045,9 @@ msgstr ""
 #: reference_output.xml:947
 #, no-c-format
 msgid ""
-"This function returns a MARC21/XML record with <ulink url=\"https://www.loc."
+"This function returns a MARC21/XML record with <link xlink:href=\"https://www.loc."
 "gov/marc/bibliographic/bd034.html\">Coded Cartographic Mathematical Data</"
-"ulink> representing the bounding box of a given geometry. The "
+"link> representing the bounding box of a given geometry. The "
 "<varname>format</varname> parameter allows to encode the coordinates in "
 "subfields <varname>$d</varname>,<varname>$e</varname>,<varname>$f</varname> "
 "and <varname>$g</varname> in all formats supported by the MARC21/XML "
@@ -1123,7 +1123,7 @@ msgstr ""
 msgid "LOC MARC21/XML versions supported:"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: reference_output.xml:967
 #, no-c-format
 msgid "MARC21/XML 1.1"
@@ -1187,12 +1187,12 @@ msgstr ""
 #: reference_output.xml:1027
 #, no-c-format
 msgid ""
-"Transforms a geometry into the coordinate space of a MVT (<ulink "
-"url=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</ulink>) "
+"Transforms a geometry into the coordinate space of a MVT (<link "
+"xlink:href=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</link>) "
 "tile, clipping it to the tile bounds if required. The geometry must be in "
 "the coordinate system of the target map (using <xref "
-"linkend=\"ST_Transform\"/> if needed). Commonly this is <ulink url=\"https://"
-"en.wikipedia.org/wiki/Web_Mercator_projection\">Web Mercator</ulink> "
+"linkend=\"ST_Transform\"/> if needed). Commonly this is <link xlink:href=\"https://"
+"en.wikipedia.org/wiki/Web_Mercator_projection\">Web Mercator</link> "
 "(SRID:3857)."
 msgstr ""
 
@@ -1242,8 +1242,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<varname>extent</varname> is the tile extent size in tile coordinate space "
-"as defined by the <ulink url=\"https://www.mapbox.com/vector-tiles/"
-"specification/\">MVT specification</ulink>. Defaults to 4096."
+"as defined by the <link xlink:href=\"https://www.mapbox.com/vector-tiles/"
+"specification/\">MVT specification</link>. Defaults to 4096."
 msgstr ""
 
 #. Tag: para
@@ -1297,12 +1297,12 @@ msgstr ""
 #: reference_output.xml:1120
 #, no-c-format
 msgid ""
-"An aggregate function which returns a binary <ulink url=\"https://www.mapbox."
-"com/vector-tiles/\">Mapbox Vector Tile</ulink> representation of a set of "
+"An aggregate function which returns a binary <link xlink:href=\"https://www.mapbox."
+"com/vector-tiles/\">Mapbox Vector Tile</link> representation of a set of "
 "rows corresponding to a tile layer. The rows must contain a geometry column "
 "which will be encoded as a feature geometry. The geometry must be in tile "
-"coordinate space and valid as per the <ulink url=\"https://www.mapbox.com/"
-"vector-tiles/specification/\">MVT specification</ulink>. <xref "
+"coordinate space and valid as per the <link xlink:href=\"https://www.mapbox.com/"
+"vector-tiles/specification/\">MVT specification</link>. <xref "
 "linkend=\"ST_AsMVTGeom\"/> can be used to transform geometry into tile "
 "coordinate space. Other row columns are encoded as feature attributes."
 msgstr ""
@@ -1311,8 +1311,8 @@ msgstr ""
 #: reference_output.xml:1129
 #, no-c-format
 msgid ""
-"The <ulink url=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</"
-"ulink> format can store features with varying sets of attributes. To use "
+"The <link xlink:href=\"https://www.mapbox.com/vector-tiles/\">Mapbox Vector Tile</"
+"link> format can store features with varying sets of attributes. To use "
 "this capability supply a JSONB column in the row data containing Json "
 "objects one level deep. The keys and values in the JSONB values will be "
 "encoded as feature attributes."
@@ -1357,9 +1357,9 @@ msgstr ""
 msgid ""
 "<varname>geom_name</varname> is the name of the geometry column in the row "
 "data. Default is the first geometry column. Note that PostgreSQL by default "
-"automatically <ulink url=\"https://www.postgresql.org/docs/current/sql-"
+"automatically <link xlink:href=\"https://www.postgresql.org/docs/current/sql-"
 "syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS\">folds unquoted identifiers to "
-"lower case</ulink>, which means that unless the geometry column is quoted, e."
+"lower case</link>, which means that unless the geometry column is quoted, e."
 "g. <varname>\"MyMVTGeom\"</varname>, this parameter must be provided as "
 "lowercase."
 msgstr ""
@@ -1416,8 +1416,8 @@ msgstr ""
 #: reference_output.xml:1207
 #, no-c-format
 msgid ""
-"For working with PostGIS SVG graphics, checkout <ulink url=\"https://github."
-"com/dr-jts/pg_svg\">pg_svg</ulink> library which provides plpgsql functions "
+"For working with PostGIS SVG graphics, checkout <link xlink:href=\"https://github."
+"com/dr-jts/pg_svg\">pg_svg</link> library which provides plpgsql functions "
 "for working with outputs from ST_AsSVG."
 msgstr ""
 
@@ -1438,9 +1438,9 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Availability: 1.2.2. Availability: 1.4.0 Changed in PostGIS 1.4.0 to include "
-"L command in absolute path to conform to <ulink url=\"http://www.w3.org/TR/"
+"L command in absolute path to conform to <link xlink:href=\"http://www.w3.org/TR/"
 "SVG/paths.html#PathDataBNF\">http://www.w3.org/TR/SVG/paths."
-"html#PathDataBNF</ulink>"
+"html#PathDataBNF</link>"
 msgstr ""
 
 #. Tag: para
@@ -1472,8 +1472,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Returns the geometry in TWKB (Tiny Well-Known Binary) format. TWKB is a "
-"<ulink url=\"https://github.com/TWKB/Specification/blob/master/twkb."
-"md\">compressed binary format</ulink> with a focus on minimizing the size of "
+"<link xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb."
+"md\">compressed binary format</link> with a focus on minimizing the size of "
 "the output."
 msgstr ""
 
@@ -1507,8 +1507,8 @@ msgid ""
 "geometries and unique identifiers into a TWKB collection that preserves the "
 "identifiers. This is useful for clients that expect to unpack a collection "
 "and then access further information about the objects inside. You can create "
-"the arrays using the <ulink url=\"https://www.postgresql.org/docs/current/"
-"functions-aggregate.html\">array_agg</ulink> function. The other parameters "
+"the arrays using the <link xlink:href=\"https://www.postgresql.org/docs/current/"
+"functions-aggregate.html\">array_agg</link> function. The other parameters "
 "operate the same as for the simple form of the function."
 msgstr ""
 
@@ -1516,10 +1516,10 @@ msgstr ""
 #: reference_output.xml:1269
 #, no-c-format
 msgid ""
-"The format specification is available online at <ulink url=\"https://github."
-"com/TWKB/Specification\">https://github.com/TWKB/Specification</ulink>, and "
-"code for building a JavaScript client can be found at <ulink url=\"https://"
-"github.com/TWKB/twkb.js\">https://github.com/TWKB/twkb.js</ulink>."
+"The format specification is available online at <link xlink:href=\"https://github."
+"com/TWKB/Specification\">https://github.com/TWKB/Specification</link>, and "
+"code for building a JavaScript client can be found at <link xlink:href=\"https://"
+"github.com/TWKB/twkb.js\">https://github.com/TWKB/twkb.js</link>."
 msgstr ""
 
 #. Tag: para
@@ -1557,9 +1557,9 @@ msgstr ""
 #: reference_output.xml:1313
 #, no-c-format
 msgid ""
-"Returns a geometry as an X3D xml formatted node element <ulink url=\"http://"
+"Returns a geometry as an X3D xml formatted node element <link xlink:href=\"http://"
 "www.web3d.org/standards/number/19776-1\">http://www.web3d.org/standards/"
-"number/19776-1</ulink>. If <varname>maxdecimaldigits</varname> (precision) "
+"number/19776-1</link>. If <varname>maxdecimaldigits</varname> (precision) "
 "is not specified then defaults to 15."
 msgstr ""
 
@@ -1615,10 +1615,10 @@ msgstr ""
 msgid ""
 "2: Output coordinates in GeoSpatial GeoCoordinates. This option will throw "
 "an error if geometries are not in WGS 84 long lat (srid: 4326). This is "
-"currently the only GeoCoordinate type supported. <ulink url=\"http://www."
+"currently the only GeoCoordinate type supported. <link xlink:href=\"http://www."
 "web3d.org/documents/specifications/19775-1/V3.2/Part01/components/geodata."
 "html#Specifyingaspatialreference\">Refer to X3D specs specifying a spatial "
-"reference system.</ulink>. Default output will be <code>GeoCoordinate "
+"reference system.</link>. Default output will be <code>GeoCoordinate "
 "geoSystem='\"GD\" \"WE\" \"longitude_first\"'</code>. If you prefer the X3D "
 "default of <code>GeoCoordinate geoSystem='\"GD\" \"WE\" \"latitude_first\"'</"
 "code> use <code>(2 + 1)</code> = <code>3</code>"
@@ -1750,9 +1750,9 @@ msgstr ""
 #: reference_output.xml:1382
 #, no-c-format
 msgid ""
-"Lots of advancements happening in 3D space particularly with <ulink "
-"url=\"https://www.web3d.org/wiki/index.php/X3D_and_HTML5\">X3D Integration "
-"with HTML5</ulink>"
+"Lots of advancements happening in 3D space particularly with <link "
+"xlink:href=\"https://www.web3d.org/wiki/index.php/X3D_and_HTML5\">X3D Integration "
+"with HTML5</link>"
 msgstr ""
 
 #. Tag: para
@@ -1760,8 +1760,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "There is also a nice open source X3D viewer you can use to view rendered "
-"geometries. Free Wrl <ulink url=\"http://freewrl.sourceforge.net/\">http://"
-"freewrl.sourceforge.net/</ulink> binaries available for Mac, Linux, and "
+"geometries. Free Wrl <link xlink:href=\"http://freewrl.sourceforge.net/\">http://"
+"freewrl.sourceforge.net/</link> binaries available for Mac, Linux, and "
 "Windows. Use the FreeWRL_Launcher packaged to view the geometries."
 msgstr ""
 
@@ -1769,10 +1769,10 @@ msgstr ""
 #: reference_output.xml:1384
 #, no-c-format
 msgid ""
-"Also check out <ulink url=\"https://git.osgeo.org/gitea/robe/"
-"postgis_x3d_viewer\">PostGIS minimalist X3D viewer</ulink> that utilizes "
-"this function and <ulink url=\"http://www.x3dom.org/\">x3dDom html/js open "
-"source toolkit</ulink>."
+"Also check out <link xlink:href=\"https://git.osgeo.org/gitea/robe/"
+"postgis_x3d_viewer\">PostGIS minimalist X3D viewer</link> that utilizes "
+"this function and <link xlink:href=\"http://www.x3dom.org/\">x3dDom html/js open "
+"source toolkit</link>."
 msgstr ""
 
 #. Tag: para
@@ -1807,8 +1807,8 @@ msgstr ""
 #: reference_output.xml:1403
 #, no-c-format
 msgid ""
-"Copy and paste the output of this query to <ulink url=\"http://postgis.net/"
-"docs/support/viewers/x3d_viewer.htm\">x3d scene viewer</ulink> and click Show"
+"Copy and paste the output of this query to <link xlink:href=\"http://postgis.net/"
+"docs/support/viewers/x3d_viewer.htm\">x3d scene viewer</link> and click Show"
 msgstr ""
 
 #. Tag: para
@@ -1845,8 +1845,8 @@ msgstr ""
 #: reference_output.xml:1452
 #, no-c-format
 msgid ""
-"Computes a <ulink url=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
-"ulink> representation of a geometry. A GeoHash encodes a geographic Point "
+"Computes a <link xlink:href=\"http://en.wikipedia.org/wiki/Geohash\">GeoHash</"
+"link> representation of a geometry. A GeoHash encodes a geographic Point "
 "into a text form that is sortable and searchable based on prefixing. A "
 "shorter GeoHash is a less precise representation of a point. It can be "
 "thought of as a box that contains the point."

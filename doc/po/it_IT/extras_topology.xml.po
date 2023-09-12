@@ -43,39 +43,39 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Sandro Santilli's presentation at PostGIS Day Paris 2011 conference gives a "
-"good synopsis of PostGIS Topology and where it is headed <ulink url=\"http://"
+"good synopsis of PostGIS Topology and where it is headed <link xlink:href=\"http://"
 "strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0."
-"pdf\">Topology with PostGIS 2.0 slide deck</ulink>."
+"pdf\">Topology with PostGIS 2.0 slide deck</link>."
 msgstr ""
 "La presentazione di Sandro Santilli alla conferenza PostGIS Day Paris 2011 "
-"fornisce una buona introduzione alla Topologia PostGIS <ulink url=\"http://"
+"fornisce una buona introduzione alla Topologia PostGIS <link xlink:href=\"http://"
 "strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0."
-"pdf\">Topology with PostGIS 2.0 slide deck</ulink>."
+"pdf\">Topology with PostGIS 2.0 slide deck</link>."
 
 #. Tag: para
 #: extras_topology.xml:6
 #, no-c-format
 msgid ""
 "Vincent Picavet provides a good synopsis and overview of what is Topology, "
-"how is it used, and various FOSS4G tools that support it in <ulink "
-"url=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
+"how is it used, and various FOSS4G tools that support it in <link "
+"xlink:href=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
 "master/2012/pgconf_eu_2012/pgconfeu2012_vincent_picavet_postgis_topology."
-"pdf\">PostGIS Topology PGConf EU 2012</ulink>."
+"pdf\">PostGIS Topology PGConf EU 2012</link>."
 msgstr ""
 
 #. Tag: para
 #: extras_topology.xml:11
 #, no-c-format
 msgid ""
-"An example of a topologically based GIS database is the <ulink url=\"https://"
+"An example of a topologically based GIS database is the <link xlink:href=\"https://"
 "www.census.gov/geo/maps-data/data/tiger.html\">US Census Topologically "
-"Integrated Geographic Encoding and Referencing System (TIGER)</ulink> "
+"Integrated Geographic Encoding and Referencing System (TIGER)</link> "
 "database. If you want to experiment with PostGIS topology and need some "
 "data, check out <xref linkend=\"Topology_Load_Tiger\"/>."
 msgstr ""
-"Un esempio di database GIS topologico è il database del <ulink url=\"https://"
+"Un esempio di database GIS topologico è il database del <link xlink:href=\"https://"
 "www.census.gov/geo/maps-data/data/tiger.html\">US Census Topologically "
-"Integrated Geographic Encoding and Referencing System (TIGER)</ulink>. Se "
+"Integrated Geographic Encoding and Referencing System (TIGER)</link>. Se "
 "vuoi sperimentare con la topologia PostGIS ed hai bisogno di dati, vedi "
 "<xref linkend=\"Topology_Load_Tiger\"/>."
 
@@ -100,11 +100,11 @@ msgstr ""
 #: extras_topology.xml:14
 #, no-c-format
 msgid ""
-"Details of this project can be found at <ulink url=\"http://trac.osgeo.org/"
-"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>"
+"Details of this project can be found at <link xlink:href=\"http://trac.osgeo.org/"
+"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>"
 msgstr ""
-"Dettagli del progetto si possono trovare sul <ulink url=\"http://trac.osgeo."
-"org/postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>"
+"Dettagli del progetto si possono trovare sul <link xlink:href=\"http://trac.osgeo."
+"org/postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>"
 
 #. Tag: para
 #: extras_topology.xml:15
@@ -3465,8 +3465,8 @@ msgstr ""
 msgid ""
 "A full TopoJSON document will be need to contain, in addition to the "
 "snippets returned by this function, the actual arcs plus some headers. See "
-"the <ulink url=\"http://github.com/mbostock/topojson-specification/blob/"
-"master/README.md\">TopoJSON specification</ulink>."
+"the <link xlink:href=\"http://github.com/mbostock/topojson-specification/blob/"
+"master/README.md\">TopoJSON specification</link>."
 msgstr ""
 
 #. Tag: para

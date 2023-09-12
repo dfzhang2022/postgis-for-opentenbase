@@ -30,16 +30,16 @@ msgstr "Adressennormierer"
 #: extras_address_standardizer.xml:4
 #, no-c-format
 msgid ""
-"This is a fork of the <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-11."
-"html\">PAGC standardizer</ulink> (original code for this portion was <ulink "
-"url=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
-"postgresql\">PAGC PostgreSQL Address Standardizer</ulink>)."
+"This is a fork of the <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-11."
+"html\">PAGC standardizer</link> (original code for this portion was <link "
+"xlink:href=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
+"postgresql\">PAGC PostgreSQL Address Standardizer</link>)."
 msgstr ""
-"Dies ist ein Entwicklungszweig des <ulink url=\"http://www.pagcgeo.org/docs/"
-"html/pagc-11.html\">PAGC Adressennormierers</ulink> (der Code für diesen "
-"Teilbereich beruht auf dem <ulink url=\"http://sourceforge.net/p/pagc/"
+"Dies ist ein Entwicklungszweig des <link xlink:href=\"http://www.pagcgeo.org/docs/"
+"html/pagc-11.html\">PAGC Adressennormierers</link> (der Code für diesen "
+"Teilbereich beruht auf dem <link xlink:href=\"http://sourceforge.net/p/pagc/"
 "code/360/tree/branches/sew-refactor/postgresql\">PAGC Adressennormierer für "
-"PostgreSQL</ulink>)."
+"PostgreSQL</link>)."
 
 #. Tag: para
 #: extras_address_standardizer.xml:5
@@ -215,14 +215,14 @@ msgstr "Beschreibung"
 msgid ""
 "A composite type that consists of elements of an address. This is the return "
 "type for <xref linkend=\"standardize_address\"/> function. Some descriptions "
-"for elements are borrowed from <ulink url=\"http://www.pagcgeo.org/docs/html/"
-"pagc-12.html#ss12.1\">PAGC Postal Attributes</ulink>."
+"for elements are borrowed from <link xlink:href=\"http://www.pagcgeo.org/docs/html/"
+"pagc-12.html#ss12.1\">PAGC Postal Attributes</link>."
 msgstr ""
 "Ein zusammengesetzter Datentyp, der aus den Elementen einer Adresse besteht. "
 "Dies ist der Datentyp, der von <xref linkend=\"standardize_address\"/> "
-"zurückgegeben wird. Einige Elementbeschreibungen wurden von <ulink "
-"url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.1\">PAGC Postal "
-"Attributes</ulink> übernommen."
+"zurückgegeben wird. Einige Elementbeschreibungen wurden von <link "
+"xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.1\">PAGC Postal "
+"Attributes</link> übernommen."
 
 #. Tag: para
 #: extras_address_standardizer.xml:51
@@ -566,13 +566,13 @@ msgstr "rule"
 #: extras_address_standardizer.xml:165
 #, no-c-format
 msgid ""
-"text field denoting the rule. Details at <ulink url=\"http://www.pagcgeo.org/"
+"text field denoting the rule. Details at <link xlink:href=\"http://www.pagcgeo.org/"
 "docs/html/pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</"
-"ulink>."
+"link>."
 msgstr ""
-"Ein Textfeld, das die Regel festlegt. Details unter <ulink url=\"http://www."
+"Ein Textfeld, das die Regel festlegt. Details unter <link xlink:href=\"http://www."
 "pagcgeo.org/docs/html/pagc-12.html#--r-rec--\">PAGC Address Standardizer "
-"Rule records</ulink>."
+"Rule records</link>."
 
 #. Tag: para
 #: extras_address_standardizer.xml:166
@@ -626,14 +626,14 @@ msgstr "Eingabe-Token"
 #, no-c-format
 msgid ""
 "Each rule starts with a set of input tokens followed by a terminator "
-"<code>-1</code>. Valid input tokens excerpted from <ulink url=\"http://www."
-"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</ulink> are as "
+"<code>-1</code>. Valid input tokens excerpted from <link xlink:href=\"http://www."
+"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</link> are as "
 "follows:"
 msgstr ""
 "Jede Regel beginnt mit einer Menge an Eingabetoken, gefolgt bei der "
 "Abschlussanweisung <code>-1</code>. Im Folgenden ein Auszug von gültigen "
-"Eingabetoken aus <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12."
-"html#ss12.2\">PAGC Input Tokens</ulink>:"
+"Eingabetoken aus <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12."
+"html#ss12.2\">PAGC Input Tokens</link>:"
 
 #. Tag: emphasis
 #: extras_address_standardizer.xml:176
@@ -1065,12 +1065,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MACRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
 "<emphasis role=\"bold\">MACRO_C Ausgabe-Token</emphasis> (ein Auszug von "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 
 #. Tag: term
 #: extras_address_standardizer.xml:366
@@ -1154,12 +1154,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MICRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
 "<emphasis role=\"bold\">MICRO_C Ausgabe-Token</emphasis> (ein Auszug von "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 
 #. Tag: term
 #: extras_address_standardizer.xml:395
@@ -1230,12 +1230,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">EXTRA_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
 "<emphasis role=\"bold\">EXTRA_C Ausgabe-Token</emphasis> (ein Auszug von "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 
 #. Tag: term
 #: extras_address_standardizer.xml:441
@@ -1407,12 +1407,12 @@ msgstr "token"
 #, no-c-format
 msgid ""
 "integer: the kind of word it is. Only if it is used in this context will it "
-"be replaced. Refer to <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12."
-"html#--i-tok--\">PAGC Tokens</ulink>."
+"be replaced. Refer to <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12."
+"html#--i-tok--\">PAGC Tokens</link>."
 msgstr ""
 "Integer: die Art des Wortes. Wird nur in diesem Zusammenhang ersetzt. Siehe "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-tok--\">PAGC "
-"Tokens</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-tok--\">PAGC "
+"Tokens</link>."
 
 #. Tag: refpurpose
 #: extras_address_standardizer.xml:525

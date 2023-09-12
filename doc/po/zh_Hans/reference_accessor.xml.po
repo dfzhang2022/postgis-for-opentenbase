@@ -1448,14 +1448,14 @@ msgstr "返回几何图形占用的内存空间量（以字节为单位）。"
 #: reference_accessor.xml:1413
 #, no-c-format
 msgid ""
-"This complements the PostgreSQL built-in <ulink url=\"https://www.postgresql."
+"This complements the PostgreSQL built-in <link xlink:href=\"https://www.postgresql."
 "org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">database "
-"object functions</ulink> pg_column_size, pg_size_pretty, pg_relation_size, "
+"object functions</link> pg_column_size, pg_size_pretty, pg_relation_size, "
 "pg_total_relation_size."
 msgstr ""
-"这补充了 PostgreSQL 内置 <ulink url=\"https://www.postgresql.org/docs/"
+"这补充了 PostgreSQL 内置 <link xlink:href=\"https://www.postgresql.org/docs/"
 "current/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">数据库 对象函数</"
-"ulink> pg_column_size、pg_size_pretty、pg_relation_size、"
+"link> pg_column_size、pg_size_pretty、pg_relation_size、"
 "pg_total_relation_size。"
 
 #. Tag: para

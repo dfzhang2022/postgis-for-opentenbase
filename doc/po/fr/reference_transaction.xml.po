@@ -23,15 +23,15 @@ msgstr ""
 #, no-c-format
 msgid ""
 "These functions implement a row locking mechanism to support long "
-"transactions. They are provided primarily for implementors of the <ulink "
-"url=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
-"ulink> specification."
+"transactions. They are provided primarily for implementors of the <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
+"link> specification."
 msgstr ""
 "Ces fonctions mettent en œuvre un mécanisme de verrouillage des lignes pour "
 "prendre en charge les transactions longues. Elles sont fournies "
-"principalement pour les implémenteurs de la spécification <ulink "
-"url=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
-"ulink>."
+"principalement pour les implémenteurs de la spécification <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/wfs\">Web Feature Service</"
+"link>."
 
 #. Tag: title
 #: reference_transaction.xml:13
@@ -44,14 +44,14 @@ msgstr "Support des transactions longues"
 #, no-c-format
 msgid ""
 "For the locking mechanism to operate correctly the <emphasis "
-"role=\"bold\">serializable</emphasis> <ulink url=\"http://www.postgresql.org/"
+"role=\"bold\">serializable</emphasis> <link xlink:href=\"http://www.postgresql.org/"
 "docs/current/static/transaction-iso.html\"> transaction isolation level</"
-"ulink> must be used."
+"link> must be used."
 msgstr ""
 "Pour que le mécanisme de verrouillage fonctionne correctement, le <emphasis "
-"role=\"bold\">sérialisable</emphasis> <ulink url=\"http://www.postgresql.org/"
+"role=\"bold\">sérialisable</emphasis> <link xlink:href=\"http://www.postgresql.org/"
 "docs/current/static/transaction-iso.html\"> niveau d'isolation de la "
-"transaction</ulink> doit être utilisé."
+"transaction</link> doit être utilisé."
 
 #. Tag: refpurpose
 #: reference_transaction.xml:26

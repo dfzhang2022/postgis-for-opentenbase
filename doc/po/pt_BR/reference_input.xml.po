@@ -388,7 +388,7 @@ msgstr ""
 msgid "LOC MARC21/XML versions supported:"
 msgstr ""
 
-#. Tag: ulink
+#. Tag: link
 #: reference_input.xml:304
 #, no-c-format
 msgid "MARC21/XML 1.1"
@@ -1277,15 +1277,15 @@ msgid ""
 "Namespace</para> </listitem> <listitem> <para>GML 3.1.1 Simple Features "
 "profile SF-2 (with GML 3.1.0 and 3.0.0 backward compatibility)</para> </"
 "listitem> <listitem> <para>GML 2.1.2</para> </listitem> </itemizedlist> OGC "
-"GML standards, cf: <ulink url=\"http://www.opengeospatial.org/standards/"
-"gml\">http://www.opengeospatial.org/standards/gml</ulink>:"
+"GML standards, cf: <link xlink:href=\"http://www.opengeospatial.org/standards/"
+"gml\">http://www.opengeospatial.org/standards/gml</link>:"
 msgstr ""
 "OGC GML versions supported: <itemizedlist> <listitem> <para>GML 3.2.1 "
 "Namespace</para> </listitem> <listitem> <para>GML 3.1.1 Simple Features "
 "profile SF-2 (with GML 3.1.0 and 3.0.0 backward compatibility)</para> </"
 "listitem> <listitem> <para>GML 2.1.2</para> </listitem> </itemizedlist> OGC "
-"GML standards, cf: <ulink url=\"http://www.opengeospatial.org/standards/"
-"gml\">http://www.opengeospatial.org/standards/gml</ulink>:"
+"GML standards, cf: <link xlink:href=\"http://www.opengeospatial.org/standards/"
+"gml\">http://www.opengeospatial.org/standards/gml</link>:"
 
 #. Tag: para
 #: reference_input.xml:1288 reference_input.xml:1485
@@ -1470,14 +1470,14 @@ msgstr ""
 #, no-c-format
 msgid ""
 "OGC KML versions supported: <itemizedlist> <listitem> <para>KML 2.2.0 "
-"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <ulink "
-"url=\"http://www.opengeospatial.org/standards/kml\">http://www."
-"opengeospatial.org/standards/kml</ulink>:"
+"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/kml\">http://www."
+"opengeospatial.org/standards/kml</link>:"
 msgstr ""
 "OGC KML versões suportadas: <itemizedlist> <listitem> <para>KML 2.2.0 "
-"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <ulink "
-"url=\"http://www.opengeospatial.org/standards/kml\">http://www."
-"opengeospatial.org/standards/kml</ulink>:"
+"Namespace</para> </listitem> </itemizedlist> OGC KML standards, cf: <link "
+"xlink:href=\"http://www.opengeospatial.org/standards/kml\">http://www."
+"opengeospatial.org/standards/kml</link>:"
 
 #. Tag: para
 #: reference_input.xml:1408
@@ -1501,26 +1501,26 @@ msgstr ", <xref linkend=\"ST_AsKML\"/>"
 #: reference_input.xml:1430
 #, no-c-format
 msgid ""
-"Creates a geometry instance from a TWKB (\"<ulink url=\"https://github.com/"
-"TWKB/Specification/blob/master/twkb.md\">Tiny Well-Known Binary</ulink>\") "
+"Creates a geometry instance from a TWKB (\"<link xlink:href=\"https://github.com/"
+"TWKB/Specification/blob/master/twkb.md\">Tiny Well-Known Binary</link>\") "
 "geometry representation."
 msgstr ""
-"Cria uma ocasião de uma TWKB (\"<ulink url=\"https://github.com/TWKB/"
-"Specification/blob/master/twkb.md\">Tiny Well-Known Binary</ulink>\") "
+"Cria uma ocasião de uma TWKB (\"<link xlink:href=\"https://github.com/TWKB/"
+"Specification/blob/master/twkb.md\">Tiny Well-Known Binary</link>\") "
 "representação de geometria."
 
 #. Tag: para
 #: reference_input.xml:1446
 #, no-c-format
 msgid ""
-"The <varname>ST_GeomFromTWKB</varname> function, takes a a TWKB (\"<ulink "
-"url=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
-"Known Binary</ulink>\") geometry representation (WKB) and creates an "
+"The <varname>ST_GeomFromTWKB</varname> function, takes a a TWKB (\"<link "
+"xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
+"Known Binary</link>\") geometry representation (WKB) and creates an "
 "instance of the appropriate geometry type."
 msgstr ""
-"A função <varname>ST_GeomFromTWKB</varname>, pega uma TWKB (\"<ulink "
-"url=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
-"Known Binary</ulink>\") representação geométrica (WKB) e cria uma ocasião do "
+"A função <varname>ST_GeomFromTWKB</varname>, pega uma TWKB (\"<link "
+"xlink:href=\"https://github.com/TWKB/Specification/blob/master/twkb.md\">Tiny Well-"
+"Known Binary</link>\") representação geométrica (WKB) e cria uma ocasião do "
 "tipo apropriado de geometria."
 
 #. Tag: refpurpose
@@ -1639,8 +1639,8 @@ msgstr ""
 #: reference_input.xml:1597
 #, no-c-format
 msgid ""
-"Creates a table based on the structure of FlatGeobuf data. (<ulink "
-"url=\"http://flatgeobuf.org\">http://flatgeobuf.org</ulink>)."
+"Creates a table based on the structure of FlatGeobuf data. (<link "
+"xlink:href=\"http://flatgeobuf.org\">http://flatgeobuf.org</link>)."
 msgstr ""
 
 #. Tag: para
@@ -1677,8 +1677,8 @@ msgstr ""
 #: reference_input.xml:1628
 #, no-c-format
 msgid ""
-"Reads FlatGeobuf data (<ulink url=\"http://flatgeobuf.org\">http://"
-"flatgeobuf.org</ulink>). NOTE: PostgreSQL bytea cannot exceed 1GB."
+"Reads FlatGeobuf data (<link xlink:href=\"http://flatgeobuf.org\">http://"
+"flatgeobuf.org</link>). NOTE: PostgreSQL bytea cannot exceed 1GB."
 msgstr ""
 
 #. Tag: para

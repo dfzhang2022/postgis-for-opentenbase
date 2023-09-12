@@ -191,14 +191,14 @@ msgstr ""
 #: reference_coverage.xml:128
 #, no-c-format
 msgid ""
-"The simplification uses a variant of the <ulink url=\"https://en.wikipedia."
+"The simplification uses a variant of the <link xlink:href=\"https://en.wikipedia."
 "org/wiki/Visvalingam%E2%80%93Whyatt_algorithm\">Visvalingam–Whyatt "
-"algorithm</ulink>. The <parameter>tolerance</parameter> parameter has units "
+"algorithm</link>. The <parameter>tolerance</parameter> parameter has units "
 "of distance, and is roughly equal to the square root of triangular areas to "
 "be simplified."
 msgstr ""
-"简化使用了 <ulink url=\"https://en.wikipedia.org/wiki/"
-"Visvalingam%E2%80%93Whyatt_algorithm\">Visvalingam–Whyatt </ulink>算法的格"
+"简化使用了 <link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Visvalingam%E2%80%93Whyatt_algorithm\">Visvalingam–Whyatt </link>算法的格"
 "式。 <parameter>公差</parameter>参数以距离为单位，大致等于待简化的三角形面积"
 "的平方根。"
 

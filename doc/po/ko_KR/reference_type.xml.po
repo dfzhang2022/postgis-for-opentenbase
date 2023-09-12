@@ -33,9 +33,9 @@ msgstr ""
 #: reference_type.xml:8
 #, no-c-format
 msgid ""
-"Each data type describes its type casting behavior. A <ulink url=\"https://"
+"Each data type describes its type casting behavior. A <link xlink:href=\"https://"
 "www.postgresql.org/docs/current/sql-expressions.html#SQL-SYNTAX-TYPE-"
-"CASTS\">type cast</ulink> converts values of one data type into another "
+"CASTS\">type cast</link> converts values of one data type into another "
 "type. PostgreSQL allows defining casting behavior for custom types, along "
 "with the functions used to convert type values. Casts can have <emphasis "
 "role=\"bold\">automatic</emphasis> behavior, which allows automatic "
@@ -278,8 +278,8 @@ msgstr ""
 #: reference_type.xml:195
 #, no-c-format
 msgid ""
-"<varname>geometry_dump</varname> is a <ulink url=\"https://www.postgresql."
-"org/docs/current/rowtypes.html\">composite data type</ulink> containing the "
+"<varname>geometry_dump</varname> is a <link xlink:href=\"https://www.postgresql."
+"org/docs/current/rowtypes.html\">composite data type</link> containing the "
 "fields:"
 msgstr ""
 

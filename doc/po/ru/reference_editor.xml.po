@@ -1017,9 +1017,9 @@ msgstr ""
 #: reference_editor.xml:1153
 #, no-c-format
 msgid ""
-", <xref linkend=\"ST_Distance\"/>, <ulink url=\"http://www.postgresql.org/"
+", <xref linkend=\"ST_Distance\"/>, <link xlink:href=\"http://www.postgresql.org/"
 "docs/current/interactive/functions-math.html\">PostgreSQL function "
-"radians()</ulink>"
+"radians()</link>"
 msgstr ""
 
 #. Tag: refpurpose
@@ -1038,9 +1038,9 @@ msgid ""
 "most significant bits to zero. The resulting coordinate value will still "
 "round to the original value, but will have improved compressiblity. This can "
 "result in a significant disk usage reduction provided that the geometry "
-"column is using a <ulink url=\"https://www.postgresql.org/docs/current/"
+"column is using a <link xlink:href=\"https://www.postgresql.org/docs/current/"
 "static/storage-toast.html#STORAGE-TOAST-ONDISK\"> compressible storage type</"
-"ulink>. The function allows specification of a different number of digits "
+"link>. The function allows specification of a different number of digits "
 "after the decimal point in each dimension; unspecified dimensions are "
 "assumed to have the precision of the <code>x</code> dimension. Negative "
 "digits are interpreted to refer digits to the left of the decimal point, (i."

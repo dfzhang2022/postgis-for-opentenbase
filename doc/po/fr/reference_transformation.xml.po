@@ -21,13 +21,13 @@ msgstr ""
 #: reference_transformation.xml:5
 #, no-c-format
 msgid ""
-"These functions change the position and shape of geometries using <ulink "
-"url=\"https://en.wikipedia.org/wiki/Affine_transformation\">affine "
-"transformations</ulink>."
+"These functions change the position and shape of geometries using <link "
+"xlink:href=\"https://en.wikipedia.org/wiki/Affine_transformation\">affine "
+"transformations</link>."
 msgstr ""
 "Ces fonctions modifient la position et la forme des géométries à l'aide de "
-"<ulink url=\"https://en.wikipedia.org/wiki/"
-"Affine_transformation\">transformations affines</ulink>."
+"<link xlink:href=\"https://en.wikipedia.org/wiki/"
+"Affine_transformation\">transformations affines</link>."
 
 #. Tag: title
 #: reference_transformation.xml:10

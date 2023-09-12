@@ -30,7 +30,7 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Installation instructions for the library can be found on the SFCGAL home "
-"page (<ulink url=\"http://www.sfcgal.org\">http://www.sfcgal.org</ulink>). "
+"page (<link xlink:href=\"http://www.sfcgal.org\">http://www.sfcgal.org</link>). "
 "To enable the functions use <code>create extension postgis_sfcgal</code>."
 msgstr ""
 
@@ -245,8 +245,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "3D images were generated using PostGIS <xref linkend=\"ST_AsX3D\"/> and "
-"rendering in HTML using <ulink url=\"http://www.x3dom.org\">X3Dom HTML "
-"Javascript rendering library</ulink>."
+"rendering in HTML using <link xlink:href=\"http://www.x3dom.org\">X3Dom HTML "
+"Javascript rendering library</link>."
 msgstr ""
 
 #. Tag: para
@@ -374,8 +374,8 @@ msgstr ""
 #: reference_sfcgal.xml:438
 #, no-c-format
 msgid ""
-"Computes the <ulink url=\"https://en.wikipedia.org/wiki/Alpha_shape\">Alpha-"
-"Shape</ulink> of the points in a geometry. An alpha-shape is a (usually) "
+"Computes the <link xlink:href=\"https://en.wikipedia.org/wiki/Alpha_shape\">Alpha-"
+"Shape</link> of the points in a geometry. An alpha-shape is a (usually) "
 "concave polygonal geometry which contains all the vertices of the input, and "
 "whose vertices are a subset of the input vertices. An alpha-shape provides a "
 "closer fit to the shape of the input than the shape produced by the <link "
@@ -398,9 +398,9 @@ msgstr ""
 msgid ""
 "Following the CGAL implementation, the alpha value is the <emphasis>square</"
 "emphasis> of the radius of the disc used in the Alpha-Shape algorithm to "
-"\"erode\" the Delaunay Triangulation of the input points. See <ulink "
-"url=\"https://doc.cgal.org/latest/Alpha_shapes_2/index."
-"html#Chapter_2D_Alpha_Shapes\">CGAL Alpha-Shapes</ulink> for more "
+"\"erode\" the Delaunay Triangulation of the input points. See <link "
+"xlink:href=\"https://doc.cgal.org/latest/Alpha_shapes_2/index."
+"html#Chapter_2D_Alpha_Shapes\">CGAL Alpha-Shapes</link> for more "
 "information. This is different from the original definition of alpha-shapes, "
 "which defines alpha as the radius of the eroding disc."
 msgstr ""
@@ -491,9 +491,9 @@ msgstr ""
 #: reference_sfcgal.xml:606
 #, no-c-format
 msgid ""
-"Return a <ulink url=\"https://en.wikipedia.org/wiki/"
+"Return a <link xlink:href=\"https://en.wikipedia.org/wiki/"
 "Constrained_Delaunay_triangulation\">Constrained Delaunay triangulation</"
-"ulink> around the vertices of the input geometry. Output is a TIN."
+"link> around the vertices of the input geometry. Output is a TIN."
 msgstr ""
 
 #. Tag: para
@@ -607,8 +607,8 @@ msgstr ""
 msgid ""
 "A minkowski sum of two geometries A and B is the set of all points that are "
 "the sum of any point in A and B. Minkowski sums are often used in motion "
-"planning and computer-aided design. More details on <ulink url=\"https://en."
-"wikipedia.org/wiki/Minkowski_addition\">Wikipedia Minkowski addition</ulink>."
+"planning and computer-aided design. More details on <link xlink:href=\"https://en."
+"wikipedia.org/wiki/Minkowski_addition\">Wikipedia Minkowski addition</link>."
 msgstr ""
 
 #. Tag: para
@@ -625,8 +625,8 @@ msgstr ""
 #: reference_sfcgal.xml:891
 #, no-c-format
 msgid ""
-"Implementation utilizes <ulink url=\"http://doc.cgal.org/latest/"
-"Minkowski_sum_2/\">CGAL 2D Minkowskisum</ulink>."
+"Implementation utilizes <link xlink:href=\"http://doc.cgal.org/latest/"
+"Minkowski_sum_2/\">CGAL 2D Minkowskisum</link>."
 msgstr ""
 
 #. Tag: para

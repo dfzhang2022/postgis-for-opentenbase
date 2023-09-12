@@ -41,9 +41,9 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Sandro Santilli's presentation at PostGIS Day Paris 2011 conference gives a "
-"good synopsis of PostGIS Topology and where it is headed <ulink url=\"http://"
+"good synopsis of PostGIS Topology and where it is headed <link xlink:href=\"http://"
 "strk.kbt.io/projects/postgis/Paris2011_TopologyWithPostGIS_2_0."
-"pdf\">Topology with PostGIS 2.0 slide deck</ulink>."
+"pdf\">Topology with PostGIS 2.0 slide deck</link>."
 msgstr ""
 
 #. Tag: para
@@ -51,25 +51,25 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Vincent Picavet provides a good synopsis and overview of what is Topology, "
-"how is it used, and various FOSS4G tools that support it in <ulink "
-"url=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
+"how is it used, and various FOSS4G tools that support it in <link "
+"xlink:href=\"https://gitlab.com/Oslandia/documentation/presentations/-/blob/"
 "master/2012/pgconf_eu_2012/pgconfeu2012_vincent_picavet_postgis_topology."
-"pdf\">PostGIS Topology PGConf EU 2012</ulink>."
+"pdf\">PostGIS Topology PGConf EU 2012</link>."
 msgstr ""
 
 #. Tag: para
 #: extras_topology.xml:11
 #, no-c-format
 msgid ""
-"An example of a topologically based GIS database is the <ulink url=\"https://"
+"An example of a topologically based GIS database is the <link xlink:href=\"https://"
 "www.census.gov/geo/maps-data/data/tiger.html\">US Census Topologically "
-"Integrated Geographic Encoding and Referencing System (TIGER)</ulink> "
+"Integrated Geographic Encoding and Referencing System (TIGER)</link> "
 "database. If you want to experiment with PostGIS topology and need some "
 "data, check out <xref linkend=\"Topology_Load_Tiger\"/>."
 msgstr ""
-"지형에 기반한 GIS 데이터베이스의 예로는 <ulink url=\"https://www.census.gov/"
+"지형에 기반한 GIS 데이터베이스의 예로는 <link xlink:href=\"https://www.census.gov/"
 "geo/maps-data/data/tiger.html\">US Census Topologically Integrated "
-"Geographic Encoding and Referencing System (TIGER)</ulink> 데이터베이스가 있"
+"Geographic Encoding and Referencing System (TIGER)</link> 데이터베이스가 있"
 "습니다. PostGIS 지형 유형을 테스트해보고 싶은데 데이터가 필요하다면, <xref "
 "linkend=\"Topology_Load_Tiger\"/> 를 확인해보십시오."
 
@@ -93,11 +93,11 @@ msgstr ""
 #: extras_topology.xml:14
 #, no-c-format
 msgid ""
-"Details of this project can be found at <ulink url=\"http://trac.osgeo.org/"
-"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink>"
+"Details of this project can be found at <link xlink:href=\"http://trac.osgeo.org/"
+"postgis/wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link>"
 msgstr ""
-"이 프로젝트에 대한 자세한 내용을 <ulink url=\"http://trac.osgeo.org/postgis/"
-"wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</ulink> 에서 찾아볼 수 "
+"이 프로젝트에 대한 자세한 내용을 <link xlink:href=\"http://trac.osgeo.org/postgis/"
+"wiki/UsersWikiPostgisTopology\">PostGIS Topology Wiki</link> 에서 찾아볼 수 "
 "있습니다."
 
 #. Tag: para
@@ -3735,13 +3735,13 @@ msgstr ""
 msgid ""
 "A full TopoJSON document will be need to contain, in addition to the "
 "snippets returned by this function, the actual arcs plus some headers. See "
-"the <ulink url=\"http://github.com/mbostock/topojson-specification/blob/"
-"master/README.md\">TopoJSON specification</ulink>."
+"the <link xlink:href=\"http://github.com/mbostock/topojson-specification/blob/"
+"master/README.md\">TopoJSON specification</link>."
 msgstr ""
 "완전한 TopoJSON 문서는, 이 함수가 반환하는 토막 정보(snippet)에 더해, 일부 헤"
-"더와 함께 실제 원호를 담고 있어야 할 것입니다. <ulink url=\"http://github."
+"더와 함께 실제 원호를 담고 있어야 할 것입니다. <link xlink:href=\"http://github."
 "com/mbostock/topojson-specification/blob/master/README.md\">TopoJSON 사양서</"
-"ulink> 를 참조하십시오."
+"link> 를 참조하십시오."
 
 #. Tag: para
 #: extras_topology.xml:3743

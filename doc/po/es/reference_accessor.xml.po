@@ -1484,9 +1484,9 @@ msgstr "Devuelve el tipo de geometría del valor de ST_Geometry."
 #: reference_accessor.xml:1413
 #, no-c-format
 msgid ""
-"This complements the PostgreSQL built-in <ulink url=\"https://www.postgresql."
+"This complements the PostgreSQL built-in <link xlink:href=\"https://www.postgresql."
 "org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-DBOBJECT\">database "
-"object functions</ulink> pg_column_size, pg_size_pretty, pg_relation_size, "
+"object functions</link> pg_column_size, pg_size_pretty, pg_relation_size, "
 "pg_total_relation_size."
 msgstr ""
 

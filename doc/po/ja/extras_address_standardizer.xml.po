@@ -29,15 +29,15 @@ msgstr "住所標準化"
 #: extras_address_standardizer.xml:4
 #, no-c-format
 msgid ""
-"This is a fork of the <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-11."
-"html\">PAGC standardizer</ulink> (original code for this portion was <ulink "
-"url=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
-"postgresql\">PAGC PostgreSQL Address Standardizer</ulink>)."
+"This is a fork of the <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-11."
+"html\">PAGC standardizer</link> (original code for this portion was <link "
+"xlink:href=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
+"postgresql\">PAGC PostgreSQL Address Standardizer</link>)."
 msgstr ""
-"これは、<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-11.html\">PAGC "
-"standardizer</ulink>から分かれたものです (オリジナルのコードは<ulink "
-"url=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
-"postgresql\">PAGC PostgreSQL Address Standardizer</ulink>にあります)。"
+"これは、<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-11.html\">PAGC "
+"standardizer</link>から分かれたものです (オリジナルのコードは<link "
+"xlink:href=\"http://sourceforge.net/p/pagc/code/360/tree/branches/sew-refactor/"
+"postgresql\">PAGC PostgreSQL Address Standardizer</link>にあります)。"
 
 #. Tag: para
 #: extras_address_standardizer.xml:5
@@ -205,12 +205,12 @@ msgstr "説明"
 msgid ""
 "A composite type that consists of elements of an address. This is the return "
 "type for <xref linkend=\"standardize_address\"/> function. Some descriptions "
-"for elements are borrowed from <ulink url=\"http://www.pagcgeo.org/docs/html/"
-"pagc-12.html#ss12.1\">PAGC Postal Attributes</ulink>."
+"for elements are borrowed from <link xlink:href=\"http://www.pagcgeo.org/docs/html/"
+"pagc-12.html#ss12.1\">PAGC Postal Attributes</link>."
 msgstr ""
 "住所の要素からなる複合型です。<xref linkend=\"standardize_address\"/> 関数が"
-"返す型です。要素の記述のいくつかは<ulink url=\"http://www.pagcgeo.org/docs/"
-"html/pagc-12.html#ss12.1\">PAGC Postal Attributes</ulink>から借りています。"
+"返す型です。要素の記述のいくつかは<link xlink:href=\"http://www.pagcgeo.org/docs/"
+"html/pagc-12.html#ss12.1\">PAGC Postal Attributes</link>から借りています。"
 
 #. Tag: para
 #: extras_address_standardizer.xml:51
@@ -552,12 +552,12 @@ msgstr "rule"
 #: extras_address_standardizer.xml:165
 #, no-c-format
 msgid ""
-"text field denoting the rule. Details at <ulink url=\"http://www.pagcgeo.org/"
+"text field denoting the rule. Details at <link xlink:href=\"http://www.pagcgeo.org/"
 "docs/html/pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</"
-"ulink>."
+"link>."
 msgstr ""
-"規則を示す文字列フィールド。 <ulink url=\"http://www.pagcgeo.org/docs/html/"
-"pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</ulink>に詳細"
+"規則を示す文字列フィールド。 <link xlink:href=\"http://www.pagcgeo.org/docs/html/"
+"pagc-12.html#--r-rec--\">PAGC Address Standardizer Rule records</link>に詳細"
 "情報があります。"
 
 #. Tag: para
@@ -607,13 +607,13 @@ msgstr "入力トークン"
 #, no-c-format
 msgid ""
 "Each rule starts with a set of input tokens followed by a terminator "
-"<code>-1</code>. Valid input tokens excerpted from <ulink url=\"http://www."
-"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</ulink> are as "
+"<code>-1</code>. Valid input tokens excerpted from <link xlink:href=\"http://www."
+"pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input Tokens</link> are as "
 "follows:"
 msgstr ""
-"個々の規則は、入力トークン順列、終端を示す<code>-1</code>の順です。<ulink "
-"url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input "
-"Tokens</ulink>から引用した正当な入力トークンは次の通りです。"
+"個々の規則は、入力トークン順列、終端を示す<code>-1</code>の順です。<link "
+"xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#ss12.2\">PAGC Input "
+"Tokens</link>から引用した正当な入力トークンは次の通りです。"
 
 #. Tag: emphasis
 #: extras_address_standardizer.xml:176
@@ -1031,12 +1031,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MACRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">MACRO_C出力トークン</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">MACRO_C出力トークン</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink>からの引用)"
+"docs/html/pagc-12.html#--r-typ--</link>からの引用)"
 
 #. Tag: term
 #: extras_address_standardizer.xml:366
@@ -1119,12 +1119,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">MICRO_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">MICRO_C 出力トークン</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">MICRO_C 出力トークン</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink>からの引用)"
+"docs/html/pagc-12.html#--r-typ--</link>からの引用)"
 
 #. Tag: term
 #: extras_address_standardizer.xml:395
@@ -1194,12 +1194,12 @@ msgstr ""
 #, no-c-format
 msgid ""
 "<emphasis role=\"bold\">EXTRA_C output tokens</emphasis> (excerpted from "
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
-"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</ulink>."
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--"
+"\">http://www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--</link>."
 msgstr ""
-"<emphasis role=\"bold\">EXTRA_C 出力トークン</emphasis> (<ulink url=\"http://"
+"<emphasis role=\"bold\">EXTRA_C 出力トークン</emphasis> (<link xlink:href=\"http://"
 "www.pagcgeo.org/docs/html/pagc-12.html#--r-typ--\">http://www.pagcgeo.org/"
-"docs/html/pagc-12.html#--r-typ--</ulink>からの引用)"
+"docs/html/pagc-12.html#--r-typ--</link>からの引用)"
 
 #. Tag: term
 #: extras_address_standardizer.xml:441
@@ -1365,12 +1365,12 @@ msgstr "token"
 #, no-c-format
 msgid ""
 "integer: the kind of word it is. Only if it is used in this context will it "
-"be replaced. Refer to <ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12."
-"html#--i-tok--\">PAGC Tokens</ulink>."
+"be replaced. Refer to <link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12."
+"html#--i-tok--\">PAGC Tokens</link>."
 msgstr ""
 "整数: その語の種別。このコンテキストで使われる場合のみ置き換えられます。"
-"<ulink url=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-tok--\">PAGC "
-"Tokens</ulink>を参照して下さい。"
+"<link xlink:href=\"http://www.pagcgeo.org/docs/html/pagc-12.html#--i-tok--\">PAGC "
+"Tokens</link>を参照して下さい。"
 
 #. Tag: refpurpose
 #: extras_address_standardizer.xml:525
