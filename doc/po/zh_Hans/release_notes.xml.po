@@ -196,8 +196,9 @@ msgstr ""
 #: release_notes.xml:35
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, New "
-"window-based ST_ClusterWithinWin and ST_ClusterIntersectingWin (Paul Ramsey)"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, "
+"New window-based ST_ClusterWithinWin and ST_ClusterIntersectingWin (Paul "
+"Ramsey)"
 msgstr ""
 
 #. Tag: para
@@ -251,8 +252,9 @@ msgstr ""
 #: release_notes.xml:45
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5194\">5194</link>, do "
-"not update system catalogs from postgis_extensions_upgrade (Sandro Santilli)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5194\">5194</link>, "
+"do not update system catalogs from postgis_extensions_upgrade (Sandro "
+"Santilli)"
 msgstr ""
 
 #. Tag: para
@@ -267,8 +269,9 @@ msgstr ""
 #: release_notes.xml:47
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, honour "
-"--bindir (and --prefix) configure switch for executables (Sandro Santilli)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, "
+"honour --bindir (and --prefix) configure switch for executables (Sandro "
+"Santilli)"
 msgstr ""
 
 #. Tag: para
@@ -381,8 +384,8 @@ msgstr ""
 #: release_notes.xml:68
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, Drop "
-"support for Proj &lt; 6.1 and PG 11 (Regina Obe)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, "
+"Drop support for Proj &lt; 6.1 and PG 11 (Regina Obe)"
 msgstr ""
 
 #. Tag: para
@@ -401,8 +404,8 @@ msgstr ""
 #: release_notes.xml:73
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</link>, "
-"postgis_restore.pl renamed to postgis_restore (Sandro Santilli)"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</"
+"link>, postgis_restore.pl renamed to postgis_restore (Sandro Santilli)"
 msgstr ""
 
 #. Tag: para

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostGIS\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-11 19:02+0000\n"
+"POT-Creation-Date: 2023-09-12 22:08+0000\n"
 "PO-Revision-Date: 2023-07-03 15:08+0000\n"
 "Last-Translator: Vincent Bre <vincent.bre@oslandia.com>\n"
 "Language-Team: French <https://weblate.osgeo.org/projects/postgis/"
@@ -22,6 +22,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.16.4\n"
 
+#. Tag: title
+#: reference_processing.xml:3
+#, no-c-format
+msgid "Geometry Processing"
+msgstr "Traitement des géométries"
+
 #. Tag: para
 #: reference_processing.xml:5
 #, no-c-format
@@ -31,12 +37,6 @@ msgid ""
 msgstr ""
 "Ces fonctions permettent de calculer des constructions géométriques ou de "
 "modifier la taille ou la forme d'une géométrie."
-
-#. Tag: title
-#: reference_processing.xml:11
-#, no-c-format
-msgid "Geometry Processing"
-msgstr "Traitement des géométries"
 
 #. Tag: refpurpose
 #: reference_processing.xml:17
@@ -631,18 +631,18 @@ msgstr ""
 #: reference_processing.xml:545
 #, no-c-format
 msgid ""
-"Smoothes a linear or polygonal geometry using <link xlink:href=\"http://www.idav."
-"ucdavis.edu/education/CAGDNotes/Chaikins-Algorithm/Chaikins-Algorithm."
+"Smoothes a linear or polygonal geometry using <link xlink:href=\"http://www."
+"idav.ucdavis.edu/education/CAGDNotes/Chaikins-Algorithm/Chaikins-Algorithm."
 "html\">Chaikin's algorithm</link>. The degree of smoothing is controlled by "
 "the <varname>nIterations</varname> parameter. On each iteration, each "
 "interior vertex is replaced by two vertices located at 1/4 of the length of "
 "the line segments before and after the vertex. A reasonable degree of "
 "smoothing is provided by 3 iterations; the maximum is limited to 5."
 msgstr ""
-"Lisse une géométrie linéaire ou polygonale en utilisant <link xlink:href=\"http://"
-"www.idav.ucdavis.edu/education/CAGDNotes/Chaikins-Algorithm/Chaikins-"
-"Algorithm.html\">Chaikin's algorithm</link>. Le degré de lissage est "
-"contrôlé par le paramètre <varname>nIterations</varname>. À chaque "
+"Lisse une géométrie linéaire ou polygonale en utilisant <link xlink:"
+"href=\"http://www.idav.ucdavis.edu/education/CAGDNotes/Chaikins-Algorithm/"
+"Chaikins-Algorithm.html\">Chaikin's algorithm</link>. Le degré de lissage "
+"est contrôlé par le paramètre <varname>nIterations</varname>. À chaque "
 "itération, chaque sommet intérieur est remplacé par deux sommets situés à "
 "1/4 de la longueur des segments de ligne précédant et suivant le sommet. Un "
 "degré raisonnable de lissage est fourni par 3 itérations ; le maximum est "
@@ -1401,8 +1401,8 @@ msgstr "Fusionner des lignes d'orientation différente."
 #. Tag: para
 #: reference_processing.xml:1240
 #, no-c-format
-msgid "Lines are not merged across intersections with degree > 2."
-msgstr "Les lignes ne sont pas fusionnées aux intersections de degré > 2."
+msgid "Lines are not merged across intersections with degree &gt; 2."
+msgstr ""
 
 #. Tag: para
 #: reference_processing.xml:1248
@@ -2730,9 +2730,9 @@ msgid ""
 "has zero area."
 msgstr ""
 "Calcule un <link xlink:href=\"https://en.wikipedia.org/wiki/"
-"Voronoi_diagram\">Voronoi diagram</link> bidimensionnel à partir des "
-"sommets de la géométrie fournie et renvoie les limites entre les cellules de "
-"la représentation sous la forme d'une MultiLineString. Renvoie null si la "
+"Voronoi_diagram\">Voronoi diagram</link> bidimensionnel à partir des sommets "
+"de la géométrie fournie et renvoie les limites entre les cellules de la "
+"représentation sous la forme d'une MultiLineString. Renvoie null si la "
 "géométrie d'entrée est null. Renvoie une collection de géométries vide si la "
 "géométrie d'entrée ne contient qu'un seul sommet. Renvoie une collection de "
 "géométries vide si l'enveloppe <varname>extend_to</varname> a une surface "

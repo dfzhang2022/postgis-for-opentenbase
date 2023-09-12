@@ -62,8 +62,9 @@ msgid ""
 "NOTE: GEOS 3.12.0 details at <link xlink:href=\"https://libgeos.org/"
 "posts/2023-06-27-geos-3-12-released/\">GEOS 3.12.0 release notes</link>"
 msgstr ""
-"注: GEOS 3.12.0の詳細は<link xlink:href=\"https://libgeos.org/posts/2023-06-27-"
-"geos-3-12-released/\">GEOS 3.12.0 release notes</link>にあります"
+"注: GEOS 3.12.0の詳細は<link xlink:href=\"https://libgeos.org/"
+"posts/2023-06-27-geos-3-12-released/\">GEOS 3.12.0 release notes</link>にあり"
+"ます"
 
 #. Tag: para
 #: release_notes.xml:12
@@ -125,8 +126,8 @@ msgid ""
 "<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5055\">5055</link>, "
 "complete manual internationalization (Sandro Santilli)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5055\">5055</link>, 完全"
-"なマニュアル国際化 (Sandro Santilliさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5055\">5055</link>, "
+"完全なマニュアル国際化 (Sandro Santilliさん)"
 
 #. Tag: para
 #: release_notes.xml:24
@@ -145,8 +146,8 @@ msgid ""
 "<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5306\">5306</link>, "
 "expose version of GEOS at compile time (Sandro Santilli)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5306\">5306</link>, コン"
-"パイル時のGEOSバージョンの表示 (Sandro Santilliさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5306\">5306</link>, "
+"コンパイル時のGEOSバージョンの表示 (Sandro Santilliさん)"
 
 #. Tag: para
 #: release_notes.xml:27
@@ -239,11 +240,12 @@ msgstr ""
 #: release_notes.xml:35
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, New "
-"window-based ST_ClusterWithinWin and ST_ClusterIntersectingWin (Paul Ramsey)"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, "
+"New window-based ST_ClusterWithinWin and ST_ClusterIntersectingWin (Paul "
+"Ramsey)"
 msgstr ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, 新"
-"ウィンドウ関数ST_ClusterWithinWinとST_ClusterIntersectingWin (Paul Ramseyさ"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/721\">721</link>, "
+"新ウィンドウ関数ST_ClusterWithinWinとST_ClusterIntersectingWin (Paul Ramseyさ"
 "ん)"
 
 #. Tag: para
@@ -286,8 +288,8 @@ msgid ""
 "<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5267\">5267</link>, "
 "ST_LineExtend for extending linestrings (Paul Ramsey)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5267\">5267</link>, ライ"
-"ンストリングを拡張するST_LineExtend (Paul Ramseyさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5267\">5267</link>, "
+"ラインストリングを拡張するST_LineExtend (Paul Ramseyさん)"
 
 #. Tag: para
 #: release_notes.xml:40
@@ -309,8 +311,9 @@ msgstr "性能強化"
 #: release_notes.xml:45
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5194\">5194</link>, do "
-"not update system catalogs from postgis_extensions_upgrade (Sandro Santilli)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5194\">5194</link>, "
+"do not update system catalogs from postgis_extensions_upgrade (Sandro "
+"Santilli)"
 msgstr ""
 "<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5194\">5194</link>, "
 "postgis_extensions_upgradeからシステムカタログの更新ができない (Sandro "
@@ -323,20 +326,21 @@ msgid ""
 "<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5092\">5092</link>, "
 "reduce number of upgrade paths installed on system (Sandro Santilli)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5092\">5092</link>, シス"
-"テムにインストールされているアップグレードの経路の数を減らしました (Sandro "
-"Santilliさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5092\">5092</link>, "
+"システムにインストールされているアップグレードの経路の数を減らしました "
+"(Sandro Santilliさん)"
 
 #. Tag: para
 #: release_notes.xml:47
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, honour "
-"--bindir (and --prefix) configure switch for executables (Sandro Santilli)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, "
+"honour --bindir (and --prefix) configure switch for executables (Sandro "
+"Santilli)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, 実行可"
-"能ファイルのコンフィギュレーションスイッチ --bindir (と --prefix) を見るよう"
-"になりました (Sandro Santilliさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/635\">635</link>, 実"
+"行可能ファイルのコンフィギュレーションスイッチ --bindir (と --prefix) を見る"
+"ようになりました (Sandro Santilliさん)"
 
 #. Tag: para
 #: release_notes.xml:48
@@ -478,11 +482,11 @@ msgstr "大幅な変更"
 #: release_notes.xml:68
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, Drop "
-"support for Proj &lt; 6.1 and PG 11 (Regina Obe)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, "
+"Drop support for Proj &lt; 6.1 and PG 11 (Regina Obe)"
 msgstr ""
-"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, Proj "
-"6.1未満およびPostgreSQL 11へのサポートの終了 (Regina Obeさん)"
+"<link xlink:href=\"https://trac.osgeo.org/postgis/ticket/5229\">5229</link>, "
+"Proj 6.1未満およびPostgreSQL 11へのサポートの終了 (Regina Obeさん)"
 
 #. Tag: para
 #: release_notes.xml:69
@@ -506,11 +510,11 @@ msgstr ""
 #: release_notes.xml:73
 #, no-c-format
 msgid ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</link>, "
-"postgis_restore.pl renamed to postgis_restore (Sandro Santilli)"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</"
+"link>, postgis_restore.pl renamed to postgis_restore (Sandro Santilli)"
 msgstr ""
-"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</link>, "
-"postgis_restore.plをpostgis_restoreに名前変更 (Sandro Santilliさん)"
+"<link xlink:href=\"https://github.com/postgis/postgis/pull/5447\">5447</"
+"link>, postgis_restore.plをpostgis_restoreに名前変更 (Sandro Santilliさん)"
 
 #. Tag: para
 #: release_notes.xml:75

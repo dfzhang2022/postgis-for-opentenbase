@@ -1435,9 +1435,9 @@ msgid ""
 "sponsor chips in a small fraction of the needed funding and with enough "
 "people/organizations contributing, we have the funds to pay for the work "
 "that will help many. If you have an idea for a feature you think many others "
-"would be willing to co-fund, please post to the <link xlink:href=\"https://lists."
-"osgeo.org/mailman/listinfo/postgis-users\">PostGIS newsgroup</link> your "
-"thoughts and together we can make it happen."
+"would be willing to co-fund, please post to the <link xlink:href=\"https://"
+"lists.osgeo.org/mailman/listinfo/postgis-users\">PostGIS newsgroup</link> "
+"your thoughts and together we can make it happen."
 msgstr ""
 
 #. Tag: para
@@ -1500,10 +1500,10 @@ msgstr ""
 #: introduction.xml:409
 #, no-c-format
 msgid ""
-"The <link xlink:href=\"https://gdal.org\">GDAL</link> Geospatial Data Abstraction "
-"Library used to power much of the raster functionality introduced in PostGIS "
-"2. In kind, improvements needed in GDAL to support PostGIS are contributed "
-"back to the GDAL project."
+"The <link xlink:href=\"https://gdal.org\">GDAL</link> Geospatial Data "
+"Abstraction Library used to power much of the raster functionality "
+"introduced in PostGIS 2. In kind, improvements needed in GDAL to support "
+"PostGIS are contributed back to the GDAL project."
 msgstr ""
 
 #. Tag: para
@@ -1518,10 +1518,11 @@ msgstr ""
 #: introduction.xml:417
 #, fuzzy, no-c-format
 msgid ""
-"Last but not least, <link xlink:href=\"http://www.postgresql.org\">PostgreSQL</"
-"link>, the giant that PostGIS stands on. Much of the speed and flexibility "
-"of PostGIS would not be possible without the extensibility, great query "
-"planner, GIST index, and plethora of SQL features provided by PostgreSQL."
+"Last but not least, <link xlink:href=\"http://www.postgresql."
+"org\">PostgreSQL</link>, the giant that PostGIS stands on. Much of the speed "
+"and flexibility of PostGIS would not be possible without the extensibility, "
+"great query planner, GIST index, and plethora of SQL features provided by "
+"PostgreSQL."
 msgstr ""
 "Ultimo, ma non ultimo, il database <link xlink:href=\"http://www.postgresql."
 "org\">PostgreSQL</link>, il gigante sulle cui spalle sta PostGIS. Molta "

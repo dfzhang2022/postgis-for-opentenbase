@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostGIS\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 10:12+0000\n"
+"POT-Creation-Date: 2023-09-12 22:08+0000\n"
 "PO-Revision-Date: 2018-07-23 18:01+0000\n"
 "Last-Translator: Kwon.Yongchan <ruvyn@naver.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/postgis/postgis/"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#. Tag: title
+#: reference_measure.xml:3
+#, no-c-format
+msgid "Measurement Functions"
+msgstr ""
+
 #. Tag: para
 #: reference_measure.xml:5
 #, no-c-format
 msgid ""
 "These functions compute measurements of distance, area and angles. There are "
 "also functions to compute geometry values determined by measurements."
-msgstr ""
-
-#. Tag: title
-#: reference_measure.xml:10
-#, no-c-format
-msgid "Measurement Functions"
 msgstr ""
 
 #. Tag: refpurpose
@@ -243,8 +243,8 @@ msgstr ""
 #: reference_measure.xml:105
 #, no-c-format
 msgid ""
-"For the geography type, the azimuth solution is known as the <link "
-"xlink:href=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
+"For the geography type, the azimuth solution is known as the <link xlink:"
+"href=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
 "geodesic problem</link>."
 msgstr ""
 
@@ -264,9 +264,10 @@ msgstr ""
 msgid ""
 "Azimuth can be used in conjunction with <xref linkend=\"ST_Translate\"/> to "
 "shift an object along its perpendicular axis. See the "
-"<varname>upgis_lineshift()</varname> function in the <link xlink:href=\"http://"
-"trac.osgeo.org/postgis/wiki/UsersWikiplpgsqlfunctions\">PostGIS wiki</link> "
-"for an implementation of this."
+"<varname>upgis_lineshift()</varname> function in the <link xlink:"
+"href=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiplpgsqlfunctions\">PostGIS wiki</link> for an implementation of "
+"this."
 msgstr ""
 "객체를 해당 객체의 수직축을 따라 이동시키기 위해 ST_Translate 함수와 방위각"
 "을 함께 이용할 때 방위각이 특히 유용합니다. 이런 내용의 예시를 보려면 <link "
@@ -329,8 +330,8 @@ msgid ""
 "current/interactive/functions-math.html\">PostgreSQL Math Functions</link>"
 msgstr ""
 ", <xref linkend=\"ST_Translate\"/>, <xref linkend=\"ST_Project\"/>, <link "
-"xlink:href=\"http://www.postgresql.org/docs/current/interactive/functions-math."
-"html\">PostgreSQL Math Functions</link>"
+"xlink:href=\"http://www.postgresql.org/docs/current/interactive/functions-"
+"math.html\">PostgreSQL Math Functions</link>"
 
 #. Tag: refpurpose
 #: reference_measure.xml:162
@@ -844,8 +845,8 @@ msgstr "두 도형 사이의 3차원 최단(shortest) 라인을 반환합니다.
 #, no-c-format
 msgid ""
 "Implements algorithm for computing the Fréchet distance restricted to "
-"discrete points for both geometries, based on <link xlink:href=\"http://www.kr."
-"tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf\">Computing Discrete "
+"discrete points for both geometries, based on <link xlink:href=\"http://www."
+"kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf\">Computing Discrete "
 "Fréchet Distance</link>. The Fréchet distance is a measure of similarity "
 "between curves that takes into account the location and ordering of the "
 "points along the curves. Therefore it is often better than the Hausdorff "

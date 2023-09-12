@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostGIS\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 10:12+0000\n"
+"POT-Creation-Date: 2023-09-12 22:08+0000\n"
 "PO-Revision-Date: 2023-07-12 19:14+0000\n"
 "Last-Translator: Regina Obe <regina@arrival3d.com>\n"
 "Language-Team: German <https://weblate.osgeo.org/projects/postgis/"
@@ -18,18 +18,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.16.4\n"
 
+#. Tag: title
+#: reference_measure.xml:3
+#, no-c-format
+msgid "Measurement Functions"
+msgstr ""
+
 #. Tag: para
 #: reference_measure.xml:5
 #, no-c-format
 msgid ""
 "These functions compute measurements of distance, area and angles. There are "
 "also functions to compute geometry values determined by measurements."
-msgstr ""
-
-#. Tag: title
-#: reference_measure.xml:10
-#, no-c-format
-msgid "Measurement Functions"
 msgstr ""
 
 #. Tag: refpurpose
@@ -255,8 +255,8 @@ msgstr ""
 #: reference_measure.xml:105
 #, no-c-format
 msgid ""
-"For the geography type, the azimuth solution is known as the <link "
-"xlink:href=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
+"For the geography type, the azimuth solution is known as the <link xlink:"
+"href=\"https://en.wikipedia.org/wiki/Geodesics_on_an_ellipsoid\">inverse "
 "geodesic problem</link>."
 msgstr ""
 
@@ -276,14 +276,15 @@ msgstr ""
 msgid ""
 "Azimuth can be used in conjunction with <xref linkend=\"ST_Translate\"/> to "
 "shift an object along its perpendicular axis. See the "
-"<varname>upgis_lineshift()</varname> function in the <link xlink:href=\"http://"
-"trac.osgeo.org/postgis/wiki/UsersWikiplpgsqlfunctions\">PostGIS wiki</link> "
-"for an implementation of this."
+"<varname>upgis_lineshift()</varname> function in the <link xlink:"
+"href=\"http://trac.osgeo.org/postgis/wiki/"
+"UsersWikiplpgsqlfunctions\">PostGIS wiki</link> for an implementation of "
+"this."
 msgstr ""
 "Der Azimut ist in Verbindung mit ST_Translate besonders nützlich, weil damit "
 "ein Objekt entlang seiner rechtwinkeligen Achse verschoben werden kann. "
-"Siehe dazu die Funktion \"upgis_lineshift\", in dem Abschnitt <link "
-"xlink:href=\"http://trac.osgeo.org/postgis/wiki/"
+"Siehe dazu die Funktion \"upgis_lineshift\", in dem Abschnitt <link xlink:"
+"href=\"http://trac.osgeo.org/postgis/wiki/"
 "UsersWikiplpgsqlfunctions\">Plpgsqlfunctions des PostGIS Wiki</link>, für "
 "ein Beispiel."
 
@@ -345,8 +346,8 @@ msgid ""
 "current/interactive/functions-math.html\">PostgreSQL Math Functions</link>"
 msgstr ""
 ", <xref linkend=\"ST_Translate\"/>, <xref linkend=\"ST_Project\"/>, <link "
-"xlink:href=\"http://www.postgresql.org/docs/current/interactive/functions-math."
-"html\">PostgreSQL Math Functions</link>"
+"xlink:href=\"http://www.postgresql.org/docs/current/interactive/functions-"
+"math.html\">PostgreSQL Math Functions</link>"
 
 #. Tag: refpurpose
 #: reference_measure.xml:162
@@ -641,8 +642,8 @@ msgid ""
 "link> for details."
 msgstr ""
 "Enhanced: 2.1.0 Geschwindigkeitsverbesserung beim geographischen Datentyp. "
-"Siehe <link xlink:href=\"http://boundlessgeo.com/2012/07/making-geography-faster/"
-"\">Making Geography faster</link> für Details."
+"Siehe <link xlink:href=\"http://boundlessgeo.com/2012/07/making-geography-"
+"faster/\">Making Geography faster</link> für Details."
 
 #. Tag: para
 #: reference_measure.xml:418
@@ -897,16 +898,16 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Implements algorithm for computing the Fréchet distance restricted to "
-"discrete points for both geometries, based on <link xlink:href=\"http://www.kr."
-"tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf\">Computing Discrete "
+"discrete points for both geometries, based on <link xlink:href=\"http://www."
+"kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464.pdf\">Computing Discrete "
 "Fréchet Distance</link>. The Fréchet distance is a measure of similarity "
 "between curves that takes into account the location and ordering of the "
 "points along the curves. Therefore it is often better than the Hausdorff "
 "distance."
 msgstr ""
 "Implementiert einen Algorithmus zur Berechnung der Fréchet-Metrik, der für "
-"beide geometrischen Objekte auf diskrete Punkte beschränkt ist und auf "
-"<link xlink:href=\"http://www.kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464."
+"beide geometrischen Objekte auf diskrete Punkte beschränkt ist und auf <link "
+"xlink:href=\"http://www.kr.tuwien.ac.at/staff/eiter/et-archive/cdtr9464."
 "pdf\">Computing Discrete Fréchet Distance</link> beruht. Die Fréchet-Metrik "
 "ist ein Maß für die Ähnlichkeit von Kurven, welches die Position und die "
 "Reihenfolge der Kurvenstützpunkte mit einbezieht. Daher ist sie oft besser "

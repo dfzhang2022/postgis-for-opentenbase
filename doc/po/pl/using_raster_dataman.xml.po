@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostGIS\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-15 12:17+0000\n"
+"POT-Creation-Date: 2023-09-12 22:08+0000\n"
 "PO-Revision-Date: 2021-11-28 22:35+0000\n"
 "Last-Translator: Regina Obe\n"
 "Language-Team: Polish (http://www.transifex.com/postgis/postgis/language/"
@@ -75,8 +75,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "When creating overviews of a specific factor from a set of rasters that are "
-"aligned, it is possible for the overviews to not align. Visit <link "
-"xlink:href=\"http://trac.osgeo.org/postgis/ticket/1764\">http://trac.osgeo.org/"
+"aligned, it is possible for the overviews to not align. Visit <link xlink:"
+"href=\"http://trac.osgeo.org/postgis/ticket/1764\">http://trac.osgeo.org/"
 "postgis/ticket/1764</link> for an example where the overviews do not align."
 msgstr ""
 "Tworząc podglądy rastrów dla zbioru przylegających do siebie rastrów, przy "
@@ -382,7 +382,7 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:200
 #, no-c-format
-msgid "<code>-l</code> <varname>OVERVIEW_FACTOR</varname>"
+msgid "-l OVERVIEW_FACTOR"
 msgstr ""
 
 #. Tag: para
@@ -401,8 +401,8 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:209
 #, no-c-format
-msgid "-N <varname>NODATA</varname>"
-msgstr "-N <varname>NODATA</varname>"
+msgid "-N NODATA"
+msgstr ""
 
 #. Tag: para
 #: using_raster_dataman.xml:211
@@ -507,8 +507,8 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:287
 #, no-c-format
-msgid "-T <varname>tablespace</varname>"
-msgstr "-T <varname>przestrzeń_tabel</varname>"
+msgid "-T tablespace"
+msgstr ""
 
 #. Tag: para
 #: using_raster_dataman.xml:289
@@ -525,8 +525,8 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:298
 #, no-c-format
-msgid "-X <varname>tablespace</varname>"
-msgstr "-X <varname>przestrzeń_tabel</varname>"
+msgid "-X tablespace"
+msgstr ""
 
 #. Tag: para
 #: using_raster_dataman.xml:300
@@ -541,7 +541,7 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:309
 #, no-c-format
-msgid "-Y <varname>max_rows_per_copy=50</varname>"
+msgid "-Y max_rows_per_copy=50"
 msgstr ""
 
 #. Tag: para
@@ -581,7 +581,7 @@ msgstr ""
 #. Tag: term
 #: using_raster_dataman.xml:333
 #, no-c-format
-msgid "-V <varname>version</varname>"
+msgid "-V version"
 msgstr ""
 
 #. Tag: para
@@ -689,9 +689,9 @@ msgstr ""
 msgid ""
 "The <varname>raster2pgsql</varname> tool uses GDAL to access raster data, "
 "and can take advantage of a key GDAL feature: the ability to read from "
-"rasters that are <link xlink:href=\"https://gdal.org/user/virtual_file_systems."
-"html#network-based-file-systems\">stored remotely</link> in cloud \"object "
-"stores\" (e.g. AWS S3, Google Cloud Storage)."
+"rasters that are <link xlink:href=\"https://gdal.org/user/"
+"virtual_file_systems.html#network-based-file-systems\">stored remotely</"
+"link> in cloud \"object stores\" (e.g. AWS S3, Google Cloud Storage)."
 msgstr ""
 
 #. Tag: para
@@ -699,8 +699,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Efficient use of cloud stored rasters requires the use of a \"cloud "
-"optimized\" format. The most well-known and widely used is the \"<link "
-"xlink:href=\"https://gdal.org/drivers/raster/cog.html\">cloud optimized GeoTIFF</"
+"optimized\" format. The most well-known and widely used is the \"<link xlink:"
+"href=\"https://gdal.org/drivers/raster/cog.html\">cloud optimized GeoTIFF</"
 "link>\" format. Using a non-cloud format, like a JPEG, or an un-tiled TIFF "
 "will result in very poor performance, as the system will have to download "
 "the entire raster each time it needs to access a subset."
@@ -1210,9 +1210,10 @@ msgstr ""
 #, no-c-format
 msgid ""
 "You will need the npgsql .NET PostgreSQL driver for this exercise which you "
-"can get the latest of from <link xlink:href=\"http://npgsql.projects.postgresql."
-"org/\">http://npgsql.projects.postgresql.org/</link>. Just download the "
-"latest and drop into your ASP.NET bin folder and you'll be good to go."
+"can get the latest of from <link xlink:href=\"http://npgsql.projects."
+"postgresql.org/\">http://npgsql.projects.postgresql.org/</link>. Just "
+"download the latest and drop into your ASP.NET bin folder and you'll be good "
+"to go."
 msgstr ""
 
 #. Tag: para
@@ -1250,9 +1251,9 @@ msgstr ""
 #: using_raster_dataman.xml:551
 #, no-c-format
 msgid ""
-"You can download the latest PostgreSQL JDBC drivers from <link xlink:href=\"http://"
-"jdbc.postgresql.org/download.html\">http://jdbc.postgresql.org/download."
-"html</link>"
+"You can download the latest PostgreSQL JDBC drivers from <link xlink:"
+"href=\"http://jdbc.postgresql.org/download.html\">http://jdbc.postgresql.org/"
+"download.html</link>"
 msgstr ""
 
 #. Tag: para

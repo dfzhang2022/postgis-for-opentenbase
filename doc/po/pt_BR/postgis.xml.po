@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PostGIS\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-30 21:55+0000\n"
+"POT-Creation-Date: 2023-09-12 22:08+0000\n"
 "PO-Revision-Date: 2022-04-20 14:55+0000\n"
 "Last-Translator: Regina Obe <regina@arrival3d.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.osgeo.org/projects/"
@@ -20,19 +20,19 @@ msgstr ""
 "X-Generator: Weblate 4.11.2\n"
 
 #. Tag: title
-#: postgis.xml:94
+#: postgis.xml:97
 #, no-c-format
 msgid "PostGIS &last_release_version; Manual"
 msgstr "PostGIS &last_release_version; Manual"
 
-#. Tag: corpauthor
-#: postgis.xml:98
+#. Tag: orgname
+#: postgis.xml:101
 #, no-c-format
 msgid "The PostGIS Development Group"
 msgstr ""
 
 #. Tag: affiliation
-#: postgis.xml:104
+#: postgis.xml:102
 #, no-c-format
 msgid ""
 "<orgname><link xlink:href=\"http://www.cleverelephant.ca\">clever elephant</"
@@ -46,7 +46,7 @@ msgstr ""
 "address>"
 
 #. Tag: para
-#: postgis.xml:118
+#: postgis.xml:115
 #, no-c-format
 msgid ""
 "PostGIS is an extension to the <link xlink:href=\"https://www.postgresql.org/"
@@ -56,19 +56,19 @@ msgid ""
 "functions for analysis and processing of GIS objects."
 msgstr ""
 "PostGIS é uma extensão para o sistema de banco de dados objeto-relacional "
-"<link xlink:href=\"https://www.postgresql.org/\">PostgreSQL</link> que permite "
-"que objetos SIG (Sistema de Informação Geográfica) sejam armazenados em "
-"banco de dados. O PostGIS inclui suporte a índices espaciais baseado em GiST "
-"R-Tree, e funções para analise e processamento de objetos SIG."
+"<link xlink:href=\"https://www.postgresql.org/\">PostgreSQL</link> que "
+"permite que objetos SIG (Sistema de Informação Geográfica) sejam armazenados "
+"em banco de dados. O PostGIS inclui suporte a índices espaciais baseado em "
+"GiST R-Tree, e funções para analise e processamento de objetos SIG."
 
 #. Tag: para
-#: postgis.xml:127
+#: postgis.xml:124
 #, no-c-format
 msgid "This is the manual for version &last_release_version;"
 msgstr "Este é o manual para a versão &last_release_version;"
 
 #. Tag: para
-#: postgis.xml:128
+#: postgis.xml:125
 #, no-c-format
 msgid ""
 "This work is licensed under a <link xlink:href=\"http://creativecommons.org/"

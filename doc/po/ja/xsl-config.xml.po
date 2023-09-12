@@ -159,8 +159,9 @@ msgid ""
 "standards/sfs\">OGC Simple Features Implementation Specification for SQL 1.1."
 "</link>"
 msgstr ""
-"このメソッドは<link xlink:href=\"http://www.opengeospatial.org/standards/sfs\">OGC "
-"Simple Features Implementation Specification for SQL 1.1</link>の実装です。"
+"このメソッドは<link xlink:href=\"http://www.opengeospatial.org/standards/"
+"sfs\">OGC Simple Features Implementation Specification for SQL 1.1</link>の実"
+"装です。"
 
 #. Tag: para
 #: xsl-config.xml:144
