@@ -1608,7 +1608,7 @@ sub prepare_spatial_extensions
 
 	if ( $DB_ROLE_EXT_MKR ) {
 		print "Using role '$DB_ROLE_EXT_MKR' for spatial extensions creation.\n";
-		$psql_opts .= " -c \"set role='$DB_ROLE_EXT_MKR'\"";
+		$psql_opts .= " -c \"set session authorization '$DB_ROLE_EXT_MKR'\"";
 	}
 
 	my $sql = "CREATE SCHEMA IF NOT EXISTS ${OPT_SCHEMA}";
@@ -1844,7 +1844,7 @@ sub upgrade_spatial_extensions
 
     if ( $DB_ROLE_EXT_MKR ) {
       print "Using role '$DB_ROLE_EXT_MKR' for spatial extensions upgrade.\n";
-      $psql_opts .= " -c \"set role='$DB_ROLE_EXT_MKR'\"";
+      $psql_opts .= " -c \"set session authorization '$DB_ROLE_EXT_MKR'\"";
     }
 
     if ( $OPT_UPGRADE_TO =~ /!$/ )
