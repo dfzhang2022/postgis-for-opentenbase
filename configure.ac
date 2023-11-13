@@ -948,14 +948,19 @@ dnl ===========================================================================
 dnl Detect the version of PROJ.4 installed
 dnl ===========================================================================
 
+USE_PROJ=yes
+
 AC_ARG_WITH([projdir],
-	[AS_HELP_STRING([--with-projdir=PATH], [specify the PROJ.4 installation directory])],
+	[AS_HELP_STRING([--with-projdir=PATH], [specify the PROJ.4 installation directory or disable it using --without-projdir])],
 	[PROJDIR="$withval"], [PROJDIR=""])
 
 if test ! "x$PROJDIR" = "x"; then
 	dnl Make sure that the directory exists
 	if test "x$PROJDIR" = "xyes"; then
 		AC_MSG_ERROR([you must specify a parameter to --with-projdir, e.g. --with-projdir=/path/to])
+	elif test "x$PROJDIR" = "xno"; then
+		AC_MSG_NOTICE([requested to build without libproj support])
+		USE_PROJ=no
 	else
 		if test -d "$PROJDIR"; then
 			AC_MSG_RESULT([Using user-specified proj directory: $PROJDIR])
@@ -984,37 +989,44 @@ else
 fi
 
 
+if test "$USE_PROJ" = "yes"; then dnl {
+
 #
 # MacOS with XCode > 15 now requires rpath entries for
 # libraries like GEOS/Proj that might be flexibly installed
 # with movability expected
 #
 case $host_os in
-    darwin*)
-				PROJ_RPATH=`echo $PROJ_LDFLAGS | $PERL -nle 'print "$1" if /\-L ?(\S+) /'`
-				AC_MSG_RESULT([checking for PROJ_RPATH under MacOS... $PROJ_RPATH])
-					if test "x$PROJ_RPATH" != "x"; then
-				  # Add the rpath setting to the LDFLAGS
-					PROJ_LDFLAGS="$PROJ_LDFLAGS -Wl,-rpath,$PROJ_RPATH"
-				fi
-				;;
+  darwin*)
+    AC_MSG_CHECKING([for PROJ_RPATH under MacOS])
+    PROJ_RPATH=`echo $PROJ_LDFLAGS | $PERL -nle 'print "$1" if /\-L ?(\S+) /'`
+    if test "x$PROJ_RPATH" != "x"; then
+      AC_MSG_RESULT([$PROJ_RPATH])
+      # Add the rpath setting to the LDFLAGS
+      PROJ_LDFLAGS="$PROJ_LDFLAGS -Wl,-rpath,$PROJ_RPATH"
+    else
+      AC_MSG_RESULT([not found])
+    fi
+    ;;
 esac
 
 
 dnl Check that we can find the proj_api.h header file
 CPPFLAGS_SAVE="$CPPFLAGS"
 CPPFLAGS="$PROJ_CPPFLAGS"
-AC_CHECK_HEADER([proj_api.h],
-	[],
-	[AC_CHECK_HEADER([proj.h],
-		[],
-		[AC_MSG_ERROR([could not find proj.h or proj_api.h - you may need to specify the directory of a PROJ installation using --with-projdir])]
-		)]
-	)
+AC_CHECK_HEADER(
+  [proj_api.h],
+  [],
+  [AC_CHECK_HEADER(
+    [proj.h],
+    [],
+    [AC_MSG_ERROR([could not find proj.h or proj_api.h - you may need to specify the directory of a PROJ installation using --with-projdir])]
+  )]
+)
 
 dnl Return the PROJ.4 version number if not detected by pkg-config
 if test "x$POSTGIS_PROJ_VERSION" = "x"; then
-	AC_PROJ_VERSION([POSTGIS_PROJ_VERSION])
+  AC_PROJ_VERSION([POSTGIS_PROJ_VERSION])
 fi
 AC_DEFINE_UNQUOTED([POSTGIS_PROJ_VERSION], [$POSTGIS_PROJ_VERSION], [PROJ library version])
 AC_SUBST([POSTGIS_PROJ_VERSION])
@@ -1022,7 +1034,7 @@ CPPFLAGS="$CPPFLAGS_SAVE"
 
 dnl Ensure that we are using PROJ >= 6.1.0 (requires pj_set_searchpath)
 if test ! "$POSTGIS_PROJ_VERSION" -ge 61; then
-	AC_MSG_ERROR([PostGIS requires PROJ >= 6.1.0])
+  AC_MSG_ERROR([PostGIS requires PROJ >= 6.1.0])
 fi
 
 AC_SUBST([PROJ_CPPFLAGS])
@@ -1031,13 +1043,22 @@ AC_SUBST([PROJ_LDFLAGS])
 dnl Ensure we can link against libproj
 LIBS_SAVE="$LIBS"
 LIBS="$PROJ_LDFLAGS"
-AC_CHECK_LIB([proj], [pj_get_release], [],
-	[AC_CHECK_LIB([proj], [proj_info], [],
-		[AC_MSG_ERROR([could not find libproj - you may need to specify the directory of a PROJ installation using --with-projdir])],
-		[]
-		)],
-	[])
+AC_CHECK_LIB(
+  [proj],
+  [pj_get_release],
+  [],
+  [AC_CHECK_LIB(
+    [proj],
+    [proj_info],
+    [],
+    [AC_MSG_ERROR([could not find libproj - you may need to specify the directory of a PROJ installation using --with-projdir])],
+    []
+  )],
+  []
+)
 LIBS="$LIBS_SAVE"
+
+fi dnl } USE_PROJ = yes
 
 
 dnl ===========================================================================
@@ -1917,7 +1938,11 @@ if test "x$SUPPORT_POSTGRESQL" = "xyes"; then
 else
   AC_MSG_RESULT([  PostgreSQL support:   DISABLED])
 fi
-AC_MSG_RESULT([  PROJ4 version:        ${POSTGIS_PROJ_VERSION}])
+if test "$USE_PROJ" = "yes"; then
+  AC_MSG_RESULT([  PROJ4 version:        ${POSTGIS_PROJ_VERSION}])
+else
+  AC_MSG_RESULT([  PROJ4:                disabled])
+fi
 AC_MSG_RESULT([  Libxml2 config:       ${XML2CONFIG}])
 AC_MSG_RESULT([  Libxml2 version:      ${POSTGIS_LIBXML2_VERSION}])
 AC_MSG_RESULT([  JSON-C support:       ${HAVE_JSON}])
@@ -1985,7 +2010,7 @@ AC_MSG_WARN()
 fi
 
 if test ! -z "$PKG_CONFIG"; then
-    if test ! "x$PROJDIR" = "x"; then
+    if test -n "$PROJDIR" -a "$USE_PROJ" = "yes"; then
         AC_MSG_WARN()
         AC_MSG_WARN([ | You are building using --with-projdir. This option isn't standard and    |])
         AC_MSG_WARN([ | might be incompatible with future releases of PROJ.                      |])
