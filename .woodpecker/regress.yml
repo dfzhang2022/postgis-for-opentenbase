@@ -62,30 +62,11 @@ steps:
       - <<: *steps-env
       - <<: *steps-pg-build
 
-  build-pg15:
-    image: *test-image
-    group: build
-    environment:
-      - PGVER=15
-    commands:
-      - <<: *steps-env
-      - <<: *steps-pg-build
-
   check-pg12:
     image: *test-image
     group: check
     environment:
       - PGVER=12
-    commands:
-      - <<: *steps-env
-      - <<: *steps-start-postgresql
-      - <<: *steps-pg-test-preinstall
-
-  check-pg15:
-    image: *test-image
-    group: check
-    environment:
-      - PGVER=15
     commands:
       - <<: *steps-env
       - <<: *steps-start-postgresql
@@ -102,33 +83,11 @@ steps:
       - <<: *steps-pg-install
       - <<: *steps-pg-test-install
 
-  installcheck-pg15:
-    image: *test-image
-    group: installcheck
-    environment:
-      - PGVER=15
-    commands:
-      - <<: *steps-env
-      - <<: *steps-start-postgresql
-      - <<: *steps-pg-install
-      - <<: *steps-pg-test-install
-
   upgradecheck-pg12:
     image: *test-image
     group: upgradecheck
     environment:
       - PGVER=12
-    commands:
-      - <<: *steps-env
-      - <<: *steps-start-postgresql
-      - <<: *steps-pg-install
-      - <<: *steps-pg-test-all-upgrades
-
-  upgradecheck-pg15:
-    image: *test-image
-    group: upgradecheck
-    environment:
-      - PGVER=15
     commands:
       - <<: *steps-env
       - <<: *steps-start-postgresql
