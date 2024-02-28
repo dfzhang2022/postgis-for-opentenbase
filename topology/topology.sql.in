@@ -1393,6 +1393,7 @@ LANGUAGE 'plpgsql' VOLATILE STRICT;
 #include "sql/manage/AddTopoGeometryColumn.sql.in"
 #include "sql/manage/RenameTopoGeometryColumn.sql.in"
 #include "sql/manage/CreateTopology.sql.in"
+#include "sql/manage/ManageTopologyConstraints.sql.in"
 #include "sql/manage/TopologySummary.sql.in"
 #include "sql/manage/CopyTopology.sql.in"
 #include "sql/manage/FindTopology.sql.in"

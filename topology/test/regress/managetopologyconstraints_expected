@@ -1,0 +1,14 @@
+add1|t.edge_data|end_node_exists
+add1|t.edge_data|left_face_exists
+add1|t.edge_data|next_left_edge_exists
+add1|t.edge_data|next_right_edge_exists
+add1|t.edge_data|right_face_exists
+add1|t.edge_data|start_node_exists
+add1|t.node|face_exists
+add2|t.edge_data|end_node_exists
+add2|t.edge_data|left_face_exists
+add2|t.edge_data|next_left_edge_exists
+add2|t.edge_data|next_right_edge_exists
+add2|t.edge_data|right_face_exists
+add2|t.edge_data|start_node_exists
+add2|t.node|face_exists

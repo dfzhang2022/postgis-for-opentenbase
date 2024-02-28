@@ -45,6 +45,7 @@ TESTS += \
 	$(top_srcdir)/topology/test/regress/legacy_predicate.sql \
 	$(top_srcdir)/topology/test/regress/legacy_query.sql \
 	$(top_srcdir)/topology/test/regress/legacy_validate.sql \
+	$(top_srcdir)/topology/test/regress/managetopologyconstraints.sql \
 	$(top_srcdir)/topology/test/regress/polygonize.sql \
 	$(top_srcdir)/topology/test/regress/populate_topology_layer.sql \
 	$(top_srcdir)/topology/test/regress/removeunusedprimitives.sql \
