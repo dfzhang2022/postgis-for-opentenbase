@@ -83,6 +83,7 @@ BEGIN
         CONSTRAINT face_exists
           FOREIGN KEY(containing_face)
           REFERENCES %1$I.face(face_id)
+          DEFERRABLE INITIALLY IMMEDIATE
       );
 
       -- Node standard view description
@@ -122,11 +123,13 @@ BEGIN
 
         CONSTRAINT left_face_exists
           FOREIGN KEY(left_face)
-          REFERENCES %1$I.face(face_id),
+          REFERENCES %1$I.face(face_id)
+          DEFERRABLE INITIALLY IMMEDIATE,
 
         CONSTRAINT right_face_exists
           FOREIGN KEY(right_face)
-          REFERENCES %1$I.face(face_id),
+          REFERENCES %1$I.face(face_id)
+          DEFERRABLE INITIALLY IMMEDIATE,
 
         CONSTRAINT next_left_edge_exists
           FOREIGN KEY(abs_next_left_edge)
