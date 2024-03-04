@@ -18,7 +18,7 @@
  *
  **********************************************************************
  *
- * Copyright (C) 2015-2022 Sandro Santilli <strk@kbt.io>
+ * Copyright (C) 2015-2024 Sandro Santilli <strk@kbt.io>
  *
  **********************************************************************/
 
@@ -5669,21 +5669,31 @@ _lwt_AddLine(LWT_TOPOLOGY* topo, LWLINE* line, double tol, int* nedges,
     line->points->npoints, numedges);
   if ( numedges )
   {{
+    /* TODO: compute earlier for reuse later ? */
+    GEOSGeometry *noded_g = LWGEOM2GEOS(noded, 0);
     /* collect those whose distance from us is < tol */
     nearbycount += numedges;
     nearby = lwalloc(numedges * sizeof(LWGEOM *));
     for (i=0; i<numedges; ++i)
-    {
+    {{
       LW_ON_INTERRUPT(return NULL);
       LWT_ISO_EDGE *e = &(edges[i]);
       LWGEOM *g = lwline_as_lwgeom(e->geom);
-      LWDEBUGF(2, "Computing distance from edge %d having %d points", i, e->geom->points->npoints);
-      double dist = lwgeom_mindistance2d(g, noded);
-      /* must be closer than tolerated, unless distance is zero */
-      if ( dist && dist >= tol ) continue;
-      nearby[nearbyindex++] = g;
-    }
+      GEOSGeometry *edge_g = LWGEOM2GEOS(g, 0);
+      LWDEBUGF(2, "Computing intersects of edge %d with %d points", i, e->geom->points->npoints);
+      /* WARNING: GEOSDistanceWithin is only available with GEOS 3.10+ * */
+      int ret = GEOSDistanceWithin(edge_g, noded_g, tol);
+	    if (ret == 2) {
+        GEOSGeom_destroy(edge_g);
+        GEOSGeom_destroy(noded_g);
+        lwerror("GEOSDistanceWithin error: %s", lwgeom_geos_errmsg);
+        return NULL;
+      }
+      if (ret == 1) nearby[nearbyindex++] = g;
+      GEOSGeom_destroy(edge_g);
+    }}
     LWDEBUGF(1, "Found %d edges closer than tolerance (%g)", nearbyindex, tol);
+    GEOSGeom_destroy(noded_g);
   }}
   int nearbyedgecount = nearbyindex;
 
