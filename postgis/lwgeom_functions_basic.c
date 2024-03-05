@@ -730,7 +730,7 @@ geom1 and geom2 is shorter than tolerance
 PG_FUNCTION_INFO_V1(LWGEOM_dwithin);
 Datum LWGEOM_dwithin(PG_FUNCTION_ARGS)
 {
-	double mindist;
+	int within;
 	GSERIALIZED *geom1 = PG_GETARG_GSERIALIZED_P(0);
 	GSERIALIZED *geom2 = PG_GETARG_GSERIALIZED_P(1);
 	double tolerance = PG_GETARG_FLOAT8(2);
@@ -750,13 +750,11 @@ Datum LWGEOM_dwithin(PG_FUNCTION_ARGS)
 		PG_RETURN_BOOL(false);
 	}
 
-	mindist = lwgeom_mindistance2d_tolerance(lwgeom1, lwgeom2, tolerance);
+	within = lwgeom_distance2d_within(lwgeom1, lwgeom2, tolerance);
 
 	PG_FREE_IF_COPY(geom1, 0);
 	PG_FREE_IF_COPY(geom2, 1);
-	/*empty geometries cases should be right handled since return from underlying
-	 functions should be FLT_MAX which causes false as answer*/
-	PG_RETURN_BOOL(tolerance >= mindist);
+	PG_RETURN_BOOL(within);
 }
 
 /**

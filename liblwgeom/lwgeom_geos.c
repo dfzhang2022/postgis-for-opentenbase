@@ -1887,7 +1887,9 @@ lwgeom_voronoi_diagram(const LWGEOM* g, const GBOX* env, double tolerance, int o
 }
 
 
+/* { */
 #if POSTGIS_GEOS_VERSION >= 31100
+
 LWGEOM*
 lwgeom_concavehull(const LWGEOM* geom, double ratio, uint32_t allow_holes)
 {
@@ -1976,3 +1978,36 @@ lwgeom_triangulate_polygon(const LWGEOM* geom)
 }
 
 #endif
+/* } POSTGIS_GEOS_VERSION >= 31100 */
+
+int
+lwgeom_distance2d_within(const LWGEOM *lw1, const LWGEOM *lw2, double maxdist)
+{
+#if POSTGIS_GEOS_VERSION >= 31000
+	/*
+	 * use GEOS WithinDistance when available, see
+	 * https://trac.osgeo.org/postgis/ticket/2614
+	 */
+	GEOSGeometry *gg1, *gg2;
+	int ret;
+
+	gg1 = LWGEOM2GEOS(lw1, 0);
+	gg2 = LWGEOM2GEOS(lw2, 0);
+	ret = GEOSDistanceWithin(gg1, gg2, maxdist);
+	GEOSGeom_destroy(gg1);
+	GEOSGeom_destroy(gg2);
+	if (ret == 2) {
+		lwerror("GEOSDistanceWithin error: %s", lwgeom_geos_errmsg);
+		return 0;
+	}
+
+	return ret;
+#else
+	double mindist;
+
+	mindist = lwgeom_mindistance2d_tolerance(lw1, lw2, mindist);
+	/*empty geometries cases should be right handled since return from underlying
+	 functions should be FLT_MAX which causes false as answer*/
+	return maxdist >= mindist;
+#endif /* POSTGIS_GEOS_VERSION >= 31000 */
+}

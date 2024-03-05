@@ -1327,6 +1327,7 @@ extern double  lwgeom_mindistance2d(const LWGEOM *lw1, const LWGEOM *lw2);
 extern double  lwgeom_mindistance2d_tolerance(const LWGEOM *lw1, const LWGEOM *lw2, double tolerance);
 extern double  lwgeom_maxdistance2d(const LWGEOM *lw1, const LWGEOM *lw2);
 extern double  lwgeom_maxdistance2d_tolerance(const LWGEOM *lw1, const LWGEOM *lw2, double tolerance);
+extern int lwgeom_distance2d_within(const LWGEOM *lw1, const LWGEOM *lw2, double maxdist);
 
 /* 3D */
 extern double distance3d_pt_pt(const POINT3D *p1, const POINT3D *p2);
