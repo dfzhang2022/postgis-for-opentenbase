@@ -35,7 +35,7 @@ steps:
   check-xml:
     image: *test_image
     pull: true
-    depends_on: check-xml-and-build-images
+    #depends_on: build-images
     commands:
       - make -C build-docs/doc check
     when:
@@ -43,7 +43,7 @@ steps:
   build-images:
     image: *test_image
     pull: true
-    depends_on: check-xml-and-build-images
+    depends_on: check-xml
     commands:
       - make -C build-docs/doc images
     when:
