@@ -4,6 +4,7 @@
     commands:
       - make -C build-docs/doc/po/@LANG@ local-@TARGET@
     #group: @GROUP@
+    depends_on: prepare
     when:
       path:
         include:
