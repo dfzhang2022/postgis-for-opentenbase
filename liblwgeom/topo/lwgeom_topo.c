@@ -32,6 +32,7 @@
 #include "liblwgeom_internal.h"
 #include "liblwgeom_topo_internal.h"
 #include "lwgeom_geos.h"
+#include "lwtree.h"
 
 /* This is a non-tolerance based 2d equality for points
  * whereas the p2d_same function is tolerance based
@@ -5669,7 +5670,14 @@ _lwt_AddLine(LWT_TOPOLOGY* topo, LWLINE* line, double tol, int* nedges,
   if ( numedges )
   {{
     /* TODO: compute earlier for reuse later ? */
-    GEOSGeometry *noded_g = LWGEOM2GEOS(noded, 0);
+    RECT_NODE *noded_tree = rect_tree_from_lwgeom(noded);
+    if ( NULL == noded_tree )
+    {
+      lwgeom_free(noded);
+      lwerror("rect_tree_from_lwgeom(noded) returned NULL");
+        lwerror("rect_tree_from_lwgeom(noded) returned NULL");
+      return NULL;
+    }
     /* collect those whose distance from us is < tol */
     nearbycount += numedges;
     nearby = lwalloc(numedges * sizeof(LWGEOM *));
@@ -5678,22 +5686,22 @@ _lwt_AddLine(LWT_TOPOLOGY* topo, LWLINE* line, double tol, int* nedges,
       LW_ON_INTERRUPT(return NULL);
       LWT_ISO_EDGE *e = &(edges[i]);
       LWGEOM *g = lwline_as_lwgeom(e->geom);
-      GEOSGeometry *edge_g = LWGEOM2GEOS(g, 0);
       LWDEBUGF(2, "Computing distance from edge %d with %d points", i, e->geom->points->npoints);
-      double dist;
-      if ( 0 == GEOSDistanceIndexed(edge_g, noded_g, &dist) ) {
-        GEOSGeom_destroy(edge_g);
-        GEOSGeom_destroy(noded_g);
+      RECT_NODE *edge_tree = rect_tree_from_lwgeom(g);
+      if ( NULL == edge_tree )
+      {
+        rect_tree_free(noded_tree);
         lwgeom_free(noded);
-        lwerror("GEOSDistanceIndexed error: %s", lwgeom_geos_errmsg);
+        lwerror("rect_tree_from_lwgeom(edge %d) returned NULL", e->edge_id);
         return NULL;
       }
+      double dist = rect_tree_distance_tree(noded_tree, edge_tree, 0.0);
+      rect_tree_free(edge_tree);
       if ( dist && dist >= tol ) continue;
       nearby[nearbyindex++] = g;
-      GEOSGeom_destroy(edge_g);
     }}
     LWDEBUGF(1, "Found %d edges closer than tolerance (%g)", nearbyindex, tol);
-    GEOSGeom_destroy(noded_g);
+    rect_tree_free(noded_tree);
   }}
   int nearbyedgecount = nearbyindex;
 
