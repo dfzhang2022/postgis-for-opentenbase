@@ -88,7 +88,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/it_IT local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -99,7 +99,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pt_BR local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -110,7 +110,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/fr local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -121,7 +121,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/es local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -132,7 +132,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pl local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -143,7 +143,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ko_KR local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -154,7 +154,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/de local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -165,7 +165,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ja local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -176,7 +176,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ru local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -187,7 +187,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/zh_Hans local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -198,7 +198,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ro local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -209,7 +209,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/uk local-check-xml
-    group: localized-check-xml
+    #group: localized-check-xml
     #depends_on: prepare
     when:
       path:
@@ -221,7 +221,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/it_IT local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -232,7 +232,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pt_BR local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -243,7 +243,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/fr local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -254,7 +254,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/es local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -265,7 +265,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pl local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -276,7 +276,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ko_KR local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -287,7 +287,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/de local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -298,7 +298,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ja local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -309,7 +309,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ru local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -320,7 +320,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/zh_Hans local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -331,7 +331,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ro local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -342,7 +342,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/uk local-html
-    group: localized-html
+    #group: localized-html
     #depends_on: prepare
     when:
       path:
@@ -354,7 +354,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/it_IT local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -365,7 +365,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pt_BR local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -376,7 +376,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/fr local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -387,7 +387,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/es local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -398,7 +398,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pl local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -409,7 +409,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ko_KR local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -420,7 +420,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/de local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -431,7 +431,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ja local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -442,7 +442,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ru local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -453,7 +453,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/zh_Hans local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -464,7 +464,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ro local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -475,7 +475,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/uk local-cheatsheets
-    group: localized-cheatsheets
+    #group: localized-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -487,7 +487,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/it_IT local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -498,7 +498,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pt_BR local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -509,7 +509,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/fr local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -520,7 +520,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/es local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -531,7 +531,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pl local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -542,7 +542,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ko_KR local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -553,7 +553,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/de local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -564,7 +564,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ja local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -575,7 +575,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ru local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -586,7 +586,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/zh_Hans local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -597,7 +597,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ro local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -608,7 +608,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/uk local-check-cheatsheets
-    group: localized-check-cheatsheets
+    #group: localized-check-cheatsheets
     #depends_on: prepare
     when:
       path:
@@ -620,7 +620,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/it_IT local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -631,7 +631,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pt_BR local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -642,7 +642,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/fr local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -653,7 +653,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/es local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -664,7 +664,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/pl local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -675,7 +675,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ko_KR local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -686,7 +686,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/de local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -697,7 +697,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ja local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -708,7 +708,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ru local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -719,7 +719,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/zh_Hans local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -730,7 +730,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/ro local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
@@ -741,7 +741,7 @@ steps:
     pull: true
     commands:
       - make -C build-docs/doc/po/uk local-pdf
-    group: localized-pdf
+    #group: localized-pdf
     #depends_on: prepare
     when:
       path:
