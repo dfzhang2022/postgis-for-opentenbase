@@ -864,6 +864,19 @@ typedef struct LWT_BE_CALLBACKS_T {
    */
   GBOX *(*computeFaceMBR)(const LWT_BE_TOPOLOGY *topo, LWT_ELEMID face);
 
+  /**
+   * Replace edge references to face identifier
+   *
+   * @param topo the topology to act upon
+   * @param old_face the face identifier to be replaced
+   * @param new_face the new face identifier to use
+   *
+   * @return number of edges being updated or -1 on error
+   *         (@see lastErroMessage)
+   *
+   */
+  int (*updateMergedFaceEdges)(const LWT_BE_TOPOLOGY *topo, LWT_ELEMID old_face, LWT_ELEMID new_face);
+
 } LWT_BE_CALLBACKS;
 
 

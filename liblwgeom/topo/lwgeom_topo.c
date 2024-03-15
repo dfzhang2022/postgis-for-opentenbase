@@ -266,6 +266,13 @@ lwt_be_updateEdges(LWT_TOPOLOGY* topo,
                           exc_edge, exc_fields);
 }
 
+int
+lwt_be_updateMergedFaceEdges(LWT_TOPOLOGY* topo,
+  LWT_ELEMID old_face, LWT_ELEMID new_face)
+{
+  CBT2(topo, updateMergedFaceEdges, old_face, new_face);
+}
+
 static int
 lwt_be_updateNodes(LWT_TOPOLOGY* topo,
   const LWT_ISO_NODE* sel_node, int sel_fields,
@@ -3792,7 +3799,7 @@ lwt_RemIsoEdge(LWT_TOPOLOGY* topo, LWT_ELEMID id)
   return 0; /* success */
 }
 
-/* Used by _lwt_RemEdge to update edge face ref on healing
+/* Used by _lwt_RemEdge to update edge face ref on face merge
  *
  * @param of old face id (never 0 as you cannot remove face 0)
  * @param nf new face id
@@ -3801,25 +3808,12 @@ lwt_RemIsoEdge(LWT_TOPOLOGY* topo, LWT_ELEMID id)
 static int
 _lwt_UpdateEdgeFaceRef( LWT_TOPOLOGY *topo, LWT_ELEMID of, LWT_ELEMID nf)
 {
-  LWT_ISO_EDGE sel_edge, upd_edge;
   int ret;
 
   assert( of != 0 );
 
-  /* Update face_left for all edges still referencing old face */
-  sel_edge.face_left = of;
-  upd_edge.face_left = nf;
-  ret = lwt_be_updateEdges(topo, &sel_edge, LWT_COL_EDGE_FACE_LEFT,
-                                 &upd_edge, LWT_COL_EDGE_FACE_LEFT,
-                                 NULL, 0);
-  if ( ret == -1 ) return -1;
-
-  /* Update face_right for all edges still referencing old face */
-  sel_edge.face_right = of;
-  upd_edge.face_right = nf;
-  ret = lwt_be_updateEdges(topo, &sel_edge, LWT_COL_EDGE_FACE_RIGHT,
-                                 &upd_edge, LWT_COL_EDGE_FACE_RIGHT,
-                                 NULL, 0);
+  /* Update face_left/right for all edges still referencing old face */
+  ret = lwt_be_updateMergedFaceEdges(topo, of, nf);
   if ( ret == -1 ) return -1;
 
   return 0;

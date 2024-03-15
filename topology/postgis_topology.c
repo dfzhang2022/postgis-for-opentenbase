@@ -1833,6 +1833,48 @@ cb_updateEdges( const LWT_BE_TOPOLOGY* topo,
 }
 
 static int
+cb_updateMergedFaceEdges ( const LWT_BE_TOPOLOGY* topo,
+                             LWT_ELEMID old_face, LWT_ELEMID new_face)
+{
+  MemoryContext oldcontext = CurrentMemoryContext;
+  int spi_result;
+  StringInfoData sqldata;
+  StringInfo sql = &sqldata;
+
+  initStringInfo(sql);
+  appendStringInfo(sql,
+    "UPDATE \"%s\".edge_data SET "
+    "left_face = CASE WHEN left_face = %" LWTFMT_ELEMID
+      " THEN %" LWTFMT_ELEMID " ELSE left_face END, "
+    "right_face = CASE WHEN right_face = %" LWTFMT_ELEMID
+      " THEN %" LWTFMT_ELEMID " ELSE right_face END "
+    "WHERE left_face = %" LWTFMT_ELEMID " OR right_face = %" LWTFMT_ELEMID
+    ,
+    topo->name,
+    old_face, new_face,
+    old_face, new_face,
+    old_face, old_face
+  );
+
+  POSTGIS_DEBUGF(1, "cb_updateMergedFaceEdges query: %s", sql->data);
+
+  spi_result = SPI_execute( sql->data, false, 0 );
+  MemoryContextSwitchTo( oldcontext ); /* switch back */
+  if ( spi_result != SPI_OK_UPDATE )
+  {
+    cberror(topo->be_data, "unexpected return (%d) from query execution: %s",
+            spi_result, sql->data);
+    pfree(sqldata.data);
+    return -1;
+  }
+  pfree(sqldata.data);
+
+  if ( SPI_processed ) topo->be_data->data_changed = true;
+
+  return SPI_processed;
+}
+
+static int
 cb_updateNodes( const LWT_BE_TOPOLOGY* topo,
                 const LWT_ISO_NODE* sel_node, int sel_fields,
                 const LWT_ISO_NODE* upd_node, int upd_fields,
@@ -3539,7 +3581,8 @@ static LWT_BE_CALLBACKS be_callbacks =
   cb_checkTopoGeomRemIsoNode,
   cb_checkTopoGeomRemIsoEdge,
   cb_getClosestEdge,
-  cb_computeFaceMBR
+  cb_computeFaceMBR,
+  cb_updateMergedFaceEdges
 };
 
 static void
