@@ -30,10 +30,10 @@ check_enabled() {
       sed 's|\\||' |
       sed 's|\.sql\>||' > ${TMPDIR}/enabled_tests
 
-  find ${bd} -name '*.sql' |
-    sed 's|\.sql$||' > ${TMPDIR}/available_tests
+  find ${bd} -name '*_expected' |
+    sed 's|_expected$||' > ${TMPDIR}/available_tests
 
-  MISSING=`grep -vf ${TMPDIR}/enabled_tests ${TMPDIR}/available_tests`
+  MISSING=`grep -vwf ${TMPDIR}/enabled_tests ${TMPDIR}/available_tests`
   if test -n "${MISSING}"; then
     (
     echo "The following tests are available but not enabled in:"
