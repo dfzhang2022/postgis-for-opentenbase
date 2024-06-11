@@ -144,7 +144,7 @@ Datum _postgis_gserialized_stats(PG_FUNCTION_ARGS);
 
 /* Local prototypes */
 static Oid table_get_spatial_index(Oid tbl_oid, int16 attnum, int *key_type, int16 *idx_attnum);
-static GBOX * spatial_index_read_extent(Oid idx_oid, int att_num, int key_type);
+static GBOX * spatial_index_read_extent(Oid idx_oid, int idx_att_num, int key_type);
 
 
 /* Other prototypes */
@@ -2379,7 +2379,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 
 
 static GBOX *
-spatial_index_read_extent(Oid idx_oid, int att_num, int key_type)
+spatial_index_read_extent(Oid idx_oid, int idx_att_num, int key_type)
 {
 	BOX2DF *bounds_2df = NULL;
 	GIDX *bounds_gidx = NULL;
@@ -2412,7 +2412,7 @@ spatial_index_read_extent(Oid idx_oid, int att_num, int key_type)
 		if (!GistTupleIsInvalid(ituple))
 		{
 			bool isnull;
-			Datum idx_attr = index_getattr(ituple, att_num, idx_rel->rd_att, &isnull);
+			Datum idx_attr = index_getattr(ituple, idx_att_num, idx_rel->rd_att, &isnull);
 			if (!isnull)
 			{
 				if (key_type == STATISTIC_KIND_2D)
@@ -2543,6 +2543,8 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 	GBOX *gbox = NULL;
 	bool only_parent = false;
 	int key_type;
+	Oid geographyOid = postgis_oid(GEOGRAPHYOID);
+	Oid geometryOid = postgis_oid(GEOMETRYOID);
 
 	/* We need to initialize the internal cache to access it later via postgis_oid() */
 	postgis_initialize_cache();
@@ -2579,12 +2581,12 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
         elog(ERROR, "column %s.\"%s\" does not exist", nsp_tbl, col);
 
     /* We can only do estimates on geograpy and geometry */
-    if (atttypid != postgis_oid(GEOMETRYOID) && atttypid != postgis_oid(GEOGRAPHYOID))
+    if (atttypid != geographyOid && atttypid != geometryOid)
         elog(ERROR, "column %s.\"%s\" must be a geometry or geography", nsp_tbl, col);
 
 	/* Read the extent from the head of the spatial index, if there is one */
 	idx_oid = table_get_spatial_index(tbl_oid, attnum, &key_type, &idx_attnum);
-	if (idx_oid)
+	if (idx_oid != InvalidOid)
 	{
 		/* TODO: how about only_parent ? */
 		gbox = spatial_index_read_extent(idx_oid, idx_attnum, key_type);
@@ -2597,7 +2599,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		elog(DEBUG3, "index for %s.\"%s\" does not exist", nsp_tbl, col);
 
 		/* For a geography column, we need the XYZ geocentric bounds */
-		if (atttypid == postgis_oid(GEOGRAPHYOID))
+		if (atttypid == geographyOid)
 			stats_mode = 3;
 
 		/* ND stats include an extent for the histogram */
@@ -2628,7 +2630,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 
 	/* Convert geocentric geography box into a planar box */
 	/* that users understand */
-	if (atttypid == postgis_oid(GEOGRAPHYOID))
+	if (atttypid == geographyOid)
 	{
 		GBOX *gbox_planar = gbox_new(0);
 		gbox_geocentric_get_gbox_cartesian(gbox, gbox_planar);
