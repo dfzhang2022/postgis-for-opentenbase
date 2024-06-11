@@ -143,7 +143,7 @@ Datum _postgis_gserialized_joinsel(PG_FUNCTION_ARGS);
 Datum _postgis_gserialized_stats(PG_FUNCTION_ARGS);
 
 /* Local prototypes */
-static Oid table_get_spatial_index(Oid tbl_oid, int16 attnum, int *key_type);
+static Oid table_get_spatial_index(Oid tbl_oid, int16 attnum, int *key_type, int16 *idx_attnum);
 static GBOX * spatial_index_read_extent(Oid idx_oid, int att_num, int key_type);
 
 
@@ -2368,7 +2368,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 /************************************************************************/
 
 static Oid
-table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type)
+table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_attnum)
 {
 	Relation table_rel;
 	ListCell *lc;
@@ -2376,7 +2376,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type)
 
 	/* Lookup our spatial index key types */
 	Oid b2d_oid = postgis_oid(BOX2DFOID);
-	Oid gdx_oid = postgis_oid(BOX3DOID);
+	Oid gdx_oid = postgis_oid(GIDXOID);
 
 	if (!(b2d_oid && gdx_oid))
 		return InvalidOid;
@@ -2413,7 +2413,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type)
 			if (index_form->indkey.values[i] == attnum)
 			{
 				is_indexed = true;
-				index_attnum = i;
+				index_attnum = i+1;
 				break;
 		    }
 		}
@@ -2437,13 +2437,19 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type)
 		/* for GIST indexes */
 		if (index_am == GIST_AM_OID)
 		{
+			Form_pg_attribute att_form;
+			Oid atttypid;
+
 			/* Get the key type for the index key? */
 			HeapTuple att_tuple = SearchSysCache2(ATTNUM,
 				ObjectIdGetDatum(index_oid),
 				PointerGetDatum(index_attnum));
 
-			Form_pg_attribute att_form = (Form_pg_attribute) GETSTRUCT(att_tuple);
-			Oid atttypid = att_form->atttypid;
+			if (!HeapTupleIsValid(att_tuple))
+				elog(ERROR, "cache lookup failed for index %u attribute %d", index_oid, index_attnum);
+
+			att_form = (Form_pg_attribute) GETSTRUCT(att_tuple);
+			atttypid = att_form->atttypid;
 			ReleaseSysCache(att_tuple);
 
 			/* Is the column actually spatial? */
@@ -2555,7 +2561,7 @@ Datum _postgis_gserialized_index_extent(PG_FUNCTION_ARGS)
 {
 	GBOX *gbox = NULL;
 	int key_type;
-	int16 att_num;
+	int16 att_num, idx_att_num;
 	Oid tbl_oid = PG_GETARG_DATUM(0);
 	char *col = text_to_cstring(PG_GETARG_TEXT_P(1));
 	Oid idx_oid;
@@ -2570,11 +2576,11 @@ Datum _postgis_gserialized_index_extent(PG_FUNCTION_ARGS)
 	if (att_num == InvalidAttrNumber)
 		PG_RETURN_NULL();
 
-	idx_oid = table_get_spatial_index(tbl_oid, att_num, &key_type);
+	idx_oid = table_get_spatial_index(tbl_oid, att_num, &key_type, &idx_att_num);
 	if (!idx_oid)
 		PG_RETURN_NULL();
 
-	gbox = spatial_index_read_extent(idx_oid, att_num, key_type);
+	gbox = spatial_index_read_extent(idx_oid, idx_att_num, key_type);
 	if (!gbox)
 		PG_RETURN_NULL();
 	else
@@ -2611,12 +2617,12 @@ static bool get_attnum_attypid(Oid table_oid, const char *col, int16 *attnum, Oi
  * looking at gathered statistics (or NULL if
  * no statistics have been gathered).
  */
-PG_FUNCTION_INFO_V1(gserialized_estimated_extent2);
-Datum gserialized_estimated_extent2(PG_FUNCTION_ARGS)
+PG_FUNCTION_INFO_V1(gserialized_estimated_extent);
+Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 {
 	text *coltxt = NULL;
 	char *col = NULL;
-	int16 attnum = 0;
+	int16 attnum, idx_attnum;
 	Oid atttypid = InvalidOid;
 	char nsp_tbl[NAMEDATALEN];
 	Oid tbl_oid, idx_oid = 0;
@@ -2664,11 +2670,11 @@ Datum gserialized_estimated_extent2(PG_FUNCTION_ARGS)
         elog(ERROR, "column %s.\"%s\" must be a geometry or geography", nsp_tbl, col);
 
 	/* Read the extent from the head of the spatial index, if there is one */
-	idx_oid = table_get_spatial_index(tbl_oid, attnum, &key_type);
+	idx_oid = table_get_spatial_index(tbl_oid, attnum, &key_type, &idx_attnum);
 	if (idx_oid)
 	{
 		/* TODO: how about only_parent ? */
-		gbox = spatial_index_read_extent(idx_oid, attnum, key_type);
+		gbox = spatial_index_read_extent(idx_oid, idx_attnum, key_type);
 		elog(DEBUG3, "index for %s.\"%s\" exists, reading gbox from there", nsp_tbl, col);
 		if (!gbox) PG_RETURN_NULL();
 	}
