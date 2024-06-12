@@ -2474,7 +2474,7 @@ Datum _postgis_gserialized_index_extent(PG_FUNCTION_ARGS)
 {
 	GBOX *gbox = NULL;
 	int key_type;
-	int16 att_num, idx_att_num;
+	int16 att_num, idx_att_num = InvalidAttrNumber;
 	Oid tbl_oid = PG_GETARG_DATUM(0);
 	char *col = text_to_cstring(PG_GETARG_TEXT_P(1));
 	Oid idx_oid;
