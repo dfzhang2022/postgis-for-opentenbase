@@ -2358,7 +2358,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 			/* Get the key type for the index key? */
 			HeapTuple att_tuple = SearchSysCache2(ATTNUM,
 				ObjectIdGetDatum(index_oid),
-				PointerGetDatum(index_attnum));
+				Int16GetDatum(index_attnum));
 
 			if (!HeapTupleIsValid(att_tuple))
 				elog(ERROR, "cache lookup failed for index %u attribute %d", index_oid, index_attnum);
@@ -2585,8 +2585,10 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
         elog(ERROR, "column %s.\"%s\" does not exist", nsp_tbl, col);
 
     /* We can only do estimates on geograpy and geometry */
-    if (atttypid != geographyOid && atttypid != geometryOid)
+    if ((atttypid != geographyOid) && (atttypid != geometryOid))
+    {
         elog(ERROR, "column %s.\"%s\" must be a geometry or geography", nsp_tbl, col);
+    }
 
 	/* Read the extent from the head of the spatial index, if there is one */
 	idx_oid = table_get_spatial_index(tbl_oid, attnum, &key_type, &idx_attnum);
