@@ -2612,7 +2612,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		/* Error out on no stats */
 		if (!nd_stats)
 		{
-			elog(WARNING, "stats for \"%s.%s.\" do not exist", tbl, col);
+			elog(WARNING, "stats for \"%s.%s\" do not exist", tbl, col);
 			PG_RETURN_NULL();
 		}
 
