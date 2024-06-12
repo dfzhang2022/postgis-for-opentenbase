@@ -2306,7 +2306,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 		Form_pg_class index_rel_form;
 		HeapTuple index_rel_tuple, index_tuple;
 		Oid index_oid = lfirst_oid(lc);
-		int index_attnum = InvalidAttrNumber;
+		int16 index_attnum = InvalidAttrNumber;
 		bool is_indexed = false;
 
 		/* Check if the index is on the desired column */
@@ -2370,6 +2370,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 			{
 				/* Spatial key found in this index! */
 				*key_type = (atttypid == b2d_oid ? STATISTIC_KIND_2D : STATISTIC_KIND_ND);
+				*idx_attnum = index_attnum;
 				return index_oid;
 			}
 		}
