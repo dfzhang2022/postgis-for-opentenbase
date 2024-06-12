@@ -2282,12 +2282,84 @@ Datum gserialized_gist_sel(PG_FUNCTION_ARGS)
 
 /************************************************************************/
 
+static int16
+index_has_attr(Oid index_oid, Oid table_oid, int16 table_attnum)
+{
+	HeapTuple index_tuple;
+	Form_pg_index index_form;
+	int16 index_attnum = InvalidAttrNumber;
+
+	/* Check if the index is on the desired column */
+	index_tuple = SearchSysCache1(INDEXRELID, ObjectIdGetDatum(index_oid));
+	if (!HeapTupleIsValid(index_tuple))
+		elog(ERROR, "cache lookup failed for index %u", index_oid);
+
+	index_form = (Form_pg_index) GETSTRUCT(index_tuple);
+
+	/* Something went wrong, this index isn't on our table of interest */
+	if (index_form->indrelid != table_oid)
+		elog(ERROR, "table=%u and index=%u are not related", table_oid, index_oid);
+
+	/* Check if the attnum is in the indkey array */
+	for (int16 i = 0; i < index_form->indkey.dim1; i++)
+	{
+		if (index_form->indkey.values[i] == table_attnum)
+		{
+			index_attnum = i+1;
+			break;
+	    }
+	}
+	ReleaseSysCache(index_tuple);
+	return index_attnum;
+}
+
+
+/* Check if the index is a GIST (spatial) index */
+static int
+index_get_am(Oid index_oid)
+{
+	int index_am;
+	Form_pg_class index_rel_form;
+	HeapTuple index_rel_tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(index_oid));
+
+	if (!HeapTupleIsValid(index_rel_tuple))
+		elog(ERROR, "cache lookup failed for index %u", index_oid);
+
+	index_rel_form = (Form_pg_class) GETSTRUCT(index_rel_tuple);
+	index_am = index_rel_form->relam;
+	ReleaseSysCache(index_rel_tuple);
+	return index_am;
+}
+
+
+static int
+index_get_keytype (Oid index_oid, int16 index_attnum)
+{
+	Oid atttypid = InvalidOid;
+	Form_pg_attribute att_form;
+
+	/* Get the key type for the index key? */
+	HeapTuple att_tuple = SearchSysCache2(ATTNUM,
+		ObjectIdGetDatum(index_oid),
+		Int16GetDatum(index_attnum));
+
+	if (!HeapTupleIsValid(att_tuple))
+		elog(ERROR, "cache lookup failed for index %u attribute %d", index_oid, index_attnum);
+
+	att_form = (Form_pg_attribute) GETSTRUCT(att_tuple);
+	atttypid = att_form->atttypid;
+	ReleaseSysCache(att_tuple);
+	return atttypid;
+}
+
+
+
 static Oid
 table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_attnum)
 {
 	Relation table_rel;
-	ListCell *lc;
 	List *index_list;
+	ListCell *lc;
 
 	/* Lookup our spatial index key types */
 	Oid b2d_oid = postgis_oid(BOX2DFOID);
@@ -2296,6 +2368,7 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 	if (!(b2d_oid && gdx_oid))
 		return InvalidOid;
 
+	/* Read a list of all indexes on this table */
 	table_rel = RelationIdGetRelation(table_oid);
 	index_list = RelationGetIndexList(table_rel);
 	RelationClose(table_rel);
@@ -2303,78 +2376,28 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 	/* For each index associated with this table... */
 	foreach(lc, index_list)
 	{
-		int index_am;
-		Form_pg_index index_form;
-		Form_pg_class index_rel_form;
-		HeapTuple index_rel_tuple, index_tuple;
 		Oid index_oid = lfirst_oid(lc);
-		int16 index_attnum = InvalidAttrNumber;
-		bool is_indexed = false;
+		Oid atttypid;
 
-		/* Check if the index is on the desired column */
- 		index_tuple = SearchSysCache1(INDEXRELID, ObjectIdGetDatum(index_oid));
-		if (!HeapTupleIsValid(index_tuple))
-			elog(ERROR, "cache lookup failed for index %u", index_oid);
+		/* Is our attribute indexed by this index? */
+		*idx_attnum = index_has_attr(index_oid, table_oid, attnum);
 
-		index_form = (Form_pg_index) GETSTRUCT(index_tuple);
-
-		/* Something went wrong, this index isn't on our table of interest */
-		if (index_form->indrelid != table_oid)
-			elog(ERROR, "table=%u and index=%u are not related", table_oid, index_oid);
-
-		/* Check if the attnum is in the indkey array */
-		for (uint16_t i = 0; i < index_form->indkey.dim1; i++)
-		{
-			if (index_form->indkey.values[i] == attnum)
-			{
-				is_indexed = true;
-				index_attnum = i+1;
-				break;
-		    }
-		}
-		ReleaseSysCache(index_tuple);
-
-		/* Index doesn't use our attribute of interest as a key, move on */
-		if (!is_indexed)
+		/* No, move on */
+		if (*idx_attnum == InvalidAttrNumber)
 			continue;
 
-		/* Check if the index is a GIST (spatial) index */
-		index_rel_tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(index_oid));
+		/* We only handle GIST spatial indexes */
+		if (index_get_am(index_oid) != GIST_AM_OID)
+			continue;
 
-		if (!HeapTupleIsValid(index_rel_tuple))
-			elog(ERROR, "cache lookup failed for index %u", index_oid);
-
-		index_rel_form = (Form_pg_class) GETSTRUCT(index_rel_tuple);
-		index_am = index_rel_form->relam;
-		ReleaseSysCache(index_rel_tuple);
-
-		/* Our trick for pulling the top key currently only works */
-		/* for GIST indexes */
-		if (index_am == GIST_AM_OID)
+		/* Is the column actually spatial? */
+		/* Only if it uses our spatial key types */
+		atttypid = index_get_keytype (index_oid, *idx_attnum);
+		if (atttypid == b2d_oid || atttypid == gdx_oid)
 		{
-			Form_pg_attribute att_form;
-			Oid atttypid;
-
-			/* Get the key type for the index key? */
-			HeapTuple att_tuple = SearchSysCache2(ATTNUM,
-				ObjectIdGetDatum(index_oid),
-				Int16GetDatum(index_attnum));
-
-			if (!HeapTupleIsValid(att_tuple))
-				elog(ERROR, "cache lookup failed for index %u attribute %d", index_oid, index_attnum);
-
-			att_form = (Form_pg_attribute) GETSTRUCT(att_tuple);
-			atttypid = att_form->atttypid;
-			ReleaseSysCache(att_tuple);
-
-			/* Is the column actually spatial? */
-			if (atttypid == b2d_oid || atttypid == gdx_oid)
-			{
-				/* Spatial key found in this index! */
-				*key_type = (atttypid == b2d_oid ? STATISTIC_KIND_2D : STATISTIC_KIND_ND);
-				*idx_attnum = index_attnum;
-				return index_oid;
-			}
+			/* Spatial key found in this index! */
+			*key_type = (atttypid == b2d_oid ? STATISTIC_KIND_2D : STATISTIC_KIND_ND);
+			return index_oid;
 		}
 	}
 	return InvalidOid;
@@ -2590,7 +2613,8 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
         elog(ERROR, "column %s.\"%s\" must be a geometry or geography", nsp_tbl, col);
     }
 
-	/* Read the extent from the head of the spatial index, if there is one */
+	/* Read the extent from the head of the spatial index */
+	/* works if there is a spatial index */
 	idx_oid = table_get_spatial_index(tbl_oid, attnum, &key_type, &idx_attnum);
 	if (idx_oid != InvalidOid)
 	{
@@ -2599,6 +2623,8 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		elog(DEBUG3, "index for %s.\"%s\" exists, reading gbox from there", nsp_tbl, col);
 		if (!gbox) PG_RETURN_NULL();
 	}
+	/* Read the extent from the stats tables, */
+	/* works if ANALYZE has been run */
 	else
 	{
 		int stats_mode = 2;
