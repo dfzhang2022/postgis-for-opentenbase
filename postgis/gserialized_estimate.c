@@ -2282,6 +2282,12 @@ Datum gserialized_gist_sel(PG_FUNCTION_ARGS)
 
 /************************************************************************/
 
+
+/*
+ * Given an index and table column, confirm the
+ * index was built on that column, and return the
+ * corresponding index attribute for that column.
+ */
 static int16
 index_has_attr(Oid index_oid, Oid table_oid, int16 table_attnum)
 {
@@ -2314,7 +2320,10 @@ index_has_attr(Oid index_oid, Oid table_oid, int16 table_attnum)
 }
 
 
-/* Check if the index is a GIST (spatial) index */
+/*
+ * Given an index return the access method.
+ * (We only work with GIST access method.)
+ */
 static int
 index_get_am(Oid index_oid)
 {
@@ -2332,6 +2341,10 @@ index_get_am(Oid index_oid)
 }
 
 
+/*
+ * Given an index and index attribute, lookup the
+ * key type (box2df or gidx) of that index column.
+ */
 static int
 index_get_keytype (Oid index_oid, int16 index_attnum)
 {
@@ -2353,7 +2366,13 @@ index_get_keytype (Oid index_oid, int16 index_attnum)
 }
 
 
-
+/*
+ * Given a table and attribute number, find any
+ * "spatial index" of that attribute. For our purposes
+ * a spatial index is one we can read the top page of,
+ * namely a geometry or geography column, with
+ * a GIST index having either a gidx or box2df key.
+ */
 static Oid
 table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_attnum)
 {
@@ -2403,7 +2422,12 @@ table_get_spatial_index(Oid table_oid, int16 attnum, int *key_type, int16 *idx_a
 	return InvalidOid;
 }
 
-
+/*
+ * Given an index and indexed attribute, look up
+ * the keys in the top page of the index, and using
+ * the appropriate key type, return a box that is the
+ * union of all those keys.
+ */
 static GBOX *
 spatial_index_read_extent(Oid idx_oid, int idx_att_num, int key_type)
 {
@@ -2527,7 +2551,12 @@ Datum _postgis_gserialized_index_extent(PG_FUNCTION_ARGS)
 }
 
 
-static bool get_attnum_attypid(Oid table_oid, const char *col, int16 *attnum, Oid *atttypid)
+/*
+ * Given a table and column name, look up the attribute number
+ * and type of that column.
+ */
+static bool
+get_attnum_attypid(Oid table_oid, const char *col, int16 *attnum, Oid *atttypid)
 {
 	HeapTuple att_tuple;
 	Form_pg_attribute att;
@@ -2672,6 +2701,9 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		PG_RETURN_POINTER(gbox);
 }
 
+/*
+ * Legacy prototype for Estimated_Extent()
+ */
 PG_FUNCTION_INFO_V1(geometry_estimated_extent);
 Datum geometry_estimated_extent(PG_FUNCTION_ARGS)
 {
