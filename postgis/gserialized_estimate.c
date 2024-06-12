@@ -151,6 +151,8 @@ static GBOX * spatial_index_read_extent(Oid idx_oid, int idx_att_num, int key_ty
 float8 gserialized_joinsel_internal(PlannerInfo *root, List *args, JoinType jointype, int mode);
 float8 gserialized_sel_internal(PlannerInfo *root, List *args, int varRelid, int mode);
 
+/* Old Prototype */
+Datum geometry_estimated_extent(PG_FUNCTION_ARGS);
 
 /*
  * Assign a number to the n-dimensional statistics kind
@@ -2539,6 +2541,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 	int16 attnum, idx_attnum;
 	Oid atttypid = InvalidOid;
 	char nsp_tbl[NAMEDATALEN];
+	char *tbl;
 	Oid tbl_oid, idx_oid = 0;
 	ND_STATS *nd_stats;
 	GBOX *gbox = NULL;
@@ -2560,13 +2563,13 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 	if ( PG_NARGS() >= 3 )
 	{
 		char *nsp = text_to_cstring(PG_GETARG_TEXT_P(0));
-		char *tbl = text_to_cstring(PG_GETARG_TEXT_P(1));
+		tbl = text_to_cstring(PG_GETARG_TEXT_P(1));
 		coltxt = PG_GETARG_TEXT_P(2);
 		snprintf(nsp_tbl, NAMEDATALEN, "\"%s\".\"%s\"", nsp, tbl);
 	}
 	if ( PG_NARGS() == 2 )
 	{
-		char *tbl = text_to_cstring(PG_GETARG_TEXT_P(0));
+		tbl = text_to_cstring(PG_GETARG_TEXT_P(0));
 		coltxt = PG_GETARG_TEXT_P(1);
 		snprintf(nsp_tbl, NAMEDATALEN, "\"%s\"", tbl);
 	}
@@ -2609,7 +2612,7 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		/* Error out on no stats */
 		if (!nd_stats)
 		{
-			elog(WARNING, "stats for %s.\"%s\" do not exist", nsp_tbl, col);
+			elog(WARNING, "stats for \"%s.%s.\" do not exist", tbl, col);
 			PG_RETURN_NULL();
 		}
 
@@ -2641,3 +2644,25 @@ Datum gserialized_estimated_extent(PG_FUNCTION_ARGS)
 		PG_RETURN_POINTER(gbox);
 }
 
+PG_FUNCTION_INFO_V1(geometry_estimated_extent);
+Datum geometry_estimated_extent(PG_FUNCTION_ARGS)
+{
+    if ( PG_NARGS() == 3 )
+    {
+        PG_RETURN_DATUM(
+        DirectFunctionCall3(gserialized_estimated_extent,
+        PG_GETARG_DATUM(0),
+        PG_GETARG_DATUM(1),
+        PG_GETARG_DATUM(2)));
+    }
+    else if ( PG_NARGS() == 2 )
+    {
+        PG_RETURN_DATUM(
+        DirectFunctionCall2(gserialized_estimated_extent,
+        PG_GETARG_DATUM(0),
+        PG_GETARG_DATUM(1)));
+    }
+
+    elog(ERROR, "geometry_estimated_extent() called with wrong number of arguments");
+    PG_RETURN_NULL();
+}
