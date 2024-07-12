@@ -122,7 +122,7 @@ LANGUAGE 'plpgsql' _VOLATILE_STRICT;
 CREATEFUNCTION LockRow(text, text, text, text)
 	RETURNS int
 	AS
-'SELECT LockRow($1, $2, $3, $4, now()::timestamp+''1:00'');'
+'SELECT LockRow($1, $2, $3, $4, now()::timestamp+interval''1:00'');'
 	LANGUAGE 'sql' _VOLATILE_STRICT;
 
 -- LockRow(table, rid, authid);
@@ -130,9 +130,9 @@ CREATEFUNCTION LockRow(text, text, text)
 	RETURNS int
 	AS
 #ifdef HAS_SCHEMAS
-'SELECT LockRow(current_schema(), $1, $2, $3, now()::timestamp+''1:00'');'
+'SELECT LockRow(current_schema(), $1, $2, $3, now()::timestamp+interval''1:00'');'
 #else
-'SELECT LockRow('''', $1, $2, $3, now()::timestamp+''1:00'');'
+'SELECT LockRow('''', $1, $2, $3, now()::timestamp+interval''1:00'');'
 #endif
 	LANGUAGE 'sql' _VOLATILE_STRICT;
 

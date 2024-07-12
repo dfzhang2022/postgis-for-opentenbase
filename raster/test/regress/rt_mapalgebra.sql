@@ -46,7 +46,7 @@ SELECT
 		1, 1, 1
 	) = 255
 FROM raster_nmapalgebra_in
-WHERE rid IN (0, 1);
+WHERE rid IN (0, 1) ORDER BY rid;
 
 SELECT
 	rid,

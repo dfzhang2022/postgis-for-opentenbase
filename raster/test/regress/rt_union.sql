@@ -63,6 +63,8 @@ INSERT INTO raster_union_out
 		ST_Union(rast, 'range') AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -74,7 +76,7 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+)AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -141,6 +143,8 @@ INSERT INTO raster_union_out
 		ST_Union(rast, 1, 'RANGE') AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	(pp).x,
@@ -152,7 +156,7 @@ FROM (
 		(ST_PixelAsPoints(rast)) AS pp
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -210,6 +214,8 @@ INSERT INTO raster_union_out
 		ST_Union(rast, 2, 'RANGE') AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -221,7 +227,7 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -237,6 +243,8 @@ INSERT INTO raster_union_out
 		ST_Union(rast, 1) AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -248,7 +256,7 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -308,6 +316,8 @@ INSERT INTO raster_union_out
 		ST_Union(rast, ARRAY[ROW(1, 'RANGE'), ROW(2, 'RANGE')]::unionarg[]) AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -319,8 +329,10 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -332,7 +344,7 @@ FROM (
 		(ST_PixelAsPoints(rast, 2)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -371,12 +383,17 @@ INSERT INTO raster_union_out
 		ST_Union(rast, 'mean') AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	(ST_Metadata(rast)).*
 FROM raster_union_out
-ORDER BY uniontype;
+ORDER BY uniontype
+) AS tmp_table;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -388,8 +405,10 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -401,8 +420,10 @@ FROM (
 		(ST_PixelAsPoints(rast, 2)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -414,7 +435,7 @@ FROM (
 		(ST_PixelAsPoints(rast, 3)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 TRUNCATE raster_union_out;
 TRUNCATE raster_union_in;
@@ -434,10 +455,15 @@ INSERT INTO raster_union_out
 		ST_Union(rast) AS rast
 	FROM raster_union_in;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	(ST_Metadata(rast)).*
-FROM raster_union_out;
+FROM raster_union_out
+) AS tmp_table;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	uniontype,
 	x,
@@ -449,7 +475,7 @@ FROM (
 		(ST_PixelAsPoints(rast)).*
 	FROM raster_union_out
 ) foo
-ORDER BY uniontype, y, x;
+) AS tmp_table;
 
 DROP TABLE IF EXISTS raster_union_in;
 DROP TABLE IF EXISTS raster_union_out;

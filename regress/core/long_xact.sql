@@ -13,8 +13,8 @@ SELECT CheckAuth('test_locks', 'id');
 UPDATE test_locks SET state = 'nolocks';
 
 -- place the lock
-SELECT LockRow('test_locks', '1', 'auth1', now()::timestamp+'00:01');
-SELECT LockRow('test_locks', '2', 'auth2', now()::timestamp+'00:01');
+SELECT LockRow('test_locks', '1', 'auth1', now()::timestamp+interval'00:01');
+SELECT LockRow('test_locks', '2', 'auth2', now()::timestamp+interval'00:01');
 
 -- this should fail due to missing auth
 UPDATE test_locks SET state = 'unauthorized' where id = 1;

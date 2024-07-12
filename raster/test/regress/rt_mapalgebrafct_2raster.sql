@@ -335,7 +335,7 @@ FROM (
 	FROM raster_mapalgebra_out
 		LEFT JOIN LATERAL ST_Metadata(rast) AS mda ON true
 		LEFT JOIN LATERAL ST_BandMetadata(rast,1) AS bmd ON true
-) AS r;
+) AS r order by 1,2,3,4,5,6,7;
 
 DROP FUNCTION IF EXISTS raster_mapalgebra_intersection(double precision, double precision, int[], VARIADIC text[]);
 DROP FUNCTION IF EXISTS raster_mapalgebra_union(double precision, double precision, VARIADIC text[]);

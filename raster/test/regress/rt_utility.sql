@@ -159,7 +159,7 @@ VALUES ( 4, '6000x6000, ip:-75.5533328537098,49.2824585505576 scale:0.0008059652
 -----------------------------------------------------------------------
 -- Test 1 - ST_WorldTorastercoordx(rast raster, xw float8, yw float8)
 -----------------------------------------------------------------------
-
+ALTER FUNCTION ST_WorldTorastercoordx(rast raster, xw float8, yw float8) PUSHDOWN;
 SELECT 'test 1.1', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_WorldTorastercoordx(rast,
@@ -181,10 +181,13 @@ SELECT 'test 1.3', id, name
                                 skewy * width + scaley * height + ipy
                                ), 0) != width + 1;
 
+ALTER FUNCTION ST_WorldTorastercoordx(rast raster, xw float8, yw float8) NOT PUSHDOWN;
+
 -----------------------------------------------------------------------
 -- Test 2 - ST_WorldTorastercoordx(rast raster, xw float8)
 -----------------------------------------------------------------------
 
+ALTER FUNCTION ST_WorldTorastercoordx(rast raster, xw float8) PUSHDOWN;
 SELECT 'test 2.1', id, name
     FROM rt_utility_test
     WHERE skewx = 0 and
@@ -211,11 +214,12 @@ SELECT 'test 2.4', id, name
     WHERE COALESCE(ST_WorldTorastercoordx(rast,
                                 ipx
                                ), 0) != 1;
+ALTER FUNCTION ST_WorldTorastercoordx(rast raster, xw float8) NOT PUSHDOWN;
 
 -----------------------------------------------------------------------
 -- Test 3 - ST_WorldTorastercoordx(rast raster, pt geometry)
 -----------------------------------------------------------------------
-
+-- ALTER FUNCTION ST_WorldTorastercoordx(rast raster, pt geometry) PUSHDOWN;
 SELECT 'test 3.1', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_WorldTorastercoordx(rast,
@@ -242,11 +246,13 @@ SELECT 'test 3.3', id, name
                                              skewy * width + scaley * height + ipy
                                             )
                                ), 0) != width + 1;
+-- ALTER FUNCTION ST_WorldTorastercoordx(rast raster, pt geometry) NOT PUSHDOWN;
 
 -----------------------------------------------------------------------
 -- Test 4 - ST_WorldTorastercoordy(rast raster, xw float8, yw float8)
 -----------------------------------------------------------------------
 
+ALTER FUNCTION ST_WorldTorastercoordy(rast raster, xw float8, yw float8) PUSHDOWN;
 SELECT 'test 4.1', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_WorldTorastercoordy(rast,
@@ -267,11 +273,11 @@ SELECT 'test 4.3', id, name
                                 scalex * width + skewx * height + ipx,
                                 skewy * width + scaley * height + ipy
                                ), 0) != height + 1;
-
+ALTER FUNCTION ST_WorldTorastercoordy(rast raster, xw float8, yw float8) NOT PUSHDOWN;
 -----------------------------------------------------------------------
 -- Test 5 - ST_WorldTorastercoordy(rast raster, yw float8)
 -----------------------------------------------------------------------
-
+ALTER FUNCTION ST_WorldTorastercoordy(rast raster, yw float8) PUSHDOWN;
 SELECT 'test 5.1', id, name
     FROM rt_utility_test
     WHERE skewy = 0 and
@@ -299,10 +305,12 @@ SELECT 'test 5.4', id, name
                                 ipy
                                ), 0) != 1;
 
+ALTER FUNCTION ST_WorldTorastercoordy(rast raster, yw float8) NOT PUSHDOWN;
+
 -----------------------------------------------------------------------
 -- Test 6 - ST_WorldTorastercoordy(rast raster, pt geometry)
 -----------------------------------------------------------------------
-
+alter function ST_RasterToworldcoordy(rast raster, xr int, yr int) pushdown;
 SELECT 'test 6.1', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_WorldTorastercoordy(rast,
@@ -329,11 +337,12 @@ SELECT 'test 6.3', id, name
                                              skewy * width + scaley * height + ipy
                                             )
                                ), 0) != height + 1;
+alter function ST_WorldTorastercoordy(rast raster, pt geometry) NOT pushdown;
 
 -----------------------------------------------------------------------
 -- Test 7 - ST_RasterToworldcoordx(rast raster, xr int, yr int)
 -----------------------------------------------------------------------
-
+alter function st_rastertoworldcoordx(rast raster, xr int, yr int) pushdown;
 SELECT 'test 7.1', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_RasterToworldcoordx(rast, 1, 1), 0)::numeric != ipx::numeric;
@@ -341,11 +350,13 @@ SELECT 'test 7.1', id, name
 SELECT 'test 7.2', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_RasterToworldcoordx(rast, width, height), 0)::numeric != (scalex * (width - 1) + skewx * (height - 1) + ipx)::numeric;
+alter function st_rastertoworldcoordx(rast raster, xr int, yr int) NOT pushdown;
 
 -----------------------------------------------------------------------
 -- Test 8 - ST_RasterToworldcoordx(rast raster, xr int)
 -----------------------------------------------------------------------
 
+ALTER FUNCTION ST_RasterToworldcoordx(rast raster, xr int) PUSHDOWN;
 SELECT 'test 8.1', id, name
     FROM rt_utility_test
     WHERE skewx = 0 and COALESCE(ST_RasterToworldcoordx(rast, 1), 0)::numeric != ipx::numeric;
@@ -357,7 +368,7 @@ SELECT 'test 8.2', id, name
 SELECT 'test 8.3', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_RasterToworldcoordx(rast, 1), 0)::numeric != ipx::numeric;
-
+ALTER FUNCTION ST_RasterToworldcoordx(rast raster, xr int) NOT PUSHDOWN;
 -----------------------------------------------------------------------
 -- Test 9 - ST_RasterToworldcoordy(rast raster, xr int, yr int)
 -----------------------------------------------------------------------
@@ -373,7 +384,7 @@ SELECT 'test 9.2', id, name
 -----------------------------------------------------------------------
 -- Test 10 - ST_RasterToworldcoordy(rast raster, yr int)
 -----------------------------------------------------------------------
-
+ALTER FUNCTION  ST_RasterToworldcoordy(rast raster, yr int) PUSHDOWN;
 SELECT 'test 10.1', id, name
     FROM rt_utility_test
     WHERE skewy = 0 and COALESCE(ST_RasterToworldcoordy(rast, 1, 1), 0)::numeric != ipy::numeric;
@@ -385,6 +396,8 @@ SELECT 'test 10.2', id, name
 SELECT 'test 10.3', id, name
     FROM rt_utility_test
     WHERE COALESCE(ST_RasterToworldcoordy(rast, 1), 0)::numeric != ipy::numeric;
+
+ALTER FUNCTION  ST_RasterToworldcoordy(rast raster, yr int) NOT PUSHDOWN;
 
 -----------------------------------------------------------------------
 -- Test 11 - st_minpossiblevalue(pixtype text)

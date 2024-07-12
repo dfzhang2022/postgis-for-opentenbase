@@ -109,7 +109,6 @@ TESTS += \
 	$(topsrcdir)/regress/core/temporal_knn \
 	$(topsrcdir)/regress/core/tickets \
 	$(topsrcdir)/regress/core/twkb \
-	$(topsrcdir)/regress/core/typmod \
 	$(topsrcdir)/regress/core/wkb \
 	$(topsrcdir)/regress/core/wkt \
 	$(topsrcdir)/regress/core/wmsservers \

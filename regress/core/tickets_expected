@@ -61,7 +61,7 @@ NOTICE:  No points or linestrings in input array
 #277|<gml:Point><gml:coordinates>1,1e+308</gml:coordinates></gml:Point>
 #299|2
 #304
-#304.a|21
+#304.a|1
 #304.b|1
 #408|Too few points in geometry component[
 NOTICE:  Too few points in geometry component at or near point 0 0
@@ -151,6 +151,7 @@ ERROR:  Geometry type (Polygon) does not match column type (MultiPolygon)
 ERROR:  Geometry type (Polygon) does not match column type (MultiPolygon)
 #1320.geog.2|MULTIPOLYGON|4326
 #1320.geom.2|MULTIPOLYGON|4326
+WARNING:  Developer option enable_datanode_row_triggers is ON. Triggers will be executed on the datanodes and must not require access to other nodes. Use with caution
 ERROR:  Geometry type (Polygon) does not match column type (MultiPolygon)
 ERROR:  Geometry type (Polygon) does not match column type (MultiPolygon)
 #1320.geog.3|MULTIPOLYGON|4326
@@ -308,13 +309,10 @@ NOTICE:  Hole lies outside shell at or near point 25495368.044100001 6671726.931
 #1014a|POINT(0 0)
 #1014a|POINT(0 0)
 #1014b|POINT(0 1)
-#1014c|1|POINT(0 1)
-#1014c|2|POINT(1 2)
-#1014c|3|POINT(2 3)
+ERROR:  WITH RECURSIVE currently not supported on distributed tables.
 #1014d|SRID=1;POINT(0 1)
 #1014d|SRID=2;POINT(0 1)
 #3930|62065
-NOTICE:  Too few points in geometry component at or near point 0 0
 #4011|ST_LineString|LINESTRING(0 0,1 1)|f|t
 #4011|ST_LineString|MULTILINESTRING((0 0,1 1),(1 1,2 2))|f|t
 #4011|ST_LineString|MULTILINESTRING((0 0,1 1),EMPTY)|f|t

@@ -96,6 +96,8 @@ SELECT 4, rid, gid, ST_Clip(rast, geom, ARRAY[255, 254, 253], true)
 FROM raster_clip, geom_clip;
 
 -- Display the metadata of the resulting rasters
+SELECT COUNT(1) FROM
+(
 SELECT
 	tid,
 	rid,
@@ -121,7 +123,8 @@ FROM (
 	FROM raster_clip_out
 		LEFT JOIN LATERAL ST_Metadata(rast) AS md ON true
 		LEFT JOIN LATERAL ST_BandMetadata(rast, 1) AS bmd ON true
-) AS r;
+) AS r
+)AS tmp_table;
 
 -- Display the pixels and the values of the resulting rasters (raster 1)
 SELECT

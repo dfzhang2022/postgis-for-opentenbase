@@ -254,7 +254,7 @@ CREATE OR REPLACE FUNCTION st_geotransform(raster,
 CREATE OR REPLACE FUNCTION st_rotation(raster)
     RETURNS float8
     AS $$ SELECT ( @extschema@.ST_Geotransform($1)).theta_i $$
-    LANGUAGE 'sql' VOLATILE;
+    LANGUAGE 'sql' VOLATILE PUSHDOWN;
 
 CREATE OR REPLACE FUNCTION st_metadata(
 	rast raster,
@@ -276,13 +276,13 @@ CREATE OR REPLACE FUNCTION st_summary(rast raster)
 	RETURNS text
 	AS $$
 	DECLARE
-		extent box2d;
+		st_extent box2d;
 		metadata record;
 		bandmetadata record;
 		msg text;
 		msgset text[];
 	BEGIN
-		extent := @extschema@.ST_Extent(rast::geometry);
+		st_extent := @extschema@.ST_Extent(rast::geometry);
 		metadata := @extschema@.ST_Metadata(rast);
 
 		msg := 'Raster of ' || metadata.width || 'x' || metadata.height || ' pixels has ' || metadata.numbands || ' ';
@@ -292,7 +292,7 @@ CREATE OR REPLACE FUNCTION st_summary(rast raster)
 		ELSE
 			msg := msg || 'bands ';
 		END IF;
-		msg := msg || 'and extent of ' || extent;
+		msg := msg || 'and st_extent of ' || st_extent;
 
 		IF
 			round(metadata.skewx::numeric, 10) <> round(0::numeric, 10) OR
@@ -5030,13 +5030,13 @@ CREATE OR REPLACE FUNCTION ST_SetValues(
 CREATE OR REPLACE FUNCTION ST_SetValue(rast raster, band integer, x integer, y integer, newvalue float8)
     RETURNS raster
     AS 'MODULE_PATHNAME','RASTER_setPixelValue'
-    LANGUAGE 'c' IMMUTABLE PARALLEL SAFE;
+    LANGUAGE 'c' IMMUTABLE PARALLEL SAFE PUSHDOWN;
 
 -- This function can not be STRICT, because newvalue can be NULL for nodata
 CREATE OR REPLACE FUNCTION ST_SetValue(rast raster, x integer, y integer, newvalue float8)
     RETURNS raster
     AS $$ SELECT @extschema@.ST_SetValue($1, 1, $2, $3, $4) $$
-    LANGUAGE 'sql';
+    LANGUAGE 'sql' PUSHDOWN;
 
 -- cannot be STRICT as newvalue can be NULL
 CREATE OR REPLACE FUNCTION ST_SetValue(
@@ -5045,7 +5045,7 @@ CREATE OR REPLACE FUNCTION ST_SetValue(
 )
 	RETURNS raster
 	AS $$ SELECT @extschema@.ST_setvalues($1, $2, ARRAY[ROW($3, $4)]::geomval[], FALSE) $$
-	LANGUAGE 'sql' IMMUTABLE PARALLEL SAFE;
+	LANGUAGE 'sql' IMMUTABLE PARALLEL SAFE PUSHDOWN;
 
 -- cannot be STRICT as newvalue can be NULL
 CREATE OR REPLACE FUNCTION ST_SetValue(
@@ -5054,7 +5054,7 @@ CREATE OR REPLACE FUNCTION ST_SetValue(
 )
 	RETURNS raster
 	AS $$ SELECT @extschema@.ST_setvalues($1, 1, ARRAY[ROW($2, $3)]::geomval[], FALSE) $$
-	LANGUAGE 'sql' IMMUTABLE PARALLEL SAFE;
+	LANGUAGE 'sql' IMMUTABLE PARALLEL SAFE PUSHDOWN;
 
 -----------------------------------------------------------------------
 -- Raster Processing Functions

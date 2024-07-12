@@ -161,6 +161,16 @@ FROM raster_elevation
 WHERE rid = 0
 ;
 
+
+
+ALTER FUNCTION st_slope (	rast raster, nband integer ,	pixeltype text , units text ,	scale double precision ,	interpolate_nodata boolean ) PUSHDOWN;
+ALTER FUNCTION st_slope (	rast raster, nband integer,	customextent raster,	pixeltype text , units text ,	scale double precision ,	interpolate_nodata boolean ) PUSHDOWN;
+
+ALTER FUNCTION st_aspect (	rast raster, nband integer,	customextent raster,	pixeltype text , units text ,	interpolate_nodata boolean ) PUSHDOWN;
+ALTER FUNCTION st_aspect (	rast raster, nband integer ,	pixeltype text , units text ,	interpolate_nodata boolean ) PUSHDOWN;
+
+ALTER FUNCTION st_hillshade (	rast raster, nband integer,	customextent raster,	pixeltype text ,	azimuth double precision , altitude double precision ,	max_bright double precision , scale double precision ,	interpolate_nodata boolean ) PUSHDOWN;
+ALTER FUNCTION st_hillshade (	rast raster, nband integer ,	pixeltype text ,	azimuth double precision , altitude double precision ,	max_bright double precision , scale double precision ,	interpolate_nodata boolean ) PUSHDOWN;
 /* with coverage */
 DO $$
 BEGIN
@@ -339,7 +349,7 @@ CREATE OR REPLACE FUNCTION make_value_array(
 		RETURN values;
 	END;
 	$$ LANGUAGE 'plpgsql';
-
+ALTER FUNCTION make_value_array PUSHDOWN;
 INSERT INTO raster_value_arrays VALUES
 	(1, make_value_array()),
 	(2, make_value_array(3, 3, 15, -1)),

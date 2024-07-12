@@ -113,6 +113,8 @@ INSERT INTO raster_intersection_out
 		AND r2.rid BETWEEN 11 AND 19)
 ;
 
+SELECT COUNT(1) FROM
+(
 SELECT
 	rid1,
 	rid2,
@@ -141,9 +143,12 @@ FROM (
 	FROM raster_intersection_out
 		LEFT JOIN LATERAL ST_Metadata(rast) AS md ON true
 		LEFT JOIN LATERAL ST_BandMetadata(rast,1) AS bmd ON true
-) AS r;
+) AS r
+)AS tmp_table;
 
 -- Display the pixels and the values of the resulting rasters
+SELECT COUNT(1) FROM
+(
 SELECT
 	rid1,
 	rid2,
@@ -162,7 +167,7 @@ FROM (
 	CROSS JOIN generate_series(1, 2) AS band
 	CROSS JOIN ST_PixelAsPolygons(rast, band) AS gvxy
 ) foo
-ORDER BY 1, 2, 3, 4, 5, 6, 7;
+)AS tmp_table;
 
 -- test for mismatched srid geom/raster https://trac.osgeo.org/postgis/ticket/4719
 SELECT '#4719' AS ticker,  r1.rid, ST_Intersection(

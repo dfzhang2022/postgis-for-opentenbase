@@ -1,12 +1,5 @@
 NOTICE:  table "raster_gdalwarp_src" does not exist, skipping
 NOTICE:  table "raster_gdalwarp_dst" does not exist, skipping
-NOTICE:  Values must be provided for both X and Y when specifying the scale.  Returning original raster
-NOTICE:  Values must be provided for both X and Y when specifying the scale.  Returning original raster
-NOTICE:  Raster has default geotransform. Adjusting metadata for use of GDAL Warp API
-NOTICE:  Raster has default geotransform. Adjusting metadata for use of GDAL Warp API
-NOTICE:  Raster has default geotransform. Adjusting metadata for use of GDAL Warp API
-NOTICE:  Values must be provided for both X and Y when specifying the scale.  Returning original raster
-NOTICE:  Values must be provided for both X and Y when specifying the scale.  Returning original raster
 0.0|||||||||||||
 0.10|992163|10|10|1|1000.000|-1000.000|0.000|0.000|-500000.000|600000.000|t|t|t
 0.11|992163|11|10|1|1000.000|-1000.000|0.000|0.000|-500001.000|600000.000|t|t|t

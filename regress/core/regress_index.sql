@@ -88,6 +88,8 @@ ALTER TABLE test ALTER COLUMN the_geom SET STATISTICS 10000;
 
 ANALYZE test;
 
+
+set enable_fast_query_shipping = off;
 SELECT estimate_error(
   'select num from test where the_geom && ' || box, tol )
   FROM sample_queries ORDER BY id;

@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION make_value_array(
 		RETURN values;
 	END;
 	$$ LANGUAGE 'plpgsql';
-
+ALTER FUNCTION make_value_array PUSHDOWN;
 INSERT INTO raster_value_arrays VALUES
 	(1, make_value_array()),
 	(2, make_value_array(5, 5)),

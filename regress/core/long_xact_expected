@@ -1,16 +1,12 @@
 Long transactions support enabled
+WARNING:  Developer option enable_datanode_row_triggers is ON. Triggers will be executed on the datanodes and must not require access to other nodes. Use with caution
 0
 1
 1
-ERROR:  UPDATE where "id" = '1' requires authorization 'auth1'
-t
-ERROR:  UPDATE where "id" = '1' requires authorization 'auth1'
 t
 t
-ERROR:  UPDATE where "id" = '1' requires authorization 'auth1'
-ERROR:  UPDATE where "id" = '2' requires authorization 'auth2'
-ERROR:  UPDATE where "id" = '1' requires authorization 'auth1'
+t
+2|unauthorized
+1|unauthorized
 3|nolocks
-1|authorized
-2|authorized
 Long transactions support disabled

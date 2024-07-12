@@ -85,6 +85,7 @@ ${AUTOCONF} || giveup
 touch build-aux/config.rpath
 
 if test -f "${PWD}/configure"; then
+    sed -i 's/-g -O2/-g -O2 -D_PG_ORCL_ -DPGXC -DXCP -DENABLE_ALL_TABLE_TYPE -DNOLIC -D_USER_SWITCH_ -D_GNU_SOURCE -D_PG_REGRESS_/g' ${PWD}/configure
     echo "======================================"
     echo "Now you are ready to run './configure'"
     echo "======================================"

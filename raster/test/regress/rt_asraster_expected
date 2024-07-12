@@ -1,15 +1,6 @@
 NOTICE:  table "raster_asraster_geom" does not exist, skipping
 NOTICE:  table "raster_asraster_rast" does not exist, skipping
 NOTICE:  table "raster_asraster_dst" does not exist, skipping
-NOTICE:  Imbalanced number of values provided for pixeltype (1), value (1) and nodataval (0).  Using the first 0 values of each parameter
-NOTICE:  Values must be provided for both X and Y when specifying the upper-left corner
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
-NOTICE:  The geometry's SRID (993310) is not the same as the raster's SRID (992163).  The geometry will be transformed to the raster's projection
 NOTICE:  The rasters have different scales on the X axis
 NOTICE:  The rasters have different scales on the X axis
 NOTICE:  The rasters have different scales on the X axis

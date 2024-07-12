@@ -59,6 +59,7 @@ CREATE OR REPLACE FUNCTION make_raster(
 	END;
 	$$ LANGUAGE 'plpgsql';
 
+ALTER FUNCTION make_raster PUSHDOWN;
 INSERT INTO raster_dumpvalues
 	SELECT 1, make_raster(NULL, '8BSI', 3, 3, 0, 1) UNION ALL
 	SELECT 2, make_raster(NULL, '8BSI', 3, 3, 0, -1) UNION ALL
@@ -80,6 +81,8 @@ INSERT INTO raster_dumpvalues
 		make_raster(rast, '32BSI', 3, 3, rid, (rid / 2)::integer)
 	FROM raster_dumpvalues
 	WHERE rid BETWEEN 11 AND 20;
+
+ALTER FUNCTION make_raster NOT PUSHDOWN;
 
 DROP FUNCTION IF EXISTS make_raster(raster, text, integer, integer, double precision, double precision, double precision, text);
 

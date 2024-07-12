@@ -10,14 +10,4 @@
 1000
 20
 1000
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
-NOTICE:  Invalid band index (must use 1-based). Returning NULL
 ERROR:  Sample percent must be between zero and one

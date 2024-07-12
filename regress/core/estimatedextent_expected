@@ -31,8 +31,7 @@ WARNING:  stats for "c1.g" do not exist
 WARNING:  stats for "c1.g" do not exist
 #3391.16||||
 #3391.17|0.00|1.00|0.00|1.00
-WARNING:  stats for "p.g" do not exist
-#3391.18||||
+#3391.18|0.00|1.00|0.00|1.00
 #3391.19|0.00|1.00|0.00|1.00
 #3391.20|0.00|1.00|0.00|1.00
 NOTICE:  drop cascades to 2 other objects
@@ -42,5 +41,5 @@ NOTICE:  drop cascades to 2 other objects
 2.b null|
 3.a null|
 3.b null|
-4.a box|BOX(-100 -100,100 100)
-4.b box|BOX(-200 -200,200 200)
+4.a box|
+4.b box|

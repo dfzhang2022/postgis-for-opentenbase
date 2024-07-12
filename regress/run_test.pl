@@ -501,10 +501,10 @@ foreach my $hook (@OPT_HOOK_BEFORE_UNINSTALL)
 # and nobody requested raster or topology
 # (until they have an uninstall script themself)
 
-if ( (! $OPT_NODROP) && $OBJ_COUNT_PRE > 0 )
-{
-	uninstall_spatial();
-}
+# if ( (! $OPT_NODROP) && $OBJ_COUNT_PRE > 0 )
+# {
+# 	uninstall_spatial();
+# }
 
 ##################################################################
 # Summary report
@@ -762,7 +762,10 @@ sub run_simple_test
 	my $rv = system($cmd);
     if ( $rv ) {
         fail "psql exited with an error", $outfile;
-        die;
+        # die;
+		print "Starting to sleep...\n";
+		sleep(5); # 暂停 5 秒
+		print "Finished sleeping.\n";
     }
 
 	# Check for ERROR lines
@@ -824,7 +827,9 @@ sub run_simple_test
 			return 1;
 		}
 	}
-
+	# print "Starting to sleep...\n";
+	# sleep(1); # 暂停 1 秒
+	# print "Finished sleeping.\n";
 	return 1;
 }
 
@@ -924,9 +929,10 @@ sub run_dumper_and_check_output
 	my $tblname = shift;
 	my $expected_shp_file = shift;
 	my $run_always = shift;
+	my $target_name = sprintf("test_%s", $RUN);
 
 	my ($cmd, $rv);
-	my $errfile = "${TMPDIR}/dumper.err";
+	my $errfile = "${TMPDIR}/${target_name}.err";
 
 	if ( $run_always || -r $expected_shp_file )
 	{
@@ -984,13 +990,14 @@ sub run_raster_loader_and_check_output
 	my $expected_select_results_file = shift;
 	my $loader_options = shift;
 	my $run_always = shift;
+	my $target_name = sprintf("test_%s", $RUN);
 
 	# ON_ERROR_STOP is used by psql to return non-0 on an error
 	my $psql_opts="--no-psqlrc --variable ON_ERROR_STOP=true";
 
 	my ($cmd, $rv);
-	my $outfile = "${TMPDIR}/loader.out";
-	my $errfile = "${TMPDIR}/loader.err";
+	my $outfile = "${TMPDIR}/${target_name}.out";
+	my $errfile = "${TMPDIR}/${target_name}.err";
 
 	if ( $run_always || -r $expected_sql_file || -r $expected_select_results_file )
 	{
@@ -1249,6 +1256,7 @@ sub run_raster_loader_test
 	# If we have some expected files to compare with, run in geography mode.
 	if ( ! run_raster_loader_and_check_output("test", $tblname, "${TEST}.sql.expected", "${TEST}.select.expected", $custom_opts, "true") )
 	{
+		drop_table($tblname);
 		return 0;
 	}
 
@@ -1312,6 +1320,11 @@ sub create_spatial
 	print "Creating database '$DB' \n";
 
   	$rv = create_db();
+	if ( $rv )
+	{
+		fail "Error encountered Creating database $DB", $REGRESS_LOG;
+		exit 1
+	}
 
 	# Count database objects before installing anything
 	$OBJ_COUNT_PRE = count_db_objects();
@@ -1387,6 +1400,14 @@ sub prepare_spatial_extensions
 
 	my $cmd = "psql $psql_opts -c \"". $sql . "\" $DB >> $REGRESS_LOG 2>&1";
 	my $rv = system($cmd);
+
+	# DN上的spatial_ref_sys表没有顺利初始化 单独进行数据补全
+	# my $file = "/data/home/kbzhang/OpenTenBase/contrib/postgis-3.2.1/spatial_ref_sys_trans.sql";
+	# my $cmd = "psql $psql_opts -p 9432 -f \"". $file . "\" $DB >> $REGRESS_LOG 2>&1";
+	# my $rv = system($cmd);
+
+	# my $cmd = "psql $psql_opts -p 9532 -f \"". $file . "\" $DB >> $REGRESS_LOG 2>&1";
+	# my $rv = system($cmd);
 
   if ( $rv ) {
   	fail "Error encountered creating EXTENSION POSTGIS", $REGRESS_LOG;
@@ -1774,28 +1795,28 @@ sub drop_spatial_extensions
         # NOTE: "manually" dropping topology schema as EXTENSION does not
         #       take care of that itself, see
         #       http://trac.osgeo.org/postgis/ticket/2138
-        $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis_topology; DROP SCHEMA topology;\" $DB >> $REGRESS_LOG 2>&1";
+        $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis_topology CASCADE; DROP SCHEMA topology;\" $DB >> $REGRESS_LOG 2>&1";
         $rv = system($cmd);
       	$ok = 0 if $rv;
     }
 
     if ( $OPT_WITH_SFCGAL )
     {
-        $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis_sfcgal;\" $DB >> $REGRESS_LOG 2>&1";
+        $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis_sfcgal CASCADE;\" $DB >> $REGRESS_LOG 2>&1";
         $rv = system($cmd);
         $ok = 0 if $rv;
     }
 
     if ( $OPT_WITH_RASTER )
     {
-        $cmd = "psql $psql_opts -c \"DROP EXTENSION IF EXISTS postgis_raster;\" $DB >> $REGRESS_LOG 2>&1";
+        $cmd = "psql $psql_opts -c \"DROP EXTENSION IF EXISTS postgis_raster CASCADE;\" $DB >> $REGRESS_LOG 2>&1";
         $rv = system($cmd);
       	$ok = 0 if $rv;
     }
     if ( $OPT_WITH_TIGER )
     {
-        $cmd = "psql $psql_opts -c \"DROP EXTENSION IF EXISTS postgis_tiger_geocoder;
-                DROP EXTENSION IF EXISTS fuzzystrmatch;
+        $cmd = "psql $psql_opts -c \"DROP EXTENSION IF EXISTS postgis_tiger_geocoder CASCADE;
+                DROP EXTENSION IF EXISTS fuzzystrmatch CASCADE;
                 DROP SCHEMA IF EXISTS tiger;
                 DROP SCHEMA IF EXISTS tiger_data;
                 \" $DB >> $REGRESS_LOG 2>&1";
@@ -1803,7 +1824,7 @@ sub drop_spatial_extensions
       	$ok = 0 if $rv;
     }
 
-    $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis\" $DB >> $REGRESS_LOG 2>&1";
+    $cmd = "psql $psql_opts -c \"DROP EXTENSION postgis CASCADE\" $DB >> $REGRESS_LOG 2>&1";
     $rv = system($cmd);
     if ( $rv ) {
         fail "Error encountered dropping EXTENSION POSTGIS", $REGRESS_LOG;

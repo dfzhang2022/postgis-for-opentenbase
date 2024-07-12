@@ -12,5 +12,5 @@ if ( ! -e $TARGETFILE ) {
 
 my $OPTSFNAME = $TEST . '.opts';
 open(OPTS, '>', $OPTSFNAME) || die ('Cannot open ' . $OPTSFNAME. ": $1");
-print OPTS "-F -C -R \"$FILERASTER\"\n";
+print OPTS "-F -R \"$FILERASTER\"\n";
 close(OPTS);

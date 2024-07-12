@@ -24,6 +24,6 @@ BEGIN
 END;
 $$;
 
-CREATE EVENT TRIGGER trg_autovac_disable ON ddl_command_end
-WHEN TAG IN ('CREATE TABLE','CREATE TABLE AS')
-EXECUTE PROCEDURE trg_test_disable_table_autovacuum();
+--CREATE EVENT TRIGGER trg_autovac_disable ON ddl_command_end
+--WHEN TAG IN ('CREATE TABLE','CREATE TABLE AS')
+--EXECUTE PROCEDURE trg_test_disable_table_autovacuum();

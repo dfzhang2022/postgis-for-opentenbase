@@ -1,90 +1,10 @@
-NOTICE:  First argument (nband) of rastbandarg at index 0 is NULL. Assuming NULL raster
-NOTICE:  All input rasters are NULL. Returning NULL
-NOTICE:  All input rasters do not have bands at indicated indexes. Returning empty raster
-NOTICE:  Could not find raster band of index 1 when getting pixel value. Returning NULL
 0|
 1|
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{2}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 2|t
 3|t
 4|t
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = {3.14}
-NOTICE:  value = {{{20}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = {3.14}
 3|t
 4|t
-NOTICE:  All input rasters do not have bands at indicated indexes. Returning empty raster
-NOTICE:  Raster provided has no bands
-NOTICE:  Could not find raster band of index 1 when getting pixel value. Returning NULL
-NOTICE:  Could not find raster band of index 1 when getting pixel value. Returning NULL
-NOTICE:  value = {{{NULL,NULL,NULL},{NULL,200,200},{NULL,200,200}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{NULL,NULL,NULL},{200,200,NULL},{200,200,NULL}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{NULL,200,200},{NULL,200,200},{NULL,NULL,NULL}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{200,200,NULL},{200,200,NULL},{NULL,NULL,NULL}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 3|(0,0,0,0,1,-1,0,0,0,0)|(,,,,,,)|
 4|(1,-1,2,2,1,-1,0,0,0,1)|(8BUI,0,f,,,,)|255
 NOTICE:  value = {{{NULL,NULL,NULL},{NULL,1,1},{NULL,1,1}}}
@@ -267,44 +187,8 @@ NOTICE:  userargs = <NULL>
 20|21|22|(0,-2,2,2,1,-1,0,0,0,1)|(16BUI,0,f,,,,)
 NOTICE:  Raster provided has no bands
 20|21|22|(0,0,0,0,0,0,0,0,0,0)|(,,,,,,)
-NOTICE:  value = {{{1}},{{10}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{1,1},{1,1},{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}},{{10}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{2,1},{2,1},{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}},{{10}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{1,2},{1,2},{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{1}},{{10}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{2,2},{2,2},{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 30|(0,0,2,2,1,-1,0,0,0,1)|(16BUI,0,f,,,,)
-NOTICE:  value = {{{100}},{{1}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{1,1},{1,1},{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{100}},{{1}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{2,1},{2,1},{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{100}},{{1}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{1,2},{1,2},{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{100}},{{1}},{{100}}}
-NOTICE:  pos = [0:3][1:2]={{2,2},{2,2},{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 30|(0,0,2,2,1,-1,0,0,0,1)|(32BUI,0,f,,,,)
-NOTICE:  value = {{{20}},{{20}}}
-NOTICE:  pos = [0:2][1:2]={{1,1},{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{20}},{{20}}}
-NOTICE:  pos = [0:2][1:2]={{2,1},{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{20}},{{20}}}
-NOTICE:  pos = [0:2][1:2]={{1,2},{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{20}},{{20}}}
-NOTICE:  pos = [0:2][1:2]={{2,2},{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 31|(0,1,2,2,1,-1,0,0,0,1)|(16BUI,0,f,,,,)
 NOTICE:  value = {{{10}},{{2}},{{20}}}
 NOTICE:  pos = [0:3][1:2]={{1,1},{1,1},{1,2},{1,2}}
@@ -326,30 +210,6 @@ NOTICE:  value = {{{100}},{{1}},{{100}}}
 NOTICE:  pos = [0:3][1:2]={{2,2},{2,2},{2,2},{2,2}}
 NOTICE:  userargs = <NULL>
 30|(0,0,2,2,1,-1,0,0,0,1)|(32BUI,0,f,,,,)
-NOTICE:  value = {{{10}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{10}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{10}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = <NULL>
-NOTICE:  value = {{{10}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = <NULL>
 30|(0,0,2,2,1,-1,0,0,0,1)|(8BUI,0,f,,,,)
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{1,1},{1,1}}
-NOTICE:  userargs = {}
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{2,1},{2,1}}
-NOTICE:  userargs = {}
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{1,2},{1,2}}
-NOTICE:  userargs = {}
-NOTICE:  value = {{{1}}}
-NOTICE:  pos = [0:1][1:2]={{2,2},{2,2}}
-NOTICE:  userargs = {}
 2|
 ERROR:  RASTER_nMapAlgebra: Function provided must return a double precision, float, int or smallint

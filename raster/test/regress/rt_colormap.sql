@@ -53,7 +53,9 @@ SELECT
 		]::double precision[]
 	) AS rast
 ;
-
+ALTER FUNCTION _ST_ColorMap PUSHDOWN;
+ALTER FUNCTION st_colormap (	rast raster, nband int ,	colormap text ,	method text ) PUSHDOWN;
+ALTER FUNCTION st_colormap (	rast raster,	colormap text,	method text ) PUSHDOWN;
 INSERT INTO raster_colormap_out
 SELECT
 	1 AS testid,

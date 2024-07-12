@@ -301,11 +301,11 @@ SELECT 'test 2.2', id
 -----------------------------------------------------------------------
 -- Test 3 - st_pixelaspolygon(rast raster, x integer, y integer)
 -----------------------------------------------------------------------
-
+alter function st_pixelaspolygon pushdown;
 SELECT 'test 3.1', id
     FROM rt_band_properties_test
     WHERE st_astext(st_pixelaspolygon(rast, 1, 1)) != geomtxt;
-
+alter function st_pixelaspolygon  NOT pushdown;
 -----------------------------------------------------------------------
 -- Test 4 - st_setvalue(rast raster, band integer, x integer, y integer, val float8)
 -----------------------------------------------------------------------

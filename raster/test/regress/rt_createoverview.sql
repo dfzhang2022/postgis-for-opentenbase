@@ -8,7 +8,8 @@ CREATE TABLE res1 AS SELECT
 FROM generate_series(-170, 160, 10) x,
      generate_series(80, -70, -10) y;
 SELECT addrasterconstraints('res1', 'r');
-
+ALTER FUNCTION ST_CreateOverview (tab regclass, col name, factor int, algo text ) PUSHDOWN;
+ALTER FUNCTION ST_Retile(tab regclass, col name, ext geometry, sfx float8, sfy float8, tw int, th int, algo text) PUSHDOWN;
 SELECT ST_CreateOverview('res1', 'r', 2)::text = 'o_2_res1';
 
 SELECT ST_CreateOverview('res1', 'r', 4)::text = 'o_4_res1';
